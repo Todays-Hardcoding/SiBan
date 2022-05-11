@@ -1,0 +1,24 @@
+#console
+expo install expo-app-loading
+#console
+expo install expo-font
+#console
+expo install expo-asset
+#console
+npm install @react-navigation/native
+#console
+expo install react-native-screens react-native-safe-area-context
+
+@import
+import { NavigationContainer } from '@react-navigation/native';
+
+#console
+npm install @react-navigation/bottom-tabs
+#console
+npm install @react-navigation/native-stack
+#console
+npm install styled-components
+
+@import
+import styled from "styled-components/native"
+
