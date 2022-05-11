@@ -22,7 +22,7 @@ const MyPageMain = ({ navigation }) => {
           </TouchableOpacity>
           <Text style={styles.userName}>김이나</Text>
 
-          <TouchableOpacity onPress={onPressBtn} style={styles.userProfile}>
+          <TouchableOpacity onPress={() => { navigation.navigate('MyPage', { screen: 'MYPROFILE' }) }} style={styles.userProfile}>
             <Text style={styles.userProfileText}>키: 170cm</Text>
             <Text style={styles.userProfileText}>몸무게: 50kg</Text>
           </TouchableOpacity>

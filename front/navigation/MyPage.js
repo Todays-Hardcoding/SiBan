@@ -7,6 +7,7 @@ import Activity from '../screens/MyPage/Activity';
 import ChangePhoto from '../screens/MyPage/ChangePhoto';
 import Record from '../screens/MyPage/Record'
 import RoutineRecord from '../screens/MyPage/RoutineRecord'
+import MyProfile from '../screens/MyPage/MyProfile';
 
 
 const Stack = createStackNavigator();
@@ -19,7 +20,9 @@ const MyPage = () => {
       <Stack.Screen name="ACTIVITY" component={Activity} />
       <Stack.Screen name="CHANGEPHOTO" component={ChangePhoto} />
 
+      <Stack.Screen name="MYPROFILE" component={MyProfile} />
       <Stack.Screen name="RECORD" component={Record} />
+
 
     </Stack.Navigator>
 
