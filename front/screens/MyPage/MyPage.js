@@ -17,7 +17,7 @@ const MyPageMain = ({ navigation }) => {
         <View style={styles.topPage}>
 
 
-          <TouchableOpacity onPress={() => { navigation.navigate('MyPage', { screen: 'CHANGEPHOTO' }) }} style={styles.image}>
+          <TouchableOpacity onPress={() => { navigation.navigate('MyPageNav', { screen: 'CHANGEPHOTO' }) }} style={styles.image}>
             <Image source={require('../../assets/profile.png')} style={styles.image}></Image>
           </TouchableOpacity>
           <Text style={styles.userName}>김이나</Text>
@@ -33,10 +33,10 @@ const MyPageMain = ({ navigation }) => {
           <TouchableOpacity onPress={onPressBtn} style={styles.myPageBtn}>
             <Text style={styles.btnText}>내루틴</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => { navigation.navigate('MyPage', { screen: 'RECORD' }) }} style={styles.myPageBtn}>
+          <TouchableOpacity onPress={() => { navigation.navigate('MyPageNav', { screen: 'RECORD' }) }} style={styles.myPageBtn}>
             <Text style={styles.btnText}>일정관리</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => { navigation.navigate('MyPage', { screen: 'ACTIVITY' }) }} style={styles.myPageBtn}>
+          <TouchableOpacity onPress={() => { navigation.navigate('MyPageNav', { screen: 'ACTIVITY' }) }} style={styles.myPageBtn}>
             <Text style={styles.btnText}>활동</Text>
           </TouchableOpacity>
           <TouchableOpacity onPress={onPressBtn} style={styles.myPageBtn}>
