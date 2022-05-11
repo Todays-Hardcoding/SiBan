@@ -33,7 +33,7 @@ const MyPageMain = ({ navigation }) => {
           <TouchableOpacity onPress={onPressBtn} style={styles.myPageBtn}>
             <Text style={styles.btnText}>내루틴</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={onPressBtn} style={styles.myPageBtn}>
+          <TouchableOpacity onPress={() => { navigation.navigate('MyPage', { screen: 'RECORD' }) }} style={styles.myPageBtn}>
             <Text style={styles.btnText}>일정관리</Text>
           </TouchableOpacity>
           <TouchableOpacity onPress={() => { navigation.navigate('MyPage', { screen: 'ACTIVITY' }) }} style={styles.myPageBtn}>

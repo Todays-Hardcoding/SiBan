@@ -3,7 +3,7 @@ import { createMaterialTopTabNavigator } from '@react-navigation/material-top-ta
 import { Dimensions } from 'react-native';
 
 
-import Record from './Record';
+import RoutineRecord from './RoutineRecord';
 import Accomplished from './Accomplished'
 
 const Tab = createMaterialTopTabNavigator();
@@ -15,14 +15,14 @@ function Activity() {
   return (
     <Tab.Navigator
       initialLayout={{ width: windowWidth }}
-      initialRouteName="Record"
+      initialRouteName="ROUTINERECORD"
       screenOptions={{
         tabBarLabelStyle: { fontSize: 15, color: "black" },
         tabBarStyle: { backgroundColor: "#ECB390", paddingVertical: 10 }
       }}
     >
-      <Tab.Screen name="Record" component={Record} options={{ tabBarLabel: '기록' }} />
-      <Tab.Screen name="Accomplished" component={Accomplished} options={{ tabBarLabel: '달성 기록' }} />
+      <Tab.Screen name="ROUTINERECORD" component={RoutineRecord} options={{ tabBarLabel: '기록' }} />
+      <Tab.Screen name="ACCOMPLISHED" component={Accomplished} options={{ tabBarLabel: '달성 기록' }} />
     </Tab.Navigator>
   );
 }
