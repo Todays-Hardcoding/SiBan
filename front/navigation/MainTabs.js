@@ -7,7 +7,7 @@ import { Ionicons, FontAwesome5, Entypo } from '@expo/vector-icons';
 
 // 페이지 관련 import
 import Home from '../screens/Home';
-import MyPageMain from '../screens/MyPage/MyPage';
+import MyPageNav from '../navigation/MyPageNav';
 import Workout from '../screens/Workout';
 import Coach from '../screens/Coach';
 
@@ -51,7 +51,7 @@ const MainTabs = () => {
       </MainTab.Screen>
 
       {/* 2번 탭 */}
-      <MainTab.Screen name="Mypage" component={MyPageMain} options={{
+      <MainTab.Screen name="Mypage" component={MyPageNav} options={{
         tabBarIcon: ({ focused, color, size }) => {
           return (
             <Ionicons name={focused ? 'people' : 'people-outline'} color={color} size={size}></Ionicons>
