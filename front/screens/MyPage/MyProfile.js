@@ -1,6 +1,6 @@
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
-import { Table, TableWrapper, Row, Rows, Col, Cols, Cell } from 'react-native-table-component';
+import { Table, Row, Rows } from 'react-native-table-component';
 
 
 
@@ -9,49 +9,44 @@ const MyProfile = () => {
 
   var state = {
     tableHead: ['회원이름'],
-    tableTitle: ['Title', 'Title2', 'Title3', 'Title4'],
     tableData: [
-      ['나이', '2'],
-      ['머시기', 'b'],
-      ['몸무게', '2'],
-      ['키', 'b']
+      ['나이', '22'],
+      ['성별', '남'],
+      ['키', '175'],
+      ['몸무게', '70']
     ]
   }
   return (
     <View style={styles.container}>
-      <Text> 유저 프로필 화면 입니다.</Text>
-        <Table borderStyle={{ borderWidth: 2, borderColor: '#c8e1ff' }}>
+      <View style={styles.profile}>
+        <Table borderStyle={{ borderWidth: 2, borderColor: 'black' }}>
           <Row data={state.tableHead} style={styles.head} textStyle={styles.text} />
           <Rows data={state.tableData} textStyle={styles.text} />
         </Table>
+      </View>
     </View>
   )
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 1
+
+  },
+  profile: {
+    flex: 8,
     padding: 16,
     paddingTop: 30,
-    backgroundColor: '#fff'
+    backgroundColor: '#fff',
   },
   head: {
     height: 40,
-    backgroundColor: '#f1f8ff'
-  },
-  wrapper: {
-    flexDirection: 'row'
-  },
-  title: {
-    flex: 1,
-    backgroundColor: '#f6f8fa'
-  },
-  row: {
-    height: 28
+    backgroundColor: '#F5EEDC'
   },
   text: {
+    margin: 6,
     textAlign: 'center'
-  }
+  },
 });
 
 export default MyProfile;
