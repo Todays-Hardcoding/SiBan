@@ -53,28 +53,6 @@ const styles = StyleSheet.create({
     marginHorizontal: windowWidth * 0.05,
     borderRadius: 15,
   },
-  topPage: {
-    flex: 0.8,
-    justifyContent: "center",
-    alignItems: 'center',
-    marginTop: windowHeight * 0.04,
-  },
-  bottomPage: {
-    flex: 1,
-    flexDirection: 'row',
-    alignItems: 'center',
-    alignContent: 'center',
-    justifyContent: 'space-around',
-    flexWrap: "wrap",
-
-  },
-  title: {
-    flex: 0.3,
-    fontSize: windowWidth * 0.08,
-    fontWeight: "600",
-    textAlign: 'center',
-
-  },
   innerPageBtn: {
     alignItems: 'center',
     justifyContent: "center",
@@ -92,12 +70,6 @@ const styles = StyleSheet.create({
     borderRadius: (windowWidth * 0.4) / 2,
     width: windowWidth * 0.4,
     height: windowHeight * 0.4,
-  },
-  userName: {
-    flex: 0.2,
-    fontSize: windowWidth * 0.05,
-    textAlign: 'center',
-    marginTop: 10,
   },
   userProfile: {
     flex: 0.4,
