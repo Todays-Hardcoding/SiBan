@@ -43,62 +43,27 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#ECB390",
-    alignItems: "center",
   },
   innerPage: {
-    flex: 1.5,
+    flex: 1,
     backgroundColor: "white",
     justifyContent: "center",
     marginVertical: windowHeight * 0.06,
     marginHorizontal: windowWidth * 0.05,
     borderRadius: 15,
-  },
-  topPage: {
-    flex: 0.8,
-    justifyContent: "center",
-    alignItems: 'center',
-    marginTop: windowHeight * 0.04,
-  },
-  bottomPage: {
-    flex: 1,
-    flexDirection: 'row',
-    alignItems: 'center',
-    alignContent: 'center',
-    justifyContent: 'space-around',
-    flexWrap: "wrap",
 
+    alignItems: "center",
   },
-  title: {
-    flex: 0.3,
-    fontSize: windowWidth * 0.08,
-    fontWeight: "600",
-    textAlign: 'center',
 
-  },
-  innerPageBtn: {
-    alignItems: 'center',
-    justifyContent: "center",
-    backgroundColor: "#C0D8C0",
-    width: windowWidth * 0.4,
-    height: windowHeight * 0.16,
-    marginBottom: 20,
-    borderRadius: 10,
-  },
-  btnText: {
-    fontSize: windowWidth * 0.05,
-  },
+
+
   image: {
     flex: 1,
     borderRadius: (windowWidth * 0.4) / 2,
     width: windowWidth * 0.4,
     height: windowHeight * 0.4,
   },
-  userName: {
-    flex: 0.2,
-    fontSize: windowWidth * 0.05,
-    textAlign: 'center',
-    marginTop: 10,
-  },
+
   userProfile: {
     flex: 0.4,
     backgroundColor: "#F5EEDC",
@@ -108,8 +73,9 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     borderRadius: windowWidth * 0.1
   },
+
   userProfileText: {
-    marginHorizontal: 30,
-  }
+    marginHorizontal: 60,
+  },
 
 })
