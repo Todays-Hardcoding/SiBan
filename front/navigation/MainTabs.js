@@ -2,13 +2,14 @@ import React from "react";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 
+
 // 폰트아이콘 관련
 import { Ionicons, FontAwesome5, Entypo } from '@expo/vector-icons';
 
 // 페이지 관련 import
 import Home from '../screens/Home';
 import MyPageMain from '../screens/MyPage/MyPage';
-import Workout from '../screens/Workout';
+import WorkoutsNav from "./WorkoutsNav";
 import Coach from '../screens/Coach';
 
 
@@ -61,7 +62,7 @@ const MainTabs = () => {
       </MainTab.Screen>
 
       {/* 3번 탭 */}
-      <MainTab.Screen name="Workout" component={Workout} options={{
+      <MainTab.Screen name="Workout" component={WorkoutsNav} options={{
         tabBarIcon: ({ focused, color, size }) => {
           return (
             <FontAwesome5 name={focused ? 'dumbbell' : 'dumbbell'} color={color} size={size}></FontAwesome5>

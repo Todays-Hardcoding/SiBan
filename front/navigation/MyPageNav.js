@@ -18,7 +18,6 @@ const MyPage = () => {
     <Stack.Navigator>
       <Stack.Screen name="ACTIVITY" component={Activity} />
       <Stack.Screen name="CHANGEPHOTO" component={ChangePhoto} />
-
       <Stack.Screen name="RECORD" component={Record} />
 
     </Stack.Navigator>
