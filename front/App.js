@@ -15,7 +15,7 @@ export default function App() {
         <Stack.Screen name='MyPageNav' component={MyPageNav} options={{ headerShown: false }}></Stack.Screen>
       </Stack.Navigator>
     </NavigationContainer>
-
+  
   );
 }
 

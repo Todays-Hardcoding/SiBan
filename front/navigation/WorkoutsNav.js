@@ -44,20 +44,20 @@ const BrowseDetail = () => {
   )
 }
 
-// const Strength = () => {
-//     return (
-//         <Stack.Navigator initialRouteName="StrengthMain" screenOptions={{headerShown: false}}>
-//             <Stack.Screen name="StrengthMain" component={StrengthMain} />
-//             <Stack.Screen name="StrengthDetail" component={StrengthDetail} />
-//         </Stack.Navigator>
-//     )
-// }
+const StrengthNav = () => {
+    return (
+        <Stack.Navigator initialRouteName="StrengthDetail">
+            <Stack.Screen name="StrengthDetail" component={StrengthDetail} />
+        </Stack.Navigator>
+    )
+}
 
 const WorkoutsNav = () => {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="Workouts" component={Workouts} />
       <Stack.Screen name="BrowseDetail" component={BrowseDetail} />
+      <Stack.Screen name="StrengthNav" component={StrengthNav} />
     </Stack.Navigator>
   )
 }
