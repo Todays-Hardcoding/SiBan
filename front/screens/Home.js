@@ -48,7 +48,6 @@ const Login = ({ navigation }) => {
     >
       <Text style={{ fontSize: 20, fontWeight: "bold" }}>시반로그인</Text>
       <Text> </Text>
-
       {/* 아이디 입력하는 곳 */}
       <TextInput
         style={styles.input}
@@ -64,13 +63,11 @@ const Login = ({ navigation }) => {
           <Text style={{ color: "red" }}>아이디를 입력해주세요</Text>
         ) : null}
       </View>
-
       <TextInput
         style={styles.input}
         placeholder={"비밀번호"}
         secureTextEntry={true}
       />
-
       <TouchableOpacity style={{ flexDirection: "row" }}>
         <Text
           style={{ color: "gray" }}
@@ -94,7 +91,6 @@ const Login = ({ navigation }) => {
           회원가입
         </Text>
       </TouchableOpacity>
-
       <LoginButton />
       <KakaoButton />
     </View>
