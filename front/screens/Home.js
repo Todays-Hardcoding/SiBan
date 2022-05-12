@@ -74,6 +74,9 @@ const Login = ({ navigation }) => {
         style={styles.input}
         placeholder={"비밀번호"}
         secureTextEntry={true}
+        
+        
+
       />
 
 

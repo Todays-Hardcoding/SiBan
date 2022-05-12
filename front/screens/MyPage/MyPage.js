@@ -13,16 +13,16 @@ function onPressBtn() {
 const MyPageMain = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <View style={styles.myPage}>
+      <View style={styles.innerPage}>
         <View style={styles.topPage}>
 
 
-          <TouchableOpacity onPress={() => { navigation.navigate('MyPageNav', { screen: 'CHANGEPHOTO' }) }} style={styles.image}>
+          <TouchableOpacity onPress={() => { navigation.navigate('BtnPage', { screen: 'CHANGEPHOTO' }) }} style={styles.image}>
             <Image source={require('../../assets/profile.png')} style={styles.image}></Image>
           </TouchableOpacity>
           <Text style={styles.userName}>김이나</Text>
 
-          <TouchableOpacity onPress={onPressBtn} style={styles.userProfile}>
+          <TouchableOpacity onPress={() => { navigation.navigate('BtnPage', { screen: 'MYPROFILE' }) }} style={styles.userProfile}>
             <Text style={styles.userProfileText}>키: 170cm</Text>
             <Text style={styles.userProfileText}>몸무게: 50kg</Text>
           </TouchableOpacity>
@@ -33,10 +33,10 @@ const MyPageMain = ({ navigation }) => {
           <TouchableOpacity onPress={onPressBtn} style={styles.myPageBtn}>
             <Text style={styles.btnText}>내루틴</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => { navigation.navigate('MyPageNav', { screen: 'RECORD' }) }} style={styles.myPageBtn}>
+          <TouchableOpacity onPress={() => { navigation.navigate('BtnPage', { screen: 'RECORD' }) }} style={styles.myPageBtn}>
             <Text style={styles.btnText}>일정관리</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => { navigation.navigate('MyPageNav', { screen: 'ACTIVITY' }) }} style={styles.myPageBtn}>
+          <TouchableOpacity onPress={() => { navigation.navigate('ACTIVITY') }} style={styles.myPageBtn}>
             <Text style={styles.btnText}>활동</Text>
           </TouchableOpacity>
           <TouchableOpacity onPress={onPressBtn} style={styles.myPageBtn}>
@@ -54,15 +54,14 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#ECB390",
-    alignItems: "center",
   },
-  myPage: {
-    flex: 1.5,
+  innerPage: {
+    flex: 1,
     backgroundColor: "white",
-    justifyContent: "center",
     marginVertical: windowHeight * 0.06,
     marginHorizontal: windowWidth * 0.05,
     borderRadius: 15,
+    alignItems: "center",
   },
   topPage: {
     flex: 0.8,

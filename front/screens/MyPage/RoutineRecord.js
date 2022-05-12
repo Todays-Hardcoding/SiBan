@@ -1,32 +1,48 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import CounterInput from "react-native-counter-input";
+import React, { useState } from 'react';
+import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
 
-
-
-
-function RoutineRecord() {
+const RoutineRecord = () => {
+  const [count, setCount] = useState(0);
   return (
     <View style={styles.centerView}>
-      <Text> 루틴 기록 화면 입니다.</Text>
-      <CounterInput style={styles.counter}
-        onChange={(counter) => {
-          console.log("onChange Counter:", counter);
-        }}
-      />
+
+
+
+
+      <View>
+        {/* <TouchableOpacity style={styles.counter} onPress={() => setCount(count + 1)}>
+          <Text style={styles.RoutineRecordText}>증가</Text>
+        </TouchableOpacity> */}
+
+        <View>
+          <Text style={styles.RoutineRecordText}>루틴: {count}</Text>
+        </View>
+
+        {/* <TouchableOpacity style={styles.counter} onPress={() => setCount(count - 1)}>
+          <Text style={styles.RoutineRecordText}>감소</Text>
+        </TouchableOpacity> */}
+      </View>
+
+
     </View>
   )
 }
 
 const styles = StyleSheet.create({
   centerView: {
-    flex: 1,
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
   },
-  counter:{
-    
+  counter: {
+    marginTop: 20,
+    borderWidth: 2,
+    borderColor: 'black',
+  },
+  RoutineRecordText: {
+    fontSize: 50,
   }
+
+
 })
 
 export default RoutineRecord;
