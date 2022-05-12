@@ -10,17 +10,17 @@ const RoutineRecord = () => {
 
 
       <View>
-        <TouchableOpacity style={styles.counter} onPress={() => setCount(count + 1)}>
+        {/* <TouchableOpacity style={styles.counter} onPress={() => setCount(count + 1)}>
           <Text style={styles.RoutineRecordText}>증가</Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
 
         <View>
-          <Text style={styles.RoutineRecordText}>{count}</Text>
+          <Text style={styles.RoutineRecordText}>루틴: {count}</Text>
         </View>
 
-        <TouchableOpacity style={styles.counter} onPress={() => setCount(count - 1)}>
+        {/* <TouchableOpacity style={styles.counter} onPress={() => setCount(count - 1)}>
           <Text style={styles.RoutineRecordText}>감소</Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
       </View>
 
 
