@@ -10,7 +10,7 @@ const ForYou = ({ navigation }) => {
         }}
         style={styles.button}
       >
-        <Text>초급</Text>
+        <Text style={styles.buttonText}>초급</Text>
       </TouchableOpacity>
       <TouchableOpacity
         onPress={() => {
@@ -18,7 +18,7 @@ const ForYou = ({ navigation }) => {
         }}
         style={styles.button}
       >
-        <Text>중급</Text>
+        <Text style={styles.buttonText}>중급</Text>
       </TouchableOpacity>
       <TouchableOpacity
         onPress={() => {
@@ -26,7 +26,7 @@ const ForYou = ({ navigation }) => {
         }}
         style={styles.button}
       >
-        <Text>고급</Text>
+        <Text style={styles.buttonText}>고급</Text>
       </TouchableOpacity>
     </View>
   );
@@ -39,7 +39,8 @@ const styles = StyleSheet.create({
     marginTop: 30,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "green",
+    backgroundColor: "#575fcf",
+    borderRadius: 50,
   },
   buttonContainer: {
     backgroundColor: "#fff",
@@ -47,7 +48,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   buttonText: {
-    fontSize: 50,
+    fontSize: 30,
     color: "white",
   },
 });

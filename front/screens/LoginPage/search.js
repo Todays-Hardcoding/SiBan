@@ -14,16 +14,14 @@ const Search = () => {
       <Text style={{ fontSize: 24, fontWeight: "bold", margin: 10 }}>
         아이디 찾기. 비밀번호 재설정
       </Text>
-      <Text style={{ fontsize: 18, color: "gray" }}>
+      <Text style={{ fontSize: 18, color: "gray" }}>
         가입시 입력하신 이메일을 입력해주세요.
       </Text>
       <TextInput
         style={{
           borderWidth: 1,
           fontSize: 18,
-
           borderRadius: 10,
-
           marginVertical: 10,
           width: "70%",
           height: "9%",
