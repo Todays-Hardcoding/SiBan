@@ -69,6 +69,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "row",
   },
+
   chooseBtn: {
     alignItems: 'center',
     justifyContent: "center",
@@ -98,8 +99,9 @@ const styles = StyleSheet.create({
     borderRadius: windowWidth * 0.04,
     marginHorizontal: 5,
   },
+
   userProfileText: {
-    marginHorizontal: 30,
-  }
+    marginHorizontal: 60,
+  },
 
 })
