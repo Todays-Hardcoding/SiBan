@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import { Table, Row, Rows } from "react-native-table-component-2";
 
-const MyProfile = () => {
+const MyProfileModify = () => {
   // state = {age:"", gender:"",height:"",weight:""}
   // const [value, setValue] = useState('김이나');
 
@@ -26,6 +26,15 @@ const MyProfile = () => {
           />
           <Rows data={state.tableData} textStyle={styles.text} />
         </Table>
+
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate("ModifyPage", { screen: "MYPROFILEMODIFY" });
+          }}
+          style={styles.userProfile}
+        >
+          <Text style={styles.userProfileText}>정보수정</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -49,6 +58,13 @@ const styles = StyleSheet.create({
     margin: 6,
     textAlign: "center",
   },
+  userProfile: {
+    flex: 0.1,
+    backgroundColor: "gray",
+    alignItems: "center",
+    justifyContent: "center",
+    flexDirection: "row",
+  },
 });
 
-export default MyProfile;
+export default MyProfileModify;

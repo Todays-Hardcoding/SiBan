@@ -11,6 +11,7 @@ import Record from "../screens/MyPage/Record";
 import RoutineRecord from "../screens/MyPage/RoutineRecord";
 import Accomplished from "../screens/MyPage/Accomplished";
 import MyProfile from "../screens/MyPage/MyProfile";
+import MyProfileModify from "../screens/MyPage/MyProfileModify";
 
 const Tab = createMaterialTopTabNavigator();
 const windowWidth = Dimensions.get("window").width;
@@ -39,6 +40,13 @@ const BtnPage = () => {
       <Stack.Screen name="CHANGEPHOTO" component={ChangePhoto} />
       <Stack.Screen name="RECORD" component={Record} />
       <Stack.Screen name="MYPROFILE" component={MyProfile} />
+    </Stack.Navigator>
+  );
+};
+const ModifyPage = () => {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name="MYPROFILEMODIFY" component={MyProfileModify} />
     </Stack.Navigator>
   );
 };
@@ -77,6 +85,7 @@ const MyPageNav = () => {
       />
       <Stack.Screen name="Activity" component={Activity} />
       <Stack.Screen name="BtnPage" component={BtnPage} />
+      <Stack.Screen name="ModifyPage" component={ModifyPage} />
     </Stack.Navigator>
   );
 };
