@@ -92,13 +92,13 @@ const MainTabs = () => {
 
       {/* 4번 탭 */}
       <MainTab.Screen
-        name="Coach"
+        name="Board"
         component={MyBoardNav}
         options={{
           tabBarIcon: ({ focused, color, size }) => {
             return (
               <Ionicons
-                name={focused ? "people" : "people-outline"}
+                name={focused ? "clipboard" : "clipboard-outline"}
                 color={color}
                 size={size}
               ></Ionicons>
