@@ -10,6 +10,7 @@ import { Ionicons, FontAwesome5, Entypo } from '@expo/vector-icons';
 import Home from '../screens/Home';
 import MyPageNav from '../navigation/MyPageNav';
 import WorkoutsNav from "./WorkoutsNav";
+
 import Coach from '../screens/Coach';
 
 

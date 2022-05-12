@@ -21,6 +21,7 @@ const RoutineRecord = () => {
         {/* <TouchableOpacity style={styles.counter} onPress={() => setCount(count - 1)}>
           <Text style={styles.RoutineRecordText}>감소</Text>
         </TouchableOpacity> */}
+
       </View>
 
 

@@ -9,6 +9,7 @@ const MyProfile = () => {
 
   // state = {age:"", gender:"",height:"",weight:""}
   // const [value, setValue] = useState('김이나');
+
   var state = {
     tableHead: ['회원이름'],
     tableData: [
