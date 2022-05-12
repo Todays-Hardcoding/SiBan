@@ -53,9 +53,9 @@ const Strength = ({ navigation }) => {
                 // console.log(exercise.part)
                 // console.log(part)
                 data.push(exercise)
-                console.log(data)
+            console.log(data)
         })
-        navigation.navigate("StrengthNav", { screen: "StrengthDetail", params: {"exercises": data }})
+        navigation.navigate("StrengthNav", { screen: "StrengthDetail", params: { "exercises": data } })
     }
 
     return (

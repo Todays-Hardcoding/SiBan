@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, View, Text, ScrollView} from 'react-native'
+import { StyleSheet, View, Text, ScrollView } from 'react-native'
 
 const StrengthDetail = ({ route }) => {
     const { exercises } = route.params;
