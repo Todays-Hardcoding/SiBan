@@ -1,9 +1,9 @@
-import React from 'react'
-import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
-import { Dimensions } from 'react-native';
+import React from "react";
+import { StyleSheet, Text, View, TouchableOpacity, Image } from "react-native";
+import { Dimensions } from "react-native";
 
-const windowWidth = Dimensions.get('window').width;
-const windowHeight = Dimensions.get('window').height;
+const windowWidth = Dimensions.get("window").width;
+const windowHeight = Dimensions.get("window").height;
 console.log(windowWidth);
 
 function onPressBtn() {
@@ -16,15 +16,16 @@ const ChangePhoto = ({ navigation }) => {
       <View style={styles.innerPage}>
         <View style={styles.imagePart}>
           <TouchableOpacity onPress={onPressBtn} style={styles.image}>
-            <Image source={require('../../assets/profile.png')} style={styles.imageItself}></Image>
+            <Image
+              source={require("../../assets/profile.png")}
+              style={styles.imageItself}
+            ></Image>
           </TouchableOpacity>
-
 
           <TouchableOpacity onPress={onPressBtn} style={styles.chooseBtn}>
             <Text style={styles.userProfileText}>사진선택</Text>
           </TouchableOpacity>
         </View>
-
 
         <View style={styles.buttonPart}>
           <TouchableOpacity onPress={onPressBtn} style={styles.defaultButton}>
@@ -35,13 +36,10 @@ const ChangePhoto = ({ navigation }) => {
             <Text style={styles.userProfileText}>뒤로</Text>
           </TouchableOpacity>
         </View>
-
-
       </View>
-
     </View>
   );
-}
+};
 export default ChangePhoto;
 
 const styles = StyleSheet.create({
@@ -57,20 +55,19 @@ const styles = StyleSheet.create({
     marginHorizontal: windowWidth * 0.05,
     borderRadius: 15,
     alignItems: "center",
-    alignContent: 'space-around',
-
+    alignContent: "space-around",
   },
   imagePart: {
     flex: 2,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
   },
   buttonPart: {
     flex: 1,
     flexDirection: "row",
   },
   chooseBtn: {
-    alignItems: 'center',
+    alignItems: "center",
     justifyContent: "center",
     backgroundColor: "#C0D8C0",
     width: windowWidth * 0.3,
@@ -93,8 +90,8 @@ const styles = StyleSheet.create({
   defaultButton: {
     backgroundColor: "#F5EEDC",
     height: windowWidth * 0.1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
     borderRadius: windowWidth * 0.04,
     marginHorizontal: 5,
   },
@@ -102,5 +99,4 @@ const styles = StyleSheet.create({
   userProfileText: {
     marginHorizontal: 60,
   },
-
-})
+});
