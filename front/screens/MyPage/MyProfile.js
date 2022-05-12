@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState }  from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import { Table, Row, Rows } from 'react-native-table-component-2';
 
@@ -7,6 +7,8 @@ import { Table, Row, Rows } from 'react-native-table-component-2';
 
 const MyProfile = () => {
 
+  // state = {age:"", gender:"",height:"",weight:""}
+  // const [value, setValue] = useState('김이나');
   var state = {
     tableHead: ['회원이름'],
     tableData: [
