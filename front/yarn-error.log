@@ -1,8 +1,8 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Users\sacro\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add react-native-gesture-handler@~2.2.1 react-native-reanimated@~2.8.0 react-
+  C:\Program Files\nodejs\node.exe C:\Users\baden\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add react-native-gesture-handler@~2.2.1 react-native-reanimated@~2.8.0 react-
 
 PATH: 
-  C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Bandizip\;C:\Program Files\nodejs\;C:\Program Files\Git\cmd;C:\Users\sacro\AppData\Local\Microsoft\WindowsApps;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;;C:\Users\sacro\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\sacro\AppData\Roaming\npm
+  C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files (x86)\mingw-w64\i686-8.1.0-posix-dwarf-rt_v6-rev0\mingw32\bin;C:\Program Files\dotnet\;C:\Program Files\nodejs\;C:\Program Files\Git\cmd;C:\Users\baden\AppData\Local\Microsoft\WindowsApps;C:\Users\baden\AppData\Local\afreeca;C:\Users\baden\AppData\Local\GitHubDesktop\bin;C:\Users\baden\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files\Bandizip\;C:\Users\baden\AppData\Roaming\npm
 
 Yarn version: 
   1.22.18
@@ -15,12 +15,12 @@ Platform:
 
 Trace: 
   Error: https://registry.yarnpkg.com/react-: Not found
-      at Request.params.callback [as _callback] (C:\Users\sacro\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:66138:18)
-      at Request.self.callback (C:\Users\sacro\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:140883:22)
+      at Request.params.callback [as _callback] (C:\Users\baden\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:66138:18)
+      at Request.self.callback (C:\Users\baden\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:140883:22)
       at Request.emit (node:events:527:28)
-      at Request.<anonymous> (C:\Users\sacro\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:141855:10)
+      at Request.<anonymous> (C:\Users\baden\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:141855:10)
       at Request.emit (node:events:527:28)
-      at IncomingMessage.<anonymous> (C:\Users\sacro\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:141777:12)
+      at IncomingMessage.<anonymous> (C:\Users\baden\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:141777:12)
       at Object.onceWrapper (node:events:641:28)
       at IncomingMessage.emit (node:events:539:35)
       at endReadableNT (node:internal/streams/readable:1345:12)
@@ -47,18 +47,20 @@ npm manifest:
       "@react-navigation/stack": "^6.2.1",
       "expo": "~45.0.0",
       "expo-app-loading": "^2.0.0",
-      "expo-asset": "^8.5.0",
+      "expo-asset": "~8.5.0",
       "expo-font": "^10.1.0",
       "expo-status-bar": "~1.3.0",
       "react": "17.0.2",
       "react-dom": "17.0.2",
       "react-native": "0.68.1",
+      "react-native-calendar-range-picker": "^1.5.3",
       "react-native-calendario": "^3.1.0",
       "react-native-counter-input": "^0.1.9",
-      "react-native-gesture-handler": "^2.4.2",
+      "react-native-gesture-handler": "~2.2.1",
       "react-native-pager-view": "^5.4.15",
-      "react-native-safe-area-context": "^4.2.4",
-      "react-native-screens": "^3.11.1",
+      "react-native-reanimated": "~2.8.0",
+      "react-native-safe-area-context": "4.2.4",
+      "react-native-screens": "~3.11.1",
       "react-native-super-grid": "^4.4.0",
       "react-native-tab-view": "^3.1.1",
       "react-native-web": "0.17.7",
@@ -823,7 +825,7 @@ Lockfile:
     dependencies:
       "@babel/helper-plugin-utils" "^7.16.7"
   
-  "@babel/plugin-transform-object-assign@^7.0.0":
+  "@babel/plugin-transform-object-assign@^7.0.0", "@babel/plugin-transform-object-assign@^7.16.7":
     "integrity" "sha512-R8mawvm3x0COTJtveuoqZIjNypn2FjfvXZr4pSQ8VhEFBuQGBz4XhHasZtHXjgXU4XptZ4HtGof3NoYc93ZH9Q=="
     "resolved" "https://registry.npmjs.org/@babel/plugin-transform-object-assign/-/plugin-transform-object-assign-7.16.7.tgz"
     "version" "7.16.7"
@@ -1070,7 +1072,7 @@ Lockfile:
       "@babel/types" "^7.4.4"
       "esutils" "^2.0.2"
   
-  "@babel/preset-typescript@^7.13.0":
+  "@babel/preset-typescript@^7.13.0", "@babel/preset-typescript@^7.16.7":
     "integrity" "sha512-WbVEmgXdIyvzB77AQjGBEyYPZx+8tTsO50XtfozQrkW8QB2rLJpH2lgx0TRw5EJrBxOZQ+wCcyPVQvS8tjEHpQ=="
     "resolved" "https://registry.npmjs.org/@babel/preset-typescript/-/preset-typescript-7.16.7.tgz"
     "version" "7.16.7"
@@ -1884,6 +1886,11 @@ Lockfile:
     "integrity" "sha512-ewXv/ceBaJprikMcxCmWU1FKyMAQ2X7a9Gtmzw8fcg2kIePI1crERDM818W+XYrxqdBBOdlf2rm137bU+BltCA=="
     "resolved" "https://registry.npmjs.org/@types/hammerjs/-/hammerjs-2.0.41.tgz"
     "version" "2.0.41"
+  
+  "@types/invariant@^2.2.35":
+    "integrity" "sha512-DxX1V9P8zdJPYQat1gHyY0xj3efl8gnMVjiM9iCY6y27lj+PoQWkgjt8jDqmovPqULkKVpKRg8J36iQiA+EtEg=="
+    "resolved" "https://registry.npmjs.org/@types/invariant/-/invariant-2.2.35.tgz"
+    "version" "2.2.35"
   
   "@types/istanbul-lib-coverage@*", "@types/istanbul-lib-coverage@^2.0.0":
     "integrity" "sha512-z/QT1XN4K4KYuslS23k62yDIDLwLFkzxOuMplDtObz0+y7VqJCaO2o+SPwHCvLFZh7xazvvoor2tA/hPz9ee7g=="
@@ -3271,7 +3278,7 @@ Lockfile:
     "resolved" "https://registry.npmjs.org/expo-application/-/expo-application-4.1.0.tgz"
     "version" "4.1.0"
   
-  "expo-asset@^8.5.0", "expo-asset@~8.5.0":
+  "expo-asset@~8.5.0":
     "integrity" "sha512-k3QErZYxb6e6rPkJ1sG5yIJ7bhd4RFvnFStz0ZCO6SfktGygBAjTz5aTOLaaomiCIObRiBQ4byky/RLdli/NLw=="
     "resolved" "https://registry.npmjs.org/expo-asset/-/expo-asset-8.5.0.tgz"
     "version" "8.5.0"
@@ -4571,6 +4578,11 @@ Lockfile:
     "resolved" "https://registry.npmjs.org/lodash.debounce/-/lodash.debounce-4.0.8.tgz"
     "version" "4.0.8"
   
+  "lodash.isequal@^4.5.0":
+    "integrity" "sha1-QVxEePK8wwEgwizhDtMib30+GOA="
+    "resolved" "https://registry.npmjs.org/lodash.isequal/-/lodash.isequal-4.5.0.tgz"
+    "version" "4.5.0"
+  
   "lodash.throttle@^4.1.1":
     "integrity" "sha1-wj6RtxAkKscMN/HhzaknTMOb8vQ="
     "resolved" "https://registry.npmjs.org/lodash.throttle/-/lodash.throttle-4.1.1.tgz"
@@ -5079,7 +5091,7 @@ Lockfile:
     "resolved" "https://registry.npmjs.org/mkdirp/-/mkdirp-1.0.4.tgz"
     "version" "1.0.4"
   
-  "moment@2.29.1":
+  "moment@^2.29.1", "moment@2.29.1":
     "integrity" "sha512-kHmoybcPV8Sqy59DwNDY3Jefr64lK/by/da0ViFcuA4DH0vQg5Q6Ze5VimxkfQNSC+Mls/Kx53s7TjP1RhFEDQ=="
     "resolved" "https://registry.npmjs.org/moment/-/moment-2.29.1.tgz"
     "version" "2.29.1"
@@ -5756,6 +5768,15 @@ Lockfile:
     "resolved" "https://registry.npmjs.org/react-is/-/react-is-16.13.1.tgz"
     "version" "16.13.1"
   
+  "react-native-calendar-range-picker@^1.5.3":
+    "integrity" "sha512-Z1AGt5BE0kGJJhbPzk3WYkiNWLe8h8uU+B+NKlcPMLDk42iQ896+3xUWdrrT/L/tVgL6URp2toJpArhj/m3RTA=="
+    "resolved" "https://registry.npmjs.org/react-native-calendar-range-picker/-/react-native-calendar-range-picker-1.5.3.tgz"
+    "version" "1.5.3"
+    dependencies:
+      "moment" "^2.29.1"
+      "react" "*"
+      "react-native" "*"
+  
   "react-native-calendario@^3.1.0":
     "integrity" "sha512-YqhqfEI2mIDSlDfHgyVD8B7N95ceQXLBpxHlNEreSwBttpNT+RsqqB7b3pWfSLsB6Jj2vzQXtcEBIF5Kl8C35w=="
     "resolved" "https://registry.npmjs.org/react-native-calendario/-/react-native-calendario-3.1.0.tgz"
@@ -5780,10 +5801,10 @@ Lockfile:
     "resolved" "https://registry.npmjs.org/react-native-counter-input/-/react-native-counter-input-0.1.9.tgz"
     "version" "0.1.9"
   
-  "react-native-gesture-handler@^2.4.2", "react-native-gesture-handler@>= 1.0.0":
-    "integrity" "sha512-K3oMiQV7NOVB5RvNlxkyJxU1Gn6m1cYu53MoFA542FVDSTR491d1eQkWDdqy4lW52rfF7IK7eE1LCi+kTJx7jw=="
-    "resolved" "https://registry.npmjs.org/react-native-gesture-handler/-/react-native-gesture-handler-2.4.2.tgz"
-    "version" "2.4.2"
+  "react-native-gesture-handler@>= 1.0.0", "react-native-gesture-handler@~2.2.1":
+    "integrity" "sha512-P4kAPbSY8VFAjvFNzfePgFsbZEldfEnEfNqOJw6MlpcdXrPGwRbvMqWMVkA9lifdKTZ3XifvAgJ8+R+uEZN0zA=="
+    "resolved" "https://registry.npmjs.org/react-native-gesture-handler/-/react-native-gesture-handler-2.2.1.tgz"
+    "version" "2.2.1"
     dependencies:
       "@egjs/hammerjs" "^2.0.17"
       "hoist-non-react-statics" "^3.3.0"
@@ -5806,12 +5827,25 @@ Lockfile:
     "resolved" "https://registry.npmjs.org/react-native-pager-view/-/react-native-pager-view-5.4.15.tgz"
     "version" "5.4.15"
   
-  "react-native-safe-area-context@^4.2.4", "react-native-safe-area-context@>= 3.0.0":
+  "react-native-reanimated@~2.8.0":
+    "integrity" "sha512-kJvf/UWLBMaGCs9X66MKq5zdFMgwx8D0nHnolbHR7s8ZnbLdb7TlQ/yuzIXqn/9wABfnwtNRI3CyaP1aHWMmZg=="
+    "resolved" "https://registry.npmjs.org/react-native-reanimated/-/react-native-reanimated-2.8.0.tgz"
+    "version" "2.8.0"
+    dependencies:
+      "@babel/plugin-transform-object-assign" "^7.16.7"
+      "@babel/preset-typescript" "^7.16.7"
+      "@types/invariant" "^2.2.35"
+      "invariant" "^2.2.4"
+      "lodash.isequal" "^4.5.0"
+      "setimmediate" "^1.0.5"
+      "string-hash-64" "^1.0.3"
+  
+  "react-native-safe-area-context@>= 3.0.0", "react-native-safe-area-context@4.2.4":
     "integrity" "sha512-OOX+W2G4YYufvryonn6Kw6YnyT8ZThkxPHZBD04NLHaZmicUaaDVII/PZ3M5fD1o5N62+T+8K4bCS5Un2ggvkA=="
     "resolved" "https://registry.npmjs.org/react-native-safe-area-context/-/react-native-safe-area-context-4.2.4.tgz"
     "version" "4.2.4"
   
-  "react-native-screens@^3.11.1", "react-native-screens@>= 3.0.0":
+  "react-native-screens@>= 3.0.0", "react-native-screens@~3.11.1":
     "integrity" "sha512-ziQqVm97tNtovacyHwNmDwJPb8n9CqwsfttXx2p5Hk7wUWemDcPAX0ZJ/nNnGMSq2p2QPhPjjUpr3qKXuES0sQ=="
     "resolved" "https://registry.npmjs.org/react-native-screens/-/react-native-screens-3.11.1.tgz"
     "version" "3.11.1"
@@ -6554,6 +6588,11 @@ Lockfile:
     "version" "1.1.1"
     dependencies:
       "safe-buffer" "~5.1.0"
+  
+  "string-hash-64@^1.0.3":
+    "integrity" "sha512-D5OKWKvDhyVWWn2x5Y9b+37NUllks34q1dCDhk/vYcso9fmhs+Tl3KR/gE4v5UNj2UA35cnX4KdVVGkG1deKqw=="
+    "resolved" "https://registry.npmjs.org/string-hash-64/-/string-hash-64-1.0.3.tgz"
+    "version" "1.0.3"
   
   "string-width@^4.1.0", "string-width@^4.2.0":
     "integrity" "sha512-wKyQRQpjJ0sIp62ErSZdGsjMJWsap5oRNihHhu6G7JVO/9jIB6UyevL+tXuOqrng8j/cxKTWyWUwvSTriiZz/g=="

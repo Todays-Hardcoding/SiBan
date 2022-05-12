@@ -1,5 +1,5 @@
-import React from 'react'
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
+import React from "react";
+import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 
 const Browse = ({navigation}) => {
     return (
@@ -27,31 +27,31 @@ const Browse = ({navigation}) => {
 }
 
 const styles = StyleSheet.create({
-    Container: {
-        flex: 1,
-    },
-    Strength: {
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-        borderBottomWidth: 1
-    },
-    Endurance: {
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-        borderBottomWidth: 1
-    },
-    Mobility: {
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-        borderBottomWidth: 1
-    },
-    Text: {
-        fontSize: 30,
-        fontWeight: "600"
-    }
-})
+  Container: {
+    flex: 1,
+  },
+  Strength: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    borderBottomWidth: 1,
+  },
+  Endurance: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    borderBottomWidth: 1,
+  },
+  Mobility: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    borderBottomWidth: 1,
+  },
+  Text: {
+    fontSize: 30,
+    fontWeight: "600",
+  },
+});
 
 export default Browse;
