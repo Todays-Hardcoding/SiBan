@@ -1,15 +1,26 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import React, { useEffect, useState } from "react";
-import { Image, Text, ActivityIndicator, Dimensions, RefreshControl, ScrollView, StyleSheet, useColorScheme, View } from "react-native";
-import { FlatGrid } from 'react-native-super-grid';
+import {
+  Image,
+  Text,
+  ActivityIndicator,
+  Dimensions,
+  RefreshControl,
+  ScrollView,
+  StyleSheet,
+  useColorScheme,
+  View,
+} from "react-native";
+import { FlatGrid } from "react-native-super-grid";
 
 const Level1 = () => {
   const [items, setItems] = React.useState([
-    { name: 'TURQUOISE', code: '#1abc9c' },
-    { name: 'EMERALD', code: '#2ecc71' },
-    { name: 'PETER RIVER', code: '#3498db' },
-    { name: 'AMETHYST', code: '#9b59b6' },]);
-    
+    { name: "TURQUOISE", code: "#1abc9c" },
+    { name: "EMERALD", code: "#2ecc71" },
+    { name: "PETER RIVER", code: "#3498db" },
+    { name: "AMETHYST", code: "#9b59b6" },
+  ]);
+
   return (
     <FlatGrid
       itemDimension={130}
@@ -25,8 +36,8 @@ const Level1 = () => {
         </View>
       )}
     />
-  )
-}
+  );
+};
 
 export default Level1;
 
@@ -36,19 +47,19 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   itemContainer: {
-    justifyContent: 'flex-end',
+    justifyContent: "flex-end",
     borderRadius: 5,
     padding: 10,
     height: 150,
   },
   itemName: {
     fontSize: 16,
-    color: '#fff',
-    fontWeight: '600',
+    color: "#fff",
+    fontWeight: "600",
   },
   itemCode: {
-    fontWeight: '600',
+    fontWeight: "600",
     fontSize: 12,
-    color: '#fff',
+    color: "#fff",
   },
 });

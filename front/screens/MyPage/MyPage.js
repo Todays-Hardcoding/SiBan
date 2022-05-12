@@ -1,9 +1,9 @@
-import React from 'react'
-import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
-import { Dimensions } from 'react-native';
+import React from "react";
+import { StyleSheet, Text, View, TouchableOpacity, Image } from "react-native";
+import { Dimensions } from "react-native";
 
-const windowWidth = Dimensions.get('window').width;
-const windowHeight = Dimensions.get('window').height;
+const windowWidth = Dimensions.get("window").width;
+const windowHeight = Dimensions.get("window").height;
 console.log(windowWidth);
 
 function onPressBtn() {
@@ -15,28 +15,47 @@ const MyPageMain = ({ navigation }) => {
     <View style={styles.container}>
       <View style={styles.innerPage}>
         <View style={styles.topPage}>
-
-
-          <TouchableOpacity onPress={() => { navigation.navigate('BtnPage', { screen: 'CHANGEPHOTO' }) }} style={styles.image}>
-            <Image source={require('../../assets/profile.png')} style={styles.image}></Image>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate("BtnPage", { screen: "CHANGEPHOTO" });
+            }}
+            style={styles.image}
+          >
+            <Image
+              source={require("../../assets/profile.png")}
+              style={styles.image}
+            ></Image>
           </TouchableOpacity>
           <Text style={styles.userName}>김이나</Text>
 
-          <TouchableOpacity onPress={() => { navigation.navigate('BtnPage', { screen: 'MYPROFILE' }) }} style={styles.userProfile}>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate("BtnPage", { screen: "MYPROFILE" });
+            }}
+            style={styles.userProfile}
+          >
             <Text style={styles.userProfileText}>키: 170cm</Text>
             <Text style={styles.userProfileText}>몸무게: 50kg</Text>
           </TouchableOpacity>
-
-
         </View>
         <View style={styles.bottomPage}>
           <TouchableOpacity onPress={onPressBtn} style={styles.myPageBtn}>
             <Text style={styles.btnText}>내루틴</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => { navigation.navigate('BtnPage', { screen: 'RECORD' }) }} style={styles.myPageBtn}>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate("BtnPage", { screen: "RECORD" });
+            }}
+            style={styles.myPageBtn}
+          >
             <Text style={styles.btnText}>일정관리</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => { navigation.navigate('ACTIVITY') }} style={styles.myPageBtn}>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate("ACTIVITY");
+            }}
+            style={styles.myPageBtn}
+          >
             <Text style={styles.btnText}>활동</Text>
           </TouchableOpacity>
           <TouchableOpacity onPress={onPressBtn} style={styles.myPageBtn}>
@@ -44,10 +63,9 @@ const MyPageMain = ({ navigation }) => {
           </TouchableOpacity>
         </View>
       </View>
-
     </View>
   );
-}
+};
 export default MyPageMain;
 
 const styles = StyleSheet.create({
@@ -66,27 +84,25 @@ const styles = StyleSheet.create({
   topPage: {
     flex: 0.8,
     justifyContent: "center",
-    alignItems: 'center',
+    alignItems: "center",
     marginTop: windowHeight * 0.04,
   },
   bottomPage: {
     flex: 1,
-    flexDirection: 'row',
-    alignItems: 'center',
-    alignContent: 'center',
-    justifyContent: 'space-around',
+    flexDirection: "row",
+    alignItems: "center",
+    alignContent: "center",
+    justifyContent: "space-around",
     flexWrap: "wrap",
-
   },
   title: {
     flex: 0.3,
     fontSize: windowWidth * 0.08,
     fontWeight: "600",
-    textAlign: 'center',
-
+    textAlign: "center",
   },
   myPageBtn: {
-    alignItems: 'center',
+    alignItems: "center",
     justifyContent: "center",
     backgroundColor: "#C0D8C0",
     width: windowWidth * 0.4,
@@ -106,20 +122,19 @@ const styles = StyleSheet.create({
   userName: {
     flex: 0.2,
     fontSize: windowWidth * 0.05,
-    textAlign: 'center',
+    textAlign: "center",
     marginTop: 10,
   },
   userProfile: {
     flex: 0.4,
     backgroundColor: "#F5EEDC",
     height: windowWidth * 0.2,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
     flexDirection: "row",
-    borderRadius: windowWidth * 0.1
+    borderRadius: windowWidth * 0.1,
   },
   userProfileText: {
     marginHorizontal: 30,
-  }
-
-})
+  },
+});
