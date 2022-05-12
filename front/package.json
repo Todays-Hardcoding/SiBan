@@ -45,7 +45,7 @@
     "react-native-table-component": "^1.2.2",
     "react-native-table-component-2": "^2.0.0",
     "react-native-web": "0.17.7",
-    "react-native-webview": "^11.18.2",
+    "react-native-webview": "11.18.1",
     "styled-components": "^5.3.5"
   },
   "devDependencies": {
