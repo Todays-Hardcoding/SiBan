@@ -1,11 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
-import { Table, Row, Rows } from 'react-native-table-component';
+import { Table, Row, Rows } from 'react-native-table-component-2';
 
 
 
 
 const MyProfile = () => {
+  const [count, setCount] = useState(0);
 
   var state = {
     tableHead: ['회원이름'],
