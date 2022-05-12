@@ -3,28 +3,28 @@ import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 
 const ForYou = ({ navigation }) => {
   return (
-    <View style={styles.buttonContainer}>
+    <View style={styles.Container}>
       <TouchableOpacity
-        onPress={() => {
-          navigation.navigate("LevelNav", { screen: "LEVEL1" });
-        }}
         style={styles.button}
+        onPress={() => {
+          navigation.navigate("LevelDetail", { screen: "Level1" });
+        }}
       >
         <Text style={styles.buttonText}>초급</Text>
       </TouchableOpacity>
       <TouchableOpacity
-        onPress={() => {
-          navigation.navigate("LevelNav", { screen: "LEVEL2" });
-        }}
         style={styles.button}
+        onPress={() => {
+          navigation.navigate("LevelDetail", { screen: "Level2" });
+        }}
       >
         <Text style={styles.buttonText}>중급</Text>
       </TouchableOpacity>
       <TouchableOpacity
-        onPress={() => {
-          navigation.navigate("LevelNav", { screen: "LEVEL3" });
-        }}
         style={styles.button}
+        onPress={() => {
+          navigation.navigate("LevelDetail", { screen: "Level3" });
+        }}
       >
         <Text style={styles.buttonText}>고급</Text>
       </TouchableOpacity>
@@ -33,23 +33,18 @@ const ForYou = ({ navigation }) => {
 };
 
 const styles = StyleSheet.create({
-  button: {
-    width: 200,
-    height: 100,
-    marginTop: 30,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#575fcf",
-    borderRadius: 50,
+  Container: {
+    flex: 1,
   },
-  buttonContainer: {
-    backgroundColor: "#fff",
-    alignItems: "center",
+  button: {
+    flex: 1,
     justifyContent: "center",
+    alignItems: "center",
+    borderBottomWidth: 1,
   },
   buttonText: {
     fontSize: 30,
-    color: "white",
+    fontWeight: "600",
   },
 });
 
