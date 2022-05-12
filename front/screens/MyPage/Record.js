@@ -20,14 +20,14 @@ const Record = () => {
     setMarkedDates(obj);
   }
   return (
-      <View>
-        <Calendar
-          onDayPress={(day) => {
-            addDates();
-          }}
-          markedDates={markedDates}
-        />
-      </View>
+    <View>
+      <Calendar
+        onDayPress={(day) => {
+          addDates();
+        }}
+        markedDates={markedDates}
+      />
+    </View>
   )
 
 }
