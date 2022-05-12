@@ -55,7 +55,7 @@ const ForYouNav = () => {
   return (
     <Stack.Navigator>
       <Stack.Screen name="ForYou" component={ForYou} />
-      <Stack.Screen name="levelNav" component={LevelNav} options={{ headerShown: false }} />
+      <Stack.Screen name="LevelNav" component={LevelNav} options={{ headerShown: false }} />
     </Stack.Navigator>
   );
 }
