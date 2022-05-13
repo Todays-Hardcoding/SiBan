@@ -31,6 +31,12 @@ const MyPage = () => {
         component={BtnPage}
         options={{ headerShown: false }}
       />
+
+      <Stack.Screen
+        name="ModifyPage"
+        component={ModifyPage}
+        options={{ headerShown: false }}
+      />
     </Stack.Navigator>
   );
 };

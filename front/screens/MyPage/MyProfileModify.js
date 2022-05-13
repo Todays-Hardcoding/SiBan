@@ -1,16 +1,16 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, SafeAreaView, TextInput } from "react-native";
+import { StyleSheet, Text, View, TextInput } from "react-native";
 import { Table, Row, Rows } from "react-native-table-component-2";
 import RNPickerSelect from "react-native-picker-select";
 
-const MyProfile = () => {
+const MyProfileModify = () => {
   const [age, setAge] = useState("");
   const [gender, setGender] = useState("");
   const [height, setHeight] = useState("");
   const [weight, setweight] = useState("");
 
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
       <Text style={styles.text}>나이</Text>
       <TextInput
         style={styles.input}
@@ -46,7 +46,7 @@ const MyProfile = () => {
       <Text>gender:{gender}</Text>
       <Text>height:{height}</Text>
       <Text>weight:{weight}</Text>
-    </SafeAreaView>
+    </View>
   );
 };
 
@@ -78,4 +78,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default MyProfile;
+export default MyProfileModify;
