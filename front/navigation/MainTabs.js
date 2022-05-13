@@ -11,6 +11,7 @@ import MyPageNav from "../navigation/MyPageNav";
 import WorkoutsNav from "./WorkoutsNav";
 import MyBoardNav from "./MyBoardNav";
 
+
 import Coach from "../screens/Coach";
 
 const MainTab = createBottomTabNavigator();
@@ -78,6 +79,7 @@ const MainTabs = () => {
         name="Workout"
         component={WorkoutsNav}
         options={{
+          title: "운동",
           tabBarIcon: ({ focused, color, size }) => {
             return (
               <FontAwesome5
