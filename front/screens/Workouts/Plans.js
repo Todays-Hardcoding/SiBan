@@ -1,19 +1,20 @@
 import React from "react";
 import { useState } from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  TextInput,
-  ScrollView,
-  Alert,
-  TouchableOpacity,
-} from "react-native";
+import { StyleSheet, Text, View, Alert, TouchableOpacity } from "react-native";
 import { Fontisto } from "@expo/vector-icons";
+import { FlatGrid } from "react-native-super-grid";
 
 const Plans = ({ navigation }) => {
+  const [myPlan, setMyPlan] = React.useState([
+    { name: "BELIZE HOLE", code: "#2980b9" },
+    { name: "WISTERIA", code: "#8e44ad" },
+    { name: "MIDNIGHT BLUE", code: "#2c3e50" },
+    { name: "SUN FLOWER", code: "#f1c40f" },
+    { name: "CARROT", code: "#e67e22" },
+    { name: "ALIZARIN", code: "#e74c3c" },
+    { name: "CLOUDS", code: "#ecf0f1" },
+  ]);
   const [text, setText] = useState("");
-  const [myPlan, setMyPlan] = useState({});
   const addPlan = () => {
     try {
       if (text === "") {
@@ -46,12 +47,18 @@ const Plans = ({ navigation }) => {
 
   return (
     <View style={styles.Container}>
-      <TextInput
-        onSubmitEditing={addPlan}
-        onChangeText={setText}
-        value={text}
-        placeholder={"플랜을 추가해주세요"}
-        style={styles.input}
+      <FlatGrid
+        itemDimension={170}
+        data={myPlan}
+        spacing={20}
+        renderItem={({ item }) => (
+          <TouchableOpacity
+            style={[styles.itemContainer, { backgroundColor: item.code }]}
+          >
+            <Text style={styles.itemName}>{item.name}</Text>
+            <Text style={styles.itemCode}>{item.code}</Text>
+          </TouchableOpacity>
+        )}
       />
       <TouchableOpacity
         style={styles.plus}
@@ -61,18 +68,6 @@ const Plans = ({ navigation }) => {
           <Fontisto name="plus-a" size={30} color="grey" />
         </Text>
       </TouchableOpacity>
-      <ScrollView>
-        {Object.keys(myPlan).map((key) => (
-          <View style={styles.myPlan} key={key}>
-            <Text style={styles.myPlanText}>{myPlan[key].text}</Text>
-            <TouchableOpacity onPress={() => deletePlan(key)}>
-              <Text>
-                <Fontisto name="trash" size={18} color="#3A3D40" />
-              </Text>
-            </TouchableOpacity>
-          </View>
-        ))}
-      </ScrollView>
     </View>
   );
 };
@@ -81,39 +76,29 @@ const styles = StyleSheet.create({
   Container: {
     flex: 1,
   },
-  input: {
-    backgroundColor: "white",
-    paddingVertical: 20,
-    paddingHorizontal: 20,
-    borderRadius: 20,
-    marginVertical: 20,
-    marginHorizontal: 20,
-    fontSize: 18,
+  itemContainer: {
+    justifyContent: "flex-end",
+    borderRadius: 5,
+    padding: 10,
+    height: 150,
+  },
+  itemName: {
+    fontSize: 16,
+    fontWeight: "600",
+    color: "#fff",
+  },
+  itemCode: {
+    fontSize: 12,
+    fontWeight: "600",
+    color: "#fff",
   },
   plus: {
     backgroundColor: "lightgrey",
     paddingVertical: 40,
     paddingHorizontal: 20,
     borderRadius: 20,
-    marginVertical: 20,
-    marginHorizontal: 20,
+    margin: 20,
     alignItems: "center",
-  },
-  myPlan: {
-    backgroundColor: "#5C5C60",
-    paddingVertical: 40,
-    paddingHorizontal: 20,
-    borderRadius: 20,
-    marginHorizontal: 20,
-    marginBottom: 20,
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-  },
-  myPlanText: {
-    color: "white",
-    fontSize: 20,
-    fontWeight: "500",
   },
 });
 

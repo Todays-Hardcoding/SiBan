@@ -5,7 +5,7 @@ const KakaoButton = () => {
   return (
     <TouchableOpacity
       style={{
-        backgroundColor: "green",
+        backgroundColor: "#2DB400",
         padding: 10,
         margin: 10,
         borderRadius: 5,
@@ -14,7 +14,7 @@ const KakaoButton = () => {
         alignItems: "center",
       }}
     >
-      <Text style={{ fontSize: 18, color: "black" }}>네이버계정 로그인</Text>
+      <Text style={{ fontSize: 18, color: "white" }}>네이버계정 로그인</Text>
     </TouchableOpacity>
   );
 };
