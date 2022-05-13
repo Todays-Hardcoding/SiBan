@@ -11,7 +11,9 @@ import MyPageNav from "../navigation/MyPageNav";
 import WorkoutsNav from "./WorkoutsNav";
 import MyBoardNav from "./MyBoardNav";
 
+//test
 import Coach from "../screens/Coach";
+import BoardMain from "../screens/MyBoard/BoardMain";
 
 const MainTab = createBottomTabNavigator();
 const Stack = createStackNavigator();
