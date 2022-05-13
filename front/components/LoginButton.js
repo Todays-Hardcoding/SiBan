@@ -2,6 +2,15 @@ import React from "react";
 import { TouchableOpacity, Text } from "react-native";
 
 const LoginButton = () => {
+  const test2 = () => {
+    return fetch("/test.act")
+      .then((res) => res.text())
+      .then((m) => alert("나 이제 돌아갈래!!!"))
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+
   return (
     <TouchableOpacity
       style={{
@@ -13,6 +22,7 @@ const LoginButton = () => {
         width: 330,
         alignItems: "center",
       }}
+      onPress={test2}
     >
       <Text style={{ fontSize: 18, color: "white" }}>로그인하기</Text>
     </TouchableOpacity>
