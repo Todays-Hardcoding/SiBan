@@ -138,7 +138,7 @@ const Register = () => {
     extraScrollHeight={10}>
     <View
       style={{
-        flex: 1,
+        flex: 0.75,
         backgroundColor: "#fff",
         alignItems: "center",
         justifyContent: "center",
@@ -222,7 +222,7 @@ const styles = StyleSheet.create({
     fontSize: 15,
     borderRadius: 8,
     borderWidth: 1,
-    marginVertical: 10,
+    marginVertical: 5,
     width: "90%",
   },
 });

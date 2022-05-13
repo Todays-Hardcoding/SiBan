@@ -10,7 +10,7 @@ import {
 //import TextInput from 'react-native-input-validator';
 //import KakaoButton from '../../components/KakaoButton';
 //import LoginButton from '../../components/LoginButton';
-import KakaoButton from "../components/KakaoButton";
+import NaverButton from "../components/NaverButton";
 import LoginButton from "../components/LoginButton";
 import { NavigationContainer } from "@react-navigation/native";
 //import { State } from 'react-native-gesture-handler';
@@ -106,7 +106,7 @@ const Login = ({ navigation }) => {
       </TouchableOpacity>
 
       <LoginButton />
-      <KakaoButton />
+      <NaverButton />
     </View>
   );
 };
@@ -119,7 +119,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     paddingVertical: 10,
 
-    marginVertical: 10,
+    marginVertical: 5,
     paddingHorizontal: 32,
     marginBottom: 16,
     width: "85%",
