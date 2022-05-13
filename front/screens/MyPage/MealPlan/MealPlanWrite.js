@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Alert } from "react-native";
-import styled from "styled-components";
+import styled from "styled-components/native";
 
 const View = styled.View`
   background-color: #cab8ff;
