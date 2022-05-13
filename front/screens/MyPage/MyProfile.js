@@ -10,38 +10,6 @@ import {
 import { COLORS, SIZES, icons, images } from "../../constants";
 
 const MyProfile = () => {
-  // 아이콘
-  // const featuresData = [
-  //   {
-  //     id: 1,
-  //     icon: icons.reload,
-  //     color: COLORS.purple,
-  //     backgroundColor: COLORS.lightpurple,
-  //     description: "내 루틴",
-  //   },
-  //   {
-  //     id: 2,
-  //     icon: icons.send,
-  //     color: COLORS.yellow,
-  //     backgroundColor: COLORS.lightyellow,
-  //     description: "일정관리",
-  //   },
-  //   {
-  //     id: 7,
-  //     icon: icons.phone,
-  //     color: COLORS.red,
-  //     backgroundColor: COLORS.lightRed,
-  //     description: "활동/기록",
-  //   },
-  //   {
-  //     id: 8,
-  //     icon: icons.more,
-  //     color: COLORS.purple,
-  //     backgroundColor: COLORS.lightpurple,
-  //     description: "식단관리",
-  //   },
-  // ];
-
   const specialPromoData = [
     {
       id: 1,
@@ -175,9 +143,6 @@ const MyProfile = () => {
 
     return (
       <FlatList
-        // 아이콘
-        //ListHeaderComponent={Header}
-        // data={features}
         numColumns={4}
         columnWrapperStyle={{
           justifyContent: "space-between",
@@ -242,7 +207,6 @@ const MyProfile = () => {
             }}
           />
         </View>
-
         <View
           style={{
             padding: SIZES.padding,
