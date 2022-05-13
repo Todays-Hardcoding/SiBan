@@ -58,7 +58,12 @@ const MyPageMain = ({ navigation }) => {
           >
             <Text style={styles.btnText}>활동</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={onPressBtn} style={styles.myPageBtn}>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate("MealPlanNav");
+            }}
+            style={styles.myPageBtn}
+          >
             <Text style={styles.btnText}>식단관리</Text>
           </TouchableOpacity>
         </View>

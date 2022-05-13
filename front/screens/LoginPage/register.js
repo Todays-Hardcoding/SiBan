@@ -1,7 +1,14 @@
-import React,{useState, useRef, useEffect} from "react";
-import { Text, View, TextInput, StyleSheet } from "react-native";
+
+import React from "react";
+import {
+  Text,
+  View,
+  TextInput,
+  StyleSheet,
+  KeyboardAvoidingView,
+} from "react-native";
 import RegisterButton from "../../components/RegisterButton";
-import{  KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
 
 const Register = () => {
@@ -134,6 +141,7 @@ const Register = () => {
 
     };
   return (
+
     <KeyboardAwareScrollView
     extraScrollHeight={10}>
     <View
@@ -211,11 +219,18 @@ const Register = () => {
 
       <RegisterButton />
     </View>
+
     </KeyboardAwareScrollView>
   );
 };
 
 const styles = StyleSheet.create({
+  registerContainer: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: 20,
+  },
   input: {
     borderWidth: 1,
     padding: 10,
