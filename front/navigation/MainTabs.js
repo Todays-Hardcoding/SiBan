@@ -9,6 +9,9 @@ import { Ionicons, FontAwesome5, Entypo } from "@expo/vector-icons";
 import Home from "../screens/Home";
 import MyPageNav from "../navigation/MyPageNav";
 import WorkoutsNav from "./WorkoutsNav";
+import MyBoardNav from "./MyBoardNav";
+
+
 import Coach from "../screens/Coach";
 
 const MainTab = createBottomTabNavigator();
@@ -91,13 +94,13 @@ const MainTabs = () => {
 
       {/* 4번 탭 */}
       <MainTab.Screen
-        name="Coach"
-        component={Coach}
+        name="Board"
+        component={MyBoardNav}
         options={{
           tabBarIcon: ({ focused, color, size }) => {
             return (
               <Ionicons
-                name={focused ? "people" : "people-outline"}
+                name={focused ? "clipboard" : "clipboard-outline"}
                 color={color}
                 size={size}
               ></Ionicons>

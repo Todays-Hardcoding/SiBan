@@ -61,7 +61,6 @@ const Login = ({ navigation }) => {
     >
       <Text style={{ fontSize: 20, fontWeight: "bold" }}>시반로그인</Text>
       <Text> </Text>
-
       {/* 아이디 입력하는 곳 */}
       <TextInput
         style={styles.input}
@@ -70,6 +69,13 @@ const Login = ({ navigation }) => {
         onChangeText={(text) => setId(text)}
         
       />
+
+      <View>
+        {loginIdCheck == false ? (
+          <Text style={{ color: "red" }}>아이디를 입력해주세요</Text>
+        ) : null}
+      </View>
+
       {!loginIdCheck && <Text style={{color:"red"}}>{idError}</Text>}
 
       <TextInput
@@ -78,7 +84,9 @@ const Login = ({ navigation }) => {
         onChangeText={(text) => setPw(text)}
         secureTextEntry={true}
       />
+
     {!loginPwCheck && <Text style={{paddingTop:0, color:"red"}}>{pwError}</Text>}
+
 
 
       <TouchableOpacity style={{ flexDirection: "row" }}>
@@ -104,7 +112,6 @@ const Login = ({ navigation }) => {
           회원가입
         </Text>
       </TouchableOpacity>
-
       <LoginButton />
       <NaverButton />
     </View>

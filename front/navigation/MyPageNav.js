@@ -11,7 +11,11 @@ import Record from "../screens/MyPage/Record";
 import RoutineRecord from "../screens/MyPage/RoutineRecord";
 import Accomplished from "../screens/MyPage/Accomplished";
 import MyProfile from "../screens/MyPage/MyProfile";
+
+import MealPlanNav from "./MealPlanNav";
+
 import MyProfileModify from "../screens/MyPage/MyProfileModify";
+
 
 const Tab = createMaterialTopTabNavigator();
 const windowWidth = Dimensions.get("window").width;
@@ -31,6 +35,8 @@ const MyPage = () => {
         component={BtnPage}
         options={{ headerShown: false }}
       />
+
+      <Stack.Screen name="MealPlanNav" component={MealPlanNav} />
 
       <Stack.Screen
         name="ModifyPage"
