@@ -1,0 +1,25 @@
+{
+  "prettier.trailingComma": "all",
+  "prettier.semi": true,
+  "python.formatting.provider": "none",
+  "git.enableSmartCommit": true,
+  "vsicons.dontShowNewVersionMessage": true,
+  "files.exclude": {
+    "**/.classpath": true,
+    "**/.project": true,
+    "**/.settings": true,
+    "**/.factorypath": true
+  },
+  "explorer.compactFolders": false,
+  "prettier.printWidth": 100,
+  "editor.wordWrap": "on",
+  "editor.linkedEditing": true,
+  "output.smartScroll.enabled": false,
+  "terminal.integrated.defaultProfile.windows": "Command Prompt",
+  "workbench.startupEditor": "none",
+  "html.autoCreateQuotes": false,
+  "json.maxItemsComputed": 10000,
+  "prettier.useTabs": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "bracketPairColorizer.depreciation-notice": false
+}
