@@ -1,9 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-} from "react-native";
+import { Text, StyleSheet, TouchableOpacity } from "react-native";
 import { FlatGrid } from "react-native-super-grid";
 
 const Level3 = () => {
@@ -22,7 +18,9 @@ const Level3 = () => {
       data={items}
       spacing={20}
       renderItem={({ item }) => (
-        <TouchableOpacity style={[styles.itemContainer, { backgroundColor: item.code }]}>
+        <TouchableOpacity
+          style={[styles.itemContainer, { backgroundColor: item.code }]}
+        >
           <Text style={styles.itemName}>{item.name}</Text>
           <Text style={styles.itemCode}>{item.code}</Text>
         </TouchableOpacity>
