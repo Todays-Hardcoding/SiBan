@@ -8,21 +8,30 @@ const Register = () => {
   //아이디,비번,이메일,전화번호
   const [id, setId] =useState('');
   const [pw, setPw]=useState('');
+  const [pwConfirm, setPwConfirm]=useState('');
   const [email, setEmail]=useState('');
   const [name, setName]=useState('');
   const [tel, setTel]=useState('');
+  const [height, setHeight]=useState('');
+  const [weight, setWeight]=useState('');
   //유효성
   const [idCheck, setIdCheck] = useState(false);
   const [pwCheck, setPwCheck] = useState(false);
+  const [pwConfirmCheck, setPwConfirmCheck]=useState(false);
   const [emailCheck, setEmailCheck] = useState(false);
   const [nameCheck, setNameCheck] = useState(false);
   const [telCheck, setTelCheck] = useState(false);
+  const [heightCheck, setHeightCheck] = useState(false);
+  const [weightCheck, setWeightCheck] = useState(false);
   //오류메세지
   const [idError, setIdError] = useState("");
   const [pwError, setPwError] = useState("");
+  const [pwConfirmError, setPwConfirmError]=useState('');
   const [emailError, setEmailError] = useState("");
   const [nameError, setNameError] = useState("");
   const [telError, setTelError] = useState("");
+  const [heightError, setHeightError] = useState("");
+  const [weightError, setWeightError] = useState("");
 
   console.log(id);
 
@@ -49,6 +58,19 @@ const Register = () => {
     setPw(text);
     console.log(pwCheck);
     console.log(pw);
+  };
+  
+  const onChangePw2 = (text) => {
+    
+    if (text !== pw) {
+      setPwConfirmCheck(false);
+      setPwConfirmError("비밀번호를 다시 확인해주세요.")
+    } else {
+      setPwConfirmCheck(true);
+    }
+    setPwConfirm(text);
+    console.log(pwConfirmCheck);
+    console.log(pwConfirm);
   };
 
     
@@ -89,6 +111,28 @@ const Register = () => {
       console.log(telCheck);
       console.log(tel);
     };
+    const  onChangeWeight =(text) => {
+      const weightRegex =  /^[0-9].{0,2}$/;
+      if (!weightRegex.test(text)) {
+        setWeightCheck(false);
+        setWeightError("몸무게를 다시 입력해주세요")
+      } else {
+        setWeightCheck(true);
+      }
+      setWeight(text);
+
+    };
+    const  onChangeHeight =(text) => {
+      const heightRegex =  /^[0-9].{0,2}$/;
+      if (!heightRegex.test(text)) {
+        setHeightCheck(false);
+        setHeightError("키를 다시 입력해주세요.")
+      } else {
+        setHeightCheck(true);
+      }
+      setHeight(text);
+
+    };
   return (
     <KeyboardAwareScrollView
     extraScrollHeight={10}>
@@ -122,7 +166,15 @@ const Register = () => {
       secureTextEntry={true}
       placeholder={"비밀번호를 입력해주세요"} />
       {!pwCheck && <Text style={{color:"red"}}>{pwError}</Text>}
-
+  
+      <TextInput style={styles.input} 
+      value={pwConfirm}
+      returnKeyType="next"
+      onChangeText={(text) => onChangePw2(text)}
+      secureTextEntry={true}
+      placeholder={"비밀번호를 다시 입력해주세요"} />
+      {!pwConfirmCheck && <Text style={{color:"red"}}>{pwConfirmError}</Text>}
+     
       <TextInput style={styles.input} 
       value={email}
       returnKeyType="next"
@@ -146,12 +198,16 @@ const Register = () => {
 
       <TextInput style={styles.input} 
       returnKeyType="next"
-      
+      onChangeText={(text) => onChangeHeight(text)}
       placeholder={"키를 입력해주세요."} />
+
+      {!heightCheck && <Text style={{color:"red"}}>{heightError}</Text>}
+
       <TextInput style={styles.input} 
       returnKeyType="next"
-      
+      onChangeText={(text) => onChangeWeight(text)}
       placeholder={"몸무게를 입력해주세요."} />
+       {!weightCheck && <Text style={{color:"red"}}>{weightError}</Text>}
 
       <RegisterButton />
     </View>
