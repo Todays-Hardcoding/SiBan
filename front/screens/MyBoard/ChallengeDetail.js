@@ -8,12 +8,19 @@ import {
   Image,
 } from "react-native";
 import { FlatGrid } from "react-native-super-grid";
+import DropDownPicker from 'react-native-dropdown-picker';
 
 const windowWidth = Dimensions.get("window").width;
 
 export default function ChallengeDetail() {
     const [challenges, setchallenges] = React.useState([
         {name: "5월 주간 챌린지", detail: "이번 주에 10km을 달려보세요.", dueDate: "5"},
+    ]);
+    const [open, setOpen] = useState(false);
+    const [value, setValue] = useState(null);
+    const [items, setItems] = useState([
+      {label: 'Apple', value: 'apple'},
+      {label: 'Banana', value: 'banana'}
     ]);
     return(
         <View>
@@ -34,6 +41,18 @@ export default function ChallengeDetail() {
               </View>
             )}
         />
+
+
+        <DropDownPicker
+              placeholder="상세 분류"
+              open={open}
+              value={value}
+              items={items}
+              setOpen={setOpen}
+              setValue={setValue}
+              setItems={setItems}
+            />
+
 
         <View>
             <Text>달성율 그래프</Text>
