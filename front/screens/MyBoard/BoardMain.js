@@ -38,8 +38,9 @@ export default function BoardMain({navigation}) {
             renderItem={({ item }) => (
               <TouchableOpacity
               onPress={() => {
-                navigation.navigate("ChallengeDetail", { screen: "ChallengeDetail" });
+                navigation.navigate("ChallengeDetailNav", { screen: "ChallengeDetail" });
               }}>
+                {/* 챌린지 이미지 넣어야함! */}
                 <Image></Image>
                 <View style={styles.itemContainer}>
                   <Text style={styles.itemName}>{item.name}</Text>

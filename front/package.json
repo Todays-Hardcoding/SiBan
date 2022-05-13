@@ -10,6 +10,8 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "@chartiful/react-native-chart-builder": "^0.1.8",
+    "@chartiful/react-native-horizontal-bar-graph": "^0.1.2",
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
     "@fortawesome/free-solid-svg-icons": "^6.1.1",
     "@fortawesome/react-native-fontawesome": "^0.2.7",
@@ -51,6 +53,7 @@
     "react-native-table-component-2": "^2.0.0",
     "react-native-web": "0.17.7",
     "react-native-webview": "^11.18.2",
+    "recharts": "^2.1.9",
     "styled-components": "^5.3.5"
   },
   "devDependencies": {

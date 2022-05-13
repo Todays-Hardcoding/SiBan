@@ -20,20 +20,20 @@ const ServiceCenter = () => {
   );
 };
 
-const ChallengeDetail = () => {
+const ChallengeDetailNav = () => {
   return (
-    <Stack.Navigator initialRouteName="ChallengeDetail">
+    <Stack.Navigator>
       <Stack.Screen name="ChallengeDetail" component={ChallengeDetail} />
     </Stack.Navigator>
   );
-}
+};
 
 const MyBoardNav = () => {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="BoardMain" component={BoardMain} />
       <Stack.Screen name="ServiceCenter" component={ServiceCenter} />
-      <Stack.Screen name="ChallengeDetail" component={ChallengeDetail} />
+      <Stack.Screen name="ChallengeDetailNav" component={ChallengeDetailNav} />
     </Stack.Navigator>
   );
 };
