@@ -1,14 +1,29 @@
 package com.siban.back.sign.controller;
 
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
-import com.siban.back.sign.service.SignService;
 
-@Controller
+@RestController
 public class SignController {
-	@Autowired
-	private SignService signService;
-
+	
+	@GetMapping("/test.act")
+	public String test() {
+		System.out.println("여기서라도 떠야지? ");
+		return "몰?루...";
+	}
+	
+	
+	@PostMapping("/test2.json")
+	public String test2() {
+		System.out.println("포스트로 실험 중 입니다");
+		return "히히";
+		
+	}
+	
+	
 }

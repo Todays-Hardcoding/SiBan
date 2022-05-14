@@ -10,62 +10,30 @@ import {
 import { COLORS, SIZES, icons, images } from "../../constants";
 
 const MyProfile = () => {
-  // 아이콘
-  // const featuresData = [
-  //   {
-  //     id: 1,
-  //     icon: icons.reload,
-  //     color: COLORS.purple,
-  //     backgroundColor: COLORS.lightpurple,
-  //     description: "내 루틴",
-  //   },
-  //   {
-  //     id: 2,
-  //     icon: icons.send,
-  //     color: COLORS.yellow,
-  //     backgroundColor: COLORS.lightyellow,
-  //     description: "일정관리",
-  //   },
-  //   {
-  //     id: 7,
-  //     icon: icons.phone,
-  //     color: COLORS.red,
-  //     backgroundColor: COLORS.lightRed,
-  //     description: "활동/기록",
-  //   },
-  //   {
-  //     id: 8,
-  //     icon: icons.more,
-  //     color: COLORS.purple,
-  //     backgroundColor: COLORS.lightpurple,
-  //     description: "식단관리",
-  //   },
-  // ];
-
   const specialPromoData = [
     {
       id: 1,
       img: images.promoBanner,
-      title: "Bonus Cashback1",
-      description: "Don't miss it. Grab it now!",
+      title: "내 루틴",
+      description: "설정한 내 루틴을 확인해 보세요!",
     },
     {
       id: 2,
       img: images.promoBanner,
-      title: "Bonus Cashback2",
-      description: "Don't miss it. Grab it now!",
+      title: "일정 관리",
+      description: "이번달 일정을 확인해 보세요",
     },
     {
       id: 3,
       img: images.promoBanner,
-      title: "Bonus Cashback3",
-      description: "Don't miss it. Grab it now!",
+      title: "기록",
+      description: "달성 트로피를 확인해 보세요!",
     },
     {
       id: 4,
       img: images.promoBanner,
-      title: "Bonus Cashback4",
-      description: "Don't miss it. Grab it now!",
+      title: "식단관리",
+      description: "나에게 맞는 식단을 찾아보세요",
     },
   ];
 
@@ -175,11 +143,10 @@ const MyProfile = () => {
 
     return (
       <FlatList
-        // 아이콘
-        //ListHeaderComponent={Header}
-        // data={features}
         numColumns={4}
-        columnWrapperStyle={{ justifyContent: "space-between" }}
+        columnWrapperStyle={{
+          justifyContent: "space-between",
+        }}
         keyExtractor={(item) => `${item.id}`}
         renderItem={renderItem}
         style={{ marginTop: SIZES.padding * 2 }}
@@ -205,7 +172,7 @@ const MyProfile = () => {
         }}
       >
         <View style={{ flex: 1 }}>
-          <Text>Special Promos</Text>
+          <Text>회원 관리</Text>
         </View>
         <TouchableOpacity onPress={() => console.log("View All")}>
           <Text style={{ color: COLORS.gray }}>View All</Text>
@@ -240,11 +207,12 @@ const MyProfile = () => {
             }}
           />
         </View>
-
         <View
           style={{
             padding: SIZES.padding,
             backgroundColor: COLORS.lightGray,
+            justifyContent: "center",
+            alignItems: "center",
             borderBottomLeftRadius: 20,
             borderBottomRightRadius: 20,
           }}
