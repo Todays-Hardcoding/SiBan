@@ -30,8 +30,8 @@ const QNA = (props) => {
               setItems={setItems}
             />
             <View>
-            <TextInput style={styles.input} placeholder="제목" />
-            <TextInput style={styles.input} placeholder="제목" />
+              <TextInput style={styles.input} placeholder="제목" />
+              <TextInput style={styles.input} placeholder="제목" />
             </View>
         </View>
   );

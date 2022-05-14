@@ -12,7 +12,7 @@ import DropDownPicker from 'react-native-dropdown-picker';
 
 const windowWidth = Dimensions.get("window").width;
 
-export default function ChallengeDetail() {
+export default function ChallengeDetail({route}) {
     const [challenges, setchallenges] = React.useState([
         {name: "5월 주간 챌린지", detail: "이번 주에 10km을 달려보세요.", dueDate: "5"},
     ]);
@@ -22,6 +22,8 @@ export default function ChallengeDetail() {
       {label: 'Apple', value: 'apple'},
       {label: 'Banana', value: 'banana'}
     ]);
+
+    
     return(
         <View>
         {/* 주간 챌린지 리스트 */}
@@ -42,16 +44,6 @@ export default function ChallengeDetail() {
             )}
         />
 
-
-        <DropDownPicker
-              placeholder="상세 분류"
-              open={open}
-              value={value}
-              items={items}
-              setOpen={setOpen}
-              setValue={setValue}
-              setItems={setItems}
-            />
 
 
         <View>

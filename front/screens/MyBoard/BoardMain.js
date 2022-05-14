@@ -15,7 +15,6 @@ export default function BoardMain({navigation}) {
         {name: "5월 주간 챌린지", detail: "이번 주에 20km을 달려보세요.", dueDate: "5"},
         {name: "5월 주간 챌린지", detail: "이번 주에 25km을 달려보세요.", dueDate: "5"},
     ]);
-    
 
     return(
     <View>
@@ -38,7 +37,7 @@ export default function BoardMain({navigation}) {
             renderItem={({ item }) => (
               <TouchableOpacity
               onPress={() => {
-                navigation.navigate("ChallengeDetailNav", { screen: "ChallengeDetail" });
+                navigation.navigate("ChallengeDetailNav", { screen: "ChallengeDetail"});
               }}>
                 {/* 챌린지 이미지 넣어야함! */}
                 <Image></Image>
