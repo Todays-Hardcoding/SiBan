@@ -7,9 +7,7 @@ const FNA = () => {
   return (
       <View style={styles.text}>
         <Text>자주 묻는 질문</Text>
-            <View>
-                <Text>자주 묻는 질문</Text>
-            </View>
+
             {/* 자주 묻는 질문1 */}
             <Collapse>
                 <CollapseHeader>
