@@ -9027,6 +9027,11 @@
   "resolved" "https://registry.npmjs.org/react-is/-/react-is-18.1.0.tgz"
   "version" "18.1.0"
 
+"react-native-animated-header@^1.0.7":
+  "integrity" "sha512-h+YN9eukJYreoWIYrZu5oZL8vKoynkoqe8Icfn3k+0kXRtiZWA4rP31uabF8lavLm5F3N28uIj7BFvWthLrN7Q=="
+  "resolved" "https://registry.npmjs.org/react-native-animated-header/-/react-native-animated-header-1.0.7.tgz"
+  "version" "1.0.7"
+
 "react-native-calendar-range-picker@^1.5.3":
   "integrity" "sha512-Z1AGt5BE0kGJJhbPzk3WYkiNWLe8h8uU+B+NKlcPMLDk42iQ896+3xUWdrrT/L/tVgL6URp2toJpArhj/m3RTA=="
   "resolved" "https://registry.npmjs.org/react-native-calendar-range-picker/-/react-native-calendar-range-picker-1.5.3.tgz"
@@ -9097,6 +9102,11 @@
   "integrity" "sha512-eIlgtsmDp1jLC24dRn43hB3kEcZVqx6DUQbR0N1ABXGnMEafm9I3V3dUUeD1vh+Dy5WqijSoEwLNUPLgu5zDMg=="
   "resolved" "https://registry.npmjs.org/react-native-gradle-plugin/-/react-native-gradle-plugin-0.0.6.tgz"
   "version" "0.0.6"
+
+"react-native-image-header@^1.0.1":
+  "integrity" "sha1-OurNBLVFkC4XY6aaJ5wORnjypsc="
+  "resolved" "https://registry.npmjs.org/react-native-image-header/-/react-native-image-header-1.0.1.tgz"
+  "version" "1.0.1"
 
 "react-native-image-slider-box@^1.1.23":
   "integrity" "sha512-+hca7DojXOTzh2LO/eHBhjzqp1wxxfjm4yc+wL4xrYc/g3R4m8DkN7HL8LrGqEewz0kmtSZDAJLg9EuUWzEuzg=="

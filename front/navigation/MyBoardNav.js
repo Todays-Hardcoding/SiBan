@@ -1,6 +1,7 @@
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
+import QNAList from "../screens/MyBoard/QNAList";
 import FNA from "../screens/MyBoard/FNA";
 import QNA from "../screens/MyBoard/QNA";
 import BoardMain from "../screens/MyBoard/BoardMain"
@@ -14,7 +15,7 @@ const ServiceCenter = () => {
     <Tab.Navigator>
       <Tab.Screen name="FNA" component={FNA} options={{ tabBarLabel: "FNA" }}
 />
-      <Tab.Screen name="QNA" component={QNA} options={{ tabBarLabel: "QNA" }}
+      <Tab.Screen name="QNAList" component={QNAList} options={{ tabBarLabel: "QNAList" }}
 />
     </Tab.Navigator>
   );
