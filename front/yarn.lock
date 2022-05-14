@@ -4759,7 +4759,7 @@
     "snapdragon" "^0.8.1"
     "to-regex" "^3.0.1"
 
-"expo-app-loading@^2.0.0":
+"expo-app-loading@~2.0.0":
   "integrity" "sha512-Ym0Xteo15642UGDh11nTRa/pmbIVvvEczG7nu0N+n3SKln6nZlLk7pmwI2hcdk1Jgo+2IkC/3n9NmQWvkgkPHA=="
   "resolved" "https://registry.npmjs.org/expo-app-loading/-/expo-app-loading-2.0.0.tgz"
   "version" "2.0.0"
@@ -8328,6 +8328,11 @@
   "version" "1.7.0"
   dependencies:
     "ts-pnp" "^1.1.6"
+
+"pod-install@^0.1.36":
+  "integrity" "sha512-r+f2SAqtM4K81Wv4OAhedbfCtBZhPz+1c1CVkQ1vT33PGAhM5A6GpaJ0pfQVgfZ0tUwagWxlDQ3eOprNyIFO6w=="
+  "resolved" "https://registry.npmjs.org/pod-install/-/pod-install-0.1.36.tgz"
+  "version" "0.1.36"
 
 "portfinder@^1.0.26":
   "integrity" "sha512-Se+2isanIcEqf2XMHjyUKskczxbPH7dQnlMjXX6+dybayyHvAf/TCgyMRlzf/B6QDhAEFOGes0pzRo3by4AbMA=="

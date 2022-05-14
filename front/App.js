@@ -1,3 +1,4 @@
+import AppLoading from "expo-app-loading";
 import { NavigationContainer, StackActions } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { StatusBar } from "expo-status-bar";
@@ -17,12 +18,6 @@ export default function App() {
           component={MainTabs}
           options={{ headerShown: false }}
         ></Stack.Screen>
-        <Stack.Screen
-          name="MyPageNav"
-          component={MyPageNav}
-          options={{ headerShown: false }}
-        ></Stack.Screen>
-        <Stack.Screen name="LoginPage" component={LoginPage}></Stack.Screen>
       </Stack.Navigator>
     </NavigationContainer>
   );
