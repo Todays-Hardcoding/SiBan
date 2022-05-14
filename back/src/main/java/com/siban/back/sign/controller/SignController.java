@@ -11,9 +11,19 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class SignController {
 	
-	@PostMapping("/test.act")
+	@GetMapping("/test.act")
 	public String test() {
 		System.out.println("여기서라도 떠야지? ");
 		return "몰?루...";
 	}
+	
+	
+	@PostMapping("/test2.json")
+	public String test2() {
+		System.out.println("포스트로 실험 중 입니다");
+		return "히히";
+		
+	}
+	
+	
 }
