@@ -10,14 +10,10 @@ import {
 } from "react-native";
 
 const windowWidth = Dimensions.get("window").width;
-const backgroundImage = require("..")
 
 const QNAList = () => {
   return (
-    <View style={styles.container}>
-      <View></View>
-      <View></View>
-    </View>
+   <Text>test</Text>
   );
 };
 
@@ -29,7 +25,7 @@ const styles = StyleSheet.create({
   },
   header: {
     width: windowWidth * 0.9,
-    
+
   },
 });
 

@@ -43,16 +43,6 @@ export default function ChallengeDetail() {
         />
 
 
-        <DropDownPicker
-              placeholder="상세 분류"
-              open={open}
-              value={value}
-              items={items}
-              setOpen={setOpen}
-              setValue={setValue}
-              setItems={setItems}
-            />
-
 
         <View>
             <Text>달성율 그래프</Text>
