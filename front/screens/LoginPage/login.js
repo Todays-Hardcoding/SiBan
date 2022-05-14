@@ -8,7 +8,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 
-import KakaoButton from "../../components/KakaoButton";
+import NaverButton from "../../components/NaverButton";
 import LoginButton from "../../components/LoginButton";
 import { NavigationContainer } from "@react-navigation/native";
 
@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
 
     marginVertical: 10,
-    width: "90%",
+    width: "80%",
   },
 });
 

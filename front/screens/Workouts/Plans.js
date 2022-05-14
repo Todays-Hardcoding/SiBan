@@ -1,12 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  Alert,
-  TouchableOpacity,
-} from "react-native";
+import { StyleSheet, Text, View, Alert, TouchableOpacity } from "react-native";
 import { Fontisto } from "@expo/vector-icons";
 import { FlatGrid } from "react-native-super-grid";
 
@@ -53,17 +47,19 @@ const Plans = ({ navigation }) => {
 
   return (
     <View style={styles.Container}>
-       <FlatGrid
-      itemDimension={170}
-      data={myPlan}
-      spacing={20}
-      renderItem={({ item }) => (
-        <TouchableOpacity style={[styles.itemContainer, { backgroundColor: item.code }]}>
-          <Text style={styles.itemName}>{item.name}</Text>
-          <Text style={styles.itemCode}>{item.code}</Text>
-        </TouchableOpacity>
-      )}
-    />
+      <FlatGrid
+        itemDimension={170}
+        data={myPlan}
+        spacing={20}
+        renderItem={({ item }) => (
+          <TouchableOpacity
+            style={[styles.itemContainer, { backgroundColor: item.code }]}
+          >
+            <Text style={styles.itemName}>{item.name}</Text>
+            <Text style={styles.itemCode}>{item.code}</Text>
+          </TouchableOpacity>
+        )}
+      />
       <TouchableOpacity
         style={styles.plus}
         onPress={() => navigation.navigate("Browse")}
@@ -88,12 +84,12 @@ const styles = StyleSheet.create({
   },
   itemName: {
     fontSize: 16,
-    color: "#fff",
     fontWeight: "600",
+    color: "#fff",
   },
   itemCode: {
-    fontWeight: "600",
     fontSize: 12,
+    fontWeight: "600",
     color: "#fff",
   },
   plus: {
@@ -101,8 +97,7 @@ const styles = StyleSheet.create({
     paddingVertical: 40,
     paddingHorizontal: 20,
     borderRadius: 20,
-    marginVertical: 20,
-    marginHorizontal: 20,
+    margin: 20,
     alignItems: "center",
   },
 });

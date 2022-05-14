@@ -11,10 +11,13 @@ import MyPageNav from "../navigation/MyPageNav";
 import WorkoutsNav from "./WorkoutsNav";
 import MyBoardNav from "./MyBoardNav";
 
+<<<<<<< HEAD
 //test
 import Coach from "../screens/Coach";
 import BoardMain from "../screens/MyBoard/BoardMain";
 
+=======
+>>>>>>> 1be01566ebeadeb69756d3fd3f4ec749c7bf2a0d
 const MainTab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 

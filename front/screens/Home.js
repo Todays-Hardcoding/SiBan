@@ -10,31 +10,44 @@ import {
 //import TextInput from 'react-native-input-validator';
 //import KakaoButton from '../../components/KakaoButton';
 //import LoginButton from '../../components/LoginButton';
-import KakaoButton from "../components/KakaoButton";
+import NaverButton from "../components/NaverButton";
 import LoginButton from "../components/LoginButton";
 import { NavigationContainer } from "@react-navigation/native";
 //import { State } from 'react-native-gesture-handler';
 
 const Login = ({ navigation }) => {
   const [loginId, setLoginId] = useState("");
-  // const [loginPw, setLoginPw] = useState("");
+  const [loginPw, setLoginPw] = useState("");
 
   const [loginIdCheck, setLoginIdCheck] = useState(false);
-  //const [loginPwCheck, setLoginPwCheck] = useState(false);
+  const [loginPwCheck, setLoginPwCheck] = useState(false);
 
-  const [loginError, setLoginError] = useState("");
+  const [idError, setIdError] = useState("");
+  const [pwError, setPwError] = useState("");
 
   console.log(loginId);
 
-  const onChangeId = (text) => {
+  const setId = (text) => {
     if (text.trim().length === 0) {
       setLoginIdCheck(false);
+      setIdError("아이디를 다시 입력해주세요");
     } else {
       setLoginIdCheck(true);
     }
     setLoginId(text);
     console.log(loginIdCheck);
     console.log(loginId);
+  };
+  const setPw = (text) => {
+    if (text.trim().length === 0) {
+      setLoginPwCheck(false);
+      setPwError("비밀번호를 다시입력해주세요");
+    } else {
+      setLoginPwCheck(true);
+    }
+    setLoginPw(text);
+    console.log(loginPwCheck);
+    console.log(loginPw);
   };
 
   return (
@@ -51,23 +64,24 @@ const Login = ({ navigation }) => {
       {/* 아이디 입력하는 곳 */}
       <TextInput
         style={styles.input}
-        placeholder={"아이디"}
-        //label='Email'
+        placeholder={"아이디를 입력해주세요"}
         value={loginId}
-        //onChangeText={(email) => setEmail(email)}
-        //error={hasEmailErrors}
-        onChangeText={(text) => onChangeId(text)}
+        onChangeText={(text) => setId(text)}
       />
-      <View>
-        {loginIdCheck == false ? (
-          <Text style={{ color: "red" }}>아이디를 입력해주세요</Text>
-        ) : null}
-      </View>
+
+      {!loginIdCheck && <Text style={{ color: "red" }}>{idError}</Text>}
+
       <TextInput
         style={styles.input}
-        placeholder={"비밀번호"}
+        placeholder={"비밀번호를 입력해주세요"}
+        onChangeText={(text) => setPw(text)}
         secureTextEntry={true}
       />
+
+      {!loginPwCheck && (
+        <Text style={{ paddingTop: 0, color: "red" }}>{pwError}</Text>
+      )}
+
       <TouchableOpacity style={{ flexDirection: "row" }}>
         <Text
           style={{ color: "gray" }}
@@ -92,7 +106,7 @@ const Login = ({ navigation }) => {
         </Text>
       </TouchableOpacity>
       <LoginButton />
-      <KakaoButton />
+      <NaverButton />
     </View>
   );
 };
@@ -105,7 +119,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     paddingVertical: 10,
 
-    marginVertical: 10,
+    marginVertical: 5,
     paddingHorizontal: 32,
     marginBottom: 16,
     width: "85%",
