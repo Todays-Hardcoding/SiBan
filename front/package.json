@@ -9,7 +9,6 @@
     "web": "expo start --web",
     "eject": "expo eject"
   },
-  "proxy": "exp://192.168.45.96:8282",
   "dependencies": {
     "@expo/webpack-config": "~0.16.2",
     "@fortawesome/fontawesome-svg-core": "^1.2.36",

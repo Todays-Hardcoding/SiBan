@@ -24,30 +24,12 @@ public class User {
 	
 	@NotNull
 	@Column	
-	private final String userId;
-	@NotNull
-	@Column	
-	private final String userName;
+	private  String userId;
 	@NotNull
 	@Column
-	private final String userPassword;
-	@NotNull
-	@Column
-	private final String userEmail;
-	@NotNull
-	@Column
-	private final String userTel;
-	@NotNull
-	@Column
-	private final Date userBirth;
-	@NotNull
-	@Column
-	private final Float userHeight;
+	private  String userPassword;
 
-	@Column
-	private final Float userWeight;
 
-	@Column
 	private LocalDateTime userRegDate;
 	
 	@PrePersist
@@ -55,21 +37,8 @@ public class User {
 		this.userRegDate = LocalDateTime.now();
 	}
 
-	@Builder
-	public User(Long userCode, @NotNull String userId, @NotNull String userName, @NotNull String userPassword,
-			@NotNull String userEmail, @NotNull String userTel, @NotNull Date userBirth, @NotNull Float userHeight,
-			Float userWeight, LocalDateTime userRegDate) {
-		super();
-		this.userCode = userCode;
-		this.userId = userId;
-		this.userName = userName;
-		this.userPassword = userPassword;
-		this.userEmail = userEmail;
-		this.userTel = userTel;
-		this.userBirth = userBirth;
-		this.userHeight = userHeight;
-		this.userWeight = userWeight;
-		this.userRegDate = userRegDate;
-	}
+	
+
+
 
 }
