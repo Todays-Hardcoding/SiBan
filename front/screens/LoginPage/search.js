@@ -5,7 +5,7 @@ const Search = () => {
   return (
     <View
       style={{
-        flex: 0.75,
+        flex: 1,
         backgroundColor: "#fff",
         alignItems: "center",
         justifyContent: "center",
@@ -24,7 +24,9 @@ const Search = () => {
           borderRadius: 10,
           marginVertical: 10,
           width: "70%",
-          height: "9%",
+          paddingTop: 20,
+          paddingBottom: 20,
+          alignItems: "center",
         }}
         placeholder={"이메일을 입력해주세요."}
       />

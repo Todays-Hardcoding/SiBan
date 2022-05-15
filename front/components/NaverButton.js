@@ -1,7 +1,7 @@
 import React from "react";
 import { TouchableOpacity, Text } from "react-native";
 
-const KakaoButton = () => {
+const NaverButton = () => {
   return (
     <TouchableOpacity
       style={{
@@ -10,7 +10,7 @@ const KakaoButton = () => {
         margin: 10,
         borderRadius: 5,
         paddingHorizontal: 50,
-        width: 330,
+        width: "80%",
         alignItems: "center",
       }}
     >
@@ -19,4 +19,4 @@ const KakaoButton = () => {
   );
 };
 
-export default KakaoButton;
+export default NaverButton;
