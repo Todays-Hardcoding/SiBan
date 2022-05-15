@@ -66,7 +66,9 @@ const Login = ({ navigation }) => {
         loginId,
         loginPw,
       }),
-    });
+    })
+      .then((response) => response.json())
+      .then((data) => console.log(data));
     // .then((data) => console.log(JSON.stringify(data)))
     // .catch((error) => console.log(error));
   };

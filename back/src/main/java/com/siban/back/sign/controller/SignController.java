@@ -30,8 +30,9 @@ public class SignController {
 	
 	
 	@RequestMapping(value="/test2.json", method = RequestMethod.POST)
-	public String test2(@RequestBody Map<String, Object> param) {
+	public Map<String, String> test2(@RequestBody Map<String, Object> param) {
 		
+		Map<String, String> result = new HashMap<String, String>();
 		
 		System.out.println(param.toString());
 //		JsonObject obj = new JsonObject();
@@ -39,16 +40,20 @@ public class SignController {
 //		Map<String, String> data = new HashMap<String, String>();
 //		data.put("sendData", "loginId");
 //		
-		String id =  ""+param.get("loginId");
+		String id =  "안녕 난 괴물이라구해 "+param.get("loginId");
 		String pw = "" + param.get("loginPw");
 		
-		System.out.println(param.get("loginId"));
-		System.out.println(param.get("loginPw"));
-		System.out.println("=====================================");
-		System.out.println(id);
-		System.out.println(pw);
+//		System.out.println(param.get("loginId"));
+//		System.out.println(param.get("loginPw"));
+//		System.out.println("=====================================");
+//		System.out.println(id);
+//		System.out.println(pw);
 		
-		return null;
+		result.put("id", id);
+		
+		System.out.println(result);
+		return result;
+		
 	}
 	
 	
