@@ -1,6 +1,6 @@
 import React from "react";
-import { MaterialIcons } from "@expo/vector-icons";
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import { FlatGrid } from "react-native-super-grid";
 
 const parts = [
   "Triceps",
@@ -57,11 +57,7 @@ const Strength = ({ navigation }) => {
     const data = [];
     exercises.map((exercise, index) => {
       console.log(exercise.part);
-      console.log(part);
-      if (exercise.part === part)
-        // console.log(exercise.part)
-        // console.log(part)
-        data.push(exercise);
+      if (exercise.part === part) data.push(exercise);
       console.log(data);
     });
     navigation.navigate("StrengthNav", {
@@ -72,14 +68,19 @@ const Strength = ({ navigation }) => {
 
   return (
     <View style={styles.Container}>
-      {parts.map((part, index) => (
-        <View key={index} style={styles.each}>
-          <TouchableOpacity onPress={(part) => press(part)}>
-            <MaterialIcons name="fitness-center" size={40} color="black" />
-            <Text style={styles.eachText}>{part}</Text>
+      <FlatGrid
+        itemDimension={170}
+        data={exercises}
+        spacing={20}
+        renderItem={({ item }) => (
+          <TouchableOpacity
+            style={[styles.itemContainer, { backgroundColor: "lightgrey" }]}
+          >
+            <Text style={styles.itemName}>{item.name}</Text>
+            <Text style={styles.itemCode}>{item.part}</Text>
           </TouchableOpacity>
-        </View>
-      ))}
+        )}
+      />
     </View>
   );
 };
@@ -87,20 +88,22 @@ const Strength = ({ navigation }) => {
 const styles = StyleSheet.create({
   Container: {
     flex: 1,
-    flexDirection: "row",
-    flexWrap: "wrap",
-    justifyContent: "space-between",
-    alignContent: "space-around",
-    alignItems: "center",
   },
-  each: {
-    width: "30%",
-    justifyContent: "center",
-    alignItems: "center",
-    marginTop: 200,
+  itemContainer: {
+    justifyContent: "flex-end",
+    borderRadius: 5,
+    padding: 10,
+    height: 150,
   },
-  eachText: {
-    fontSize: 10,
+  itemName: {
+    fontSize: 16,
+    fontWeight: "600",
+    color: "grey",
+  },
+  itemCode: {
+    fontSize: 12,
+    fontWeight: "600",
+    color: "grey",
   },
 });
 

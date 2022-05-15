@@ -77,6 +77,7 @@ const MainTabs = () => {
         name="Workout"
         component={WorkoutsNav}
         options={{
+          title: "운동",
           tabBarIcon: ({ focused, color, size }) => {
             return (
               <FontAwesome5
