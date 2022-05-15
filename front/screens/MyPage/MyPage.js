@@ -4,7 +4,6 @@ import { Dimensions } from "react-native";
 
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
-console.log(windowWidth);
 
 function onPressBtn() {
   alert("버튼이당");
@@ -58,7 +57,12 @@ const MyPageMain = ({ navigation }) => {
           >
             <Text style={styles.btnText}>활동</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={onPressBtn} style={styles.myPageBtn}>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate("MealPlanNav");
+            }}
+            style={styles.myPageBtn}
+          >
             <Text style={styles.btnText}>식단관리</Text>
           </TouchableOpacity>
         </View>

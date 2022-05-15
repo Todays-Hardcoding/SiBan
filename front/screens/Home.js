@@ -30,7 +30,7 @@ const Login = ({ navigation }) => {
   const setId = (text) => {
     if (text.trim().length === 0) {
       setLoginIdCheck(false);
-      setIdError("아이디를 다시 입력해주세요")
+      setIdError("아이디를 다시 입력해주세요");
     } else {
       setLoginIdCheck(true);
     }
@@ -41,7 +41,7 @@ const Login = ({ navigation }) => {
   const setPw = (text) => {
     if (text.trim().length === 0) {
       setLoginPwCheck(false);
-      setPwError("비밀번호를 다시입력해주세요")
+      setPwError("비밀번호를 다시입력해주세요");
     } else {
       setLoginPwCheck(true);
     }
@@ -61,16 +61,15 @@ const Login = ({ navigation }) => {
     >
       <Text style={{ fontSize: 20, fontWeight: "bold" }}>시반로그인</Text>
       <Text> </Text>
-
       {/* 아이디 입력하는 곳 */}
       <TextInput
         style={styles.input}
         placeholder={"아이디를 입력해주세요"}
         value={loginId}
         onChangeText={(text) => setId(text)}
-        
       />
-      {!loginIdCheck && <Text style={{color:"red"}}>{idError}</Text>}
+
+      {!loginIdCheck && <Text style={{ color: "red" }}>{idError}</Text>}
 
       <TextInput
         style={styles.input}
@@ -78,8 +77,10 @@ const Login = ({ navigation }) => {
         onChangeText={(text) => setPw(text)}
         secureTextEntry={true}
       />
-    {!loginPwCheck && <Text style={{paddingTop:0, color:"red"}}>{pwError}</Text>}
 
+      {!loginPwCheck && (
+        <Text style={{ paddingTop: 0, color: "red" }}>{pwError}</Text>
+      )}
 
       <TouchableOpacity style={{ flexDirection: "row" }}>
         <Text
@@ -104,7 +105,6 @@ const Login = ({ navigation }) => {
           회원가입
         </Text>
       </TouchableOpacity>
-
       <LoginButton />
       <NaverButton />
     </View>
