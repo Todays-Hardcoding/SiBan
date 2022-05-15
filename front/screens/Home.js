@@ -25,7 +25,11 @@ const Login = ({ navigation }) => {
   const [idError, setIdError] = useState("");
   const [pwError, setPwError] = useState("");
 
-  console.log(loginId);
+  const sendData = [{ loginId }, { loginPw }];
+
+  const data = new FormData();
+  data.append("userId", "loginId");
+  data.append("userPw", "loginPw");
 
   const setId = (text) => {
     if (text.trim().length === 0) {
@@ -35,8 +39,8 @@ const Login = ({ navigation }) => {
       setLoginIdCheck(true);
     }
     setLoginId(text);
-    console.log(loginIdCheck);
-    console.log(loginId);
+    // console.log(loginIdCheck);
+    // console.log(loginId);
   };
   const setPw = (text) => {
     if (text.trim().length === 0) {
@@ -46,8 +50,25 @@ const Login = ({ navigation }) => {
       setLoginPwCheck(true);
     }
     setLoginPw(text);
-    console.log(loginPwCheck);
-    console.log(loginPw);
+    // console.log(loginPwCheck);
+    // console.log(loginPw);
+  };
+
+  const postTest = () => {
+    const url = "http://192.168.45.96:8282/test2.json";
+    fetch(url, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        loginId,
+        loginPw,
+      }),
+    });
+    // .then((data) => console.log(JSON.stringify(data)))
+    // .catch((error) => console.log(error));
   };
 
   return (
@@ -105,7 +126,25 @@ const Login = ({ navigation }) => {
           회원가입
         </Text>
       </TouchableOpacity>
-      <LoginButton />
+      {/* <LoginButton /> */}
+
+      <TouchableOpacity
+        style={{
+          backgroundColor: "black",
+          padding: 10,
+          margin: 10,
+          borderRadius: 5,
+          paddingHorizontal: 50,
+          width: 330,
+          alignItems: "center",
+        }}
+        // onPress={test2}
+
+        onPress={postTest}
+      >
+        <Text style={{ fontSize: 18, color: "white" }}>로그인하기</Text>
+      </TouchableOpacity>
+
       <NaverButton />
     </View>
   );

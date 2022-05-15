@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { TouchableOpacity, Text } from "react-native";
+
+import { sendData2 } from "../screens/Home";
 
 const LoginButton = () => {
   const postTest = () => {
@@ -10,12 +12,9 @@ const LoginButton = () => {
         "Content-Type": "application/json",
       },
     })
-      .then((res) => console.log("성공!"))
-      .then((response) => response.json())
-      .then((json) => {
-        return json.test2;
-      })
-      .catch((error) => console.log(error));
+      // .then((data) => console.log(JSON.stringify(data)))
+      .then((res) => console.log({ userId }));
+    // .catch((error) => console.log(error));
   };
 
   // const test2 = () => {
@@ -55,6 +54,7 @@ const LoginButton = () => {
         alignItems: "center",
       }}
       // onPress={test2}
+
       onPress={postTest}
     >
       <Text style={{ fontSize: 18, color: "white" }}>로그인하기</Text>
