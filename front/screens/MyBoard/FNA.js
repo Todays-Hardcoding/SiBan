@@ -1,17 +1,11 @@
 import React, { useEffect, useState } from "react";
 import {
-  Image,
   Text,
-  ActivityIndicator,
   Dimensions,
-  RefreshControl,
   ScrollView,
   StyleSheet,
-  useColorScheme,
   View,
   TouchableOpacity,
-  TouchableHighlight,
-  Button,
   TextInput,
 } from "react-native";
 import {
