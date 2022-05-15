@@ -97,9 +97,12 @@ const styles = StyleSheet.create({
     height: windowHeight * 0.2,
     alignItems: "center",
     justifyContent: "center",
+    opacity: 0.9
   },
   text: {
-    
+    fontSize: 20,
+    color: "white",
+    fontWeight: "bold"
   },
   item: {
     flexDirection: "row",
