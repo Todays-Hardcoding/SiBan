@@ -25,29 +25,52 @@ const Login = ({ navigation }) => {
   const [idError, setIdError] = useState("");
   const [pwError, setPwError] = useState("");
 
-  console.log(loginId);
+  const sendData = [{ loginId }, { loginPw }];
+
+  const data = new FormData();
+  data.append("userId", "loginId");
+  data.append("userPw", "loginPw");
 
   const setId = (text) => {
     if (text.trim().length === 0) {
       setLoginIdCheck(false);
-      setIdError("아이디를 다시 입력해주세요")
+      setIdError("아이디를 다시 입력해주세요");
     } else {
       setLoginIdCheck(true);
     }
     setLoginId(text);
-    console.log(loginIdCheck);
-    console.log(loginId);
+    // console.log(loginIdCheck);
+    // console.log(loginId);
   };
   const setPw = (text) => {
     if (text.trim().length === 0) {
       setLoginPwCheck(false);
-      setPwError("비밀번호를 다시입력해주세요")
+      setPwError("비밀번호를 다시입력해주세요");
     } else {
       setLoginPwCheck(true);
     }
     setLoginPw(text);
-    console.log(loginPwCheck);
-    console.log(loginPw);
+    // console.log(loginPwCheck);
+    // console.log(loginPw);
+  };
+
+  const postTest = () => {
+    const url = "http://192.168.45.96:8282/test2.json";
+    fetch(url, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        loginId,
+        loginPw,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => console.log(data));
+    // .then((data) => console.log(JSON.stringify(data)))
+    // .catch((error) => console.log(error));
   };
 
   return (
@@ -67,16 +90,9 @@ const Login = ({ navigation }) => {
         placeholder={"아이디를 입력해주세요"}
         value={loginId}
         onChangeText={(text) => setId(text)}
-        
       />
 
-      <View>
-        {loginIdCheck == false ? (
-          <Text style={{ color: "red" }}>아이디를 입력해주세요</Text>
-        ) : null}
-      </View>
-
-      {!loginIdCheck && <Text style={{color:"red"}}>{idError}</Text>}
+      {!loginIdCheck && <Text style={{ color: "red" }}>{idError}</Text>}
 
       <TextInput
         style={styles.input}
@@ -85,9 +101,9 @@ const Login = ({ navigation }) => {
         secureTextEntry={true}
       />
 
-    {!loginPwCheck && <Text style={{paddingTop:0, color:"red"}}>{pwError}</Text>}
-
-
+      {!loginPwCheck && (
+        <Text style={{ paddingTop: 0, color: "red" }}>{pwError}</Text>
+      )}
 
       <TouchableOpacity style={{ flexDirection: "row" }}>
         <Text
@@ -112,7 +128,25 @@ const Login = ({ navigation }) => {
           회원가입
         </Text>
       </TouchableOpacity>
-      <LoginButton />
+      {/* <LoginButton /> */}
+
+      <TouchableOpacity
+        style={{
+          backgroundColor: "black",
+          padding: 10,
+          margin: 10,
+          borderRadius: 5,
+          paddingHorizontal: 50,
+          width: 330,
+          alignItems: "center",
+        }}
+        // onPress={test2}
+
+        onPress={postTest}
+      >
+        <Text style={{ fontSize: 18, color: "white" }}>로그인하기</Text>
+      </TouchableOpacity>
+
       <NaverButton />
     </View>
   );
