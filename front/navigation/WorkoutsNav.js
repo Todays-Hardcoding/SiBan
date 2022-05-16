@@ -56,8 +56,8 @@ const BrowseDetail = () => {
       }}
     >
       <Tab.Screen
-        name="Strength"
-        component={Strength}
+        name="StrengthNav"
+        component={StrengthNav}
         options={{ tabBarLabel: "근력" }}
       />
       <Tab.Screen
@@ -76,7 +76,8 @@ const BrowseDetail = () => {
 
 const StrengthNav = () => {
   return (
-    <Stack.Navigator initialRouteName="StrengthDetail">
+    <Stack.Navigator initialRouteName="Strength" screenOptions={{headerShown: false}}>
+      <Stack.Screen name="Strength" component={Strength} />
       <Stack.Screen name="StrengthDetail" component={StrengthDetail} />
     </Stack.Navigator>
   );
@@ -117,7 +118,7 @@ const WorkoutsNav = () => {
       <Stack.Screen name="Workouts" component={Workouts} />
       <Stack.Screen name="BrowseDetail" component={BrowseDetail} />
       <Stack.Screen name="LevelDetail" component={LevelDetail} />
-      <Stack.Screen name="StrengthNav" component={StrengthNav} />
+      {/* <Stack.Screen name="StrengthNav" component={StrengthNav} /> */}
     </Stack.Navigator>
 
   );

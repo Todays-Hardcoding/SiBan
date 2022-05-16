@@ -51,7 +51,7 @@ const MyPageMain = ({ navigation }) => {
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => {
-              navigation.navigate("ACTIVITY");
+              navigation.navigate("ActivityNav");
             }}
             style={styles.myPageBtn}
           >

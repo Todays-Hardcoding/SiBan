@@ -1,0 +1,844 @@
+[
+  {
+    "workoutName": "코어 강화",
+    "workoutCourse": "중급",
+    "workoutGoal": "근력",
+    "workoutTarget": ["둔근 및 다리"],
+    "workoutDescription": "스케이트는 체력, 유연성과 강인한 코어근육을 필요로 합니다. 이 필라테스 운동은 다리를 늘이고 강화하며 코어 근육을 단련해 줍니다."
+  },
+  {
+    "workoutName": "퀵 코어 크러시",
+    "workoutCourse": "초급",
+    "workoutGoal": "근력",
+    "workoutTarget": ["복근 및 코어"],
+    "workoutDescription": "이는 코어를 사방에서 자극해 줍니다. 목이 심하게 당기는 느낌이 들면 잠깐 휴식을 취하고, 괜찮아지면 다시 시도하세요."
+  },
+  {
+    "workoutName": "이두근과 삼두근",
+    "workoutCourse": "중급",
+    "workoutGoal": "근력",
+    "workoutTarget": ["팔 및 어깨"],
+    "workoutDescription": "팔 트레이닝은 운동선수를 위한 것만이 아닙니다. 트라이셉 운동을 하는 동안 코어를 더욱 단련할 수 있도록 계속 단단히 힘을 주세요."
+  },
+  {
+    "workoutName": "복근 및 팔",
+    "workoutCourse": "중급",
+    "workoutGoal": "근력",
+    "workoutTarget": ["팔 및 어깨", "복근 및 코어"],
+    "workoutDescription": "장대높이뛰기 종목에서는 최고의 높이를 기록하려면 폭발적인 힘이 필요합니다. 상체 근력을 위한 멋진 운동을 시작할 준비를 하세요."
+  },
+  {
+    "workoutName": "퀵 히트 복근",
+    "workoutCourse": "중급",
+    "workoutGoal": "근력",
+    "workoutTarget": ["복근 및 코어"],
+    "workoutDescription": "끝까지 꾸준히 하는 것은 누구에게나 어려운 일입니다. 모든 것은 자신의 의지에 달렸죠"
+  },
+  {
+    "workoutName": "기본 동작 팁",
+    "workoutCourse": "초급",
+    "workoutGoal": "근력",
+    "workoutTarget": ["둔근 및 다리"],
+    "workoutDescription": "나의 체중을 활용하는 15분 운동으로 NTC의 기본 동작들을 몸에 익혀보세요."
+  },
+  {
+    "workoutName": "복부 근력 마스터",
+    "workoutCourse": "중급",
+    "workoutGoal": "근력",
+    "workoutTarget": ["팔 및 어깨", "복근 및 코어"],
+    "workoutDescription": "동물의 움직임에서 영감을 받은 격렬한 동작으로 근력을 강화하는 운동입니다. 온 힘을 다해 자세가 흐트러지지 않도록 합니다."
+  },
+  {
+    "workoutName": "자세 집중 근력 운동",
+    "workoutCourse": "중급",
+    "workoutGoal": "근력",
+    "workoutTarget": ["팔 및 어깨", "복근 및 코어"],
+    "workoutDescription": "색다른 동작으로 이루어져 근력과 활동성을 향상시켜주는 운동입니다. 호흡을 유지하고 자세가 흐트러지지 않도록 집중합니다."
+  },
+  {
+    "workoutName": "플랭크 스플리터",
+    "workoutCourse": "중급",
+    "workoutGoal": "근력",
+    "workoutTarget": ["복근 및 코어"],
+    "workoutDescription": "코어에 집중이 필요한 체중 활용 근력 운동입니다. 호흡을 유지하면서 복근에 계속해서 힘을 주도록 합니다."
+  },
+  {
+    "workoutName": "격렬한 15분",
+    "workoutCourse": "고급",
+    "workoutGoal": "근력",
+    "workoutTarget": ["복근 및 코어", "둔근 및 다리"],
+    "workoutDescription": "운동시간을 짧지만 알찬 동작으로 큰 효과를 얻을 수 있습니다. 상,하체 운동은 근력 향상 및 신진대사 활성화를 도와줍니다."
+  },
+  {
+    "workoutName": "코어 근육 단련하기 2.0",
+    "workoutCourse": "초급",
+    "workoutGoal": "근력",
+    "workoutTarget": ["복근 및 코어", "둔근 및 다리"],
+    "workoutDescription": "한쪽 팔다리를 사용하는 동작으로 근력과 균형감각을 향상해줍니다. 정확한 자세로 최대한 오래 견디어봅니다."
+  },
+  {
+    "workoutName": "근력 파워업",
+    "workoutCourse": "초급",
+    "workoutGoal": "근력",
+    "workoutTarget": ["팔 및 어깨", "복근 및 코어", "둔근 및 다리"],
+    "workoutDescription": "한쪽 팔다리를 사용하는 동작으로 근력과 균형감각을 향상해줍니다. 정확한 자세로 최대한 오래 견디어봅니다."
+  },
+  {
+    "workoutName": "전신 균형 기르기",
+    "workoutCourse": "중급",
+    "workoutGoal": "근력",
+    "workoutTarget": ["둔근 및 다리"],
+    "workoutDescription": "웨이트 기구 대신 체중을 이용하여 운동하는 동작입니다. 어려운 동작일 수 있으나 근력 강화에 효과적입니다."
+  },
+  {
+    "workoutName": "상체 운동",
+    "workoutCourse": "중급",
+    "workoutGoal": "근력",
+    "workoutTarget": ["팔 및 어깨"],
+    "workoutDescription": "복서 바운스를 로우와 푸시업과 같은 근력 강화 동작 사이에 몸을 푸는 시간, 회복 운동으로 활용하세요."
+  },
+  {
+    "workoutName": "러너 안정성",
+    "workoutCourse": "초급",
+    "workoutGoal": "근력",
+    "workoutTarget": ["복근 및 코어", "둔근 및 다리"],
+    "workoutDescription": "짧은 이 동작을 적용해 코어와 엉덩이를 강화하세요. 러닝 또는 운동하기 전에 추가하면 좋습니다."
+  },
+  {
+    "workoutName": "탱크탑 팔",
+    "workoutCourse": "중급",
+    "workoutGoal": "근력",
+    "workoutTarget": ["팔 및 어깨"],
+    "workoutDescription": "이 운동은 어깨와 팔을 집중적으로 공략합니다. 이 운동 하나만 해도 되고 다른 코어 세션과 함께 하면 아주 좋은 전신 운동이 됩니다."
+  },
+  {
+    "workoutName": "하체 단련 및 칼로리 소모",
+    "workoutCourse": "초급",
+    "workoutGoal": "근력",
+    "workoutTarget": ["둔근 및 다리"],
+    "workoutDescription": "무엇보다 기초가 튼튼해야 합니다. 다리나 둔근처럼 큰 근육에 초점을 맞추면 근력 강화에 도움이 되어 원하는 그 어떤 목표라도 이루어낼 수 있는 힘이 생깁니다."
+  },
+  {
+    "workoutName": "한계의 끝 & 회복",
+    "workoutCourse": "고급",
+    "workoutGoal": "근력",
+    "workoutTarget": ["팔 및 어깨", "복근 및 코어"],
+    "workoutDescription": "자신의 한계까지 밀어붙인 후 회복 시간을 활용해 다음 동작에 사용할 에너지를 비축합니다. 스쿼트와 데드리프트 동작 시에는 좀 더 무거운 웨이트를 사용합니다."
+  },
+  {
+    "workoutName": "코어 순환 강화 3종",
+    "workoutCourse": "중급",
+    "workoutGoal": "근력",
+    "workoutTarget": ["복근 및 코어", "둔근 및 다리"],
+    "workoutDescription": "동물의 움직임과 무술에서 영감을 받은 동작으로 호흡과 함께 자연스럽게 코어 강화 동작들을 이어나갑니다."
+  },
+  {
+    "workoutName": "안정성 강화",
+    "workoutCourse": "중급",
+    "workoutGoal": "근력",
+    "workoutTarget": ["팔 및 어깨", "복근 및 코어", "둔근 및 다리"],
+    "workoutDescription": "다리 근육과 둔근을 강화하는 운동입니다. 완벽한 자세로 관절 가동 범위만큼 최대한 움직이는 데 집중합니다."
+  },
+  {
+    "workoutName": "0부터 100까지",
+    "workoutCourse": "중급",
+    "workoutGoal": "근력",
+    "workoutTarget": ["팔 및 어깨", "복근 및 코어", "둔근 및 다리"],
+    "workoutDescription": "코어와 신체 조정력을 강화해주는 운동입니다. 코어가 흔들리지 않도록 고정한 상태에서 운동 부위를 생각하며 팔다리를 움직입니다."
+  },
+  {
+    "workoutName": "전신훈련",
+    "workoutCourse": "중급",
+    "workoutGoal": "근력",
+    "workoutTarget": ["팔 및 어깨", "복근 및 코어", "둔근 및 다리"],
+    "workoutDescription": "강해지는 것은 물론이고 폭발적인 힘을 낼 수 있도록, 전신을 몰아붙여 고난이도 훈련을 진행해 보세요."
+  },
+  {
+    "workoutName": "게임 체인저",
+    "workoutCourse": "고급",
+    "workoutGoal": "근력",
+    "workoutTarget": ["팔 및 어깨", "복근 및 코어", "둔근 및 다리"],
+    "workoutDescription": "생각만 하지 말고 몸을 움직여 건강한 체형을 만들어 보세요."
+  },
+  {
+    "workoutName": "등 & 이두근 운동",
+    "workoutCourse": "중급",
+    "workoutGoal": "근력",
+    "workoutTarget": ["팔 및 어깨"],
+    "workoutDescription": "등을 중심으로 이두근을 펌핑하는 운동 세트로 상체 근력을 강화해 보세요. 유산소 운동이나 코어 세션과 함게 하면 운동 과정이 한 단계 높아집니다."
+  },
+  {
+    "workoutName": "풀 코어 프레스",
+    "workoutCourse": "중급",
+    "workoutGoal": "근력",
+    "workoutTarget": ["팔 및 어깨", "복근 및 코어", "둔근 및 다리"],
+    "workoutDescription": "템포를 늦춰서 훈련의 강도를 높이세요. 스피드보다는 테크닉에 집중하세요. 그래야 이 반복 기반 세션에서 운동 효과를 얻을 수 있답니다."
+  },
+  {
+    "workoutName": " 엉덩이 근력",
+    "workoutCourse": "중급",
+    "workoutGoal": "근력",
+    "workoutTarget": ["둔근 및 다리"],
+    "workoutDescription": "엉덩이 근육을 단련하고 라인을 잡아줄 수 있도록 설계된 이 동작은 하체를 튼튼하고 아릅답게 해줍니다."
+  },
+  {
+    "workoutName": "근력 운동 리믹스",
+    "workoutCourse": "중급",
+    "workoutGoal": "근력",
+    "workoutTarget": ["팔 및 어깨", "복근 및 코어", "둔근 및 다리"],
+    "workoutDescription": "이 운동은 많은 격렬한 동작을 요구합니다. 최대한 빠르게 움직이고 복잡한 동작일수록 자세 유지에 집중합니다."
+  },
+  {
+    "workoutName": "한계의 끝 & 회복",
+    "workoutCourse": "고급",
+    "workoutGoal": "근력",
+    "workoutTarget": ["팔 및 어깨", "복근 및 코어"],
+    "workoutDescription": "자신의 한계까지 밀어붙인 후 회복 시간을 활용해 다음 동작에 사용할 에너지를 비축합니다. 스쿼트와 데드리프트 동작시에는 좀 더 무거운 웨이트를 사용합니다."
+  },
+  {
+    "workoutName": "밀고 당기기",
+    "workoutCourse": "중급",
+    "workoutGoal": "근력",
+    "workoutTarget": ["팔 및 어깨", "복근 및 코어"],
+    "workoutDescription": "전신을 움직이는 이 서킷은 강도 높은 기본 동작들로 이루어져 있습니다. 반복 횟수보다는 정확한 동작 정확한 운동법으로하도록 합니다."
+  },
+  {
+    "workoutName": "상체 및 코어 운동 결합",
+    "workoutCourse": "중급",
+    "workoutGoal": "근력",
+    "workoutTarget": ["팔 및 어깨", "복근 및 코어"],
+    "workoutDescription": "이 상체 및 코어 강화 운동으로 활용할 수 있는 디테일한 부분에 집중하세요. 푸시업 플러스 및 기마 자세에서 밀고 당기기와 같은 운동은 간단하지만 트레이닝을 한차원 높은 수준으로 끌어올려 줍니다."
+  },
+  {
+    "workoutName": "트리플 순환",
+    "workoutCourse": "고급",
+    "workoutGoal": "근력",
+    "workoutTarget": ["복근 및 코어", "둔근 및 다리"],
+    "workoutDescription": "하체 운동 중에는 힘을 주고, 안정적인 동작에 집둥하여 근력 서킷을 실시합니다."
+  },
+  {
+    "workoutName": "상체 운동",
+    "workoutCourse": "중급",
+    "workoutGoal": "근력",
+    "workoutTarget": ["팔 및 어깨", "복근 및 코어"],
+    "workoutDescription": "복서 바운스를 로우와 푸시업과 같은 근력 강화 동작 사이에 몸을 푸는 시간, 회복 운동으로 활용하세요."
+  },
+  {
+    "workoutName": "질주본능",
+    "workoutCourse": "중급",
+    "workoutGoal": "근력",
+    "workoutTarget": ["팔 및 어깨", "복근 및 코어", "둔근 및 다리"],
+    "workoutDescription": "준비 운동을 시작으로 이어지는 동작들을 차례차례 따라합니다. 몸에 계속해서 힘을 실어 자세가 흐트러지지 않도록 유지합니다."
+  },
+  {
+    "workoutName": "근력 파워 4종",
+    "workoutCourse": "고급",
+    "workoutGoal": "근력",
+    "workoutTarget": ["팔 및 어깨", "복근 및 코어", "둔근 및 다리"],
+    "workoutDescription": "무거운 웨이트 기구를 사용하지만 반복 회수가 적은 이 운동은 근력 강화에 효과적입니다. 워밍업을 활용해 운동 효과를 극대화하세요."
+  },
+  {
+    "workoutName": "다각도 근력",
+    "workoutCourse": "중급",
+    "workoutGoal": "근력",
+    "workoutTarget": ["팔 및 어깨", "복근 및 코어", "둔근 및 다리"],
+    "workoutDescription": "래터럴 런지로 제대로 된 전신 운동 동작을 진행하세요. 매회 런지를 실시할 때마다 팔꿈치를 뒤로 보내면서 서로 가까워지게 조여주면 등 근육까지 함께 단련할 수 있어요."
+  },
+  {
+    "workoutName": "탄력 힙라인 만들기",
+    "workoutCourse": "초급",
+    "workoutGoal": "근력",
+    "workoutTarget": ["복근 및 코어", "둔근 및 다리"],
+    "workoutDescription": "둔근 단련을 위한 다양한 동작들이 포함된 운동입니다. 끝까지 견디어 근력을 단련시킵니다."
+  },
+  {
+    "workoutName": "런지 종합 세트",
+    "workoutCourse": "중급",
+    "workoutGoal": "근력",
+    "workoutTarget": ["복근 및 코어", "둔근 및 다리"],
+    "workoutDescription": "이어서 런지를 실시하면 효과적입니다. 무릎이 발가락보다 앞으로 나가지 않도록 하고 힘을 줘 바닥을 디디세요."
+  },
+  {
+    "workoutName": "풀 코어 프레스",
+    "workoutCourse": "중급",
+    "workoutGoal": "근력",
+    "workoutTarget": ["팔 및 어깨"],
+    "workoutDescription": "템포를 늦춰서 훈련의 강도를 높이세요. 스피드보다는 테크닉에 집중하세요. 그래야 이 반복 기반 세션에서 운동 효과를 얻을 수 있답니다."
+  },
+  {
+    "workoutName": "다리와 둔근 단련하기",
+    "workoutCourse": "중급",
+    "workoutGoal": "근력",
+    "workoutTarget": ["둔근 및 다리"],
+    "workoutDescription": "다리를 집중 단련하는 트레이닝 세션. 스윙과 스쿼트 동작으로 둔근을 수축하고 코어에 힘을 주세요."
+  },
+  {
+    "workoutName": "균형 파워 기르기",
+    "workoutCourse": "중급",
+    "workoutGoal": "근력",
+    "workoutTarget": ["복근 및 코어", "둔근 및 다리"],
+    "workoutDescription": "균형감각을 높여주는 운동입니다. 몸이 흔들리지 않도록 바닥에 양발을 단단히 디뎌 균형을 잡아줍니다."
+  },
+  {
+    "workoutName": "크레센도 운동",
+    "workoutCourse": "중급",
+    "workoutGoal": "근력",
+    "workoutTarget": ["팔 및 어깨", "복근 및 코어", "둔근 및 다리"],
+    "workoutDescription": "느리게 시작하여 빠르게 마무리 짓는 이 강도 높은 운동은 끝까지 근력 강화에 초첨을 두어 올바른 자세유지에 힘씁니다."
+  },
+  {
+    "workoutName": "집중 바디웨이트 벤치마크",
+    "workoutCourse": "중급",
+    "workoutGoal": "근력",
+    "workoutTarget": ["복근 및 코어"],
+    "workoutDescription": "체력 테스트를 위한 준비 운동입니다. 규칙적인 벤치마크 운동은 강인한 체력 향상을 도와줍니다."
+  },
+  {
+    "workoutName": "5분 바디웨이트 버닝, 잠든 코어 깨우기",
+    "workoutCourse": "초급",
+    "workoutGoal": "지구력",
+    "workoutTarget": ["복근 및 코어"],
+    "workoutDescription": "파워의 최고 원천인 코어 근육이 힘을 쓰도록 하는 이 미니 세션을 통해 어떤 운동에서든 최고의 기량을 뽐내보세요. 간단한 워밍업 또는 잠을 깨우는 아침 루틴으로 안성맞춤입니다."
+  },
+
+  {
+    "workoutName": "5분 HIT, 잠든 둔근 깨우기",
+    "workoutcourse": "초급",
+    "workoutGoal": "지구력",
+    "workoutTarget": ["둔근 및 다리"],
+    "workoutDescription": "온종일 앉아만 있다 보면 둔근이 '잠들어 버려' 걷는 동작부터 트레닝까지 모든 활동에서 운동 효율이 떨어질 수 있습니다. 단시간 달콤한 활력을 더해줄 이 세션으로 근육에 신선한 자극을 줘보세요."
+  },
+  {
+    "workoutName": "5분 플랭크 마무리",
+    "workoutcourse": "중급",
+    "workoutGoal": "지구력",
+    "workoutTarget": ["복근 및 코어"],
+    "workoutDescription": "사이드 플랭크 니 드라이브, 사이드 플랭크 랩 같은 동작은 전신 근력 향상과 균형 유지의 핵심 요소인 신체 측면 근력 강화에 도움이 됩니다. "
+  },
+  {
+    "workoutName": "10분 바디웨이트 버닝, 다리와 둔근",
+    "workoutcourse": "초급",
+    "workoutGoal": "지구력",
+    "workoutTarget": ["둔근 및 다리"],
+    "workoutDescription": "놀랍도록 효과가 뛰어난 이 서킷 운동으로 10분 동안 하체를 강화해보세요. 그동안 생각지 못했지만 일상에서 더욱 활기차게 움직이기 위해 트레이닝이 필요한 부위기 래터럴 런치를 통해 달구어집니다. "
+  },
+  {
+    "workoutName": "10분 바디웨이트 버닝, 코어 마무리",
+    "workoutcourse": "초급",
+    "workoutGoal": "지구력",
+    "workoutTarget": ["복근 및 코어"],
+    "workoutDescription": "놀랍도록 효과가 뛰어난 이 서킷 운동으로 10분 동안 하체를 강화해보세요. 그동안 생각지 못했지만 일상에서 더욱 활기차게 움직이기 위해 트레이닝이 필요한 부위기 래터럴 런치를 통해 달구어집니다. "
+  },
+  {
+    "workoutName": "10분 HIT: 안정성 트레이닝 기초",
+    "workoutcourse": "초급",
+    "workoutGoal": "지구력",
+    "workoutTarget": ["복근 및 코어"],
+    "workoutDescription": "운동 신경은 그냥 생기는 것이 아닙니다. 숙달되는 것이죠, 짧고 굵게 끝내는 이 운동으로 민첩성, 안정성 및 조정력 기량을 쌓아보세요. "
+  },
+  {
+    "workoutName": "10분 바디웨이트 버닝: 백사이드 기초",
+    "workoutcourse": "초급",
+    "workoutGoal": "지구력",
+    "workoutTarget": ["둔근 및 다리"],
+    "workoutDescription": "힌지 동작 패턴은 건강한 허리와 무릎을 위해 꼭 숙달해야 합니다. 이 둔근 및 햄스트링 집중 공략 단시간 운동으로 힌지 동작을 배워보고 애정을 느껴보세요."
+  },
+  {
+    "workoutName": "10분 바디웨이트 버닝: 상체 기초",
+    "workoutcourse": "초급",
+    "workoutGoal": "지구력",
+    "workoutTarget": ["팔 및 어깨", "둔근 및 다리"],
+    "workoutDescription": "힌지 동작 패턴은 건강한 허리와 무릎을 위해 꼭 숙달해야 합니다. 이 둔근 및 햄스트링 집중 공략 단시간 운동으로 힌지 동작을 배워보고 애정을 느껴보세요."
+  },
+  {
+    "workoutName": "10분 바디웨이트 버닝: 회전 트레이닝 기초",
+    "workoutcourse": "초급",
+    "workoutGoal": "지구력",
+    "workoutTarget": ["복근 및 코어"],
+    "workoutDescription": "스윙이 중요한 골프 또는 테니스를 하거나 춤을 좋아한다면 또는 평소에 360도로 잘 움직이는 몸을 가지고 싶다면 회전 동작 패턴을 다듬는 것이 답입니다. 코어를 집중 공략하는 이 운동을 통해 여기서 성취해 보세요."
+  },
+  {
+    "workoutName": "10분 HIT: 다리와 코어",
+    "workoutcourse": "초급",
+    "workoutGoal": "지구력",
+    "workoutTarget": ["팔 및 어깨", "복근 및 코어", "둔근 및 다리"],
+    "workoutDescription": "시간이 얼마 없거나 재미있는 하체 및 코어 피니셔 운동을 하고 싶다면 이 운동을 선택해 보세요. "
+  },
+  {
+    "workoutName": "10분 HIT: 스피드 트레이닝 기초",
+    "workoutcourse": "초급",
+    "workoutGoal": "지구력",
+    "workoutTarget": ["둔근 및 다리"],
+    "workoutDescription": "어떤 활동에서든 더 빠른 속도를 발휘하도록 중간에 살짝 쉬면서 더 많이 운동하는 데 익숙해지도록 하세요. 매회 반복할 때마다 다른 에너지 체계가 힘을 쓰기 때문에 더 효율적으로 운동할 수 있게 됩니다."
+  },
+  {
+    "workoutName": "10분 HIT: 인터벌 트레이닝 기초",
+    "workoutcourse": "초급",
+    "workoutGoal": "지구력",
+    "workoutTarget": ["복근 및 코어", "둔근 및 다리"],
+    "workoutDescription": "인터벌 전문가가 아니라고요? 이 운동은 자신의 운동 자각도 (스스로 얼마나 열심히 운동 중인지 체감하는 정도)를 이해할 수 있도록 도와주어 운동과 휴식 비율을 더 잘 관리할 수 있게 해줍니다."
+  },
+  {
+    "workoutName": "10분 HIT: 지구력 트레이닝 기초",
+    "workoutcourse": "초급",
+    "workoutGoal": "지구력",
+    "workoutTarget": ["팔 및 어깨", "복근 및 코어", "둔근 및 다리"],
+    "workoutDescription": "지구력을 강화하고 싶다고 해서 1시간 동안 땀 흘릴 필요는 없습니다. 10분 동안 진행되는 이 세션만으로 심박수를 올리고 심폐 체력을 단련하세요. "
+  },
+  {
+    "workoutName": "10분 바디웨이트 버닝: 저강도 활성화",
+    "workoutcourse": "초급",
+    "workoutGoal": "지구력",
+    "workoutTarget": ["복근 및 코어", "둔근 및 다리"],
+    "workoutDescription": "침대에서 이제 막 일어났든 장시간 앉아 있었든, '몸을 좀 움직여야겠어' 라는 생각이 드는 순간 이 간단한 세션을 바로 실행해보세요. 이 세션은 운동 전에 주요 근육근을 사용하고 순환을 증진하기 위한 워밍업으로 활용하거나 온종일 더 활기차게 움직일 수 있도록 해주는 아침 습관으로 활용할 수 있습니다. "
+  },
+  {
+    "workoutName": "10분 HIT: 복근",
+    "workoutcourse": "초급",
+    "workoutGoal": "지구력",
+    "workoutTarget": ["복근 및 코어"],
+    "workoutDescription": "빠르고 활력 넘치는 이 운동은 모든 코어 근육을 빠짐없이 공략합니다. 포기하고 싶은 마음이 들기도 전에 초급 눈높이에 맞춘 단시간의 강도 높은 인터벌을 힘차게 주파하게 될 겁니다. 최선의 노력을 보여준다면 A+라는 결과는 따놓은 당상입니다."
+  },
+  {
+    "workoutName": "10분 HIT: 파워 트레이닝 기초",
+    "workoutcourse": "초급",
+    "workoutGoal": "지구력",
+    "workoutTarget": ["팔 및 어깨", "복근 및 코어", "둔근 및 다리"],
+    "workoutDescription": "근력에 스피드가 더해지면 파워가 완성됩니다. 필요한 근육군에 모두 강한 에너지를 발산하게 만드는 운동으로 파워를 단련해 보세요. "
+  },
+  {
+    "workoutName": "12분 팔 및 복근",
+    "workoutcourse": "초급",
+    "workoutGoal": "지구력",
+    "workoutTarget": ["팔 및 어깨", "복근 및 코어"],
+    "workoutDescription": "휴식 시간을 짧게 유지하면 단순해 보이는 동작들로도 추가 유산소 운동 효과를 누릴 수 있습니다. 훈련 간 빠르게 움직임을 전환 할 수 있도록 덤벨을 준비해 두세요."
+  },
+  {
+    "workoutName": "스트레이트 업 복근",
+    "workoutcourse": "초급",
+    "workoutGoal": "지구력",
+    "workoutTarget": ["복근 및 코어"],
+    "workoutDescription": "러닝 동작을 하는 동안 코어 움직임을 극대화 할 수 있도록 코어에 힘을 주고 상체를 쭉 펴세요. 무릎 동작과 팔 스윙을 부드럽고 유연하게 하도록 노력해보세요. "
+  },
+  {
+    "workoutName": "스피디한 코어 서킷",
+    "workoutcourse": "초급",
+    "workoutGoal": "지구력",
+    "workoutTarget": ["복근 및 코어"],
+    "workoutDescription": "바닥에서부터 빠르게 일어서는 동작을 연결하면 코어 안정성을 키우는 데 도움이 됩니다. 일어나는 동안 자세가 흐트러지지 않도록 복근에 힘을 줘야 한다는 점을 잊지 마세요. "
+  },
+  {
+    "workoutName": "10분 요가: 러너를 위한 플로우",
+    "workoutcourse": "초급",
+    "workoutGoal": "지구력",
+    "workoutTarget": ["복근 및 코어"],
+    "workoutDescription": "러닝을 정말 사랑한다면 몸을 혹사시키지 마세요. 이 짧은 시퀀스는 뻣뻣한 고관절을 열어주고, 피곤한 다리를 스트레칭 해주며, 끊임없이 뭔가 해야 한다고 생각하는 몸과 마음에 잠시 휴식을 선사해 줄 거에요. "
+  },
+  {
+    "workoutName": "날씬한 다리 만들기 2.0",
+    "workoutcourse": "중급",
+    "workoutGoal": "지구력",
+    "workoutTarget": ["둔근 및 다리"],
+    "workoutDescription": "매끈한 다리라인을 잡아주기 위한 운동입니다. 덤벨 운동 중에는 올바른 정확한 자세로 하고,플라이오메트릭 동작 시에는 최대한 폭발적으로 몸에 힘을 실으세요. "
+  },
+  {
+    "workoutName": "놀라운 스피드",
+    "workoutcourse": "중급",
+    "workoutGoal": "지구력",
+    "workoutTarget": ["둔근 및 다리"],
+    "workoutDescription": "세계 최고의 축구 클럽에서는 신체적으로나 정신적으로나 더 빨라지기 위한 훈련을 합니다. 이 운동은 빠른 발놀림과 순발력, 가속력, 민첩성 향상에 도움이 됩니다. "
+  },
+  {
+    "workoutName": "둔근 집중 운동",
+    "workoutcourse": "중급",
+    "workoutGoal": "지구력",
+    "workoutTarget": ["둔근 및 다리"],
+    "workoutDescription": "둔근과 허벅지 뒤쪽 근육에 집중합니다. 동작은 천천히 정확하게 실시하며, 복근에 계속해서 힘을 줍니다."
+  },
+
+  {
+    "workoutName": "둔근 라인 잡기",
+    "workoutCourse": "중급",
+    "workoutGoal": "지구력",
+    "workoutTarget": ["둔근 및 다리"],
+    "workoutDescription": "스쿼트 점프 180의 경우 어깨와 엉덩이가 일직선이 되도록 유지한 상태에서 부드럽게 착지하는 운동입니다. 그렇기 때문에 스피드보다 컨트롤이 훨씬 더 중요합니다."
+  },
+  {
+    "workoutName": "메타볼릭 킥 히트",
+    "workoutCourse": "중급",
+    "workoutGoal": "지구력",
+    "workoutTarget": ["팔 및 어깨", "복근 및 코어", "둔근 및 다리"],
+    "workoutDescription": "코트 위에서는 격한 움직임 속에서 살아 남아야 합니다. 이 운동은 움직이는 힘과 함께 근력 및 스피드 향상에 주력합니다."
+  },
+  {
+    "workoutName": "바캉스 대비",
+    "workoutCourse": "중급",
+    "workoutGoal": "지구력",
+    "workoutTarget": ["팔 및 어깨", "복근 및 코어", "둔근 및 다리"],
+    "workoutDescription": "파트너와 함께하는 운동은 서로 더 열심히 하도록 동기를 부여하며, 재미도 있습니다. 이 코어 및 다리 운동을 두 사람이 함께 하다록 설계되었습니다."
+  },
+  {
+    "workoutName": "완벽한 균형",
+    "workoutCourse": "중급",
+    "workoutGoal": "지구력",
+    "workoutTarget": ["복근 및 코어", "둔근 및 다리"],
+    "workoutDescription": "놓치기 쉬운 작은 근육까지 이용해 코어, 엉덩이와 둔근을 군살 없이 탄력있게 가꾸어 줍니다."
+  },
+  {
+    "workoutName": "해변의 각선미",
+    "workoutCourse": "초급",
+    "workoutGoal": "지구력",
+    "workoutTarget": ["복근 및 코어", "둔근 및 다리"],
+    "workoutDescription": "알찬 15분 운동입니다. 다리와 코어를 단련하고, 탄력있고 매끄러운 라인을 가꾸면서 퍼포먼스도 높일 수 있습니다."
+  },
+  {
+    "workoutName": "골 게터",
+    "workoutCourse": "중급",
+    "workoutGoal": "지구력",
+    "workoutTarget": ["복근 및 코어", "둔근 및 다리"],
+    "workoutDescription": "90분 풀타임 축구경기를 뛰려면 튼튼한 다리와 코어 근육이 필수입니다. 축구에서 영감을 받은 이 운동은 다리의 탄력을 강화하고 신진대사를 촉진시킵니다."
+  },
+  {
+    "workoutName": "20분 HIT: 상체 근력",
+    "workoutCourse": "중급",
+    "workoutGoal": "지구력",
+    "workoutTarget": ["팔 및 어깨"],
+    "workoutDescription": "팔 운동을 하면서 엄청난 효과의 유산소 운동을 할 수 있답니다. 20분간 진행되는 이 운동으로 효과를 체감해 보세요."
+  },
+  {
+    "workoutName": "복서 코어",
+    "workoutCourse": "중급",
+    "workoutGoal": "지구력",
+    "workoutTarget": ["복근 및 코어"],
+    "workoutDescription": "강력한 펀치의 비밀은 젖먹던 힘을 다해 움직이는 것입니다. 이를 위해서는 코어를 통해 하체와 상체를 연결하는 데 집중해야 합니다."
+  },
+  {
+    "workoutName": "완벽한 복근 만들기",
+    "workoutCourse": "초급",
+    "workoutGoal": "지구력",
+    "workoutTarget": ["팔 및 어깨", "복근 및 코어"],
+    "workoutDescription": "필드 밖에서 하는 트레이닝도 필드 내 기술만큼이나 중요하다고 생각해요."
+  },
+  {
+    "workoutName": "카디오 킥",
+    "workoutCourse": "초급",
+    "workoutGoal": "지구력",
+    "workoutTarget": ["복근 및 코어", "둔근 및 다리"],
+    "workoutDescription": "유산소 운동이 반드시 강도가 높고 충격이 강해야만 효과적인 것은 아닙니다. 관절에 부담을 주지 않으면서 심박수를 높여주는 이 동작들로 지구력을 테스트해 보세요."
+  },
+  {
+    "workoutName": "퀵 히트 하체",
+    "workoutCourse": "초급",
+    "workoutGoal": "지구력",
+    "workoutTarget": ["둔근 및 다리"],
+    "workoutDescription": "최고의 자리에 오른 비결은 바로 트레이닝과 휴식의 올바른 밸런스죠."
+  },
+  {
+    "workoutName": "20분 바디웨이트 버닝 : AMRAP 기초",
+    "workoutCourse": "초급",
+    "workoutGoal": "지구력",
+    "workoutTarget": ["복근 및 코어", "둔근 및 다리"],
+    "workoutDescription": "이 세션에서는 각 운동을 최대한 여러 번 반복하게 됩니다. 보상이요? 강해진 체력과 정신력이랍니다."
+  },
+  {
+    "workoutName": "20분 HIT : 다리",
+    "workoutCourse": "초급",
+    "workoutGoal": "지구력",
+    "workoutTarget": ["둔근 및 다리"],
+    "workoutDescription": "이 고강도 다리 운동으로 자신을 끝까지 밀어붙여보세요. 빠르고 역동적인 동작과 집중력을 발휘해야 하는 균형 동작을 번갈아 진행합니다."
+  },
+  {
+    "workoutName": "20분 HIT : 템포 트레이닝 기초",
+    "workoutCourse": "초급",
+    "workoutGoal": "지구력",
+    "workoutTarget": ["팔 및 어깨", "복근 및 코어", "둔근 및 다리"],
+    "workoutDescription": "동작 각 부분의 시간을 조절하는 이 효율적인 테크닉을 통해 파우와 민첩성을 한층 더 강화해 보세요. 새로운 기분으로 운동을 할 수 있고 효과도 톡톡히 볼 수 있는 재미있는 방법입니다."
+  },
+  {
+    "workoutName": "강인한 여름",
+    "workoutCourse": "중급",
+    "workoutGoal": "지구력",
+    "workoutTarget": ["팔 및 어깨", "복근 및 코어", "둔근 및 다리"],
+    "workoutDescription": "축구는 폭발적인 스피드를 필요로 합니다. 이 운동은 전신을 움직여 다리와 코어 근육을 강화해 주고 더욱 빠른 움직임을 구사할 수 있도록 도와줍니다."
+  },
+  {
+    "workoutName": "스피드 질주",
+    "workoutCourse": "중급",
+    "workoutGoal": "지구력",
+    "workoutTarget": ["복근 및 코어", "둔근 및 다리"],
+    "workoutDescription": "첫 번쨰는 스피드입니다. 점프할 때마다 순간의 힘을 증폭시키면서 신중하게 움직여 최고의 효과를 얻어보세요."
+  },
+  {
+    "workoutName": "코어 종합 세트",
+    "workoutCourse": "고급",
+    "workoutGoal": "지구력",
+    "workoutTarget": ["팔 및 어깨", "복근 및 코어", "둔근 및 다리"],
+    "workoutDescription": "다양한 코어 동작으로 구성된 지구력 운동입니다. 플랭크 자세에는 최대한 복근에 힘을주며 반드시 숨을 내쉽니다."
+  },
+  {
+    "workoutName": "크런치 및 체지방 태우기 2.0",
+    "workoutCourse": "고급",
+    "workoutGoal": "지구력",
+    "workoutTarget": ["팔 및 어깨", "복근 및 코어", "둔근 및 다리"],
+    "workoutDescription": "색다른 동작으로 구성된 전신 운동입니다. 정확한 자세로 하며 동작에 힘을 주어 올바르게 움직입니다."
+  },
+  {
+    "workoutName": "전신 고강도 운동",
+    "workoutCourse": "중급",
+    "workoutGoal": "지구력",
+    "workoutTarget": ["팔 및 어깨", "복근 및 코어", "둔근 및 다리"],
+    "workoutDescription": "심박수를 높이는 운동을 계속하고 싶다면 민첩성 운동을 통해 페이스를 올려보세요. '삐' 소리를 출발을 알리는 총소리로 생각하고 곧은 자세를 유지하고 힘차게 시작해 보세요."
+  },
+  {
+    "workoutName": "상체 몸매 관리",
+    "workoutCourse": "중급",
+    "workoutGoal": "지구력",
+    "workoutTarget": ["팔 및 어깨"],
+    "workoutDescription": "덤벨 스내치의 첫 번째 세트에서 자세를 배운 후 각 세트를 시도하는 횟수를 늘리면서 강도를 점점 더 높여보세요."
+  },
+  {
+    "workoutName": "사무실에서의 7분 전신 디톡스",
+    "workoutCourse": "초급",
+    "workoutGoal": "활동성",
+    "workoutTarget": ["둔근 및 다리", "팔 및 어깨"],
+    "workoutDescription": "7분 동안 이어지는 세션으로 땀 흘릴 필요 없이 운동 해 보세요."
+  },
+  {
+    "workoutName": "간단하게 아침을 깨우는 플로우",
+    "workoutCourse": "초급",
+    "workoutGoal": "활동성",
+    "workoutTarget": ["둔근 및 다리", "팔 및 어깨"],
+    "workoutDescription": "팔을 쭉 뻗을 때 마다 팔의 모든 근육을 깨워 손끝에서 샘솟는 에너지를 느껴보세요."
+  },
+  {
+    "workoutName": "러닝 쿨다운",
+    "workoutCourse": "초급",
+    "workoutGoal": "활동성",
+    "workoutTarget": ["둔근 및 다리"],
+    "workoutDescription": "러닝 또는 운동 후 근육이 이완되는 시기는 스트레칭으로 유연성을 높일 수 있는 절호의 기회입니다."
+  },
+  {
+    "workoutName": "하루를 편안하게 마감하는 플로우",
+    "workoutCourse": "초급",
+    "workoutGoal": "활동성",
+    "workoutTarget": ["둔근 및 다리"],
+    "workoutDescription": "오늘 가능한 가동 범위 내에서 움직이세요."
+  },
+  {
+    "workoutName": "10분 요가: 러너를 위한 회복 시퀀스",
+    "workoutCourse": "초급",
+    "workoutGoal": "활동성",
+    "workoutTarget": ["둔근 및 다리"],
+    "workoutDescription": "엉덩이 굴곡근, 햄스트링과 발을 완전히 풀어주는 동작으로 애정을 담아 관리해 주면 다음에 러닝할 때 더 힘차게 달릴 수 있습니다."
+  },
+  {
+    "workoutName": "선셋 스트레칭",
+    "workoutCourse": "초급",
+    "workoutGoal": "활동성",
+    "workoutTarget": ["둔근 및 다리", "팔 및 어깨", "복근 및 코어"],
+    "workoutDescription": "스트레칭을 하면서 숨을 들이마시는 시간보다 내쉬는 시간을 더 길게 해 보세요."
+  },
+  {
+    "workoutName": "웨이크업 워밍업",
+    "workoutCourse": "초급",
+    "workoutGoal": "활동성",
+    "workoutTarget": ["팔 및 어깨", "둔근 및 다리"],
+    "workoutDescription": "신체의 긴장을 풀고 가장 필요한 신체 부위에 공간을 만들어 줍니다."
+  },
+  {
+    "workoutName": "10분 요가: 바른 자세 만들기",
+    "workoutCourse": "초급",
+    "workoutGoal": "활동성",
+    "workoutTarget": ["팔 및 어깨", "복근 및 코어"],
+    "workoutDescription": "짐 안팎에서 바른 자세를 원할 경우, 이 스트레칭 세션만 있다면 더 이상 고민할 필요가 없습니다/"
+  },
+  {
+    "workoutName": "10분 요가: 코어 플로우",
+    "workoutCourse": "초급",
+    "workoutGoal": "활동성",
+    "workoutTarget": ["복근 및 코어"],
+    "workoutDescription": "이 요가 플로우를 통해 최상의 방법으로 코어 근육을 집중 단련할 수 있습니다."
+  },
+  {
+    "workoutName": "10분 요가: 상체 빈야사",
+    "workoutCourse": "초급",
+    "workoutGoal": "활동성",
+    "workoutTarget": ["복근 및 코어", " 팔 및 어깨"],
+    "workoutDescription": "여러 가지 동작 패턴으로 구성된 완전한 상체 운동으로 등 윗부분과 어깨 운동을 골고루 해 보세요."
+  },
+  {
+    "workoutName": "전신에 생기를 불어넣는 플로우",
+    "workoutCourse": "초급",
+    "workoutGoal": "활동성",
+    "workoutTarget": ["둔근 및 다리", "팔 및 어깨"],
+    "workoutDescription": "러너 린지와 도마뱀 자세에서 숨을 깊게 쉬어 골반의 긴장을 풀어주세요."
+  },
+  {
+    "workoutName": "활기찬 워밍업 플로우",
+    "workoutCourse": "초급",
+    "workoutGoal": "활동성",
+    "workoutTarget": ["팔 및 어깨", "둔근 및 다리", "복근 및 코어"],
+    "workoutDescription": "각 자세마다 코어 근육을 이용해 좀 더 힘을 주어 보세요."
+  },
+  {
+    "workoutName": "간편한 가동성 회복 운동",
+    "workoutCourse": "초급",
+    "workoutGoal": "활동성",
+    "workoutTarget": ["둔근 및 다리", "복근 및 코어", "팔 및 어깨"],
+    "workoutDescription": "컴퓨터 앞에, 출퇴근길에, 소파에 장시간 앉아 있으면 골반, 어깨, 척추가 뻣뻣해집니다."
+  },
+  {
+    "workoutName": "10분 요가; 하체 회복 시퀀스",
+    "workoutCourse": "초급",
+    "workoutGoal": "활동성",
+    "workoutTarget": ["둔근 및 다리", "복근 및 코어", "팔 및 어깨"],
+    "workoutDescription": "허리와 골반은 오래 앉아 있는 자세 때문에 굳어질 뿐만 아니라 정서적 스트레스로 인한 긴장감이 쌓이는 신체 부위이기도 합니다."
+  },
+  {
+    "workoutName": "체지방 불태우기",
+    "workoutCourse": "초급",
+    "workoutGoal": "활동성",
+    "workoutTarget": ["둔근 및 다리", "복근 및 코어"],
+    "workoutDescription": "골반과 척추를 이완시켜주는 운동입니다."
+  },
+  {
+    "workoutName": "머리부터 발끝까지",
+    "workoutCourse": "초급",
+    "workoutGoal": "활동성",
+    "workoutTarget": ["둔근 및 다리", "복근 및 코어"],
+    "workoutDescription": "전신을 탄탄하게 잡아주는 운동입니다."
+  },
+  {
+    "workoutName": "런지 집중 운동",
+    "workoutCourse": "중급",
+    "workoutGoal": "활동성",
+    "workoutTarget": ["둔근 및 다리", "복근 및 코어"],
+    "workoutDescription": "다리 근육 강화를 위한 운동입니다."
+  },
+  {
+    "workoutName": "거침없이 플랭크",
+    "workoutCourse": "초급",
+    "workoutGoal": "활동성",
+    "workoutTarget": ["팔 및 어깨", "복근 및 코어"],
+    "workoutDescription": "각각의 세트를 거듭할수록 플랭크 유지 시간이 길어집니다."
+  },
+  {
+    "workoutName": "왕초보 다이어트 챌린지",
+    "workoutCourse": "초급",
+    "workoutGoal": "활동성",
+    "workoutTarget": ["팔 및 어깨", "복근 및 코어"],
+    "workoutDescription": "혼자서 다이어트, 어디서부터 어떻게 시작해야 하는지 알려드립니다."
+  },
+  {
+    "workoutName": "리치 앤 리차지",
+    "workoutCourse": "초급",
+    "workoutGoal": "활동성",
+    "workoutTarget": ["복근 및 코어"],
+    "workoutDescription": "골반을 열어주는 것부터 코어 근육을 강화해줍니다."
+  },
+  {
+    "workoutName": "30분 요가: 저녁 이완",
+    "workoutCourse": "초급",
+    "workoutGoal": "활동성",
+    "workoutTarget": ["복근 및 코어"],
+    "workoutDescription": "긴장이 가장 많이 들어가는 신체 부위의 이완을 돕는 자세들입니다."
+  },
+  {
+    "workoutName": "모닝콜",
+    "workoutCourse": "초급",
+    "workoutGoal": "활동성",
+    "workoutTarget": ["둔근 및 다리"],
+    "workoutDescription": "자연으로부터 영감을 받은 이 운도은 코어부터 전신까지 단련시킵니다."
+  },
+  {
+    "workoutName": "20분 요가: 에너지를 채워주는 빈야사",
+    "workoutCourse": "중급",
+    "workoutGoal": "활동성",
+    "workoutTarget": ["복근 및 코어"],
+    "workoutDescription": "코어 운동과 태양 경배 자세, 빠른 박자의 동작으로 완성됩니다."
+  },
+  {
+    "workoutName": "20분 요가: 가슴을 열어주는 빈야사",
+    "workoutCourse": "중급",
+    "workoutGoal": "활동성",
+    "workoutTarget": ["복근 및 코어"],
+    "workoutDescription": "척추를 길게 늘여주는 동작을 통해 가슴부터 몸, 마음과 영혼을 크게 넓혀줍니다."
+  },
+  {
+    "workoutName": "20분 요가: 빈야사 플로우",
+    "workoutCourse": "초급",
+    "workoutGoal": "활동성",
+    "workoutTarget": ["복근 및 코어"],
+    "workoutDescription": "한 동작에 한 호흡씩 플로우를 이어가고 고관절을 열어주는 자세를 유지하세요."
+  },
+  {
+    "workoutName": "20분 요가: 기분이 좋아지는 플로우",
+    "workoutCourse": "중급",
+    "workoutGoal": "활동성",
+    "workoutTarget": ["복근 및 코어"],
+    "workoutDescription": "이 세션은 진정한 흐름을 느낄 수 있는 플로우입니다."
+  },
+  {
+    "workoutName": "요가 준비",
+    "workoutCourse": "초급",
+    "workoutGoal": "활동성",
+    "workoutTarget": ["복근 및 코어"],
+    "workoutDescription": "이 세션은 관절의 가동 범위를 늘리는 데 도움이 됩니다."
+  },
+  {
+    "workoutName": "한 번에 한 다리",
+    "workoutCourse": "초급",
+    "workoutGoal": "활동성",
+    "workoutTarget": ["둔근 및 다리"],
+    "workoutDescription": "하체를 집중 단련하여 근력과 안정성을 강화하는 운동입니다."
+  },
+  {
+    "workoutName": "간단한 쿨다운 플로우",
+    "workoutCourse": "초급",
+    "workoutGoal": "활동성",
+    "workoutTarget": ["둔근 및 다리", "팔 및 어깨"],
+    "workoutDescription": "비둘기 동작으로 활력을 충전하세요."
+  },
+  {
+    "workoutName": "탄력 집중",
+    "workoutCourse": "중급",
+    "workoutGoal": "활동성",
+    "workoutTarget": ["둔근 및 다리", "복근 및 코어"],
+    "workoutDescription": "골반과 어깨를 천천히 이완하고 크게 움직입니다."
+  },
+  {
+    "workoutName": "유연성 기르기",
+    "workoutCourse": "초급",
+    "workoutGoal": "활동성",
+    "workoutTarget": ["둔근 및 다리", "복근 및 코어", "팔 및 어깨"],
+    "workoutDescription": "근력 강화와 움직입 개선을 위한 운동입니다."
+  },
+  {
+    "workoutName": "신진대사 깨우기",
+    "workoutCourse": "초급",
+    "workoutGoal": "활동성",
+    "workoutTarget": ["복근 및 코어"],
+    "workoutDescription": "각 동작에 사용되는 근육만 사용하도록 집중합니다."
+  },
+  {
+    "workoutName": "관절 회전 운동",
+    "workoutCourse": "초급",
+    "workoutGoal": "활동성",
+    "workoutTarget": ["둔근 및 다리"],
+    "workoutDescription": "관절의 가동 범위를 늘이는 데 도움을 주는 세션입니다."
+  },
+  {
+    "workoutName": "관절 유연성 기르기",
+    "workoutCourse": "초급",
+    "workoutGoal": "활동성",
+    "workoutTarget": ["둔근 및 다리", "팔 및 어깨"],
+    "workoutDescription": "고관절을 이완시켜 관절의 유연성을 높이는 기술적인 동작입니다."
+  },
+  {
+    "workoutName": "관절 강화",
+    "workoutCourse": "초급",
+    "workoutGoal": "활동성",
+    "workoutTarget": ["둔근 및 다리"],
+    "workoutDescription": "운동을 반복할수록 골반의 가동 범위가 점점 늘어나는 것을 느끼게 될 겁니다."
+  }
+]
