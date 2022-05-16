@@ -19,8 +19,6 @@ export default function BoardMain({navigation}) {
 
     return(
     <View>
-        <Text>게시판 메인 페이지</Text>
-
         {/* 사진 슬라이더 */}
         <SliderBox
             images={[
