@@ -36,6 +36,31 @@ const Register = ({ navigation }) => {
   const [weightError, setWeightError] = useState("");
 
   console.log(id);
+
+  const register = () => {
+    const _url = "http://192.168.0.6:8282/register.act";
+
+    fetch(_url, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        id,
+        pw,
+        pwConfirm,
+        email,
+        name,
+        tel,
+        height,
+        weight,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => console.log(data));
+  };
+
   const onChangeId = (text) => {
     const idRegex = /^[A-Za-z]{1}[A-Za-z0-9_-]{3,19}$/;
     if (!idRegex.test(text)) {
@@ -216,6 +241,7 @@ const Register = ({ navigation }) => {
 
           <TextInput
             style={styles.input}
+            value={height}
             returnKeyType="next"
             onChangeText={(text) => onChangeHeight(text)}
             placeholder={"키를 입력해주세요."}
@@ -225,6 +251,7 @@ const Register = ({ navigation }) => {
 
           <TextInput
             style={styles.input}
+            value={weight}
             returnKeyType="next"
             onChangeText={(text) => onChangeWeight(text)}
             placeholder={"몸무게를 입력해주세요."}
@@ -232,7 +259,20 @@ const Register = ({ navigation }) => {
           {!weightCheck && <Text style={{ color: "red" }}>{weightError}</Text>}
 
           <View style={styles.BtnBox}>
-            <RegisterButton />
+            {/* 가입버튼 */}
+            <TouchableOpacity
+              style={{
+                backgroundColor: "black",
+                padding: 10,
+                margin: 10,
+                borderRadius: 10,
+                width: 100,
+                alignItems: "center",
+              }}
+              onPress={register}
+            >
+              <Text style={{ fontSize: 18, color: "white" }}>가입</Text>
+            </TouchableOpacity>
             <TouchableOpacity
               style={{
                 backgroundColor: "#c44569",

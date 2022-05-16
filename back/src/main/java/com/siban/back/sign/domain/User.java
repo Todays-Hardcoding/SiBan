@@ -14,31 +14,41 @@ import javax.validation.constraints.NotNull;
 import lombok.Builder;
 import lombok.Data;
 
+
 @Data
 @Entity
 public class User {
-
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long userCode;
-	
-	@NotNull
-	@Column	
-	private  String userId;
+
 	@NotNull
 	@Column
-	private  String userPassword;
+	private String userId;
+	@NotNull
+	@Column
+	private String userPassword;
+	@NotNull
+	@Column
+	private String userEmail;
+	@NotNull
+	@Column
+	private String userName;
+	@NotNull
+	@Column
+	private String userTel;
+	@NotNull
+	@Column
+	private String userHeight;
 
-
+	@NotNull
+	@Column
+	private String userWeight;
 	private LocalDateTime userRegDate;
-	
+
 	@PrePersist
 	public void createDate() {
 		this.userRegDate = LocalDateTime.now();
 	}
-
-	
-
-
 
 }
