@@ -6,6 +6,7 @@ import FNA from "../screens/MyBoard/FNA";
 import QNA from "../screens/MyBoard/QNA";
 import BoardMain from "../screens/MyBoard/BoardMain";
 import ChallengeDetail from "../screens/MyBoard/ChallengeDetail";
+import QNADetail from "../screens/MyBoard/QNADetail";
 
 const Tab = createMaterialTopTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -20,9 +21,9 @@ const ServiceCenter = () => {
         options={{ tabBarLabel: "1:1 문의" }}
       />
       <Tab.Screen
-        name="QNAList"
-        component={QNAList}
-        options={{ tabBarLabel: "문의내역" }}
+        name="QNADetail"
+        component={QNADetail}
+        options={{ tabBarLabel: "디테일임시" }}
       />
     </Tab.Navigator>
   );
