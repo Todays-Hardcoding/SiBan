@@ -16,8 +16,8 @@ import lombok.Data;
 @Data
 @Entity
 public class Reply {
-	private User user;
-	private Post post;
+//	private User user;
+//	private Post post;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
