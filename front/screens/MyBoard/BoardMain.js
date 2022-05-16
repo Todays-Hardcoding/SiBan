@@ -44,22 +44,40 @@ export default function BoardMain({ navigation }) {
     <ScrollView>
       <Text>게시판 메인 페이지</Text>
 
-      {/* 사진 슬라이더 */}
-      <SliderBox
-        images={[
-          "https://source.unsplash.com/1024x768/?nature",
-          "https://source.unsplash.com/1024x768/?water",
-          "https://source.unsplash.com/1024x768/?girl",
-          "https://source.unsplash.com/1024x768/?tree",
-        ]}
-      />
+    return(
+    <View>
+        {/* 사진 슬라이더 */}
+        <SliderBox
+            images={[
+              "https://source.unsplash.com/1024x768/?nature",
+              "https://source.unsplash.com/1024x768/?water",
+              "https://source.unsplash.com/1024x768/?girl",
+              "https://source.unsplash.com/1024x768/?tree",
+            ]}/>
 
-      {/* 주간 챌린지 리스트 */}
-      <FlatGrid
-        itemDimension={windowWidth * 0.9}
-        data={challenges}
-        spacing={10}
-        renderItem={({ item }) => (
+        {/* 주간 챌린지 리스트 */}
+        <FlatGrid
+            itemDimension={windowWidth * 0.9}
+            data={challenges}
+            spacing={10}
+            renderItem={({ item }) => (
+              <TouchableOpacity
+              onPress={() => {
+                navigation.navigate("ChallengeDetailNav", { screen: "ChallengeDetail" });
+              }}>
+                {/* 챌린지 이미지 넣어야함! */}
+                <Image></Image>
+                <View style={styles.itemContainer}>
+                  <Text style={styles.itemName}>{item.name}</Text>
+                  <Text style={styles.itemdetail}>{item.detail}</Text>
+                  <Text style={styles.itemdetail}>{item.dueDate}일 남았습니다.</Text>
+                </View>
+              </TouchableOpacity>
+            )}
+        />
+
+        {/* 고객센터 버튼 (임시) */}
+        <View style={styles.container}>
           <TouchableOpacity
             onPress={() => {
               navigation.navigate("ChallengeDetailNav", {
