@@ -1,16 +1,11 @@
 import React from "react";
-
 import {
-  Text,
-  View,
-  TextInput,
-  StyleSheet,
-  TouchableOpacity,
+  StyleSheet, Text, TextInput, TouchableOpacity, View
 } from "react-native";
-
-import NaverButton from "../../components/NaverButton";
 import LoginButton from "../../components/LoginButton";
-import { NavigationContainer } from "@react-navigation/native";
+import NaverButton from "../../components/NaverButton";
+
+
 
 const Login = ({ navigation }) => {
   //const onChangeId = (e) => { console.log(e.target.value); }

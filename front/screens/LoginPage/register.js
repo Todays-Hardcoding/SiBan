@@ -1,10 +1,9 @@
 import React, { useState } from "react";
-import { Text, View, TextInput, StyleSheet } from "react-native";
-
+import { StyleSheet, Text, TextInput, View } from "react-native";
+import { TouchableOpacity } from "react-native-gesture-handler";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import RegisterButton from "../../components/RegisterButton";
-import CancelButton from "../../components/CancelButton";
-import { TouchableOpacity } from "react-native-gesture-handler";
+
 
 const Register = ({ navigation }) => {
   //아이디,비번,이메일,전화번호

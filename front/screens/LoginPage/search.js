@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, View, Button, TextInput } from "react-native";
+import { Button, Text, TextInput, View } from "react-native";
 
 const Search = () => {
   return (

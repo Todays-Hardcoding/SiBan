@@ -1,17 +1,5 @@
 import React from "react";
-
-import {
-  Text,
-  View,
-  TextInput,
-  StyleSheet,
-  TouchableOpacity,
-} from "react-native";
-
-import NaverButton from "../../components/NaverButton";
-import LoginButton from "../../components/LoginButton";
-import { NavigationContainer } from "@react-navigation/native";
-import { conv2dDerFilter } from "@tensorflow/tfjs/node_modules/@tensorflow/tfjs-core/dist/ops/conv";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 const LoginHome = ({ navigation }) => {
   //const onChangeId = (e) => { console.log(e.target.value); }
