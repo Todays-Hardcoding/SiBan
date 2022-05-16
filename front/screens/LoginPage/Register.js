@@ -315,7 +315,6 @@ const Register = ({ navigation }) => {
           <TextInput
             style={styles.input}
             value={height}
-            value={height}
             returnKeyType="next"
             onChangeText={(text) => onChangeHeight(text)}
             placeholder={"키를 입력해주세요."}
@@ -327,7 +326,6 @@ const Register = ({ navigation }) => {
             style={styles.input}
             value={weight}
             returnKeyType="next"
-            value={weight}
             onChangeText={(text) => onChangeWeight(text)}
             placeholder={"몸무게를 입력해주세요."}
           />
