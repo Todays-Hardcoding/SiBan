@@ -27,23 +27,23 @@ public class User {
 	private String userId;
 	@NotNull
 	@Column
-	private String userPassword;
+	private  String userPassword;
 	@NotNull
 	@Column
-	private String userEmail;
+	private  String userEmail;
 	@NotNull
 	@Column
-	private String userName;
+	private  String userName;
 	@NotNull
 	@Column
-	private String userTel;
+	private  String userTel;
 	@NotNull
 	@Column
-	private String userHeight;
+	private  String userHeight;
 
 	@NotNull
 	@Column
-	private String userWeight;
+	private  String userWeight;
 	private LocalDateTime userRegDate;
 
 	@PrePersist

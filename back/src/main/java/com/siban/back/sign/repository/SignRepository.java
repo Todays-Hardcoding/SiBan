@@ -8,4 +8,5 @@ import com.siban.back.sign.domain.User;
 @Repository
 public interface SignRepository extends JpaRepository<User, Long>{
 
+	
 }

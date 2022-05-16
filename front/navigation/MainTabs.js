@@ -6,7 +6,6 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { Ionicons, FontAwesome5, Entypo } from "@expo/vector-icons";
 
 // 페이지 관련 import
-import Home from "../screens/Home";
 import MyPageNav from "../navigation/MyPageNav";
 import WorkoutsNav from "./WorkoutsNav";
 import MyBoardNav from "./MyBoardNav";

@@ -13,13 +13,36 @@ const windowWidth = Dimensions.get("window").width;
 
 const QNA = () => {
   const [open, setOpen] = useState(false);
-  const [value, setValue] = useState(null);
+
+  const [categoriValue, setCategoriValue] = useState(null);
+  const [title, setTitle] = useState(null);
+  const [content, setContent] = useState(null);
+
   const [items, setItems] = useState([
     { label: "이용 문의", value: "이용 문의" },
     { label: "이벤트 문의", value: "이벤트 문의" },
     { label: "오류 신고", value: "오류 신고" },
     { label: "기타 문의", value: "기타 문의" },
   ]);
+
+  const postBoard = () => {
+    const _url = "http://192.168.242.2:8282/insertInquiry.act"
+
+    fetch(_url, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        categoriValue,
+        title,
+        content,
+      }),
+    })
+    .then((response) => response.json())
+    .then((data) => console.log(data));
+  };
 
   return (
     <ScrollView>
@@ -29,10 +52,10 @@ const QNA = () => {
           style={styles.category}
           placeholder="상세 분류"
           open={open}
-          value={value}
+          value={categoriValue}
           items={items}
           setOpen={setOpen}
-          setValue={setValue}
+          setValue={setCategoriValue}
           setItems={setItems}
           containerStyle={{ alignItems: "center" }}
           dropDownContainerStyle={{ width: windowWidth * 0.9 }}
@@ -40,11 +63,18 @@ const QNA = () => {
 
         {/* textbox */}
         <View>
-          <TextInput style={styles.input} placeholder="제목" />
+          <TextInput 
+            style={styles.input}
+            placeholder="제목"
+            value={title}
+            onChangeText={(text) => setTitle(text)} 
+           />
           <TextInput
             style={styles.content}
             placeholder="내용을 입력해주세요."
             multiline={true}
+            value={content}
+            onChangeText={(text) => setContent(text)}
           />
         </View>
 
@@ -53,7 +83,10 @@ const QNA = () => {
           <TouchableOpacity style={styles.submit}>
             <Text style={styles.buttonText}>취소</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.cancel}>
+          <TouchableOpacity 
+          style={styles.cancel}
+          onPress={postBoard}
+          >
             <Text style={styles.buttonText}>제출</Text>
           </TouchableOpacity>
         </View>
