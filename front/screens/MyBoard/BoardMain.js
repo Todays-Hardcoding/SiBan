@@ -1,21 +1,48 @@
 import React from "react";
-import { StyleSheet, Text, View, TouchableOpacity, Image, Button, Alert, ScrollView } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  Image,
+  Button,
+  Alert,
+  ScrollView,
+} from "react-native";
 import { Dimensions } from "react-native";
-import { SliderBox } from "react-native-image-slider-box"
+import { SliderBox } from "react-native-image-slider-box";
 import { FlatGrid } from "react-native-super-grid";
 
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 
+export default function BoardMain({ navigation }) {
+  const [challenges, setchallenges] = React.useState([
+    {
+      name: "5월 주간 챌린지",
+      detail: "이번 주에 10km을 달려보세요.",
+      dueDate: "5",
+    },
+    {
+      name: "5월 주간 챌린지",
+      detail: "이번 주에 15km을 달려보세요.",
+      dueDate: "5",
+    },
+    {
+      name: "5월 주간 챌린지",
+      detail: "이번 주에 20km을 달려보세요.",
+      dueDate: "5",
+    },
+    {
+      name: "5월 주간 챌린지",
+      detail: "이번 주에 25km을 달려보세요.",
+      dueDate: "5",
+    },
+  ]);
 
-export default function BoardMain({navigation}) {
-    const [challenges, setchallenges] = React.useState([
-        {name: "5월 주간 챌린지", detail: "이번 주에 10km을 달려보세요.", dueDate: "5"},
-        {name: "5월 주간 챌린지", detail: "이번 주에 15km을 달려보세요.", dueDate: "5"},
-        {name: "5월 주간 챌린지", detail: "이번 주에 20km을 달려보세요.", dueDate: "5"},
-        {name: "5월 주간 챌린지", detail: "이번 주에 25km을 달려보세요.", dueDate: "5"},
-    ]);
-    
+  return (
+    <ScrollView>
+      <Text>게시판 메인 페이지</Text>
 
     return(
       <ScrollView>
@@ -49,6 +76,7 @@ export default function BoardMain({navigation}) {
               )}
           />
 
+<<<<<<< HEAD
           {/* 고객센터 버튼 (임시) */}
           <View style={styles.container}>
             <TouchableOpacity
@@ -62,18 +90,55 @@ export default function BoardMain({navigation}) {
         </View>
       </ScrollView>   
     );  
+=======
+        {/* 고객센터 버튼 (임시) */}
+        <View style={styles.container}>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate("ChallengeDetailNav", {
+                screen: "ChallengeDetail",
+              });
+            }}
+          >
+            {/* 챌린지 이미지 넣어야함! */}
+            <Image></Image>
+            <View style={styles.itemContainer}>
+              <Text style={styles.itemName}>{item.name}</Text>
+              <Text style={styles.itemdetail}>{item.detail}</Text>
+              <Text style={styles.itemdetail}>
+                {item.dueDate}일 남았습니다.
+              </Text>
+            </View>
+          </TouchableOpacity>
+        )}
+      />
+
+      {/* 고객센터 버튼 (임시) */}
+      <View style={styles.container}>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => {
+            navigation.navigate("ServiceCenter", { screen: "QNAList" });
+          }}
+        >
+          <Text style={styles.buttonText}>QNA</Text>
+        </TouchableOpacity>
+      </View>
+    </ScrollView>
+  );
+>>>>>>> bad7dec2d47255c4c8e9a7b854aa44b843271f28
 }
 
 const styles = StyleSheet.create({
-  container:{
+  container: {
     justifyContent: "center",
     alignItems: "center",
   },
   itemContainer: {
-      borderWidth: 1,
-      borderColor: "black",
-      borderRadius: 5,
-      padding: 10,
+    borderWidth: 1,
+    borderColor: "black",
+    borderRadius: 5,
+    padding: 10,
   },
   itemName: {
     fontSize: 16,
@@ -95,4 +160,3 @@ const styles = StyleSheet.create({
     fontWeight: "600",
   },
 });
-  
