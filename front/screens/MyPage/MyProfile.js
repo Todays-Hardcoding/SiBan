@@ -211,9 +211,7 @@ const MyProfile = ({ navigation }) => {
 
             <TouchableOpacity
               onPress={() => {
-                navigation.navigate("ModifyPage", {
-                  screen: "MYPROFILEMODIFY",
-                });
+                navigation.navigate("OthersNav", { screen: "MyProfileModify" });
               }}
               style={styles.userProfile}
             >
