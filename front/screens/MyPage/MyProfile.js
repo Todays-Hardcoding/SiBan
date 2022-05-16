@@ -45,13 +45,22 @@ const MyProfile = ({ navigation }) => {
 
   // const [features, setFeatures] = React.useState(featuresData);
   const [specialPromos, setSpecialPromos] = React.useState(specialPromoData);
-
+  const [shouldShow, setShouldShow] = useState(true);
   function renderHeader() {
     return (
-      <View style={{ flexDirection: "row", marginVertical: SIZES.padding * 2 }}>
-        <View style={{ flex: 1 }}>
-          <Text>프로필</Text>
-          <Text style={{ color: COLORS.gray }}>마이페이지</Text>
+      <View
+        style={{
+          flexDirection: "row",
+          marginVertical: SIZES.padding * 2,
+        }}
+      >
+        <View style={{ flex: 1, alignItems: "center", left: 30 }}>
+          <Text style={{ fontSize: 25, fontWeight: "bold" }}>마이페이지</Text>
+        </View>
+        <View>
+          <TouchableOpacity onPress={() => setShouldShow(!shouldShow)}>
+            <Text>회원 관리</Text>
+          </TouchableOpacity>
         </View>
       </View>
     );
@@ -74,7 +83,8 @@ const MyProfile = ({ navigation }) => {
             source={require("../../assets/profile.png")}
             resizeMode="contain"
             style={{
-              width: "100%",
+              marginLeft: 80,
+              width: "70%",
               height: "100%",
               borderRadius: 20,
             }}
@@ -92,7 +102,6 @@ const MyProfile = ({ navigation }) => {
         {renderPromoHeader()}
       </View>
     );
-    const [shouldShow, setShouldShow] = useState(true);
 
     const renderPromoHeader = () => (
       <View
@@ -101,11 +110,13 @@ const MyProfile = ({ navigation }) => {
           marginBottom: SIZES.padding,
         }}
       >
-        <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.white }}>
-          <Text>회원 관리</Text>
-          <TouchableOpacity onPress={() => setShouldShow(!shouldShow)}>
-            <Text style={{ color: COLORS.gray }}>View All</Text>
-          </TouchableOpacity>
+        <SafeAreaView
+          style={{
+            flex: 1,
+            backgroundColor: COLORS.white,
+            margin: 20,
+          }}
+        >
           <View>
             {shouldShow ? (
               <FlatList
@@ -116,16 +127,17 @@ const MyProfile = ({ navigation }) => {
                 data={specialPromos}
                 keyExtractor={(item) => `${item.id}`}
                 showsVerticalScrollIndicator={false}
-
               ></FlatList>
-            ) : MyProfileModify()}
+            ) : (
+              MyProfileModify()
+            )}
           </View>
         </SafeAreaView>
-
       </View>
     );
 
     const renderItem = ({ item }) => (
+      // 버튼 관련
       <TouchableOpacity
         style={{
           marginVertical: SIZES.base,
@@ -154,6 +166,7 @@ const MyProfile = ({ navigation }) => {
             }}
           />
         </View>
+
         <View
           style={{
             padding: SIZES.padding,
@@ -183,6 +196,7 @@ const MyProfile = ({ navigation }) => {
           ["몸무게", "70"],
         ],
       };
+
       return (
         <View style={styles.container}>
           <View style={styles.profile}>
@@ -197,7 +211,9 @@ const MyProfile = ({ navigation }) => {
 
             <TouchableOpacity
               onPress={() => {
-                navigation.navigate("ModifyPage", { screen: "MYPROFILEMODIFY" });
+                navigation.navigate("ModifyPage", {
+                  screen: "MYPROFILEMODIFY",
+                });
               }}
               style={styles.userProfile}
             >
@@ -207,8 +223,6 @@ const MyProfile = ({ navigation }) => {
         </View>
       );
     };
-
-
 
     return (
       <FlatList
@@ -251,6 +265,5 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
 });
-
 
 export default MyProfile;
