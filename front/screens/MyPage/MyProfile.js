@@ -147,7 +147,6 @@ const MyProfile = ({ navigation }) => {
                 data={specialPromos}
                 keyExtractor={(item) => `${item.id}`}
                 showsVerticalScrollIndicator={false}
-
               ></FlatList>
             ) : MyProfileModify()}
           </View>
@@ -228,7 +227,7 @@ const MyProfile = ({ navigation }) => {
 
             <TouchableOpacity
               onPress={() => {
-                navigation.navigate("ModifyPage", { screen: "MYPROFILEMODIFY" });
+                navigation.navigate("OthersNav", { screen: "MyProfileModify" });
               }}
               style={styles.userProfile}
             >
