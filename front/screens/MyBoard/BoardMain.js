@@ -40,9 +40,7 @@ export default function BoardMain({ navigation }) {
     },
   ]);
 
-  return (
-    <ScrollView>
-      <Text>게시판 메인 페이지</Text>
+
 
     return(
       <ScrollView>
@@ -76,21 +74,6 @@ export default function BoardMain({ navigation }) {
               )}
           />
 
-<<<<<<< HEAD
-          {/* 고객센터 버튼 (임시) */}
-          <View style={styles.container}>
-            <TouchableOpacity
-            style={styles.button}
-            onPress={() => {
-              navigation.navigate("ServiceCenter", { screen: "QNAList" });
-            }}
-          >
-            <Text style={styles.buttonText}>QNA</Text>
-          </TouchableOpacity>
-        </View>
-      </ScrollView>   
-    );  
-=======
         {/* 고객센터 버튼 (임시) */}
         <View style={styles.container}>
           <TouchableOpacity
@@ -110,23 +93,10 @@ export default function BoardMain({ navigation }) {
               </Text>
             </View>
           </TouchableOpacity>
-        )}
-      />
+          </View>
 
-      {/* 고객센터 버튼 (임시) */}
-      <View style={styles.container}>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => {
-            navigation.navigate("ServiceCenter", { screen: "QNAList" });
-          }}
-        >
-          <Text style={styles.buttonText}>QNA</Text>
-        </TouchableOpacity>
-      </View>
-    </ScrollView>
-  );
->>>>>>> bad7dec2d47255c4c8e9a7b854aa44b843271f28
+          </ScrollView>
+      );
 }
 
 const styles = StyleSheet.create({
