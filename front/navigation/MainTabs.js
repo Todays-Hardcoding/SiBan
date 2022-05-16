@@ -58,7 +58,7 @@ const MainTabs = () => {
 
       {/* 2번 탭 */}
       <MainTab.Screen
-        name="Mypage"
+        name="마이페이지"
         component={MyPageNav}
         options={{
           tabBarIcon: ({ focused, color, size }) => {
@@ -93,7 +93,7 @@ const MainTabs = () => {
 
       {/* 4번 탭 */}
       <MainTab.Screen
-        name="Board"
+        name="고객센터"
         component={MyBoardNav}
         options={{
           tabBarIcon: ({ focused, color, size }) => {
