@@ -143,21 +143,21 @@
     "workoutName": "0부터 100까지",
     "workoutCourse": "중급",
     "workoutGoal": "근력",
-    "workoutTarget": ["팔 및 어깨", "복근 및 코어", "둔근및 다리"],
+    "workoutTarget": ["팔 및 어깨", "복근 및 코어", "둔근 및 다리"],
     "workoutDescription": "코어와 신체 조정력을 강화해주는 운동입니다. 코어가 흔들리지 않도록 고정한 상태에서 운동 부위를 생각하며 팔다리를 움직입니다."
   },
   {
     "workoutName": "전신훈련",
     "workoutCourse": "중급",
     "workoutGoal": "근력",
-    "workoutTarget": ["팔 및 어깨", "복근 및 코어", "둔근및 다리"],
+    "workoutTarget": ["팔 및 어깨", "복근 및 코어", "둔근 및 다리"],
     "workoutDescription": "강해지는 것은 물론이고 폭발적인 힘을 낼 수 있도록, 전신을 몰아붙여 고난이도 훈련을 진행해 보세요."
   },
   {
     "workoutName": "게임 체인저",
     "workoutCourse": "고급",
     "workoutGoal": "근력",
-    "workoutTarget": ["팔 및 어깨", "복근 및 코어", "둔근및 다리"],
+    "workoutTarget": ["팔 및 어깨", "복근 및 코어", "둔근 및 다리"],
     "workoutDescription": "생각만 하지 말고 몸을 움직여 건강한 체형을 만들어 보세요."
   },
   {
@@ -171,21 +171,21 @@
     "workoutName": "풀 코어 프레스",
     "workoutCourse": "중급",
     "workoutGoal": "근력",
-    "workoutTarget": ["팔 및 어깨", "복근 및 코어", "둔근및 다리"],
+    "workoutTarget": ["팔 및 어깨", "복근 및 코어", "둔근 및 다리"],
     "workoutDescription": "템포를 늦춰서 훈련의 강도를 높이세요. 스피드보다는 테크닉에 집중하세요. 그래야 이 반복 기반 세션에서 운동 효과를 얻을 수 있답니다."
   },
   {
     "workoutName": " 엉덩이 근력",
     "workoutCourse": "중급",
     "workoutGoal": "근력",
-    "workoutTarget": ["둔근및 다리"],
+    "workoutTarget": ["둔근 및 다리"],
     "workoutDescription": "엉덩이 근육을 단련하고 라인을 잡아줄 수 있도록 설계된 이 동작은 하체를 튼튼하고 아릅답게 해줍니다."
   },
   {
     "workoutName": "근력 운동 리믹스",
     "workoutCourse": "중급",
     "workoutGoal": "근력",
-    "workoutTarget": ["팔 및 어깨", "복근 및 코어", "둔근및 다리"],
+    "workoutTarget": ["팔 및 어깨", "복근 및 코어", "둔근 및 다리"],
     "workoutDescription": "이 운동은 많은 격렬한 동작을 요구합니다. 최대한 빠르게 움직이고 복잡한 동작일수록 자세 유지에 집중합니다."
   },
   {
@@ -213,7 +213,7 @@
     "workoutName": "트리플 순환",
     "workoutCourse": "고급",
     "workoutGoal": "근력",
-    "workoutTarget": ["복근 및 코어", "둔근및 다리"],
+    "workoutTarget": ["복근 및 코어", "둔근 및 다리"],
     "workoutDescription": "하체 운동 중에는 힘을 주고, 안정적인 동작에 집둥하여 근력 서킷을 실시합니다."
   },
   {
@@ -227,35 +227,35 @@
     "workoutName": "질주본능",
     "workoutCourse": "중급",
     "workoutGoal": "근력",
-    "workoutTarget": ["팔 및 어깨", "복근 및 코어", "둔근및 다리"],
+    "workoutTarget": ["팔 및 어깨", "복근 및 코어", "둔근 및 다리"],
     "workoutDescription": "준비 운동을 시작으로 이어지는 동작들을 차례차례 따라합니다. 몸에 계속해서 힘을 실어 자세가 흐트러지지 않도록 유지합니다."
   },
   {
     "workoutName": "근력 파워 4종",
     "workoutCourse": "고급",
     "workoutGoal": "근력",
-    "workoutTarget": ["팔 및 어깨", "복근 및 코어", "둔근및 다리"],
+    "workoutTarget": ["팔 및 어깨", "복근 및 코어", "둔근 및 다리"],
     "workoutDescription": "무거운 웨이트 기구를 사용하지만 반복 회수가 적은 이 운동은 근력 강화에 효과적입니다. 워밍업을 활용해 운동 효과를 극대화하세요."
   },
   {
     "workoutName": "다각도 근력",
     "workoutCourse": "중급",
     "workoutGoal": "근력",
-    "workoutTarget": ["팔 및 어깨", "복근 및 코어", "둔근및 다리"],
+    "workoutTarget": ["팔 및 어깨", "복근 및 코어", "둔근 및 다리"],
     "workoutDescription": "래터럴 런지로 제대로 된 전신 운동 동작을 진행하세요. 매회 런지를 실시할 때마다 팔꿈치를 뒤로 보내면서 서로 가까워지게 조여주면 등 근육까지 함께 단련할 수 있어요."
   },
   {
     "workoutName": "탄력 힙라인 만들기",
     "workoutCourse": "초급",
     "workoutGoal": "근력",
-    "workoutTarget": ["복근 및 코어", "둔근및 다리"],
+    "workoutTarget": ["복근 및 코어", "둔근 및 다리"],
     "workoutDescription": "둔근 단련을 위한 다양한 동작들이 포함된 운동입니다. 끝까지 견디어 근력을 단련시킵니다."
   },
   {
     "workoutName": "런지 종합 세트",
     "workoutCourse": "중급",
     "workoutGoal": "근력",
-    "workoutTarget": ["복근 및 코어", "둔근및 다리"],
+    "workoutTarget": ["복근 및 코어", "둔근 및 다리"],
     "workoutDescription": "이어서 런지를 실시하면 효과적입니다. 무릎이 발가락보다 앞으로 나가지 않도록 하고 힘을 줘 바닥을 디디세요."
   },
   {
@@ -269,21 +269,21 @@
     "workoutName": "다리와 둔근 단련하기",
     "workoutCourse": "중급",
     "workoutGoal": "근력",
-    "workoutTarget": ["둔근및 다리"],
+    "workoutTarget": ["둔근 및 다리"],
     "workoutDescription": "다리를 집중 단련하는 트레이닝 세션. 스윙과 스쿼트 동작으로 둔근을 수축하고 코어에 힘을 주세요."
   },
   {
     "workoutName": "균형 파워 기르기",
     "workoutCourse": "중급",
     "workoutGoal": "근력",
-    "workoutTarget": ["복근 및 코어", "둔근및 다리"],
+    "workoutTarget": ["복근 및 코어", "둔근 및 다리"],
     "workoutDescription": "균형감각을 높여주는 운동입니다. 몸이 흔들리지 않도록 바닥에 양발을 단단히 디뎌 균형을 잡아줍니다."
   },
   {
     "workoutName": "크레센도 운동",
     "workoutCourse": "중급",
     "workoutGoal": "근력",
-    "workoutTarget": ["팔 및 어깨", "복근 및 코어", "둔근및 다리"],
+    "workoutTarget": ["팔 및 어깨", "복근 및 코어", "둔근 및 다리"],
     "workoutDescription": "느리게 시작하여 빠르게 마무리 짓는 이 강도 높은 운동은 끝까지 근력 강화에 초첨을 두어 올바른 자세유지에 힘씁니다."
   },
   {
