@@ -33,11 +33,6 @@ const LoginPage = () => {
         component={Search}
         options={{ headerShown: false }}
       />
-      <Stack.Screen
-        name="CancelButton"
-        component={CancelButton}
-        options={{ headerShown: false }}
-      />
     </Stack.Navigator>
   );
 };
