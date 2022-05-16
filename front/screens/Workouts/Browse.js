@@ -19,7 +19,7 @@ const Browse = ({ navigation }) => {
         inlineImageLeft="search_icon"
       />
       <FlatGrid
-        itemDimension={170}
+        itemDimension={190}
         data={Group}
         spacing={20}
         renderItem={({ item }) => (

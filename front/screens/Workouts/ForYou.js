@@ -16,7 +16,7 @@ const ForYou = ({ navigation }) => {
   return (
     <View style={styles.Container}>
       <FlatGrid
-        itemDimension={170}
+        itemDimension={190}
         data={courses}
         spacing={20}
         marginTop={20}
