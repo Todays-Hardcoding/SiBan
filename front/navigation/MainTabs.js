@@ -40,7 +40,7 @@ const MainTabs = () => {
       }}
     >
       {/* 1번 탭 */}
-      <MainTab.Screen
+      {/* <MainTab.Screen
         name="Home"
         component={Home}
         options={{
@@ -54,7 +54,7 @@ const MainTabs = () => {
             );
           },
         }}
-      ></MainTab.Screen>
+      ></MainTab.Screen> */}
 
       {/* 2번 탭 */}
       <MainTab.Screen
