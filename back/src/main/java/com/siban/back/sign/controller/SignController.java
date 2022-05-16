@@ -4,24 +4,34 @@ package com.siban.back.sign.controller;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.siban.back.sign.service.SignService;
+
 
 @RestController
 public class SignController {
 	
-
+	@Autowired
+	private SignService signService;
+	
+	@PostMapping
+	public User signup(@RequestBody )
+	
+	
 	@GetMapping("/test.act")
 	public String test() {
 		System.out.println("여기서라도 떠야지? ");
 		return "몰?루...";
 	}
 	
-	
+	/*
 	@RequestMapping(value="/test2.json", method = RequestMethod.POST)
 	public Map<String, String> test2(@RequestBody Map<String, Object> param) {
 		
@@ -47,7 +57,8 @@ public class SignController {
 		System.out.println(result);
 		return result;
 		
-	}
+	}*/
+	
 	
 	
 }
