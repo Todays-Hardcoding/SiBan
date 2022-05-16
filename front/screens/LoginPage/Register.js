@@ -16,7 +16,6 @@ const Register = ({ navigation }) => {
   const [tel, setTel] = useState("");
   const [height, setHeight] = useState("");
   const [weight, setWeight] = useState("");
-
   //유효성
   const [idCheck, setIdCheck] = useState(false);
   const [pwCheck, setPwCheck] = useState(false);
