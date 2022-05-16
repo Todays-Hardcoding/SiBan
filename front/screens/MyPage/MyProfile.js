@@ -9,31 +9,35 @@ import {
 } from "react-native";
 import { COLORS, SIZES, icons, images } from "../../constants";
 
-const MyProfile = () => {
+const MyProfile = ({ navigation }) => {
   const specialPromoData = [
     {
       id: 1,
       img: images.promoBanner,
       title: "내 루틴",
       description: "설정한 내 루틴을 확인해 보세요!",
+      code: "Routine",
     },
     {
       id: 2,
       img: images.promoBanner,
       title: "일정 관리",
       description: "이번달 일정을 확인해 보세요",
+      code: "ActivityNav",
     },
     {
       id: 3,
       img: images.promoBanner,
       title: "기록",
       description: "달성 트로피를 확인해 보세요!",
+      code: "OthersNav",
     },
     {
       id: 4,
       img: images.promoBanner,
       title: "식단관리",
       description: "나에게 맞는 식단을 찾아보세요",
+      code: "MealPlanNav",
     },
   ];
 
@@ -91,15 +95,20 @@ const MyProfile = () => {
           borderRadius: 20,
         }}
       >
-        <Image
-          source={images.banner}
-          resizeMode="cover"
-          style={{
-            width: "100%",
-            height: "100%",
-            borderRadius: 20,
-          }}
-        />
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate("OthersNav", { screen: "MYPROFILE" });
+          }}>
+          <Image
+            source={images.banner}
+            resizeMode="cover"
+            style={{
+              width: "100%",
+              height: "100%",
+              borderRadius: 20,
+            }}
+          />
+        </TouchableOpacity>
       </View>
     );
   }
@@ -135,7 +144,9 @@ const MyProfile = () => {
           marginVertical: SIZES.base,
           width: SIZES.width / 2.5,
         }}
-        onPress={() => console.log(item.title)}
+        onPress={() => {
+          navigation.navigate(item.code);
+        }}
       >
         <View
           style={{
