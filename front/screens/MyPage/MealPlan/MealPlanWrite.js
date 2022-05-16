@@ -100,9 +100,9 @@ const times = ["🥙 아침", "🍱 점심", "🥘 저녁"];
 const MealPlanWrite = ({ navigation: { goBack } }) => {
   const [selectedGrade, setGrade] = useState(null);
   const [selectedTime, setTime] = useState(null);
-  const [foods, setFoods] = useState("", "", "", "", "");
+  const [foods, setFoods] = useState(["", "", "", "", ""]);
   const [inputBox, setInputBox] = useState(1);
-  const range = [...Array(inputBox)].map((v, i) => i);
+  const range = [...Array(inputBox)];
 
   // const onChangeText = (text) => setFoods(text);
 
@@ -168,10 +168,9 @@ const MealPlanWrite = ({ navigation: { goBack } }) => {
       {range.map((inputCount, index) => {
         return (
           <TextInput
-            key={inputCount}
+            key={index}
             returnKeyLabel="done"
             onSubmitEditing={onSubmit}
-            onChangeText={console.log(foods)}
             value={(text) => {
               let foodsCopy = [...foods];
               foodsCopy[index] = text;
@@ -187,6 +186,7 @@ const MealPlanWrite = ({ navigation: { goBack } }) => {
             if (inputBox != 5) {
               setInputBox(inputBox + 1);
             }
+            console.log(range);
           }}
         >
           <AddMinText>+</AddMinText>
