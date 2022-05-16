@@ -16,6 +16,7 @@ const Register = ({ navigation }) => {
   const [tel, setTel] = useState("");
   const [height, setHeight] = useState("");
   const [weight, setWeight] = useState("");
+  const [disable, setDisable] = useState(false);
   //유효성
   const [idCheck, setIdCheck] = useState(false);
   const [pwCheck, setPwCheck] = useState(false);
@@ -130,6 +131,31 @@ const Register = ({ navigation }) => {
     }
     setHeight(text);
   };
+  const postRegister = () => {
+    const _url = "http://192.168.35.133:8282/register.act"
+    fetch(_url, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        id,
+        pw,
+        email,
+        name,
+        tel,
+        height,
+        weight,
+      }),
+    })
+    .then((response) => response.json())
+    .then((data) => {
+      navigation.navigate("LoginPage", {
+        screen: "LoginHome",})
+      console.log(data)});
+  };
+  
   return (
     <View
       style={{
@@ -217,6 +243,7 @@ const Register = ({ navigation }) => {
           <TextInput
             style={styles.input}
             returnKeyType="next"
+            value={height}
             onChangeText={(text) => onChangeHeight(text)}
             placeholder={"키를 입력해주세요."}
           />
@@ -226,13 +253,28 @@ const Register = ({ navigation }) => {
           <TextInput
             style={styles.input}
             returnKeyType="next"
+            value={weight}
             onChangeText={(text) => onChangeWeight(text)}
             placeholder={"몸무게를 입력해주세요."}
           />
           {!weightCheck && <Text style={{ color: "red" }}>{weightError}</Text>}
 
           <View style={styles.BtnBox}>
-            <RegisterButton />
+          <TouchableOpacity
+          style={{
+          backgroundColor: "black",
+          padding: 10,
+          margin: 10,
+          borderRadius: 10,
+          width: 100,
+          alignItems: "center",
+          }}
+        onPress={postRegister}
+        
+ 
+        >
+      <Text style={{ fontSize: 18, color: "white" }}>가입</Text>
+       </TouchableOpacity>
             <TouchableOpacity
               style={{
                 backgroundColor: "#c44569",

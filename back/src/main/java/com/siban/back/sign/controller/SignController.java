@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.siban.back.sign.domain.User;
 import com.siban.back.sign.service.SignService;
 
 
@@ -21,15 +22,33 @@ public class SignController {
 	@Autowired
 	private SignService signService;
 	
-	@PostMapping
-	public User signup(@RequestBody )
-	
-	
-	@GetMapping("/test.act")
-	public String test() {
-		System.out.println("여기서라도 떠야지? ");
-		return "몰?루...";
+	@RequestMapping(value="/register.act", method = RequestMethod.POST)
+	public User register(@RequestBody Map<String, Object> param) {
+		User user = new User();
+		String id = (String) param.get("id");
+		String pw = (String) param.get("pw");
+		String email = (String) param.get("email");
+		String name = (String) param.get("name");
+		String tel = (String) param.get("tel");
+		String height = (String) param.get("height");
+		String weight = (String) param.get("weight");
+		
+		user.setUserId(id);
+		user.setUserPassword(pw);
+		user.setUserEmail(email);
+		user.setUserName(name);
+		user.setUserTel(tel);
+		user.setUserHeight(height);
+		user.setUserWeight(weight);
+		
+		signService.insertUser(user);
+		
+		return user;
 	}
+
+	
+	
+
 	
 	/*
 	@RequestMapping(value="/test2.json", method = RequestMethod.POST)
