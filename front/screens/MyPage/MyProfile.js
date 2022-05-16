@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import {
+  StyleSheet,
   SafeAreaView,
   View,
   Text,
@@ -8,6 +9,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { COLORS, SIZES, icons, images } from "../../constants";
+import { Table, Row, Rows } from "react-native-table-component-2";
 
 const MyProfile = ({ navigation }) => {
   const specialPromoData = [
@@ -23,14 +25,14 @@ const MyProfile = ({ navigation }) => {
       img: images.promoBanner,
       title: "일정 관리",
       description: "이번달 일정을 확인해 보세요",
-      code: "ActivityNav",
+      code: "OthersNav",
     },
     {
       id: 3,
       img: images.promoBanner,
       title: "기록",
       description: "달성 트로피를 확인해 보세요!",
-      code: "OthersNav",
+      code: "ActivityNav",
     },
     {
       id: 4,
@@ -121,6 +123,7 @@ const MyProfile = ({ navigation }) => {
         {renderPromoHeader()}
       </View>
     );
+    const [shouldShow, setShouldShow] = useState(true);
 
     const renderPromoHeader = () => (
       <View
@@ -129,12 +132,27 @@ const MyProfile = ({ navigation }) => {
           marginBottom: SIZES.padding,
         }}
       >
-        <View style={{ flex: 1 }}>
+        <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.white }}>
           <Text>회원 관리</Text>
-        </View>
-        <TouchableOpacity onPress={() => console.log("View All")}>
-          <Text style={{ color: COLORS.gray }}>View All</Text>
-        </TouchableOpacity>
+          <TouchableOpacity onPress={() => setShouldShow(!shouldShow)}>
+            <Text style={{ color: COLORS.gray }}>View All</Text>
+          </TouchableOpacity>
+          <View>
+            {shouldShow ? (
+              <FlatList
+                renderItem={renderItem}
+                contentContainerStyle={{ paddingHorizontal: SIZES.padding * 3 }}
+                numColumns={2}
+                columnWrapperStyle={{ justifyContent: "space-between" }}
+                data={specialPromos}
+                keyExtractor={(item) => `${item.id}`}
+                showsVerticalScrollIndicator={false}
+
+              ></FlatList>
+            ) : MyProfileModify()}
+          </View>
+        </SafeAreaView>
+
       </View>
     );
 
@@ -183,16 +201,49 @@ const MyProfile = ({ navigation }) => {
       </TouchableOpacity>
     );
 
+    const MyProfileModify = () => {
+      // state = {age:"", gender:"",height:"",weight:""}
+      // const [value, setValue] = useState('김이나');
+
+      var state = {
+        tableHead: ["회원이름"],
+        tableData: [
+          ["나이", "22"],
+          ["성별", "남"],
+          ["키", "175"],
+          ["몸무게", "70"],
+        ],
+      };
+      return (
+        <View style={styles.container}>
+          <View style={styles.profile}>
+            <Table borderStyle={{ borderWidth: 2, borderColor: "black" }}>
+              <Row
+                data={state.tableHead}
+                style={styles.head}
+                textStyle={styles.text}
+              />
+              <Rows data={state.tableData} textStyle={styles.text} />
+            </Table>
+
+            <TouchableOpacity
+              onPress={() => {
+                navigation.navigate("ModifyPage", { screen: "MYPROFILEMODIFY" });
+              }}
+              style={styles.userProfile}
+            >
+              <Text style={styles.userProfileText}>정보수정</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      );
+    };
+
+
+
     return (
       <FlatList
         ListHeaderComponent={HeaderComponent}
-        contentContainerStyle={{ paddingHorizontal: SIZES.padding * 3 }}
-        numColumns={2}
-        columnWrapperStyle={{ justifyContent: "space-between" }}
-        data={specialPromos}
-        keyExtractor={(item) => `${item.id}`}
-        renderItem={renderItem}
-        showsVerticalScrollIndicator={false}
         ListFooterComponent={<View style={{ marginBottom: 80 }}></View>}
       />
     );
@@ -204,5 +255,33 @@ const MyProfile = ({ navigation }) => {
     </SafeAreaView>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  profile: {
+    flex: 8,
+    padding: 16,
+    paddingTop: 30,
+    backgroundColor: "#fff",
+  },
+  head: {
+    height: 40,
+    backgroundColor: "#F5EEDC",
+  },
+  text: {
+    margin: 6,
+    textAlign: "center",
+  },
+  userProfile: {
+    flex: 0.1,
+    backgroundColor: "gray",
+    alignItems: "center",
+    justifyContent: "center",
+    flexDirection: "row",
+  },
+});
+
 
 export default MyProfile;

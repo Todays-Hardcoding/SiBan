@@ -43,7 +43,7 @@ const ActivityNav = () => {
       <Tab.Screen
         name="ROUTINERECORD"
         component={RoutineRecord}
-        options={{ tabBarLabel: "기록", swipeEnabled: "true" }}
+        options={{ tabBarLabel: "기록" }}
       />
       <Tab.Screen
         name="ACCOMPLISHED"
