@@ -1,20 +1,23 @@
 import React from "react";
-import { StyleSheet, View, Text, ScrollView } from "react-native";
+import { FontAwesome } from "@expo/vector-icons";
+import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
 
 const StrengthDetail = ({ route }) => {
-  const { exercises } = route.params;
-  console.log(exercises);
+  const { exercise } = route.params;
+  console.log(exercise);
   return (
     <View style={styles.Container}>
-      <ScrollView showsHorizontalScrollIndicator={false} activit>
-        {exercises.map((exercise, index) => {
-          <View key={index} style={styles.eachContainer}>
-            <TouchableOpacity>
-              <Text>{exercise.name}</Text>
-            </TouchableOpacity>
-          </View>;
-        })}
-      </ScrollView>
+      <View style={styles.headerContainer}>
+        <TouchableOpacity>
+          <FontAwesome name="arrow-left" size={24} color="black" />
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <FontAwesome name="bookmark" size={24} color="black" />
+        </TouchableOpacity>
+      </View>
+      <View>
+        <Text>{exercise.name}</Text>
+      </View>
     </View>
   );
 };
@@ -22,11 +25,10 @@ const StrengthDetail = ({ route }) => {
 const styles = StyleSheet.create({
   Container: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
   },
-  eachContainer: {
-    flex: 1,
+  headerContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
   },
 });
 

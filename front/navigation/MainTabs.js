@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
 
@@ -15,6 +15,8 @@ const MainTab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
 const MainTabs = () => {
+  const [isLogin, setIsLogin] = useState(false);
+
   return (
     <MainTab.Navigator
       sceneContainerStyle={{ backgroundColor: "white" }}
@@ -38,7 +40,7 @@ const MainTabs = () => {
       }}
     >
       {/* 1번 탭 */}
-      <MainTab.Screen
+      {/* <MainTab.Screen
         name="Home"
         component={Home}
         options={{
@@ -52,7 +54,7 @@ const MainTabs = () => {
             );
           },
         }}
-      ></MainTab.Screen>
+      ></MainTab.Screen> */}
 
       {/* 2번 탭 */}
       <MainTab.Screen

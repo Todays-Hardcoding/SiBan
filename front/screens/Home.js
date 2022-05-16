@@ -55,7 +55,9 @@ const Login = ({ navigation }) => {
   };
 
   const postTest = () => {
-    const url = "http://192.168.56.1:8282/test2.json";
+
+    const url = "http://112.172.225.17:8282/test2.json";
+
     fetch(url, {
       method: "POST",
       headers: {

@@ -19,11 +19,10 @@ const Login = ({ navigation }) => {
   return (
     <View
       style={{
-        flex: 0.75,
+        flex: 1,
         backgroundColor: "#fff",
         alignItems: "center",
         justifyContent: "center",
-        width: "80%",
       }}
     >
       <Text style={{ fontSize: 24, fontWeight: "bold" }}>시반로그인</Text>
@@ -43,7 +42,7 @@ const Login = ({ navigation }) => {
 
       <TouchableOpacity style={{ flexDirection: "row" }}>
         <Text
-          style={{ color: "gray" }}
+          style={styles.findBtn}
           onPress={() =>
             navigation.navigate("LoginPage", {
               screen: "Search",
@@ -53,7 +52,7 @@ const Login = ({ navigation }) => {
           아이디/비번찾기{" "}
         </Text>
         <Text
-          style={{ color: "gray" }}
+          style={styles.findBtn}
           onPress={() =>
             navigation.navigate("LoginPage", {
               screen: "Register",
@@ -65,8 +64,8 @@ const Login = ({ navigation }) => {
         </Text>
       </TouchableOpacity>
 
-      <LoginButton />
-      <KakaoButton />
+      <LoginButton style={styles.loginBtn} />
+      <NaverButton style={styles.loginBtn} />
     </View>
   );
 };
@@ -74,12 +73,18 @@ const Login = ({ navigation }) => {
 const styles = StyleSheet.create({
   input: {
     borderWidth: 1,
-
     fontSize: 20,
+    padding: 10,
     borderRadius: 10,
-
     marginVertical: 10,
     width: "80%",
+  },
+  findBtn: {
+    color: "gray",
+    margin: 20,
+  },
+  loginBtn: {
+    margin: 30,
   },
 });
 
