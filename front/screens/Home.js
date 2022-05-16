@@ -55,7 +55,6 @@ const Login = ({ navigation }) => {
   };
 
   const postTest = () => {
-
     const url = "http://192.168.45.96:8282/test2.json";
 
     fetch(url, {
@@ -166,6 +165,13 @@ const styles = StyleSheet.create({
     paddingHorizontal: 32,
     marginBottom: 16,
     width: "85%",
+  },
+  findBtn: {
+    color: "gray",
+    margin: 20,
+  },
+  loginBtn: {
+    margin: 30,
   },
 });
 
