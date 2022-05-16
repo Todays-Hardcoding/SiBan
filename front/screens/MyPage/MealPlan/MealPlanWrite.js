@@ -100,11 +100,12 @@ const times = ["🥙 아침", "🍱 점심", "🥘 저녁"];
 const MealPlanWrite = ({ navigation: { goBack } }) => {
   const [selectedGrade, setGrade] = useState(null);
   const [selectedTime, setTime] = useState(null);
-  const [foods, setFoods] = useState("");
+  const [foods, setFoods] = useState(["", "", "", "", ""]);
   const [inputBox, setInputBox] = useState(1);
-  const range = [...Array(inputBox)].map((v, i) => i);
+  const range = [...Array(inputBox)];
 
-  const onChangeText = (text) => setFoods(text);
+  // const onChangeText = (text) => setFoods(text);
+
   const onGradePress = (face) => setGrade(face);
   const onTimePress = (time) => setTime(time);
 
@@ -118,7 +119,12 @@ const MealPlanWrite = ({ navigation: { goBack } }) => {
 
     // 저장하는 기능 추가해야댐
     setGrade(null);
-    setFoods("");
+    console.log("초기화 전");
+    console.log(foods);
+    setFoods("", "", "", "", "");
+    console.log("초기화 후");
+    console.log(foods);
+
     goBack();
   };
 
@@ -162,11 +168,14 @@ const MealPlanWrite = ({ navigation: { goBack } }) => {
       {range.map((inputCount, index) => {
         return (
           <TextInput
-            key={inputCount}
+            key={index}
             returnKeyLabel="done"
             onSubmitEditing={onSubmit}
-            onChangeText={onChangeText}
-            value={foods}
+            value={(text) => {
+              let foodsCopy = [...foods];
+              foodsCopy[index] = text;
+              setFoods(foodsCopy);
+            }}
             placeholder="메뉴를 적으세요. (5개까지 추가 가능)"
           ></TextInput>
         );
@@ -177,6 +186,7 @@ const MealPlanWrite = ({ navigation: { goBack } }) => {
             if (inputBox != 5) {
               setInputBox(inputBox + 1);
             }
+            console.log(range);
           }}
         >
           <AddMinText>+</AddMinText>

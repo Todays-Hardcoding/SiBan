@@ -4,8 +4,9 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import QNAList from "../screens/MyBoard/QNAList";
 import FNA from "../screens/MyBoard/FNA";
 import QNA from "../screens/MyBoard/QNA";
-import BoardMain from "../screens/MyBoard/BoardMain"
+import BoardMain from "../screens/MyBoard/BoardMain";
 import ChallengeDetail from "../screens/MyBoard/ChallengeDetail";
+import QNADetail from "../screens/MyBoard/QNADetail";
 
 const Tab = createMaterialTopTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -13,10 +14,17 @@ const Stack = createNativeStackNavigator();
 const ServiceCenter = () => {
   return (
     <Tab.Navigator>
-      <Tab.Screen name="FNA" component={FNA} options={{ tabBarLabel: "FNA" }}
-/>
-      <Tab.Screen name="QNAList" component={QNAList} options={{ tabBarLabel: "QNAList" }}
-/>
+      <Tab.Screen name="FNA" component={FNA} options={{ tabBarLabel: "FAQ" }} />
+      <Tab.Screen
+        name="QNA"
+        component={QNA}
+        options={{ tabBarLabel: "1:1 문의" }}
+      />
+      <Tab.Screen
+        name="QNADetail"
+        component={QNADetail}
+        options={{ tabBarLabel: "디테일임시" }}
+      />
     </Tab.Navigator>
   );
 };

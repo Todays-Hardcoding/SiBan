@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { Text, View, TextInput, StyleSheet } from "react-native";
 
-import RegisterButton from "../../components/RegisterButton";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
+import RegisterButton from "../../components/RegisterButton";
+import CancelButton from "../../components/CancelButton";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
-const Register = () => {
+const Register = ({ navigation }) => {
   //아이디,비번,이메일,전화번호
   const [id, setId] = useState("");
   const [pw, setPw] = useState("");
@@ -34,7 +36,6 @@ const Register = () => {
   const [weightError, setWeightError] = useState("");
 
   console.log(id);
-
   const onChangeId = (text) => {
     const idRegex = /^[A-Za-z]{1}[A-Za-z0-9_-]{3,19}$/;
     if (!idRegex.test(text)) {
@@ -130,98 +131,129 @@ const Register = () => {
     setHeight(text);
   };
   return (
-    <KeyboardAwareScrollView extraScrollHeight={10}>
-      <View
-        style={{
-          flex: 0.75,
-          backgroundColor: "#fff",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
-        <Text style={{ fontSize: 24, fontWeight: "bold" }}>시반 회원가입</Text>
-        <Text style={{ color: "gray", justifyContent: "center" }}>
-          {"\n"}멤버가 되어 시반이 제공하는 {"\n"}
-          최고의 제품과 혜택을 만나보세요 {"\n"}{" "}
-        </Text>
-        <TextInput
-          style={styles.input}
-          value={id}
-          onChangeText={(text) => onChangeId(text)}
-          returnKeyType="next"
-          autoFocus={true}
-          placeholder="아이디를 입력해주세요."
-        />
-        {!idCheck && <Text style={{ color: "red" }}>{idError}</Text>}
+    <View
+      style={{
+        flex: 1,
+        backgroundColor: "#fff",
+        alignItems: "center",
+        justifyContent: "center",
+        paddingTop: 90,
+      }}
+    >
+      <KeyboardAwareScrollView extraScrollHeight={10}>
+        <View
+          style={{
+            // flex: 1,
+            backgroundColor: "#fff",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <Text style={{ fontSize: 24, fontWeight: "bold" }}>
+            시반 회원가입
+          </Text>
+          <Text style={{ color: "gray", justifyContent: "center" }}>
+            {"\n"}멤버가 되어 시반이 제공하는 {"\n"}
+            최고의 제품과 혜택을 만나보세요 {"\n"}{" "}
+          </Text>
+          <TextInput
+            style={styles.input}
+            value={id}
+            onChangeText={(text) => onChangeId(text)}
+            returnKeyType="next"
+            // autoFocus={true}
+            placeholder="아이디를 입력해주세요."
+          />
+          {!idCheck && <Text style={{ color: "red" }}>{idError}</Text>}
 
-        <TextInput
-          style={styles.input}
-          value={pw}
-          returnKeyType="next"
-          onChangeText={(text) => onChangePw(text)}
-          secureTextEntry={true}
-          placeholder={"비밀번호를 입력해주세요"}
-        />
-        {!pwCheck && <Text style={{ color: "red" }}>{pwError}</Text>}
+          <TextInput
+            style={styles.input}
+            value={pw}
+            returnKeyType="next"
+            onChangeText={(text) => onChangePw(text)}
+            secureTextEntry={true}
+            placeholder={"비밀번호를 입력해주세요"}
+          />
+          {!pwCheck && <Text style={{ color: "red" }}>{pwError}</Text>}
 
-        <TextInput
-          style={styles.input}
-          value={pwConfirm}
-          returnKeyType="next"
-          onChangeText={(text) => onChangePw2(text)}
-          secureTextEntry={true}
-          placeholder={"비밀번호를 다시 입력해주세요"}
-        />
-        {!pwConfirmCheck && (
-          <Text style={{ color: "red" }}>{pwConfirmError}</Text>
-        )}
+          <TextInput
+            style={styles.input}
+            value={pwConfirm}
+            returnKeyType="next"
+            onChangeText={(text) => onChangePw2(text)}
+            secureTextEntry={true}
+            placeholder={"비밀번호를 다시 입력해주세요"}
+          />
+          {!pwConfirmCheck && (
+            <Text style={{ color: "red" }}>{pwConfirmError}</Text>
+          )}
 
-        <TextInput
-          style={styles.input}
-          value={email}
-          returnKeyType="next"
-          onChangeText={(text) => onChangeEmail(text)}
-          placeholder={"이메일을 입력해주세요."}
-        />
-        {!emailCheck && <Text style={{ color: "red" }}>{emailError}</Text>}
+          <TextInput
+            style={styles.input}
+            value={email}
+            returnKeyType="next"
+            onChangeText={(text) => onChangeEmail(text)}
+            placeholder={"이메일을 입력해주세요."}
+          />
+          {!emailCheck && <Text style={{ color: "red" }}>{emailError}</Text>}
 
-        <TextInput
-          style={styles.input}
-          value={name}
-          returnKeyType="next"
-          onChangeText={(text) => onChangeName(text)}
-          placeholder={"이름을 입력해주세요."}
-        />
-        {!nameCheck && <Text style={{ color: "red" }}>{nameError}</Text>}
-        <TextInput
-          style={styles.input}
-          value={tel}
-          onChangeText={(text) => onChangeTel(text)}
-          placeholder={"휴대폰번호를 입력해주세요."}
-          returnKeyType="next"
-        />
-        {!telCheck && <Text style={{ color: "red" }}>{telError}</Text>}
+          <TextInput
+            style={styles.input}
+            value={name}
+            returnKeyType="next"
+            onChangeText={(text) => onChangeName(text)}
+            placeholder={"이름을 입력해주세요."}
+          />
+          {!nameCheck && <Text style={{ color: "red" }}>{nameError}</Text>}
+          <TextInput
+            style={styles.input}
+            value={tel}
+            onChangeText={(text) => onChangeTel(text)}
+            placeholder={"휴대폰번호를 입력해주세요."}
+            returnKeyType="next"
+          />
+          {!telCheck && <Text style={{ color: "red" }}>{telError}</Text>}
 
-        <TextInput
-          style={styles.input}
-          returnKeyType="next"
-          onChangeText={(text) => onChangeHeight(text)}
-          placeholder={"키를 입력해주세요."}
-        />
+          <TextInput
+            style={styles.input}
+            returnKeyType="next"
+            onChangeText={(text) => onChangeHeight(text)}
+            placeholder={"키를 입력해주세요."}
+          />
 
-        {!heightCheck && <Text style={{ color: "red" }}>{heightError}</Text>}
+          {!heightCheck && <Text style={{ color: "red" }}>{heightError}</Text>}
 
-        <TextInput
-          style={styles.input}
-          returnKeyType="next"
-          onChangeText={(text) => onChangeWeight(text)}
-          placeholder={"몸무게를 입력해주세요."}
-        />
-        {!weightCheck && <Text style={{ color: "red" }}>{weightError}</Text>}
+          <TextInput
+            style={styles.input}
+            returnKeyType="next"
+            onChangeText={(text) => onChangeWeight(text)}
+            placeholder={"몸무게를 입력해주세요."}
+          />
+          {!weightCheck && <Text style={{ color: "red" }}>{weightError}</Text>}
 
-        <RegisterButton />
-      </View>
-    </KeyboardAwareScrollView>
+          <View style={styles.BtnBox}>
+            <RegisterButton />
+            <TouchableOpacity
+              style={{
+                backgroundColor: "#c44569",
+                padding: 10,
+                margin: 10,
+                borderRadius: 10,
+                width: 100,
+                alignItems: "center",
+              }}
+              onPress={() =>
+                navigation.navigate("LoginPage", {
+                  screen: "LoginHome",
+                })
+              }
+            >
+              <Text style={{ fontSize: 18, color: "white" }}>취소</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </KeyboardAwareScrollView>
+    </View>
   );
 };
 
@@ -240,6 +272,9 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     marginVertical: 5,
     width: "90%",
+  },
+  BtnBox: {
+    flexDirection: "row",
   },
 });
 
