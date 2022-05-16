@@ -8,7 +8,6 @@ import {
   TouchableOpacity,
   ScrollView,
   SafeAreaView,
-  Button,
   TextInput,
   ImageBackground,
 } from "react-native";
@@ -16,12 +15,32 @@ import {
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 
-// 내질문, 날짜
+// 내질문, 날짜 예시
 const data = [
+  {
+    name: "내 1:1 질문 10",
+    date: "22-02-05",
+
+  },
+  {
+    name: "내 1:1 질문 9",
+    date: "22-02-05",
+  },
+  {
+    name: "내 1:1 질문 8",
+    date: "22-02-05",
+  },
+  {
+    name: "내 1:1 질문 7",
+    date: "22-02-05",
+  },
+  {
+    name: "내 1:1 질문 6",
+    date: "22-02-05",
+  },
   {
     name: "내 1:1 질문 5",
     date: "22-02-05",
-    // date 예시
   },
   {
     name: "내 1:1 질문 4",
@@ -66,11 +85,7 @@ const QNAList = () => {
           ))}
         </View>
 
-        <View>
-          <TouchableOpacity style={styles.contactButton}>
-            <Text>Contact Us</Text>
-          </TouchableOpacity>
-        </View>
+        
       </ScrollView>
       <View style={styles.searchContainer}>
         <TextInput
@@ -112,15 +127,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     borderTopWidth: 1,
     borderColor: "#000",
-  },
-  contactButton: {
-    width: windowWidth * 0.9,
-    height: 40,
-    backgroundColor: "#AACFCF",
-    alignItems: "center",
-    justifyContent: "center",
-    margin: 20,
-    borderRadius: 8,
   },
   searchContainer: {
     flexDirection: "row",
