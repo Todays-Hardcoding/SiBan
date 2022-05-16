@@ -23,9 +23,21 @@ const Stack = createStackNavigator();
 const OthersNav = () => {
   return (
     <Stack.Navigator initialRouteName="Record">
-      <Stack.Screen name="ChangePhoto" component={ChangePhoto} options={{ headerShown: false }} />
-      <Stack.Screen name="Record" component={Record} options={{ headerShown: false }} />
-      <Stack.Screen name="MyProfileModify" component={MyProfileModify} options={{ headerShown: false }} />
+      <Stack.Screen
+        name="ChangePhoto"
+        component={ChangePhoto}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="Record"
+        component={Record}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="MyProfileModify"
+        component={MyProfileModify}
+        options={{ headerShown: false }}
+      />
     </Stack.Navigator>
   );
 };
@@ -60,8 +72,16 @@ const MealPlanNav = () => {
       initialRouteName="MealPlanHome"
       screenOptions={{ presentation: "modal" }}
     >
-      <Stack.Screen name="MealPlanHome" component={MealPlanHome} options={{ headerShown: false }} />
-      <Stack.Screen name="MealPlanWrite" component={MealPlanWrite} options={{ headerShown: false }} />
+      <Stack.Screen
+        name="MealPlanHome"
+        component={MealPlanHome}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="MealPlanWrite"
+        component={MealPlanWrite}
+        options={{ headerShown: false }}
+      />
     </Stack.Navigator>
   );
 };
