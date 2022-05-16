@@ -1778,7 +1778,7 @@
   "resolved" "https://registry.npmjs.org/@react-native-picker/picker/-/picker-1.16.8.tgz"
   "version" "1.16.8"
 
-"@react-native-picker/picker@2.4.0":
+"@react-native-picker/picker@^2.4.0":
   "integrity" "sha512-duGZc3a8Qa21YPrA4U3oR9NAUzBA66FTjubGK2CodA6rNjiwN+xC32hOZ5unkf4qD3DqLWeoPjg3fYf54bVMjA=="
   "resolved" "https://registry.npmjs.org/@react-native-picker/picker/-/picker-2.4.0.tgz"
   "version" "2.4.0"
