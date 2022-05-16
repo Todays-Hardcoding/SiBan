@@ -23,14 +23,14 @@ const MyProfile = ({ navigation }) => {
       img: images.promoBanner,
       title: "일정 관리",
       description: "이번달 일정을 확인해 보세요",
-      code: "ActivityNav",
+      code: "OthersNav",
     },
     {
       id: 3,
       img: images.promoBanner,
       title: "기록",
       description: "달성 트로피를 확인해 보세요!",
-      code: "OthersNav",
+      code: "ActivityNav",
     },
     {
       id: 4,
@@ -51,38 +51,6 @@ const MyProfile = ({ navigation }) => {
           <Text>프로필</Text>
           <Text style={{ color: COLORS.gray }}>마이페이지</Text>
         </View>
-
-        <View style={{ alignItems: "center", justifyContent: "center" }}>
-          <TouchableOpacity
-            style={{
-              height: 40,
-              width: 40,
-              justifyContent: "center",
-              alignItems: "center",
-              backgroundColor: COLORS.lightGray,
-            }}
-          >
-            <Image
-              source={icons.bell}
-              style={{
-                width: 20,
-                height: 20,
-                tintColor: COLORS.secondary,
-              }}
-            />
-            <View
-              style={{
-                position: "absolute",
-                top: -5,
-                right: -5,
-                height: 10,
-                width: 10,
-                backgroundColor: COLORS.red,
-                borderRadius: 5,
-              }}
-            ></View>
-          </TouchableOpacity>
-        </View>
       </View>
     );
   }
@@ -98,10 +66,11 @@ const MyProfile = ({ navigation }) => {
         <TouchableOpacity
           onPress={() => {
             navigation.navigate("OthersNav", { screen: "MYPROFILE" });
-          }}>
+          }}
+        >
           <Image
-            source={images.banner}
-            resizeMode="cover"
+            source={require("../../assets/profile.png")}
+            resizeMode="contain"
             style={{
               width: "100%",
               height: "100%",
