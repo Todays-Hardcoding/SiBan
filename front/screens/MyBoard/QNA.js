@@ -4,7 +4,8 @@ import {
   StyleSheet,
   View,
   Dimensions,
-  TouchableOpacity
+  TouchableOpacity,
+  ScrollView
 } from "react-native";
 import { SafeAreaView, TextInput } from "react-native";
 import DropDownPicker from "react-native-dropdown-picker";
@@ -22,6 +23,7 @@ const QNA = () => {
     ]);
 
   return (
+      <ScrollView>
         <View style={styles.container}>
           {/* dropdown */}
           <DropDownPicker style={styles.category}
@@ -52,6 +54,7 @@ const QNA = () => {
               </TouchableOpacity>
             </View>
         </View>
+      </ScrollView>
   );
 };
 
