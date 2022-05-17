@@ -28,16 +28,46 @@ public class User {
 	@NotNull
 	@Column
 	private  String userPassword;
+	@NotNull
+	@Column
+	private  String userEmail;
+	@NotNull
+	@Column
+	private  String userName;
+	@NotNull
+	@Column
+	private  String userTel;
+	@NotNull
+	@Column
+	private  String userHeight;
 
-
+	@NotNull
+	@Column
+	private  String userWeight;
 	private LocalDateTime userRegDate;
 	
 	@PrePersist
 	public void createDate() {
 		this.userRegDate = LocalDateTime.now();
 	}
+	/*
+	@Builder
+	public User(Long userCode, @NotNull String userId, @NotNull String userPassword, @NotNull String userEmail,
+			@NotNull String userName, @NotNull String userTel, @NotNull String userHeight, @NotNull String userWeight,
+			LocalDateTime userRegDate) {
+		super();
+		this.userCode = userCode;
+		this.userId = userId;
+		this.userPassword = userPassword;
+		this.userEmail = userEmail;
+		this.userName = userName;
+		this.userTel = userTel;
+		this.userHeight = userHeight;
+		this.userWeight = userWeight;
+		this.userRegDate = userRegDate;
+	}
 
-	
+	*/
 
 
 

@@ -20,7 +20,6 @@ const data = [
   {
     name: "내 1:1 질문 10",
     date: "22-02-05",
-
   },
   {
     name: "내 1:1 질문 9",
@@ -73,6 +72,7 @@ const QNAList = () => {
         <View>
           {data.map((item, index) => (
             <View
+              key={index}
               style={[
                 styles.item,
                 index === 0 && { borderTopWidth: 0 }, // CSS: first-child
@@ -84,8 +84,6 @@ const QNAList = () => {
             </View>
           ))}
         </View>
-
-        
       </ScrollView>
       <View style={styles.searchContainer}>
         <TextInput
@@ -112,12 +110,12 @@ const styles = StyleSheet.create({
     height: windowHeight * 0.2,
     alignItems: "center",
     justifyContent: "center",
-    opacity: 0.9
+    opacity: 0.9,
   },
   text: {
     fontSize: 20,
     color: "white",
-    fontWeight: "bold"
+    fontWeight: "bold",
   },
   item: {
     flexDirection: "row",
