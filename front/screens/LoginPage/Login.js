@@ -10,7 +10,7 @@ import {
 //import TextInput from 'react-native-input-validator';
 //import KakaoButton from '../../components/KakaoButton';
 //import LoginButton from '../../components/LoginButton';
-import NaverButton from "../../components/NaverButton"
+import NaverButton from "../../components/NaverButton";
 //import LoginButton from "../../components/LoginButton";
 import { NavigationContainer } from "@react-navigation/native";
 //import { State } from 'react-native-gesture-handler';
@@ -55,7 +55,6 @@ const Login = ({ navigation }) => {
   };
 
   const postTest = () => {
-
     const url = "http://192.168.35.133:8282/test2.json";
 
     fetch(url, {
@@ -149,7 +148,7 @@ const Login = ({ navigation }) => {
         <Text style={{ fontSize: 18, color: "white" }}>로그인하기</Text>
       </TouchableOpacity>
 
-  <NaverButton />
+      <NaverButton />
     </View>
   );
 };
