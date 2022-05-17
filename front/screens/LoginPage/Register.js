@@ -169,10 +169,14 @@ const Register = ({ navigation }) => {
       .then((data) => {
         console.log(data.checkId);
 
-        if (data.checkId == false) {
-          alert("사용불가능아이디");
+        if (idCheck == false) {
+          alert("조건에 맞는 아이디를 입력하시오.");
         } else {
-          alert("사용가능");
+          if (data.checkId == false) {
+            alert("사용불가능아이디");
+          } else {
+            alert("사용가능");
+          }
         }
       });
   };
