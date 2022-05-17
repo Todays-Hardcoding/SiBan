@@ -15,5 +15,13 @@ public class SignService{
 	public User insertUser(User user) {
 		return signRepository.save(user);
 	}
+	
+	public boolean findByuserId(String userId) {
+		return signRepository.findByuserId(userId);
+	}
+	
+	public boolean findByuserEmail(String userEmail) {
+		return signRepository.findByuserEmail(userEmail);
+	}
 
 }
