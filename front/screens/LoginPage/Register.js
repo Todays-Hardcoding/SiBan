@@ -140,7 +140,7 @@ const Register = ({ navigation }) => {
     const weightRegex = /^[0-9].{0,2}$/;
     if (!weightRegex.test(text)) {
       setWeightCheck(false);
-      setWeightError("몸무게를 다시 입력해주세요");
+      setWeightError("몸무게(kg)를 다시 입력해주세요");
     } else {
       setWeightCheck(true);
     }
@@ -150,7 +150,7 @@ const Register = ({ navigation }) => {
     const heightRegex = /^[0-9].{0,2}$/;
     if (!heightRegex.test(text)) {
       setHeightCheck(false);
-      setHeightError("키를 다시 입력해주세요.");
+      setHeightError("키(cm)를 다시 입력해주세요.");
     } else {
       setHeightCheck(true);
     }
