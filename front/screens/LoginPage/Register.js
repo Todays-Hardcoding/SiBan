@@ -35,8 +35,34 @@ const Register = ({ navigation }) => {
   const [telError, setTelError] = useState("");
   const [heightError, setHeightError] = useState("");
   const [weightError, setWeightError] = useState("");
-
+  //중복검사
+  const [checkIdVal, setCheckIdVal] = useState(false);
   console.log(id);
+
+  const register = () => {
+    const _url = "http://192.168.0.6:8282/register.act";
+
+    fetch(_url, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        id,
+        pw,
+        pwConfirm,
+        email,
+        name,
+        tel,
+        height,
+        weight,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => console.log(data));
+  };
+
   const onChangeId = (text) => {
     const idRegex = /^[A-Za-z]{1}[A-Za-z0-9_-]{3,19}$/;
     if (!idRegex.test(text)) {
@@ -131,7 +157,40 @@ const Register = ({ navigation }) => {
     }
     setHeight(text);
   };
+  // 회원가입에 간한 함수
   const postRegister = () => {
+    const _url = "http://192.168.35.133:8282/register.act";
+    if (!checkIdVal) {
+      alert("아이디 중복확인을 해주세요.");
+    } else {
+      fetch(_url, {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          id,
+          pw,
+          email,
+          name,
+          tel,
+          height,
+          weight,
+        }),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          navigation.navigate("LoginPage", {
+            screen: "LoginHome",
+          });
+          console.log(data);
+        });
+    }
+  };
+  // 아이디 중복체크에 관한 함수
+  const checkId = () => {
+    const _url = "http://192.168.35.133:8282/checkId.act";
     fetch(_url, {
       method: "POST",
       headers: {
@@ -140,20 +199,17 @@ const Register = ({ navigation }) => {
       },
       body: JSON.stringify({
         id,
-        pw,
-        email,
-        name,
-        tel,
-        height,
-        weight,
       }),
     })
       .then((response) => response.json())
       .then((data) => {
-        navigation.navigate("LoginPage", {
-          screen: "LoginHome",
-        });
-        console.log(data);
+        setCheckIdVal(data.checkId);
+        console.log(checkIdVal);
+        if (!checkIdVal) {
+          alert("중복된아이디");
+        } else {
+          alert("사용가능아이디");
+        }
       });
   };
 
@@ -231,7 +287,7 @@ const Register = ({ navigation }) => {
                 width: 100,
                 alignItems: "center",
               }}
-              onPress={() => {}}
+              onPress={checkId}
             >
               <Text style={{ fontSize: 18, color: "white" }}>중복확인</Text>
             </TouchableOpacity>
@@ -260,27 +316,35 @@ const Register = ({ navigation }) => {
             <Text style={{ color: "red" }}>{pwConfirmError}</Text>
           )}
 
-          <TextInput
-            style={styles.input}
-            value={email}
-            returnKeyType="next"
-            onChangeText={(text) => onChangeEmail(text)}
-            placeholder={"이메일을 입력해주세요."}
-          />
-          {/* 이메일 중복확인 버튼 */}
-          <TouchableOpacity
+          <View
             style={{
-              backgroundColor: "#778beb",
-              padding: 10,
-              margin: 10,
-              borderRadius: 10,
-              width: 100,
+              flexDirection: "row",
+              justifyContent: "space-between",
               alignItems: "center",
             }}
-            onPress={() => {}}
           >
-            <Text style={{ fontSize: 18, color: "white" }}>중복확인</Text>
-          </TouchableOpacity>
+            <TextInput
+              style={styles.inputId}
+              value={email}
+              returnKeyType="next"
+              onChangeText={(text) => onChangeEmail(text)}
+              placeholder={"이메일을 입력해주세요."}
+            />
+            {/* 이메일 중복확인 버튼 */}
+            <TouchableOpacity
+              style={{
+                backgroundColor: "#778beb",
+                padding: 10,
+                margin: 10,
+                borderRadius: 10,
+                width: 100,
+                alignItems: "center",
+              }}
+              onPress={() => {}}
+            >
+              <Text style={{ fontSize: 18, color: "white" }}>중복확인</Text>
+            </TouchableOpacity>
+          </View>
           {!emailCheck && <Text style={{ color: "red" }}>{emailError}</Text>}
 
           <TextInput
@@ -302,8 +366,8 @@ const Register = ({ navigation }) => {
 
           <TextInput
             style={styles.input}
-            returnKeyType="next"
             value={height}
+            returnKeyType="next"
             onChangeText={(text) => onChangeHeight(text)}
             placeholder={"키를 입력해주세요."}
           />
@@ -312,14 +376,15 @@ const Register = ({ navigation }) => {
 
           <TextInput
             style={styles.input}
-            returnKeyType="next"
             value={weight}
+            returnKeyType="next"
             onChangeText={(text) => onChangeWeight(text)}
             placeholder={"몸무게를 입력해주세요."}
           />
           {!weightCheck && <Text style={{ color: "red" }}>{weightError}</Text>}
 
           <View style={styles.BtnBox}>
+            {/* 가입버튼 */}
             <TouchableOpacity
               style={{
                 backgroundColor: "black",
