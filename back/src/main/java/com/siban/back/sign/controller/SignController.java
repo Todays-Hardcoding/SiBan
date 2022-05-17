@@ -1,8 +1,13 @@
 package com.siban.back.sign.controller;
 
-
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
+
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,14 +20,26 @@ import org.springframework.web.bind.annotation.RestController;
 import com.siban.back.sign.domain.User;
 import com.siban.back.sign.service.SignService;
 
-
 @RestController
 public class SignController {
-	
+
 	@Autowired
 	private SignService signService;
-	
-	@RequestMapping(value="/register.act", method = RequestMethod.POST)
+
+//	중복검
+	@PostMapping("checkId")
+	public boolean checkId(@RequestBody Map<String, String> param) {
+		boolean result = false;
+		
+		if(signService.checkId(param.get("id"))) {
+			result = true;
+//			System.out.println(); 
+		}
+		return result;
+
+	}
+
+	@RequestMapping(value = "/register.act", method = RequestMethod.POST)
 	public User register(@RequestBody Map<String, Object> param) {
 		User user = new User();
 		String id = (String) param.get("id");
@@ -32,7 +49,7 @@ public class SignController {
 		String tel = (String) param.get("tel");
 		String height = (String) param.get("height");
 		String weight = (String) param.get("weight");
-		
+
 		user.setUserId(id);
 		user.setUserPassword(pw);
 		user.setUserEmail(email);
@@ -40,44 +57,9 @@ public class SignController {
 		user.setUserTel(tel);
 		user.setUserHeight(height);
 		user.setUserWeight(weight);
-		
-		signService.insertUser(user);
-		
-		return user;
+
+		return signService.insertUser(user);
+
 	}
 
-	
-	
-
-	
-	/*
-	@RequestMapping(value="/test2.json", method = RequestMethod.POST)
-	public Map<String, String> test2(@RequestBody Map<String, Object> param) {
-		
-		Map<String, String> result = new HashMap<String, String>();
-		
-		System.out.println(param.toString());
-//		JsonObject obj = new JsonObject();
-//		
-//		Map<String, String> data = new HashMap<String, String>();
-//		data.put("sendData", "loginId");
-//		
-		String id =  "안녕 난 괴물이라구해 "+param.get("loginId");
-		String pw = "" + param.get("loginPw");
-		
-//		System.out.println(param.get("loginId"));
-//		System.out.println(param.get("loginPw"));
-//		System.out.println("=====================================");
-//		System.out.println(id);
-//		System.out.println(pw);
-		
-		result.put("id", id);
-		
-		System.out.println(result);
-		return result;
-		
-	}*/
-	
-	
-	
 }

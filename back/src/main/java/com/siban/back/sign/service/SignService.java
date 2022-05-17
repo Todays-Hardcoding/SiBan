@@ -12,8 +12,17 @@ public class SignService{
 	@Autowired
 	private SignRepository signRepository;
 	
+//	회원가입
 	public User insertUser(User user) {
 		return signRepository.save(user);
+	}
+//	아이디 중복확인
+	public Boolean checkId(String userId) {
+		return signRepository.existsById(userId);
+	}
+//	이메일 중복확인
+	public Boolean checkEmail(String email) {
+		return signRepository.existsById(email);
 	}
 
 }
