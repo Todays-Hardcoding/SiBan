@@ -72,5 +72,9 @@ public class User {
 		this.userWeight = userWeight;
 		this.userRegDate = userRegDate;
 	}
+	
+	
+	
+
 
 }

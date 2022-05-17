@@ -68,18 +68,10 @@ const ActivityNav = () => {
 
 const MealPlanNav = () => {
   return (
-    <Stack.Navigator
-      initialRouteName="MealPlanHome"
-      screenOptions={{ presentation: "modal" }}
-    >
+    <Stack.Navigator initialRouteName="MealPlanHome">
       <Stack.Screen
         name="MealPlanHome"
         component={MealPlanHome}
-        options={{ headerShown: false }}
-      />
-      <Stack.Screen
-        name="MealPlanWrite"
-        component={MealPlanWrite}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>
