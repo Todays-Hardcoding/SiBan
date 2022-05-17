@@ -57,7 +57,6 @@ const QNANav = () => {
 const MyBoardNav = () => {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="BoardMain" component={BoardMain} />
       <Stack.Screen name="ServiceCenter" component={ServiceCenter} />
       <Stack.Screen name="ChallengeDetailNav" component={ChallengeDetailNav} />
       <Stack.Screen name="QNADetailNav" component={QNADetailNav} />

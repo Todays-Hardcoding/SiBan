@@ -8,7 +8,7 @@ const TodoListItem = ({ textValue, id, checked, onRemove, onToggle }) => {
       <TouchableOpacity onPressOut={onToggle(id)}>
         {checked ? (
           <View style={styles.completeCircle}>
-            <Icon name="circledowno" size={30} color="#3143e8" />
+            <Icon name="circledowno" size={30} color="#6072e2" />
           </View>
         ) : (
           <View style={styles.circle} />

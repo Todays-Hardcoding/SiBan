@@ -6,7 +6,6 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { Ionicons, FontAwesome5, Entypo } from "@expo/vector-icons";
 
 // 페이지 관련 import
-import Home from "../screens/Home";
 import MyPageNav from "../navigation/MyPageNav";
 import WorkoutsNav from "./WorkoutsNav";
 import MyBoardNav from "./MyBoardNav";
@@ -58,7 +57,7 @@ const MainTabs = () => {
 
       {/* 2번 탭 */}
       <MainTab.Screen
-        name="Mypage"
+        name="마이페이지"
         component={MyPageNav}
         options={{
           tabBarIcon: ({ focused, color, size }) => {
@@ -93,7 +92,7 @@ const MainTabs = () => {
 
       {/* 4번 탭 */}
       <MainTab.Screen
-        name="Board"
+        name="고객센터"
         component={MyBoardNav}
         options={{
           tabBarIcon: ({ focused, color, size }) => {
