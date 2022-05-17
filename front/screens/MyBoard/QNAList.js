@@ -59,20 +59,22 @@ const data = [
   },
 ];
 
-const QNAList = () => {
+const QNAList = ({navigation}) => {
   return (
     <SafeAreaView style={styles.container}>
       <ImageBackground
-        source={require("../../assets/images/qnaBackground.jpg")}
+        source={require("../../assets/images/sibanLogo.png")}
         style={styles.image}
       >
-        <Text style={styles.text}>나의 1:1질문 목록</Text>
       </ImageBackground>
-      <ScrollView style={styles.itemContainer}>
+      <ScrollView>
         <View>
           {data.map((item, index) => (
-            <View
+            <TouchableOpacity
               key={index}
+              onPress={()=> {
+                navigation.navigate("QNADetailNav", {Screen: "QNADetail"})
+              }}
               style={[
                 styles.item,
                 index === 0 && { borderTopWidth: 0 }, // CSS: first-child
@@ -81,7 +83,7 @@ const QNAList = () => {
             >
               <Text>{item.name}</Text>
               <Text>{item.date}</Text>
-            </View>
+            </TouchableOpacity>
           ))}
         </View>
       </ScrollView>
@@ -91,7 +93,10 @@ const QNAList = () => {
           placeholder="검색어를 입력해주세요"
         ></TextInput>
         <TouchableOpacity style={styles.searchButton}>
-          <Text>검색</Text>
+          <Text style={styles.buttonText}>검색</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.writeButton}>
+          <Text style={styles.buttonText}>글작성</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>
@@ -102,9 +107,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  itemContainer: {
-    //flex: 1,
-  },
   image: {
     width: windowWidth,
     height: windowHeight * 0.2,
@@ -112,10 +114,14 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     opacity: 0.9,
   },
-  text: {
-    fontSize: 20,
-    color: "white",
-    fontWeight: "bold",
+  writeButton: {
+    backgroundColor: "#F2C9E1",
+    borderRadius: 8,
+    height: 40,
+    alignItems: "center",
+    justifyContent: "center",
+    width: windowWidth * 0.15,
+    marginLeft: 10,
   },
   item: {
     flexDirection: "row",
@@ -135,15 +141,18 @@ const styles = StyleSheet.create({
   },
   searchInput: {
     borderWidth: 1,
-    width: windowWidth * 0.7,
+    width: windowWidth * 0.55,
     height: 40,
     padding: 10,
     borderRadius: 5,
     marginRight: 13,
     marginLeft: 8,
   },
+  buttonText: {
+    fontWeight: "bold"
+  },
   searchButton: {
-    backgroundColor: "#C0D8C0",
+    backgroundColor: "#B1BCE6",
     borderRadius: 8,
     height: 40,
     alignItems: "center",

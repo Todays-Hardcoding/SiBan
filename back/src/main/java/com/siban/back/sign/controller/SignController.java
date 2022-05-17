@@ -1,8 +1,13 @@
 package com.siban.back.sign.controller;
 
-
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
+
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -23,7 +28,7 @@ import lombok.Builder;
 
 @RestController
 public class SignController {
-	
+
 	@Autowired
 	private SignService signService;
 	
@@ -39,7 +44,7 @@ public class SignController {
 		String tel = (String) param.get("tel");
 		String height = (String) param.get("height");
 		String weight = (String) param.get("weight");
-		
+
 		user.setUserId(id);
 		user.setUserPassword(pw);
 		user.setUserEmail(email);
