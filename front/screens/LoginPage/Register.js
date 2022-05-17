@@ -35,7 +35,8 @@ const Register = ({ navigation }) => {
   const [telError, setTelError] = useState("");
   const [heightError, setHeightError] = useState("");
   const [weightError, setWeightError] = useState("");
-
+  //중복검사
+  const [checkIdVal,setCheckIdVal] = useState(false);
   console.log(id);
 
   const register = () => {
@@ -159,6 +160,11 @@ const Register = ({ navigation }) => {
   // 회원가입에 간한 함수
   const postRegister = () => {
     const _url = "http://192.168.35.133:8282/register.act";
+    if(!checkIdVal){
+      alert("아이디 중복확인을 해주세요.");
+    }else{
+
+    
     fetch(_url, {
       method: "POST",
       headers: {
@@ -182,10 +188,11 @@ const Register = ({ navigation }) => {
         });
         console.log(data);
       });
+    }
   };
   // 아이디 중복체크에 관한 함수
   const checkId = () => {
-    const _url = "http://192.168.0.6:8282/checkId.act";
+    const _url = "http://192.168.35.133:8282/checkId.act";
     fetch(_url, {
       method: "POST",
       headers: {
@@ -198,7 +205,16 @@ const Register = ({ navigation }) => {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
+       
+        setCheckIdVal(data.checkId);
+        console.log(checkIdVal);
+        if(!checkIdVal){
+        alert("중복된아이디")
+        
+        }else{
+ 
+          alert("사용가능아이디")
+        }
       });
   };
 
