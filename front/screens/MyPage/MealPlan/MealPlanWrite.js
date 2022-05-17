@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Alert, Text } from "react-native";
+import React, { useEffect, useState } from "react";
+import { Alert } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import styled from "styled-components/native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
@@ -8,6 +8,12 @@ const View = styled.View`
   background-color: #cab8ff;
   flex: 1;
   padding: 0 30px;
+`;
+const Text = styled.Text`
+  color: white;
+  font-size: 38px;
+  margin-bottom: 70px;
+  font-weight: 900;
 `;
 const Title = styled.Text`
   background-color: #cab8ff;
@@ -20,7 +26,8 @@ const Title = styled.Text`
 const TextInput = styled.TextInput`
   background-color: white;
   border-radius: 20px;
-  padding: 10px 20px;
+  padding-vertical: 10px;
+  padding-horizontal: 30px;
   font-size: 18px;
   margin-bottom: 20px;
 `;
@@ -72,27 +79,8 @@ const Time = styled.TouchableOpacity`
 const TimeText = styled.Text`
   font-size: 24px;
 `;
-const AddMinView = styled.View`
-  flex-direction: row;
-  justify-content: center;
-  margin-bottom: 20px;
-`;
-const AddMin = styled.TouchableOpacity`
-  background-color: white;
-  elevation: 5;
-  padding: 10px;
-  border-radius: 15px;
-  overflow: hidden;
-  margin-left: 50px;
-  height: 70px;
-  width: 70px;
-  border-radius: 40px;
-  justify-content: center;
-  align-items: center;
-`;
-const AddMinText = styled.Text`
-  font-size: 40px;
-`;
+
+const STORAGE_KEY = "@mealPlan";
 
 const grades = ["😆 diet meal", "😡 cheat meal"];
 const times = ["🥙 아침", "🍱 점심", "🥘 저녁"];
@@ -100,32 +88,33 @@ const times = ["🥙 아침", "🍱 점심", "🥘 저녁"];
 const MealPlanWrite = ({ navigation: { goBack } }) => {
   const [selectedGrade, setGrade] = useState(null);
   const [selectedTime, setTime] = useState(null);
-  const [foods, setFoods] = useState(["", "", "", "", ""]);
-  const [inputBox, setInputBox] = useState(1);
-  const range = [...Array(inputBox)];
-
-  // const onChangeText = (text) => setFoods(text);
+  const [foods, setFoods] = useState("");
+  const [mealPlan, setMealPlan] = useState({});
 
   const onGradePress = (face) => setGrade(face);
   const onTimePress = (time) => setTime(time);
 
+  useEffect(() => {
+    // loadMealPlan();
+  }, []);
+
   const onSubmit = () => {
-    if (selectedGrade == null) {
+    if (selectedGrade === null) {
       return Alert.alert("식단을 선택하세요.");
     }
+    if (selectedTime === null) {
+      return Alert.alert("밥을 언제 먹었나요?");
+    }
     if (foods === "") {
-      return Alert.alert("내용을 모두 입력해주세요.");
+      return Alert.alert("메뉴를 적어주세요.");
     }
 
-    // 저장하는 기능 추가해야댐
-    setGrade(null);
-    console.log("초기화 전");
-    console.log(foods);
-    setFoods("", "", "", "", "");
-    console.log("초기화 후");
-    console.log(foods);
-
-    goBack();
+    const newMealPlan = {
+      ...mealPlan,
+      [Date.now()]: { foods, grade: selectedGrade, time: selectedTime },
+    };
+    setMealPlan(newMealPlan);
+    setFoods("");
   };
 
   return (
@@ -140,6 +129,7 @@ const MealPlanWrite = ({ navigation: { goBack } }) => {
         paddingLeft: 30,
       }}
     >
+      <Text>나의 식단 기록일기</Text>
       <Title>어떤 음식을 드셨나요?</Title>
       <GradeView>
         {grades.map((grade, index) => (
@@ -164,43 +154,13 @@ const MealPlanWrite = ({ navigation: { goBack } }) => {
         ))}
       </TimeView>
 
-      {/* 반복으로 input 만들기 */}
-      {range.map((inputCount, index) => {
-        return (
-          <TextInput
-            key={index}
-            returnKeyLabel="done"
-            onSubmitEditing={onSubmit}
-            value={(text) => {
-              let foodsCopy = [...foods];
-              foodsCopy[index] = text;
-              setFoods(foodsCopy);
-            }}
-            placeholder="메뉴를 적으세요. (5개까지 추가 가능)"
-          ></TextInput>
-        );
-      })}
-      <AddMinView>
-        <AddMin
-          onPress={() => {
-            if (inputBox != 5) {
-              setInputBox(inputBox + 1);
-            }
-            console.log(range);
-          }}
-        >
-          <AddMinText>+</AddMinText>
-        </AddMin>
-        <AddMin
-          onPress={() => {
-            if (inputBox > 1) {
-              setInputBox(inputBox - 1);
-            }
-          }}
-        >
-          <AddMinText>-</AddMinText>
-        </AddMin>
-      </AddMinView>
+      <TextInput
+        returnKeyLabel="done"
+        // 전송버튼을 누를때
+        onSubmitEditing={onSubmit}
+        value={foods}
+        placeholder="메뉴를 적으세요."
+      ></TextInput>
 
       <Btn onPress={onSubmit}>
         <BtnText>Save</BtnText>
