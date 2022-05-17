@@ -1,6 +1,7 @@
 package com.siban.back.board.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,5 +33,13 @@ public class PostController {
 		post.setPostContent(content);
 		
 		return postService.insertInquiry(post);
+	}
+	
+	@RequestMapping(value="/selectInquiry.act", method = RequestMethod.POST)
+	public Map<String, Post> selectInquiry(){
+		List<Post> postList = postService.selectInquiry();
+		System.out.println(postList);
+		
+		return null;
 	}
 }
