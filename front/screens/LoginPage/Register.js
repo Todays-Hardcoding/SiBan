@@ -33,6 +33,8 @@ const Register = ({ navigation }) => {
   const [heightError, setHeightError] = useState("");
   const [weightError, setWeightError] = useState("");
   //중복검사
+  const [duplicatedId, setDuplicatedID] = useState(false);
+  const [duplicatedEmail, setDuplicatedEmail] = useState(false);
 
   const onChangeId = () => {
     const idRegex = /^[A-Za-z]{1}[A-Za-z0-9_-]{3,19}$/;
@@ -119,7 +121,9 @@ const Register = ({ navigation }) => {
       nameCheck === true &&
       telCheck === true &&
       heightCheck === true &&
-      weightCheck === true
+      weightCheck === true &&
+      duplicatedId === true &&
+      duplicatedEmail === true
     ) {
       fetch(_url, {
         method: "POST",
@@ -144,15 +148,14 @@ const Register = ({ navigation }) => {
           });
         });
     } else {
-      // onChangeId;
-      // onChangePw;
-      // onChangeEmail;
-      // onChangeName;
-      // onChangeTel;
-      // onChangeHeight;
-      // onChangeWeight;
+      onChangeId();
+      onChangePw();
+      onChangeEmail();
+      onChangeName();
+      onChangeTel();
+      onChangeHeight();
+      onChangeWeight();
       alert("모두 입력해 주세요.");
-
       return false;
     }
   };
@@ -167,6 +170,30 @@ const Register = ({ navigation }) => {
       },
       body: JSON.stringify({
         id: id,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.checkId == false) {
+          alert("사용 불가능아이디");
+        } else {
+          alert("사용 가능");
+          setDuplicatedID(true);
+        }
+      });
+  };
+
+  // 이메일 중복체크에 관한 함수
+  const checkEmail = () => {
+    const _url = "http://112.172.225.17:8282/checkEmail.act";
+    fetch(_url, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: email,
       }),
     })
       .then((response) => response.json())
@@ -282,7 +309,7 @@ const Register = ({ navigation }) => {
             style={styles.input}
             value={pwConfirm}
             returnKeyType="next"
-            onChangeText={(text) => setPwCheck(text)}
+            onChangeText={(text) => setPwConfirm(text)}
             onEndEditing={() => onChangePw2()}
             secureTextEntry={true}
             placeholder={"비밀번호를 다시 입력해주세요"}
