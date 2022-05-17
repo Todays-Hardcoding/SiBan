@@ -1,18 +1,17 @@
-import React from "react";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-
-import ForYou from "../screens/Workouts/ForYou";
+import React from "react";
 import Browse from "../screens/Workouts/Browse";
-import Plans from "../screens/Workouts/Plans";
-import StrengthMain from "../screens/Workouts/StrengthMain";
-import StrengthDetail from "../screens/Workouts/StrengthDetail";
 import Endurance from "../screens/Workouts/Endurance";
-import Mobility from "../screens/Workouts/Mobility";
+import ForYou from "../screens/Workouts/ForYou";
 import Level1 from "../screens/Workouts/level1";
 import Level2 from "../screens/Workouts/level2";
 import Level3 from "../screens/Workouts/level3";
+import Mobility from "../screens/Workouts/Mobility";
+import Plans from "../screens/Workouts/Plans";
 import Strength from "../screens/Workouts/Strength";
+import StrengthDetail from "../screens/Workouts/StrengthDetail";
+
 
 const Tab = createMaterialTopTabNavigator();
 const Stack = createNativeStackNavigator();
