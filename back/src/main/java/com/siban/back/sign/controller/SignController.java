@@ -31,7 +31,7 @@ public class SignController {
 	@PostMapping("/checkId.act")
 	public Map<String, Boolean> checkId(@RequestBody Map<String, String> param) {
 		Map<String, Boolean> result = new HashMap<>();
-		boolean temp = true;
+		boolean temp = false;
 		System.out.println(param.get("id"));
 		// 아이디가 있으면 false
 		User checkId = signService.findByUserId(param.get("id"));
@@ -48,7 +48,7 @@ public class SignController {
 	   @PostMapping("/checkEmail.act")
 	   public Map<String, Boolean> checkEmail(@RequestBody Map<String, String> param) {
 	      Map<String, Boolean> result = new HashMap<>();
-	      boolean temp = true;
+	      boolean temp = false;
 	      System.out.println(param.get("email"));
 	      // 이메일이 있으면 false
 	      User checkEmail = signService.findByUserEmail(param.get("email"));
