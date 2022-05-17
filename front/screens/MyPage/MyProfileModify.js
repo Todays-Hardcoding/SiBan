@@ -1,5 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { StyleSheet, Text, View, TextInput, TouchableOpacity } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  TextInput,
+  TouchableOpacity,
+} from "react-native";
 import { Table, Row, Rows } from "react-native-table-component-2";
 import RNPickerSelect from "react-native-picker-select";
 import { Dimensions } from "react-native";
@@ -39,10 +45,10 @@ const MyProfileModify = () => {
       })
       // .then((data) => console.log(JSON.stringify(data)))
       .catch((error) => console.log(error));
-  }
+  };
   useEffect(() => {
     onScreenLoad();
-  }, [])
+  }, []);
 
   const profileTest = () => {
     const url = "http://192.168.35.107:8282/updateUserInfo.act";
@@ -176,7 +182,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     borderRadius: windowWidth * 0.04,
     marginHorizontal: 5,
-    width: windowWidth * 0.35
+    width: windowWidth * 0.35,
   },
 });
 

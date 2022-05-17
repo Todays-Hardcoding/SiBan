@@ -46,6 +46,20 @@ public class UserController {
 		
 		userService.updateUser(user);
 		
+	
+	@PostMapping("/checkUserInfo.act")
+	public User checkUserInfo(@RequestBody Map<String, String> param) {
+		
+		User testId = userService.findByUserId("TTAA");
+		
+		User user = new User();
+		
+		System.out.println(testId);
+		System.out.println(testId.getUserHeight());
+		System.out.println(testId.getUserWeight());
+		
+		user.setUserHeight(testId.getUserHeight());
+		user.setUserWeight(testId.getUserWeight());
 		return user;
 	
 	}

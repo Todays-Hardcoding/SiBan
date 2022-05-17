@@ -16,11 +16,11 @@ const LoginPage = () => {
         component={LoginHome}
         options={{ headerShown: false }}
       />
-      <Stack.Screen
+      {/* <Stack.Screen
         name="Login"
         component={Login}
         options={{ headerShown: false }}
-      />
+      /> */}
       <Stack.Screen
         name="Register"
         component={Register}

@@ -15,6 +15,7 @@ import NaverButton from "../../components/NaverButton";
 import { NavigationContainer } from "@react-navigation/native";
 //import { State } from 'react-native-gesture-handler';
 
+const url = "http://192.168.45.96:8282/test2.json";
 const Login = ({ navigation }) => {
   const [loginId, setLoginId] = useState("");
   const [loginPw, setLoginPw] = useState("");
@@ -149,7 +150,7 @@ const Login = ({ navigation }) => {
       </TouchableOpacity>
 
       <NaverButton />
-    </View >
+    </View>
   );
 };
 

@@ -12,6 +12,8 @@ import { COLORS, SIZES, icons, images } from "../../constants";
 import { Table, Row, Rows } from "react-native-table-component-2";
 
 const MyProfile = ({ navigation }) => {
+  const [userHeight, setuserHeight] = useState("");
+  const [userWeight, setuserWeight] = useState("");
   const specialPromoData = [
     {
       id: 1,
@@ -205,16 +207,31 @@ const MyProfile = ({ navigation }) => {
     };
 
     const MyProfileModify = () => {
-      // state = {age:"", gender:"",height:"",weight:""}
-      // const [value, setValue] = useState('김이나');
-
+      const profileTest = () => {
+        const url = "http://192.168.45.96:8282/checkUserInfo.act";
+        fetch(url, {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            userHeight,
+            userWeight,
+          }),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log(data);
+            setuserHeight(data.userHeight);
+            setuserWeight(data.userWeight);
+          });
+      };
       var state = {
         tableHead: ["회원이름"],
         tableData: [
-          ["나이", "22"],
-          ["성별", "남"],
-          ["키", "175"],
-          ["몸무게", "70"],
+          ["키", userHeight],
+          ["몸무게", userWeight],
         ],
       };
 
@@ -237,6 +254,10 @@ const MyProfile = ({ navigation }) => {
               style={styles.userProfile}
             >
               <Text style={styles.userProfileText}>정보수정</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity onPress={profileTest}>
+              <Text style={styles.userProfileText}>정보확인</Text>
             </TouchableOpacity>
           </View>
         </View>
