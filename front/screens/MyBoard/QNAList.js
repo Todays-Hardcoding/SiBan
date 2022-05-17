@@ -67,7 +67,7 @@ const QNAList = ({navigation}) => {
         style={styles.image}
       >
       </ImageBackground>
-      <ScrollView style={styles.itemContainer}>
+      <ScrollView>
         <View>
           {data.map((item, index) => (
             <TouchableOpacity
@@ -93,7 +93,10 @@ const QNAList = ({navigation}) => {
           placeholder="검색어를 입력해주세요"
         ></TextInput>
         <TouchableOpacity style={styles.searchButton}>
-          <Text>검색</Text>
+          <Text style={styles.buttonText}>검색</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.writeButton}>
+          <Text style={styles.buttonText}>글작성</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>
@@ -104,15 +107,21 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  itemContainer: {
-    //flex: 1,
-  },
   image: {
     width: windowWidth,
     height: windowHeight * 0.2,
     alignItems: "center",
     justifyContent: "center",
     opacity: 0.9,
+  },
+  writeButton: {
+    backgroundColor: "#F2C9E1",
+    borderRadius: 8,
+    height: 40,
+    alignItems: "center",
+    justifyContent: "center",
+    width: windowWidth * 0.15,
+    marginLeft: 10,
   },
   item: {
     flexDirection: "row",
@@ -132,15 +141,18 @@ const styles = StyleSheet.create({
   },
   searchInput: {
     borderWidth: 1,
-    width: windowWidth * 0.7,
+    width: windowWidth * 0.55,
     height: 40,
     padding: 10,
     borderRadius: 5,
     marginRight: 13,
     marginLeft: 8,
   },
+  buttonText: {
+    fontWeight: "bold"
+  },
   searchButton: {
-    backgroundColor: "#F2C9E1",
+    backgroundColor: "#B1BCE6",
     borderRadius: 8,
     height: 40,
     alignItems: "center",

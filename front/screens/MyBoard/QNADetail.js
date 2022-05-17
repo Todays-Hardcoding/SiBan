@@ -48,10 +48,14 @@ const QNADetail = () => {
             <Text>이용문의 내용 TEST</Text>
           </View>
         </View>
+        <View style={styles.postAnswer}>
+          {/* 1:1 Q&A 답변 */}
+          <Text>QNA 답변란</Text>
+        </View>
         <View style={styles.commentContainer}>
           <TextInput style={styles.commentInput} placeholder="답변"></TextInput>
           <TouchableOpacity style={styles.commentButton}>
-            <Text>제출</Text>
+            <Text style={styles.text}>제출</Text>
           </TouchableOpacity>
         </View>
       </ScrollView>
@@ -75,11 +79,6 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
     
   },
-  text: {
-    fontSize: 20,
-    color: "white",
-    fontWeight: "bold",
-  },
   postContainer: {
     flex: 1,
     alignItems: "center",
@@ -101,7 +100,9 @@ const styles = StyleSheet.create({
     flex: 0.1,
     flexDirection: "row",
     alignItems: "center",
-    backgroundColor: "#B1BCE6",
+    //backgroundColor: "#B1BCE6",
+    borderWidth: 1,
+    borderColor:"#DDDDDD",
     marginTop: 10,
     height: 50,
     justifyContent: "space-between",
@@ -113,7 +114,9 @@ const styles = StyleSheet.create({
     flex: 0.1,
     flexDirection: "row",
     alignItems: "center",
-    backgroundColor: "#B1BCE6",
+    //backgroundColor: "#B1BCE6",
+    borderWidth: 1,
+    borderColor:"#DDDDDD",
     marginTop: 10,
     height: 50,
     justifyContent: "flex-start",
@@ -124,12 +127,21 @@ const styles = StyleSheet.create({
   line: {
     borderWidth: 0.5,
     width: windowWidth *0.9,
-    borderColor: "black",
+    borderColor: "gray",
     marginTop: 10,
   },
   postBody: {
     width: windowWidth * 0.9,
     height: windowHeight * 0.3,
+    //backgroundColor: "#DDDDDD",
+    borderWidth: 1,
+    borderColor:"#DDDDDD",
+    borderRadius: 8,
+    marginTop: 10,
+    padding: 15,
+  },
+  postAnswer: {
+    width: windowWidth * 0.9,
     backgroundColor: "#DDDDDD",
     borderRadius: 8,
     marginTop: 10,
@@ -158,6 +170,9 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     marginTop: 10,
     backgroundColor: "#F2C9E1",
+  },
+  text: {
+    fontWeight: "bold",
   },
 });
 
