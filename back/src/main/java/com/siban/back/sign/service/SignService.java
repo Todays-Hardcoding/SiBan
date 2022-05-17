@@ -14,14 +14,18 @@ public class SignService{
 	@Autowired
 	private SignRepository signRepository;
 	
+//	회원가입
 	public User insertUser(User user) {
 		return signRepository.save(user);
 	}
 	
-	public Optional<User> findbyUserId(String userId) {
-		return signRepository.findByUserId(userId);
+	public boolean findByUserId(String userId) {
+		return signRepository.findByuserId(userId);
 	}
-
+	
+	public boolean findByUserEmail(String userEmail) {
+		return signRepository.findByuserEmail(userEmail);
+	}
 
 
 }

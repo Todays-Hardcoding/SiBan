@@ -28,33 +28,29 @@ const Record = () => {
   };
 
   const [markedDates, setMarkedDates] = React.useState(null);
-  const [dates, setDates] = React.useState(["2021-01-05", "2021-01-20"]);
-  function addDates() {
-    let obj = dates.reduce(
-      (c, v) =>
-        Object.assign(c, {
-          [v]: { marked: true, dotColor: "red" },
-        }),
-      {}
-    );
-    console.log(obj);
-    setMarkedDates(obj);
+  const [dates, setDates] = React.useState("");
+  const [shouldShow, setShouldShow] = useState(false);
+  function addDates(day) {
+    setShouldShow(!shouldShow);
+    setTodos([]);
   }
 
   return (
     <ScrollView style={styles.container}>
       <Calendar
         onDayPress={(day) => {
-          addDates();
-          <TodoList todos={todos} />;
+          addDates(day);
+          console.log("selected day", day);
         }}
         markedDates={markedDates}
       />
       <SafeAreaView>
-        <View style={styles.card}>
-          <TodoInsert onAddTodo={addTodo} />
-          <TodoList todos={todos} onRemove={onRemove} onToggle={onToggle} />
-        </View>
+        {shouldShow ? (
+          <View style={styles.card}>
+            <TodoInsert onAddTodo={addTodo} />
+            <TodoList todos={todos} onRemove={onRemove} onToggle={onToggle} />
+          </View>
+        ) : null}
       </SafeAreaView>
     </ScrollView>
   );

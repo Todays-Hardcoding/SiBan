@@ -20,13 +20,24 @@ const Tab = createMaterialTopTabNavigator();
 const windowWidth = Dimensions.get("window").width;
 const Stack = createStackNavigator();
 
-const BtnPage = () => {
+const OthersNav = () => {
   return (
-    <Stack.Navigator>
-      <Stack.Screen name="CHANGEPHOTO" component={ChangePhoto} />
-      <Stack.Screen name="RECORD" component={Record} />
-      <Stack.Screen name="MYPROFILE" component={MyProfile} />
-      <Stack.Screen name="MYPROFILEMODIFY" component={MyProfileModify} />
+    <Stack.Navigator initialRouteName="Record">
+      <Stack.Screen
+        name="ChangePhoto"
+        component={ChangePhoto}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="Record"
+        component={Record}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="MyProfileModify"
+        component={MyProfileModify}
+        options={{ headerShown: false }}
+      />
     </Stack.Navigator>
   );
 };
@@ -61,8 +72,16 @@ const MealPlanNav = () => {
       initialRouteName="MealPlanHome"
       screenOptions={{ presentation: "modal" }}
     >
-      <Stack.Screen name="MealPlanHome" component={MealPlanHome} />
-      <Stack.Screen name="MealPlanWrite" component={MealPlanWrite} />
+      <Stack.Screen
+        name="MealPlanHome"
+        component={MealPlanHome}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="MealPlanWrite"
+        component={MealPlanWrite}
+        options={{ headerShown: false }}
+      />
     </Stack.Navigator>
   );
 };
@@ -72,7 +91,7 @@ const MyPageNav = () => {
     <Stack.Navigator initialRouteName="MYPAGE">
       <Stack.Screen
         name="MYPAGE"
-        component={MyPageMain}
+        component={MyProfile}
         options={{ headerShown: false }}
       />
       <Stack.Screen
@@ -86,8 +105,8 @@ const MyPageNav = () => {
         options={{ headerShown: false }}
       />
       <Stack.Screen
-        name="BtnPage"
-        component={BtnPage}
+        name="OthersNav"
+        component={OthersNav}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>

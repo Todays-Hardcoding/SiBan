@@ -12,7 +12,7 @@ import {
 import NaverButton from "../../components/NaverButton";
 import LoginButton from "../../components/LoginButton";
 import { NavigationContainer } from "@react-navigation/native";
-import { conv2dDerFilter } from "@tensorflow/tfjs/node_modules/@tensorflow/tfjs-core/dist/ops/conv";
+
 
 const LoginHome = ({ navigation }) => {
   //const onChangeId = (e) => { console.log(e.target.value); }
