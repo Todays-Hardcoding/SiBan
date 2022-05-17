@@ -163,25 +163,31 @@ const Register = ({ navigation }) => {
   // 아이디 중복체크에 관한 함수
   const checkId = () => {
     const _url = "http://112.172.225.17:8282/checkId.act";
-    fetch(_url, {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        id: id,
-      }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.checkId == false) {
-          alert("사용 불가능아이디");
-        } else {
-          alert("사용 가능");
-          setDuplicatedID(true);
-        }
-      });
+
+    const idRegex = /^[A-Za-z]{1}[A-Za-z0-9_-]{3,19}$/;
+    if (idRegex.test(id) === false) {
+      alert("4자리 이상 영문자로 시작하는 아이디를 입력해주세요.")
+    } else {
+      fetch(_url, {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          id: id,
+        }),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.checkId === true) {
+            alert("사용 불가능아이디");
+          } else {
+            alert("사용 가능");
+            setDuplicatedID(true);
+          }
+        });
+    }
   };
 
   // 이메일 중복체크에 관한 함수
@@ -201,7 +207,7 @@ const Register = ({ navigation }) => {
       .then((data) => {
         console.log(data.checkId);
 
-        if (data.checkEmail == false) {
+        if (data.checkEmail === true) {
           alert("사용 불가능한 Email");
         } else {
           alert("사용 가능");
@@ -341,7 +347,7 @@ const Register = ({ navigation }) => {
                 width: 100,
                 alignItems: "center",
               }}
-              onPress={() => {}}
+              onPress={checkEmail}
             >
               <Text style={{ fontSize: 18, color: "white" }}>중복확인</Text>
             </TouchableOpacity>
