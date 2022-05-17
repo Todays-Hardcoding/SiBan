@@ -50,7 +50,7 @@ const MyProfileModify = () => {
     onScreenLoad();
   }, []);
 
-  const profileTest = () => {
+  const profileTest = (navigation ) => {
     const url = "http://192.168.45.96:8282/updateUserInfo.act";
 
     fetch(url, {
@@ -70,6 +70,7 @@ const MyProfileModify = () => {
     })
       .then((response) => response.json())
       .then((data) => console.log(data))
+      // .then(navigation.navigate("OthersNav", { screen: "MYPROFILE" }))
       // .then((data) => console.log(JSON.stringify(data)))
       .catch((error) => console.log(error));
   };
@@ -125,7 +126,8 @@ const MyProfileModify = () => {
           onChangeText={(weight) => setuserWeight(weight)}
         />
       </View>
-      <View style={styles.buttonPart}>
+      <View style={styles.buttonCase}>
+        <View style={styles.buttonPart}>
         <TouchableOpacity onPress={profileTest} style={styles.defaultButton}>
           <Text style={styles.userProfileText}>저장</Text>
         </TouchableOpacity>
@@ -133,6 +135,7 @@ const MyProfileModify = () => {
         <TouchableOpacity onPress={onPressBtn} style={styles.defaultButton}>
           <Text style={styles.userProfileText}>뒤로</Text>
         </TouchableOpacity>
+        </View>
       </View>
     </View>
   );
@@ -171,9 +174,14 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
     paddingTop: 10,
   },
+  buttonCase:{
+    flex: 1,
+    alignItems: "flex-end"
+  },
   buttonPart: {
     flex: 1,
     flexDirection: "row",
+    marginTop: 20,
   },
   defaultButton: {
     backgroundColor: "#F5EEDC",
