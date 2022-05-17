@@ -1,6 +1,6 @@
 package com.siban.back.sign.repository;
 
-import javax.validation.constraints.NotNull;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -17,5 +17,8 @@ public interface SignRepository extends JpaRepository<User, Long>{
 
 
 
+	public Optional<User> findByUserId(String userId);
 	
+
+
 }

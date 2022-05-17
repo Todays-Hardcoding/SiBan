@@ -31,8 +31,6 @@ public class PostController {
 		post.setPostTitle(title);
 		post.setPostContent(content);
 		
-		postService.insertInquiry(post);
-		
-		return post;
+		return postService.insertInquiry(post);
 	}
 }
