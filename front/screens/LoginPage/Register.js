@@ -144,15 +144,14 @@ const Register = ({ navigation }) => {
           });
         });
     } else {
-      // onChangeId;
-      // onChangePw;
-      // onChangeEmail;
-      // onChangeName;
-      // onChangeTel;
-      // onChangeHeight;
-      // onChangeWeight;
+      onChangeId();
+      onChangePw();
+      onChangeEmail();
+      onChangeName();
+      onChangeTel();
+      onChangeHeight();
+      onChangeWeight();
       alert("모두 입력해 주세요.")
-      e.preventdefault();
       return false;
     }
 
@@ -279,7 +278,7 @@ const Register = ({ navigation }) => {
             style={styles.input}
             value={pwConfirm}
             returnKeyType="next"
-            onChangeText={(text) => setPwCheck(text)}
+            onChangeText={(text) => setPwConfirm(text)}
             onEndEditing={() => onChangePw2()}
             secureTextEntry={true}
             placeholder={"비밀번호를 다시 입력해주세요"}
