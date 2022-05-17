@@ -1,7 +1,5 @@
 import { createStackNavigator } from "@react-navigation/stack";
 import React from "react";
-import CancelButton from "../components/CancelButton";
-import Login from "../screens/Home";
 import LoginHome from "../screens/LoginPage/LoginHome";
 import Register from "../screens/LoginPage/Register";
 import Search from "../screens/LoginPage/Search";
@@ -17,11 +15,7 @@ const LoginPage = () => {
         component={LoginHome}
         options={{ headerShown: false }}
       />
-      <Stack.Screen
-        name="Login"
-        component={Login}
-        options={{ headerShown: false }}
-      />
+    
       <Stack.Screen
         name="Register"
         component={Register}
