@@ -38,10 +38,11 @@ const Register = ({ navigation }) => {
   //중복검사
   const [checkIdVal,setCheckIdVal] = useState(false);
   console.log(id);
+  const _url = "http://192.168.0.6:8282/register.act";
 
+  
   const register = () => {
-    const _url = "http://192.168.0.6:8282/register.act";
-
+    
     fetch(_url, {
       method: "POST",
       headers: {
