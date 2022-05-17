@@ -7,7 +7,6 @@ import Login from "../screens/LoginPage/Login";
 import Register from "../screens/LoginPage/Register";
 import Search from "../screens/LoginPage/Search";
 import CancelButton from "../components/CancelButton";
-import Home from "../screens/Home";
 
 const Stack = createStackNavigator();
 
@@ -21,7 +20,7 @@ const LoginPage = () => {
       />
       <Stack.Screen
         name="Login"
-        component={Home}
+        component={Login}
         options={{ headerShown: false }}
       />
       <Stack.Screen

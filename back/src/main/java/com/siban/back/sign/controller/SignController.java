@@ -20,14 +20,26 @@ import org.springframework.web.bind.annotation.RestController;
 import com.siban.back.sign.domain.User;
 import com.siban.back.sign.service.SignService;
 
-
 @RestController
 public class SignController {
-	
+
 	@Autowired
 	private SignService signService;
-	
-	@RequestMapping(value="/register.act", method = RequestMethod.POST)
+
+//	중복검
+	@PostMapping("checkId")
+	public boolean checkId(@RequestBody Map<String, String> param) {
+		boolean result = false;
+		
+		if(signService.checkId(param.get("id"))) {
+			result = true;
+//			System.out.println(); 
+		}
+		return result;
+
+	}
+
+	@RequestMapping(value = "/register.act", method = RequestMethod.POST)
 	public User register(@RequestBody Map<String, Object> param) {
 		User user = new User();
 		String id = (String) param.get("id");
@@ -37,7 +49,7 @@ public class SignController {
 		String tel = (String) param.get("tel");
 		String height = (String) param.get("height");
 		String weight = (String) param.get("weight");
-		
+
 		user.setUserId(id);
 		user.setUserPassword(pw);
 		user.setUserEmail(email);
