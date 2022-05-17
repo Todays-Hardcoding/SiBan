@@ -79,16 +79,17 @@ const MyProfile = ({ navigation }) => {
             navigation.navigate("OthersNav", { screen: "MYPROFILE" });
           }}
         >
-          <Image
-            source={require("../../assets/profile.png")}
-            resizeMode="contain"
-            style={{
-              marginLeft: 80,
-              width: "70%",
-              height: "100%",
-              borderRadius: 20,
-            }}
-          />
+          <View style={{ alignItems: "center" }}>
+            <Image
+              source={require("../../assets/profile.png")}
+              resizeMode="contain"
+              style={{
+                width: "70%",
+                height: "100%",
+                borderRadius: 20,
+              }}
+            />
+          </View>
         </TouchableOpacity>
       </View>
     );
