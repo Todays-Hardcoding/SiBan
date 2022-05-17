@@ -59,7 +59,7 @@ const data = [
   },
 ];
 
-const QNAList = () => {
+const QNAList = ({navigation}) => {
   return (
     <SafeAreaView style={styles.container}>
       <ImageBackground
@@ -70,8 +70,11 @@ const QNAList = () => {
       <ScrollView style={styles.itemContainer}>
         <View>
           {data.map((item, index) => (
-            <View
+            <TouchableOpacity
               key={index}
+              onPress={()=> {
+                navigation.navigate("QNADetailNav", {Screen: "QNADetail"})
+              }}
               style={[
                 styles.item,
                 index === 0 && { borderTopWidth: 0 }, // CSS: first-child
@@ -80,7 +83,7 @@ const QNAList = () => {
             >
               <Text>{item.name}</Text>
               <Text>{item.date}</Text>
-            </View>
+            </TouchableOpacity>
           ))}
         </View>
       </ScrollView>
