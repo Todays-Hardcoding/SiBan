@@ -72,6 +72,7 @@ const QNAList = () => {
         <View>
           {data.map((item, index) => (
             <View
+              key={index}
               style={[
                 styles.item,
                 index === 0 && { borderTopWidth: 0 }, // CSS: first-child

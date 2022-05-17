@@ -5,7 +5,7 @@ import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view
 import RegisterButton from "../../components/RegisterButton";
 import CancelButton from "../../components/CancelButton";
 import { TouchableOpacity } from "react-native-gesture-handler";
-
+const _url = "http://192.168.45.96:8282/register.act";
 const Register = ({ navigation }) => {
   //아이디,비번,이메일,전화번호
   const [id, setId] = useState("");
@@ -132,7 +132,6 @@ const Register = ({ navigation }) => {
     setHeight(text);
   };
   const postRegister = () => {
-    const _url = "http://192.168.0.6:8282/register.act";
     fetch(_url, {
       method: "POST",
       headers: {
@@ -269,19 +268,19 @@ const Register = ({ navigation }) => {
             placeholder={"이메일을 입력해주세요."}
           />
           {/* 이메일 중복확인 버튼 */}
-                      <TouchableOpacity
-              style={{
-                backgroundColor: "#778beb",
-                padding: 10,
-                margin: 10,
-                borderRadius: 10,
-                width: 100,
-                alignItems: "center",
-              }}
-              onPress={() => {}}
-            >
-              <Text style={{ fontSize: 18, color: "white" }}>중복확인</Text>
-            </TouchableOpacity>
+          <TouchableOpacity
+            style={{
+              backgroundColor: "#778beb",
+              padding: 10,
+              margin: 10,
+              borderRadius: 10,
+              width: 100,
+              alignItems: "center",
+            }}
+            onPress={() => {}}
+          >
+            <Text style={{ fontSize: 18, color: "white" }}>중복확인</Text>
+          </TouchableOpacity>
           {!emailCheck && <Text style={{ color: "red" }}>{emailError}</Text>}
 
           <TextInput
