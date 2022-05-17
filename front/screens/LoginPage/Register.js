@@ -48,8 +48,6 @@ const Register = ({ navigation }) => {
       setIdCheck(true);
     }
     setId(text);
-    console.log(idCheck);
-    console.log(id);
   };
   const onChangePw = (text) => {
     const pwRegex = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,25}$/;
@@ -60,8 +58,6 @@ const Register = ({ navigation }) => {
       setPwCheck(true);
     }
     setPw(text);
-    console.log(pwCheck);
-    console.log(pw);
   };
 
   const onChangePw2 = (text) => {
@@ -72,23 +68,18 @@ const Register = ({ navigation }) => {
       setPwConfirmCheck(true);
     }
     setPwConfirm(text);
-    console.log(pwConfirmCheck);
-    console.log(pwConfirm);
   };
 
   const onChangeEmail = (text) => {
     const emailRegex =
       /^[0-9?A-z0-9?]+(\.)?[0-9?A-z0-9?]+@[0-9?A-z]+\.[A-z]{2}.?[A-z]{0,3}$/;
     if (!emailRegex.test(text)) {
-      console.log(emailRegex.test(text));
       setEmailError("이메일형식에 맞게 다시 입력해주세요");
       setEmailCheck(false);
     } else {
       setEmailCheck(true);
     }
     setEmail(text);
-    //console.log(pwCheck);
-    //console.log(pw);
   };
   const onChangeName = (text) => {
     if (text.trim().length === 0) {
@@ -98,8 +89,6 @@ const Register = ({ navigation }) => {
       setNameCheck(true);
     }
     setName(text);
-    console.log(nameCheck);
-    console.log(name);
   };
   const onChangeTel = (text) => {
     const telRegex = /^[0-9]{8,13}$/;
@@ -110,8 +99,6 @@ const Register = ({ navigation }) => {
       setTelCheck(true);
     }
     setTel(text);
-    console.log(telCheck);
-    console.log(tel);
   };
   const onChangeWeight = (text) => {
     const weightRegex = /^[0-9].{0,2}$/;
@@ -134,35 +121,34 @@ const Register = ({ navigation }) => {
     setHeight(text);
   };
   // 회원가입에 간한 함수
-  const postRegister = () => {
+  const postRegister = (event) => {
     const _url = "http://192.168.0.6:8282/register.act";
-    if (!checkIdVal) {
-      alert("아이디 중복확인을 해주세요.");
-    } else {
-      fetch(_url, {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          id,
-          pw,
-          email,
-          name,
-          tel,
-          height,
-          weight,
-        }),
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          navigation.navigate("LoginPage", {
-            screen: "LoginHome",
-          });
-          console.log(data);
-        });
+    if (checkId === false) {
+      event.preventDefault();
     }
+
+    fetch(_url, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        id,
+        pw,
+        email,
+        name,
+        tel,
+        height,
+        weight,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        navigation.navigate("LoginPage", {
+          screen: "LoginHome",
+        });
+      });
   };
   // 아이디 중복체크에 관한 함수
   const checkId = () => {
@@ -181,15 +167,12 @@ const Register = ({ navigation }) => {
     })
       .then((response) => response.json())
       .then((data) => {
-        setCheckIdVal(data.value);
-        console.log(data.value[checkId]);
-        console.log("백 확인후 checkIdVal", checkIdVal);
-        if (checkIdVal === true) {
-          alert("중복된아이디");
-          console.log("중복된아이디일때 checkIdVal", checkIdVal);
+        console.log(data.checkId);
+
+        if (data.checkId == false) {
+          alert("사용불가능아이디");
         } else {
-          alert("사용가능아이디");
-          console.log("사용가능아이디일때 checkIdVal", checkIdVal);
+          alert("사용가능");
         }
       });
   };

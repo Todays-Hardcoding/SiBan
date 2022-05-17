@@ -61,7 +61,7 @@ public class SignController {
 		Map<String, Boolean> result = new HashMap<>();
 		boolean temp = true;
 		System.out.println(param.get("id"));
-		// 아이디가 있으면 true
+		// 아이디가 있으면 false
 		User checkId = signService.findByUserId(param.get("id"));
 		if(checkId != null) {
 			temp = false;
