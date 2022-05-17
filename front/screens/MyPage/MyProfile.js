@@ -8,7 +8,7 @@ import {
   FlatList,
   TouchableOpacity,
 } from "react-native";
-import { COLORS, SIZES, icons, images } from "../../constants";
+import { COLORS, SIZES, images } from "../../constants";
 import { Table, Row, Rows } from "react-native-table-component-2";
 
 const MyProfile = ({ navigation }) => {
@@ -45,7 +45,6 @@ const MyProfile = ({ navigation }) => {
     },
   ];
 
-  // const [features, setFeatures] = React.useState(featuresData);
   const [specialPromos, setSpecialPromos] = React.useState(specialPromoData);
   const [shouldShow, setShouldShow] = useState(true);
   function renderHeader() {
@@ -59,9 +58,9 @@ const MyProfile = ({ navigation }) => {
         <View style={{ flex: 1, alignItems: "center", left: 30 }}>
           <Text style={{ fontSize: 25, fontWeight: "bold" }}>마이페이지</Text>
         </View>
-        <View>
+        <View style={styles.userSupervise}>
           <TouchableOpacity onPress={() => setShouldShow(!shouldShow)}>
-            <Text style={styles.userSupervise}>회원 관리</Text>
+            <Text>회원 관리</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -216,8 +215,6 @@ const MyProfile = ({ navigation }) => {
             setuserHeight(data.userHeight);
             setuserWeight(data.userWeight);
           })
-          // .then((data) => console.log(JSON.stringify(data)))
-          .catch((error) => console.log(error));
       };
       useEffect(() => {
         onScreenLoad();
@@ -259,7 +256,7 @@ const MyProfile = ({ navigation }) => {
         </View>
       );
     };
-
+    //
     return (
       <FlatList
         ListHeaderComponent={HeaderComponent}
@@ -314,7 +311,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     backgroundColor: "#F5EEDC",
     borderRadius: 20,
-    width: "50",
+    width: 70,
   },
 });
 
