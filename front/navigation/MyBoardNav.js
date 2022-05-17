@@ -21,9 +21,9 @@ const ServiceCenter = () => {
         options={{ tabBarLabel: "1:1 문의" }}
       />
       <Tab.Screen
-        name="QNADetail"
-        component={QNADetail}
-        options={{ tabBarLabel: "디테일임시" }}
+        name="QNAList"
+        component={QNAList}
+        options={{ tabBarLabel: "Q&A List" }}
       />
     </Tab.Navigator>
   );
