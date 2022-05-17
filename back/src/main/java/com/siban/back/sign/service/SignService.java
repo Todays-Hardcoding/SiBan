@@ -19,10 +19,13 @@ public class SignService{
 		return signRepository.save(user);
 	}
 	
-	public Optional<User> findbyUserId(String userId) {
-		return signRepository.findByUserId(userId);
+	public User findByUserId(String userId) {
+		return signRepository.findByuserId(userId);
 	}
-
+	
+	public User findByUserEmail(String userEmail) {
+		return signRepository.findByuserEmail(userEmail);
+	}
 
 
 }

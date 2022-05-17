@@ -3,29 +3,41 @@ import { Text, StyleSheet, TouchableOpacity, View } from "react-native";
 import { FlatGrid } from "react-native-super-grid";
 
 const Level2 = () => {
-  const [items, setItems] = React.useState([
-    { name: "BELIZE HOLE", code: "#2980b9" },
-    { name: "WISTERIA", code: "#8e44ad" },
-    { name: "MIDNIGHT BLUE", code: "#2c3e50" },
-    { name: "SUN FLOWER", code: "#f1c40f" },
-    { name: "CARROT", code: "#e67e22" },
-    { name: "ALIZARIN", code: "#e74c3c" },
-    { name: "CLOUDS", code: "#ecf0f1" },
-  ]);
+
+  const [exercises, setExercises] = useState([]);
+
+  useEffect(() => {
+    const _url = "http://112.172.225.17:8282";
+    fetch(_url + "/Course.act", {
+      method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          workoutCourse : "중급",
+        }),
+    })
+    .then((response) => response.json())
+    .then((data) => {
+      setExercises(data);
+      });
+  }, []);
 
   return (
     <View style={styles.Container}>
-      <Text style={styles.text}>{items.length}개의 운동</Text>
+      <Text style={styles.text}>{exercises.length}개의 운동</Text>
       <FlatGrid
         itemDimension={170}
-        data={items}
+        data={exercises}
         spacing={20}
         renderItem={({ item }) => (
           <TouchableOpacity
-            style={[styles.itemContainer, { backgroundColor: item.code }]}
+            style={[styles.itemContainer, { backgroundColor: "lightgrey" }]}
           >
-            <Text style={styles.itemName}>{item.name}</Text>
-            <Text style={styles.itemCode}>{item.code}</Text>
+            <Text style={styles.itemName}>{item.workoutName}</Text>
+            <Text style={styles.itemCode}>{item.workoutTarget}</Text>
+            <Text style={styles.itemCode}>{item.workoutDescription}</Text>
           </TouchableOpacity>
         )}
       />
@@ -52,12 +64,12 @@ const styles = StyleSheet.create({
   },
   itemName: {
     fontSize: 16,
-    color: "#fff",
     fontWeight: "600",
+    color: "grey",
   },
   itemCode: {
-    fontWeight: "600",
     fontSize: 12,
-    color: "#fff",
+    fontWeight: "600",
+    color: "grey",
   },
 });
