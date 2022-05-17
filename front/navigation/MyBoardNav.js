@@ -45,6 +45,15 @@ const QNADetailNav = () => {
   );
 };
 
+// test
+const QNANav = () => {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name="QNA" component={QNA} />
+    </Stack.Navigator>
+  );
+};
+
 const MyBoardNav = () => {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
@@ -52,6 +61,7 @@ const MyBoardNav = () => {
       <Stack.Screen name="ServiceCenter" component={ServiceCenter} />
       <Stack.Screen name="ChallengeDetailNav" component={ChallengeDetailNav} />
       <Stack.Screen name="QNADetailNav" component={QNADetailNav} />
+      <Stack.Screen name="QNANav" component={QNANav} />
     </Stack.Navigator>
   );
 };
