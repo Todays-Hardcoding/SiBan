@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.reactive.result.condition.ParamsRequestCondition;
 
 import com.siban.back.sign.domain.User;
 import com.siban.back.sign.service.SignService;
@@ -50,24 +51,29 @@ public class SignController {
 	@PostMapping("/checkId.act")
 	public Map<String, Boolean> checkId(@RequestBody Map<String, String> param) {
 		Map<String, Boolean> result = new HashMap<>();
-		
-		// 아이디가 있으면 true
-		boolean checkId = signService.findByUserId(param.get("id"));
-		result.put("checkId", checkId);
-		
+		boolean temp = true;
+		System.out.println(param.get("id"));
+		// 아이디가 있으면 false
+		User checkId = signService.findByUserId(param.get("id"));
+		if(checkId != null) {
+			temp = false;
+		}
+		result.put("checkId", temp);
+		System.out.println(temp);
+		System.out.println(result);
 		return result;
 	}
-	
+	/*
 	@PostMapping("/checkEmail.act")
 	public Map<String, Boolean> checkEmail(@RequestBody Map<String, String> param) {
 		Map<String, Boolean> result = new HashMap<>();
 		
 		// email이 있으면 true
-		boolean checkEmail = signService.findByUserEmail(param.get("email"));
+		User checkEmail = signService.findByUserEmail(param.get("email"));
 		result.put("checkEmail", checkEmail);
 		
 		return result;
-	}
+	}*/
 
 	
 	

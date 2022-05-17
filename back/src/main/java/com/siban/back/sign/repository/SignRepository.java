@@ -8,6 +8,6 @@ import com.siban.back.sign.domain.User;
 @Repository
 public interface SignRepository extends JpaRepository<User, Long>{
 	
-	public boolean findByuserId(String userId);
-	public boolean findByuserEmail(String userEmail);
+	public User findByuserId(String userId);
+	public User findByuserEmail(String userEmail);
 }
