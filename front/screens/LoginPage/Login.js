@@ -15,6 +15,7 @@ import NaverButton from "../../components/NaverButton";
 import { NavigationContainer } from "@react-navigation/native";
 //import { State } from 'react-native-gesture-handler';
 
+const url = "http://192.168.45.96:8282/test2.json";
 const Login = ({ navigation }) => {
   const [loginId, setLoginId] = useState("");
   const [loginPw, setLoginPw] = useState("");
@@ -55,7 +56,7 @@ const Login = ({ navigation }) => {
   };
 
   const postTest = () => {
-    const url = "http://192.168.35.133:8282/test2.json";
+    const url = "http://192.168.45.96:8282/test2.json";
 
     fetch(url, {
       method: "POST",

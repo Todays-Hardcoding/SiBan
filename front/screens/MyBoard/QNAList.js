@@ -68,13 +68,10 @@ const QNAList = ({navigation}) => {
       >
       </ImageBackground>
       <ScrollView>
-        <View>
+        <TouchableOpacity>
           {data.map((item, index) => (
-            <TouchableOpacity
+            <View
               key={index}
-              onPress={()=> {
-                navigation.navigate("QNADetailNav", {Screen: "QNADetail"})
-              }}
               style={[
                 styles.item,
                 index === 0 && { borderTopWidth: 0 }, // CSS: first-child
@@ -83,9 +80,9 @@ const QNAList = ({navigation}) => {
             >
               <Text>{item.name}</Text>
               <Text>{item.date}</Text>
-            </TouchableOpacity>
+            </View>
           ))}
-        </View>
+        </TouchableOpacity>
       </ScrollView>
       <View style={styles.searchContainer}>
         <TextInput

@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, TextInput, View } from "react-native";
-import { TouchableOpacity } from "react-native-gesture-handler";
+import { Text, View, TextInput, StyleSheet } from "react-native";
+
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import RegisterButton from "../../components/RegisterButton";
-
+import CancelButton from "../../components/CancelButton";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 const Register = ({ navigation }) => {
   //아이디,비번,이메일,전화번호
@@ -34,11 +35,11 @@ const Register = ({ navigation }) => {
   const [telError, setTelError] = useState("");
   const [heightError, setHeightError] = useState("");
   const [weightError, setWeightError] = useState("");
-
-  console.log(id);
+  //중복검사
+  const [checkIdVal, setCheckIdVal] = useState(true);
 
   const register = () => {
-    const _url = "http://192.168.0.6:8282/register.act";
+    const _url = "http://192.168.45.96:8282/register.act";
 
     fetch(_url, {
       method: "POST",
@@ -56,9 +57,7 @@ const Register = ({ navigation }) => {
         height,
         weight,
       }),
-    })
-      .then((response) => response.json())
-      .then((data) => console.log(data));
+    }).then((response) => response.json());
   };
 
   const onChangeId = (text) => {
@@ -70,8 +69,6 @@ const Register = ({ navigation }) => {
       setIdCheck(true);
     }
     setId(text);
-    console.log(idCheck);
-    console.log(id);
   };
   const onChangePw = (text) => {
     const pwRegex = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,25}$/;
@@ -82,8 +79,6 @@ const Register = ({ navigation }) => {
       setPwCheck(true);
     }
     setPw(text);
-    console.log(pwCheck);
-    console.log(pw);
   };
 
   const onChangePw2 = (text) => {
@@ -94,23 +89,18 @@ const Register = ({ navigation }) => {
       setPwConfirmCheck(true);
     }
     setPwConfirm(text);
-    console.log(pwConfirmCheck);
-    console.log(pwConfirm);
   };
 
   const onChangeEmail = (text) => {
     const emailRegex =
       /^[0-9?A-z0-9?]+(\.)?[0-9?A-z0-9?]+@[0-9?A-z]+\.[A-z]{2}.?[A-z]{0,3}$/;
     if (!emailRegex.test(text)) {
-      console.log(emailRegex.test(text));
       setEmailError("이메일형식에 맞게 다시 입력해주세요");
       setEmailCheck(false);
     } else {
       setEmailCheck(true);
     }
     setEmail(text);
-    //console.log(pwCheck);
-    //console.log(pw);
   };
   const onChangeName = (text) => {
     if (text.trim().length === 0) {
@@ -120,8 +110,6 @@ const Register = ({ navigation }) => {
       setNameCheck(true);
     }
     setName(text);
-    console.log(nameCheck);
-    console.log(name);
   };
   const onChangeTel = (text) => {
     const telRegex = /^[0-9]{8,13}$/;
@@ -132,8 +120,6 @@ const Register = ({ navigation }) => {
       setTelCheck(true);
     }
     setTel(text);
-    console.log(telCheck);
-    console.log(tel);
   };
   const onChangeWeight = (text) => {
     const weightRegex = /^[0-9].{0,2}$/;
@@ -157,34 +143,37 @@ const Register = ({ navigation }) => {
   };
   // 회원가입에 간한 함수
   const postRegister = () => {
-    const _url = "http://192.168.0.6:8282/register.act";
-    fetch(_url, {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        id,
-        pw,
-        email,
-        name,
-        tel,
-        height,
-        weight,
-      }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        navigation.navigate("LoginPage", {
-          screen: "LoginHome",
+    const _url = "http://192.168.35.133:8282/register.act";
+    if (!checkIdVal) {
+      alert("아이디 중복확인을 해주세요.");
+    } else {
+      fetch(_url, {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          id,
+          pw,
+          email,
+          name,
+          tel,
+          height,
+          weight,
+        }),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          navigation.navigate("LoginPage", {
+            screen: "LoginHome",
+          });
         });
-        console.log(data);
-      });
+    }
   };
   // 아이디 중복체크에 관한 함수
   const checkId = () => {
-    const _url = "http://192.168.0.6:8282/checkId.act";
+    const _url = "http://192.168.45.96:8282/checkId.act";
     fetch(_url, {
       method: "POST",
       headers: {
@@ -250,6 +239,7 @@ const Register = ({ navigation }) => {
             {"\n"}멤버가 되어 시반이 제공하는 {"\n"}
             최고의 제품과 혜택을 만나보세요 {"\n"}{" "}
           </Text>
+          <Text></Text>
           <View
             style={{
               flexDirection: "row",
@@ -281,7 +271,6 @@ const Register = ({ navigation }) => {
             </TouchableOpacity>
           </View>
           {!idCheck && <Text style={{ color: "red" }}>{idError}</Text>}
-
           <TextInput
             style={styles.input}
             value={pw}
@@ -291,7 +280,6 @@ const Register = ({ navigation }) => {
             placeholder={"비밀번호를 입력해주세요"}
           />
           {!pwCheck && <Text style={{ color: "red" }}>{pwError}</Text>}
-
           <TextInput
             style={styles.input}
             value={pwConfirm}
@@ -303,7 +291,6 @@ const Register = ({ navigation }) => {
           {!pwConfirmCheck && (
             <Text style={{ color: "red" }}>{pwConfirmError}</Text>
           )}
-
           <View
             style={{
               flexDirection: "row",
@@ -334,7 +321,6 @@ const Register = ({ navigation }) => {
             </TouchableOpacity>
           </View>
           {!emailCheck && <Text style={{ color: "red" }}>{emailError}</Text>}
-
           <TextInput
             style={styles.input}
             value={name}
@@ -351,7 +337,6 @@ const Register = ({ navigation }) => {
             returnKeyType="next"
           />
           {!telCheck && <Text style={{ color: "red" }}>{telError}</Text>}
-
           <TextInput
             style={styles.input}
             value={height}
@@ -359,9 +344,7 @@ const Register = ({ navigation }) => {
             onChangeText={(text) => onChangeHeight(text)}
             placeholder={"키를 입력해주세요."}
           />
-
           {!heightCheck && <Text style={{ color: "red" }}>{heightError}</Text>}
-
           <TextInput
             style={styles.input}
             value={weight}
@@ -370,7 +353,6 @@ const Register = ({ navigation }) => {
             placeholder={"몸무게를 입력해주세요."}
           />
           {!weightCheck && <Text style={{ color: "red" }}>{weightError}</Text>}
-
           <View style={styles.BtnBox}>
             {/* 가입버튼 */}
             <TouchableOpacity
