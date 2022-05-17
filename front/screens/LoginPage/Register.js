@@ -128,13 +128,10 @@ const Register = ({ navigation }) => {
     }
     setHeight(text);
   };
-  // 회원가입에 간한 함수
-  const postRegister = (event) => {
+  // 회원가입에 관한 함수
+  const postRegister = () => {
     const _url = "http://192.168.35.133:8282/register.act";
-    if(checkId === false) {
-      event.preventDefault();
-    }
-    
+
     fetch(_url, {
       method: "POST",
       headers: {
@@ -153,6 +150,7 @@ const Register = ({ navigation }) => {
     })
       .then((response) => response.json())
       .then((data) => {
+        
         navigation.navigate("LoginPage", {
           screen: "LoginHome",
         });
@@ -160,9 +158,9 @@ const Register = ({ navigation }) => {
       });
     
   };
-  // 아이디 중복체크에 관한 함수
-  const checkId = () => {
-    const _url = "http://192.168.35.133:8282/checkId.act";
+  // 이메일 중복체크에 관한 함수
+  const checkEmail = () => {
+    const _url = "http://192.168.35.133:8282/checkEmail.act";
     fetch(_url, {
       method: "POST",
       headers: {
@@ -170,23 +168,46 @@ const Register = ({ navigation }) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        id,
+        email,
       }),
     })
       .then((response) => response.json())
-      .then((data) => {console.log(data.checkId)
-        
-      if(data.checkId==false){
-        alert("사용불가능아이디")
-      }else{
-        alert("사용가능")
-      }
-    }
-  );
+      .then((data) => {
+        console.log(data.checkEmail)
+  
+        if(data.checkEmail==false){
+        alert("사용불가능한 이메일입니다.")
+        }else{
+        alert("사용가능한 이메일입니다.")
+        }
+      });
       
-
- 
   };
+    // 아이디 중복체크에 관한 함수
+    const checkId = () => {
+      const _url = "http://192.168.35.133:8282/checkId.act";
+      fetch(_url, {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          id,
+        }),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data.checkId)
+    
+          if(data.checkId==false){
+          alert("사용불가능한 아이디입니다.")
+          }else{
+          alert("사용가능한 아이디입니다.")
+          }
+        });
+        
+    };
 
   return (
     <View
@@ -315,7 +336,7 @@ const Register = ({ navigation }) => {
                 width: 100,
                 alignItems: "center",
               }}
-              onPress={() => {}}
+              onPress={checkEmail}
             >
               <Text style={{ fontSize: 18, color: "white" }}>중복확인</Text>
             </TouchableOpacity>

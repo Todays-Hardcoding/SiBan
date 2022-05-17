@@ -9,7 +9,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.PrePersist;
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 import lombok.Builder;
 import lombok.Data;
@@ -24,6 +26,7 @@ public class User {
 
 	@NotNull
 	@Column
+	@Pattern(regexp = "/^[A-Za-z]{1}[A-Za-z0-9_-]{3,19}$/")
 	private String userId;
 	@NotNull
 	@Column

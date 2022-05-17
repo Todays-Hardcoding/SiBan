@@ -63,17 +63,22 @@ public class SignController {
 		System.out.println(result);
 		return result;
 	}
-	/*
+	
 	@PostMapping("/checkEmail.act")
 	public Map<String, Boolean> checkEmail(@RequestBody Map<String, String> param) {
 		Map<String, Boolean> result = new HashMap<>();
-		
-		// email이 있으면 true
+		boolean temp = true;
+		System.out.println(param.get("email"));
+		// 이메일이 있으면 false
 		User checkEmail = signService.findByUserEmail(param.get("email"));
-		result.put("checkEmail", checkEmail);
-		
+		if(checkEmail != null) {
+			temp = false;
+		}
+		result.put("checkEmail", temp);
+		System.out.println(temp);
+		System.out.println(result);
 		return result;
-	}*/
+	}
 
 	
 	
