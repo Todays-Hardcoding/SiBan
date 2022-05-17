@@ -14,13 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class SignController {
 	
-
-	@GetMapping("/test.act")
-	public String test() {
-		System.out.println("여기서라도 떠야지? ");
-		return "몰?루...";
-	}
-	
 	
 	@RequestMapping(value="/test2.json", method = RequestMethod.POST)
 	public Map<String, String> test2(@RequestBody Map<String, Object> param) {
