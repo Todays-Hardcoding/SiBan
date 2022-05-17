@@ -68,10 +68,13 @@ const QNAList = ({navigation}) => {
       >
       </ImageBackground>
       <ScrollView>
-        <TouchableOpacity>
+        <View>
           {data.map((item, index) => (
-            <View
+            <TouchableOpacity
               key={index}
+              onPress={()=> {
+                navigation.navigate("QNADetailNav", {Screen: "QNADetail"})
+              }}
               style={[
                 styles.item,
                 index === 0 && { borderTopWidth: 0 }, // CSS: first-child
@@ -80,9 +83,9 @@ const QNAList = ({navigation}) => {
             >
               <Text>{item.name}</Text>
               <Text>{item.date}</Text>
-            </View>
+            </TouchableOpacity>
           ))}
-        </TouchableOpacity>
+        </View>
       </ScrollView>
       <View style={styles.searchContainer}>
         <TextInput
@@ -92,14 +95,7 @@ const QNAList = ({navigation}) => {
         <TouchableOpacity style={styles.searchButton}>
           <Text style={styles.buttonText}>검색</Text>
         </TouchableOpacity>
-        <TouchableOpacity 
-          // test
-          //  key={index}
-          //  onPress={() => {
-          //    navigation.navigate("QNANav", {Screen: "QNA"})
-          //  }}
-          style={styles.writeButton}
-          >
+        <TouchableOpacity style={styles.writeButton}>
           <Text style={styles.buttonText}>글작성</Text>
         </TouchableOpacity>
       </View>
