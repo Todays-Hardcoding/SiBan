@@ -33,8 +33,8 @@ const Register = ({ navigation }) => {
   const [heightError, setHeightError] = useState("");
   const [weightError, setWeightError] = useState("");
   //중복검사
-  const [ duplicatedId, setDuplicatedID ] = useState(false);
-  const [ duplicatedEmail, setDuplicatedEmail ] = useState(false);
+  const [duplicatedId, setDuplicatedID] = useState(false);
+  const [duplicatedEmail, setDuplicatedEmail] = useState(false);
 
   const onChangeId = () => {
     const idRegex = /^[A-Za-z]{1}[A-Za-z0-9_-]{3,19}$/;
@@ -155,10 +155,9 @@ const Register = ({ navigation }) => {
       onChangeTel();
       onChangeHeight();
       onChangeWeight();
-      alert("모두 입력해 주세요.")
+      alert("모두 입력해 주세요.");
       return false;
     }
-
   };
   // 아이디 중복체크에 관한 함수
   const checkId = () => {
@@ -166,7 +165,7 @@ const Register = ({ navigation }) => {
 
     const idRegex = /^[A-Za-z]{1}[A-Za-z0-9_-]{3,19}$/;
     if (idRegex.test(id) === false) {
-      alert("4자리 이상 영문자로 시작하는 아이디를 입력해주세요.")
+      alert("4자리 이상 영문자로 시작하는 아이디를 입력해주세요.");
     } else {
       fetch(_url, {
         method: "POST",
@@ -193,27 +192,33 @@ const Register = ({ navigation }) => {
   // 이메일 중복체크에 관한 함수
   const checkEmail = () => {
     const _url = "http://112.172.225.17:8282/checkEmail.act";
-    fetch(_url, {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email: email,
-      }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data.checkId);
+    const emailRegex =
+      /^[0-9?A-z0-9?]+(\.)?[0-9?A-z0-9?]+@[0-9?A-z]+\.[A-z]{2}.?[A-z]{0,3}$/;
+    if (!emailRegex.test(email)) {
+      alert("이메일형식에 맞게 다시 입력해주세요");
+    } else {
+      fetch(_url, {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: email,
+        }),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data.checkId);
 
-        if (data.checkEmail === true) {
-          alert("사용 불가능한 Email");
-        } else {
-          alert("사용 가능");
-          setDuplicatedEmail(true)
-        }
-      });
+          if (data.checkEmail === true) {
+            alert("사용 불가능한 Email");
+          } else {
+            alert("사용 가능");
+            setDuplicatedEmail(true);
+          }
+        });
+    }
   };
 
   return (

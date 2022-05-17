@@ -4,9 +4,7 @@ import {
 } from "react-native";
 
 const LoginHome = ({ navigation }) => {
-  //const onChangeId = (e) => { console.log(e.target.value); }
 
-  console.log();
   return (
     <>
       <View style={styles.mainContainer}>
