@@ -14,6 +14,7 @@ public class SignService{
 	@Autowired
 	private SignRepository signRepository;
 	
+//	회원가입
 	public User insertUser(User user) {
 		return signRepository.save(user);
 	}
