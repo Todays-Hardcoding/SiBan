@@ -36,10 +36,17 @@ public class PostController {
 	}
 	
 	@RequestMapping(value="/selectInquiry.act", method = RequestMethod.POST)
-	public Map<String, Post> selectInquiry(){
+	public Map<Integer, Post> selectInquiry(){
 		List<Post> postList = postService.selectInquiry();
-		System.out.println(postList);
+		Map<Integer, Post> result = new HashMap<>();
+		int index = 0;
+
+		for(Post temp : postList) {
+			result.put(index, temp);
+		}
 		
-		return null;
+		System.out.println(result);
+		
+		return result;
 	}
 }
