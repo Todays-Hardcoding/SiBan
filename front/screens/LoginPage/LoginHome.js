@@ -1,5 +1,18 @@
 import React from "react";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+
+import {
+  Text,
+  View,
+  TextInput,
+  StyleSheet,
+  TouchableOpacity,
+  Image,
+} from "react-native";
+
+import NaverButton from "../../components/NaverButton";
+import LoginButton from "../../components/LoginButton";
+import { NavigationContainer } from "@react-navigation/native";
+import { conv2dDerFilter } from "@tensorflow/tfjs/node_modules/@tensorflow/tfjs-core/dist/ops/conv";
 
 const LoginHome = ({ navigation }) => {
   //const onChangeId = (e) => { console.log(e.target.value); }
@@ -8,7 +21,11 @@ const LoginHome = ({ navigation }) => {
   return (
     <>
       <View style={styles.mainContainer}>
-        <Text>LoginHome 화면</Text>
+        <Image
+          source={require("../../assets/sibanlogo.png")}
+          style={styles.logoImage}
+          resizeMode="stretch"
+        />
       </View>
       <View style={styles.mainButtonContainer}>
         <TouchableOpacity
@@ -41,13 +58,13 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#cab8ff",
+    backgroundColor: "#6072e2",
   },
   mainButtonContainer: {
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#cab8ff",
+    backgroundColor: "#6072e2",
   },
   inputTouchableOpacity: {
     margin: 30,
@@ -62,6 +79,10 @@ const styles = StyleSheet.create({
     padding: 20,
     color: "white",
     fontWeight: "800",
+  },
+  logoImage: {
+    // width: "100%",
+    overflow: "hidden",
   },
 });
 

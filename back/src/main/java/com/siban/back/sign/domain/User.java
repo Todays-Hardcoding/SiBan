@@ -28,8 +28,22 @@ public class User {
 	@NotNull
 	@Column
 	private  String userPassword;
+	@NotNull
+	@Column
+	private  String userEmail;
+	@NotNull
+	@Column
+	private  String userName;
+	@NotNull
+	@Column
+	private  String userTel;
+	@NotNull
+	@Column
+	private  String userHeight;
 
-
+	@NotNull
+	@Column
+	private  String userWeight;
 	private LocalDateTime userRegDate;
 	
 	@PrePersist

@@ -24,6 +24,7 @@ const Register = ({ navigation }) => {
   const [telCheck, setTelCheck] = useState(false);
   const [heightCheck, setHeightCheck] = useState(false);
   const [weightCheck, setWeightCheck] = useState(false);
+  const [disable, setDisable] = useState(false);
   //오류메세지
   const [idError, setIdError] = useState("");
   const [pwError, setPwError] = useState("");
@@ -129,6 +130,33 @@ const Register = ({ navigation }) => {
     }
     setHeight(text);
   };
+  const postRegister = () => {
+    const _url = "http://192.168.0.6:8282/register.act";
+    fetch(_url, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        id,
+        pw,
+        email,
+        name,
+        tel,
+        height,
+        weight,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        navigation.navigate("LoginPage", {
+          screen: "LoginHome",
+        });
+        console.log(data);
+      });
+  };
+
   return (
     <View
       style={{
@@ -137,32 +165,77 @@ const Register = ({ navigation }) => {
         alignItems: "center",
         justifyContent: "center",
         paddingTop: 90,
+        width: "100%",
       }}
     >
-      <KeyboardAwareScrollView extraScrollHeight={10}>
+      <KeyboardAwareScrollView
+        extraScrollHeight={10}
+        style={{
+          // flex: 1,
+          backgroundColor: "#fff",
+          width: "100%",
+        }}
+      >
         <View
           style={{
-            // flex: 1,
             backgroundColor: "#fff",
             alignItems: "center",
             justifyContent: "center",
+            width: "100%",
+            alignItems: "center",
           }}
         >
-          <Text style={{ fontSize: 24, fontWeight: "bold" }}>
+          <Text
+            style={{
+              fontSize: 40,
+              fontWeight: "bold",
+              marginTop: 40,
+              justifyContent: "center",
+            }}
+          >
             시반 회원가입
           </Text>
-          <Text style={{ color: "gray", justifyContent: "center" }}>
+          <Text
+            style={{
+              color: "gray",
+              justifyContent: "center",
+              width: "50%",
+              alignItems: "center",
+            }}
+          >
             {"\n"}멤버가 되어 시반이 제공하는 {"\n"}
             최고의 제품과 혜택을 만나보세요 {"\n"}{" "}
           </Text>
-          <TextInput
-            style={styles.input}
-            value={id}
-            onChangeText={(text) => onChangeId(text)}
-            returnKeyType="next"
-            // autoFocus={true}
-            placeholder="아이디를 입력해주세요."
-          />
+          <View
+            style={{
+              flexDirection: "row",
+              justifyContent: "space-between",
+              alignItems: "center",
+            }}
+          >
+            <TextInput
+              style={styles.inputId}
+              value={id}
+              onChangeText={(text) => onChangeId(text)}
+              returnKeyType="next"
+              // autoFocus={true}
+              placeholder="아이디를 입력해주세요."
+            />
+            {/* 아이디 중복확인 버튼 */}
+            <TouchableOpacity
+              style={{
+                backgroundColor: "#778beb",
+                padding: 10,
+                margin: 10,
+                borderRadius: 10,
+                width: 100,
+                alignItems: "center",
+              }}
+              onPress={() => {}}
+            >
+              <Text style={{ fontSize: 18, color: "white" }}>중복확인</Text>
+            </TouchableOpacity>
+          </View>
           {!idCheck && <Text style={{ color: "red" }}>{idError}</Text>}
 
           <TextInput
@@ -194,6 +267,20 @@ const Register = ({ navigation }) => {
             onChangeText={(text) => onChangeEmail(text)}
             placeholder={"이메일을 입력해주세요."}
           />
+          {/* 이메일 중복확인 버튼 */}
+                      <TouchableOpacity
+              style={{
+                backgroundColor: "#778beb",
+                padding: 10,
+                margin: 10,
+                borderRadius: 10,
+                width: 100,
+                alignItems: "center",
+              }}
+              onPress={() => {}}
+            >
+              <Text style={{ fontSize: 18, color: "white" }}>중복확인</Text>
+            </TouchableOpacity>
           {!emailCheck && <Text style={{ color: "red" }}>{emailError}</Text>}
 
           <TextInput
@@ -216,6 +303,7 @@ const Register = ({ navigation }) => {
           <TextInput
             style={styles.input}
             returnKeyType="next"
+            value={height}
             onChangeText={(text) => onChangeHeight(text)}
             placeholder={"키를 입력해주세요."}
           />
@@ -225,13 +313,26 @@ const Register = ({ navigation }) => {
           <TextInput
             style={styles.input}
             returnKeyType="next"
+            value={weight}
             onChangeText={(text) => onChangeWeight(text)}
             placeholder={"몸무게를 입력해주세요."}
           />
           {!weightCheck && <Text style={{ color: "red" }}>{weightError}</Text>}
 
           <View style={styles.BtnBox}>
-            <RegisterButton />
+            <TouchableOpacity
+              style={{
+                backgroundColor: "black",
+                padding: 10,
+                margin: 10,
+                borderRadius: 10,
+                width: 100,
+                alignItems: "center",
+              }}
+              onPress={postRegister}
+            >
+              <Text style={{ fontSize: 18, color: "white" }}>가입</Text>
+            </TouchableOpacity>
             <TouchableOpacity
               style={{
                 backgroundColor: "#c44569",
@@ -270,8 +371,18 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     borderWidth: 1,
     marginVertical: 5,
-    width: "90%",
+    width: "80%",
   },
+  inputId: {
+    borderWidth: 1,
+    padding: 10,
+    fontSize: 15,
+    borderRadius: 8,
+    borderWidth: 1,
+    marginVertical: 5,
+    width: "50%",
+  },
+  idCheckBtn: {},
   BtnBox: {
     flexDirection: "row",
   },
