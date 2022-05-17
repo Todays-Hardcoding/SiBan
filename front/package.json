@@ -37,6 +37,7 @@
     "react": "17.0.2",
     "react-addons-shallow-compare": "^15.6.3",
     "react-dom": "17.0.2",
+    "react-is": "^18.1.0",
     "react-native": "0.68.2",
     "react-native-animated-header": "^1.0.7",
     "react-native-calendar-range-picker": "^1.5.3",
