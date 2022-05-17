@@ -160,7 +160,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold"
   },
   accodionHeader: {
-    backgroundColor: "#DAD0C2",
+    backgroundColor: "#DDDDDD",
     marginTop: 10,
     height: 50,
     justifyContent: "center",
@@ -182,7 +182,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
   button: {
-    backgroundColor: "#C0D8C0",
+    backgroundColor: "#B1BCE6",
     alignItems: "center",
     justifyContent: "center",
     margin: 3,
@@ -213,7 +213,7 @@ const styles = StyleSheet.create({
     marginLeft: 20,
   },
   searchButton: {
-    backgroundColor: "#C0D8C0",
+    backgroundColor: "#F2C9E1",
     borderRadius: 8,
     height: 40,
     alignItems: "center",
