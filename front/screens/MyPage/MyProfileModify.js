@@ -19,10 +19,10 @@ const MyProfileModify = () => {
   const [userHeight, setuserHeight] = useState("");
   const [userWeight, setuserWeight] = useState("");
   const [userTel, setuserTel] = useState();
-  const userId = "yoonId";
+  const userId = "TTAA";
 
   const onScreenLoad = () => {
-    const startUrl = "http://192.168.35.107:8282/showUserInfo.act";
+    const startUrl = "http://192.168.45.96:8282/showUserInfo.act";
 
     fetch(startUrl, {
       method: "POST",
@@ -51,7 +51,7 @@ const MyProfileModify = () => {
   }, []);
 
   const profileTest = () => {
-    const url = "http://192.168.35.107:8282/updateUserInfo.act";
+    const url = "http://192.168.45.96:8282/updateUserInfo.act";
 
     fetch(url, {
       method: "POST",

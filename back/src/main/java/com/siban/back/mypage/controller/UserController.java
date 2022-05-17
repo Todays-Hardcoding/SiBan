@@ -3,11 +3,8 @@ package com.siban.back.mypage.controller;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.siban.back.mypage.service.UserService;
@@ -45,6 +42,9 @@ public class UserController {
 		user.setUserWeight(userWeight);
 		
 		userService.updateUser(user);
+		
+		return user;
+	}
 		
 	
 	@PostMapping("/checkUserInfo.act")
