@@ -1,6 +1,8 @@
 package com.siban.back.sign.service;
 
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,16 +14,15 @@ public class SignService{
 	@Autowired
 	private SignRepository signRepository;
 	
+//	회원가입
 	public User insertUser(User user) {
 		return signRepository.save(user);
 	}
 	
-	public boolean findByuserId(String userId) {
-		return signRepository.findByuserId(userId);
+	public Optional<User> findbyUserId(String userId) {
+		return signRepository.findByUserId(userId);
 	}
-	
-	public boolean findByuserEmail(String userEmail) {
-		return signRepository.findByuserEmail(userEmail);
-	}
+
+
 
 }

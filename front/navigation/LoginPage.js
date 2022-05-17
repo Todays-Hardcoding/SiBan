@@ -1,7 +1,6 @@
 import { createStackNavigator } from "@react-navigation/stack";
 import React from "react";
-import CancelButton from "../components/CancelButton";
-// import Login from "../screens/Home";
+import Login from "../screens/LoginPage/Login";
 import LoginHome from "../screens/LoginPage/LoginHome";
 import Register from "../screens/LoginPage/Register";
 import Search from "../screens/LoginPage/Search";
