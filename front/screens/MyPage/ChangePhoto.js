@@ -71,8 +71,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: "#C0D8C0",
-    width: windowWidth * 0.3,
-    height: windowHeight * 0.03,
+    width: windowWidth * 0.5,
+    height: windowHeight * 0.04,
     marginBottom: 20,
     borderRadius: 10,
   },
@@ -95,9 +95,10 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     borderRadius: windowWidth * 0.04,
     marginHorizontal: 5,
+    width: windowWidth * 0.35
   },
 
   userProfileText: {
-    marginHorizontal: 60,
+
   },
 });

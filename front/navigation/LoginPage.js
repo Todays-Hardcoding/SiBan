@@ -1,12 +1,10 @@
-import { NavigationContainer, StackActions } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import React from "react";
-
-import LoginHome from "../screens/LoginPage/LoginHome";
 import Login from "../screens/LoginPage/Login";
+import LoginHome from "../screens/LoginPage/LoginHome";
 import Register from "../screens/LoginPage/Register";
 import Search from "../screens/LoginPage/Search";
-import CancelButton from "../components/CancelButton";
+
 
 const Stack = createStackNavigator();
 
