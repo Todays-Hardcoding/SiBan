@@ -1,9 +1,11 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, Image, ImageBackground } from "react-native";
+import { TouchableOpacity } from "react-native-gesture-handler";
 import { SectionGrid } from "react-native-super-grid";
 
 function Accomplished() {
   const [items, setItems] = React.useState([
+    { name: "Sample01", code: "#1ab86b" },
     { name: "Sample01", code: "#1abc9c" },
     { name: "Sample02", code: "#2ecc71" },
     { name: "Sample03", code: "#3498db" },
@@ -25,33 +27,41 @@ function Accomplished() {
     { name: "Sample19", code: "#bdc3c7" },
     { name: "Sample20", code: "#7f8c8d" },
   ]);
+  const number = {};
+
+  // const imageList = require(`../../assets/trophy/trophy${data}.png`);
 
   return (
     <SectionGrid
-      itemDimension={90}
+      itemDimension={140}
       // staticDimension={300}
       // fixed
       // spacing={20}
       sections={[
         {
-          title: "트로피",
+          title: "1단계",
           data: items.slice(0, 6),
         },
         {
-          title: "마일스톤",
+          title: "2단계",
           data: items.slice(6, 12),
         },
         {
-          title: "주간운동",
+          title: "3단계",
           data: items.slice(12, 20),
         },
       ]}
       style={styles.gridView}
       renderItem={({ item, section, index }) => (
-        <View style={[styles.itemContainer, { backgroundColor: item.code }]}>
-          <Text style={styles.itemName}>{item.name}</Text>
-          <Text style={styles.itemCode}>{item.code}</Text>
-        </View>
+        <TouchableOpacity>
+          <View style={[styles.itemContainer, { backgroundColor: item.code }]}>
+            <Image
+              style={styles.itemCode}
+              source={require("../../assets/trophy/trophy" + 0 + ".png")}
+            ></Image>
+            <Text>{index}</Text>
+          </View>
+        </TouchableOpacity>
       )}
       renderSectionHeader={({ section }) => (
         <Text style={styles.sectionHeader}>{section.title}</Text>
@@ -59,6 +69,7 @@ function Accomplished() {
     />
   );
 }
+//source={require("../../assets/trophy/trophy " + index + ".png")}
 
 const styles = StyleSheet.create({
   gridView: {
@@ -77,9 +88,9 @@ const styles = StyleSheet.create({
     fontWeight: "600",
   },
   itemCode: {
-    fontWeight: "600",
-    fontSize: 12,
-    color: "#fff",
+    width: "100%",
+    height: "100%",
+    resizeMode: "contain",
   },
   sectionHeader: {
     flex: 1,
