@@ -31,6 +31,7 @@ const Search = () => {
         placeholder={"이메일을 입력해주세요."}
       />
 
+
       <Button
         style={{ color: "black" }}
         title="인증번호 받기"
