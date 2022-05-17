@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   StyleSheet,
   SafeAreaView,
@@ -8,10 +8,12 @@ import {
   FlatList,
   TouchableOpacity,
 } from "react-native";
-import { COLORS, SIZES, icons, images } from "../../constants";
+import { COLORS, SIZES, images } from "../../constants";
 import { Table, Row, Rows } from "react-native-table-component-2";
 
 const MyProfile = ({ navigation }) => {
+  const [userHeight, setuserHeight] = useState("");
+  const [userWeight, setuserWeight] = useState("");
   const specialPromoData = [
     {
       id: 1,
@@ -43,7 +45,6 @@ const MyProfile = ({ navigation }) => {
     },
   ];
 
-  // const [features, setFeatures] = React.useState(featuresData);
   const [specialPromos, setSpecialPromos] = React.useState(specialPromoData);
   const [shouldShow, setShouldShow] = useState(true);
   function renderHeader() {
@@ -57,7 +58,7 @@ const MyProfile = ({ navigation }) => {
         <View style={{ flex: 1, alignItems: "center", left: 30 }}>
           <Text style={{ fontSize: 25, fontWeight: "bold" }}>마이페이지</Text>
         </View>
-        <View>
+        <View style={styles.userSupervise}>
           <TouchableOpacity onPress={() => setShouldShow(!shouldShow)}>
             <Text>회원 관리</Text>
           </TouchableOpacity>
@@ -185,21 +186,63 @@ const MyProfile = ({ navigation }) => {
     );
 
     const MyProfileModify = () => {
-      // state = {age:"", gender:"",height:"",weight:""}
-      // const [value, setValue] = useState('김이나');
+      const [userName, setuserName] = useState("");
+      const [userEmail, setuserEmail] = useState("");
+      const [userHeight, setuserHeight] = useState("");
+      const [userWeight, setuserWeight] = useState("");
+      const [userTel, setuserTel] = useState();
+      const userId = "TTAA";
+
+      const onScreenLoad = () => {
+        const startUrl = "http://192.168.45.96:8282/showUserInfo.act";
+
+        fetch(startUrl, {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            userId,
+          }),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log(data);
+            setuserName(data.userName);
+            setuserEmail(data.userEmail);
+            setuserTel(data.userTel);
+            setuserHeight(data.userHeight);
+            setuserWeight(data.userWeight);
+          })
+      };
+      useEffect(() => {
+        onScreenLoad();
+      }, []);
 
       var state = {
         tableHead: ["회원이름"],
         tableData: [
-          ["나이", "22"],
-          ["성별", "남"],
-          ["키", "175"],
-          ["몸무게", "70"],
+          ["이름", userName],
+          ["전화번호", userTel],
+          ["이메일", userEmail],
+          ["키", userHeight],
+          ["몸무게", userWeight],
         ],
       };
 
       return (
-        <View style={styles.container}>
+        <View>
+          <View style={styles.modifyButton}>
+            <TouchableOpacity
+              onPress={() => {
+                navigation.navigate("OthersNav", { screen: "MyProfileModify" });
+              }}
+              style={styles.userProfileText}
+            >
+              <Text>정보수정</Text>
+            </TouchableOpacity>
+          </View>
           <View style={styles.profile}>
             <Table borderStyle={{ borderWidth: 2, borderColor: "black" }}>
               <Row
@@ -209,20 +252,11 @@ const MyProfile = ({ navigation }) => {
               />
               <Rows data={state.tableData} textStyle={styles.text} />
             </Table>
-
-            <TouchableOpacity
-              onPress={() => {
-                navigation.navigate("OthersNav", { screen: "MyProfileModify" });
-              }}
-              style={styles.userProfile}
-            >
-              <Text style={styles.userProfileText}>정보수정</Text>
-            </TouchableOpacity>
           </View>
         </View>
       );
     };
-
+    //
     return (
       <FlatList
         ListHeaderComponent={HeaderComponent}
@@ -245,7 +279,6 @@ const styles = StyleSheet.create({
   profile: {
     flex: 8,
     padding: 16,
-    paddingTop: 30,
     backgroundColor: "#fff",
   },
   head: {
@@ -258,10 +291,27 @@ const styles = StyleSheet.create({
   },
   userProfile: {
     flex: 0.1,
-    backgroundColor: "gray",
     alignItems: "center",
     justifyContent: "center",
     flexDirection: "row",
+  },
+  userProfileText: {
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "#F5EEDC",
+    height: 30,
+    width: "30%",
+    borderRadius: 20,
+  },
+  modifyButton: {
+    alignItems: "flex-end",
+  },
+  userSupervise: {
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "#F5EEDC",
+    borderRadius: 20,
+    width: 70,
   },
 });
 

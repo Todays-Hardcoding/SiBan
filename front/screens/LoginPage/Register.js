@@ -33,10 +33,31 @@ const Register = ({ navigation }) => {
   const [heightError, setHeightError] = useState("");
   const [weightError, setWeightError] = useState("");
   //중복검사
-  const [duplicatedId, setDuplicatedID] = useState(false);
-  const [duplicatedEmail, setDuplicatedEmail] = useState(false);
+  const [checkIdVal, setCheckIdVal] = useState(true);
 
-  const onChangeId = () => {
+  const register = () => {
+    const _url = "http://192.168.45.96:8282/register.act";
+
+    fetch(_url, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        id,
+        pw,
+        pwConfirm,
+        email,
+        name,
+        tel,
+        height,
+        weight,
+      }),
+    }).then((response) => response.json());
+  };
+
+  const onChangeId = (text) => {
     const idRegex = /^[A-Za-z]{1}[A-Za-z0-9_-]{3,19}$/;
     if (idRegex.test(id) === false) {
       setIdCheck(false);
@@ -44,6 +65,7 @@ const Register = ({ navigation }) => {
     } else {
       setIdCheck(true);
     }
+    setId(text);
   };
   const onChangePw = () => {
     const pwRegex = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,25}$/;
@@ -53,6 +75,7 @@ const Register = ({ navigation }) => {
     } else {
       setPwCheck(true);
     }
+    setPw(text);
   };
 
   const onChangePw2 = () => {
@@ -62,17 +85,19 @@ const Register = ({ navigation }) => {
     } else {
       setPwConfirmCheck(true);
     }
+    setPwConfirm(text);
   };
 
   const onChangeEmail = () => {
     const emailRegex =
       /^[0-9?A-z0-9?]+(\.)?[0-9?A-z0-9?]+@[0-9?A-z]+\.[A-z]{2}.?[A-z]{0,3}$/;
-    if (!emailRegex.test(email)) {
+    if (!emailRegex.test(text)) {
       setEmailError("이메일형식에 맞게 다시 입력해주세요");
       setEmailCheck(false);
     } else {
       setEmailCheck(true);
     }
+    setEmail(text);
   };
   const onChangeName = () => {
     if (name.trim().length === 0) {
@@ -81,6 +106,7 @@ const Register = ({ navigation }) => {
     } else {
       setNameCheck(true);
     }
+    setName(text);
   };
   const onChangeTel = () => {
     const telRegex = /^[0-9]{8,13}$/;
@@ -90,6 +116,7 @@ const Register = ({ navigation }) => {
     } else {
       setTelCheck(true);
     }
+    setTel(text);
   };
   const onChangeWeight = () => {
     const weightRegex = /^[0-9].{0,2}$/;
@@ -110,21 +137,11 @@ const Register = ({ navigation }) => {
     }
   };
   // 회원가입에 간한 함수
-  const postRegister = (e) => {
-    const _url = "http://112.172.225.17:8282/register.act";
-
-    if (
-      idCheck === true &&
-      pwCheck === true &&
-      pwConfirmCheck === true &&
-      emailCheck === true &&
-      nameCheck === true &&
-      telCheck === true &&
-      heightCheck === true &&
-      weightCheck === true &&
-      duplicatedId === true &&
-      duplicatedEmail === true
-    ) {
+  const postRegister = () => {
+    const _url = "http://192.168.35.133:8282/register.act";
+    if (!checkIdVal) {
+      alert("아이디 중복확인을 해주세요.");
+    } else {
       fetch(_url, {
         method: "POST",
         headers: {
@@ -147,51 +164,11 @@ const Register = ({ navigation }) => {
             screen: "LoginHome",
           });
         });
-    } else {
-      onChangeId();
-      onChangePw();
-      onChangeEmail();
-      onChangeName();
-      onChangeTel();
-      onChangeHeight();
-      onChangeWeight();
-      alert("모두 입력해 주세요.");
-      return false;
     }
   };
   // 아이디 중복체크에 관한 함수
   const checkId = () => {
-    const _url = "http://112.172.225.17:8282/checkId.act";
-
-    const idRegex = /^[A-Za-z]{1}[A-Za-z0-9_-]{3,19}$/;
-    if (idRegex.test(id) === false) {
-      alert("4자리 이상 영문자로 시작하는 아이디를 입력해주세요.");
-    } else {
-      fetch(_url, {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          id: id,
-        }),
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          if (data.checkId === true) {
-            alert("사용 불가능아이디");
-          } else {
-            alert("사용 가능");
-            setDuplicatedID(true);
-          }
-        });
-    }
-  };
-
-  // 이메일 중복체크에 관한 함수
-  const checkEmail = () => {
-    const _url = "http://192.168.0.6:8282/checkEmail.act";
+    const _url = "http://192.168.45.96:8282/checkId.act";
     fetch(_url, {
       method: "POST",
       headers: {
@@ -204,17 +181,7 @@ const Register = ({ navigation }) => {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data.checkId);
-
-        if (data.checkEmail === true) {
-          alert("사용 불가능한 Email");
-        } else {
-          if (data.checkId == false) {
-            alert("사용불가능아이디");
-          } else {
-            alert("사용가능");
-          }
-        }
+        console.log(data);
       });
   };
 
@@ -267,6 +234,7 @@ const Register = ({ navigation }) => {
             {"\n"}멤버가 되어 시반이 제공하는 {"\n"}
             최고의 제품과 혜택을 만나보세요 {"\n"}{" "}
           </Text>
+          <Text></Text>
           <View
             style={{
               flexDirection: "row",
@@ -299,7 +267,6 @@ const Register = ({ navigation }) => {
             </TouchableOpacity>
           </View>
           {!idCheck && <Text style={{ color: "red" }}>{idError}</Text>}
-
           <TextInput
             style={styles.input}
             value={pw}
@@ -310,7 +277,6 @@ const Register = ({ navigation }) => {
             placeholder={"비밀번호를 입력해주세요"}
           />
           {!pwCheck && <Text style={{ color: "red" }}>{pwError}</Text>}
-
           <TextInput
             style={styles.input}
             value={pwConfirm}
@@ -323,7 +289,6 @@ const Register = ({ navigation }) => {
           {!pwConfirmCheck && (
             <Text style={{ color: "red" }}>{pwConfirmError}</Text>
           )}
-
           <View
             style={{
               flexDirection: "row",
@@ -355,7 +320,6 @@ const Register = ({ navigation }) => {
             </TouchableOpacity>
           </View>
           {!emailCheck && <Text style={{ color: "red" }}>{emailError}</Text>}
-
           <TextInput
             style={styles.input}
             value={name}
@@ -374,7 +338,6 @@ const Register = ({ navigation }) => {
             returnKeyType="next"
           />
           {!telCheck && <Text style={{ color: "red" }}>{telError}</Text>}
-
           <TextInput
             style={styles.input}
             value={height}
@@ -383,9 +346,7 @@ const Register = ({ navigation }) => {
             onEndEditing={() => onChangeHeight()}
             placeholder={"키를 입력해주세요."}
           />
-
           {!heightCheck && <Text style={{ color: "red" }}>{heightError}</Text>}
-
           <TextInput
             style={styles.input}
             value={weight}
@@ -395,7 +356,6 @@ const Register = ({ navigation }) => {
             placeholder={"몸무게를 입력해주세요."}
           />
           {!weightCheck && <Text style={{ color: "red" }}>{weightError}</Text>}
-
           <View style={styles.BtnBox}>
             {/* 가입버튼 */}
             <TouchableOpacity
