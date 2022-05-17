@@ -184,6 +184,26 @@ const MyProfile = ({ navigation }) => {
       </TouchableOpacity>
     );
 
+    const profileTest = () => {
+      const url = "http://192.168.35.107:8282/userProfile.act";
+
+      fetch(url, {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          loginId,
+          loginPw,
+        }),
+      })
+        .then((response) => response.json())
+        .then((data) => console.log(data));
+      // .then((data) => console.log(JSON.stringify(data)))
+      // .catch((error) => console.log(error));
+    };
+
     const MyProfileModify = () => {
       // state = {age:"", gender:"",height:"",weight:""}
       // const [value, setValue] = useState('김이나');
