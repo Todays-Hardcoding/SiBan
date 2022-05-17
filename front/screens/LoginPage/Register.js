@@ -161,7 +161,7 @@ const Register = ({ navigation }) => {
   };
   // 아이디 중복체크에 관한 함수
   const checkId = () => {
-    const _url = "http://112.172.225.17:8282/checkId.act";
+    const _url = "http://192.168.0.6:8282/checkId.act";
     fetch(_url, {
       method: "POST",
       headers: {
@@ -185,7 +185,7 @@ const Register = ({ navigation }) => {
 
   // 이메일 중복체크에 관한 함수
   const checkEmail = () => {
-    const _url = "http://112.172.225.17:8282/checkEmail.act";
+    const _url = "http://192.168.0.6:8282/checkEmail.act";
     fetch(_url, {
       method: "POST",
       headers: {
@@ -343,7 +343,7 @@ const Register = ({ navigation }) => {
                 width: 100,
                 alignItems: "center",
               }}
-              onPress={() => {}}
+              onPress={checkEmail}
             >
               <Text style={{ fontSize: 18, color: "white" }}>중복확인</Text>
             </TouchableOpacity>
