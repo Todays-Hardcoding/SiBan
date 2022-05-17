@@ -17,30 +17,30 @@ const MyProfile = ({ navigation }) => {
   const specialPromoData = [
     {
       id: 1,
-      img: images.promoBanner,
+      img: images.myroutine,
       title: "내 루틴",
       description: "설정한 내 루틴을 확인해 보세요!",
       code: "Routine",
     },
     {
       id: 2,
-      img: images.promoBanner,
+      img: images.calendar,
       title: "일정 관리",
-      description: "이번달 일정을 확인해 보세요",
+      description: "이번달 일정을 확인해 보세요!",
       code: "OthersNav",
     },
     {
       id: 3,
-      img: images.promoBanner,
+      img: images.record,
       title: "기록",
       description: "달성 트로피를 확인해 보세요!",
       code: "ActivityNav",
     },
     {
       id: 4,
-      img: images.promoBanner,
+      img: images.diet,
       title: "식단관리",
-      description: "나에게 맞는 식단을 찾아보세요",
+      description: "나에게 맞는 식단을 찾아보세요!",
       code: "MealPlanNav",
     },
   ];
@@ -56,7 +56,7 @@ const MyProfile = ({ navigation }) => {
         }}
       >
         <View style={{ flex: 1, alignItems: "center", left: 30 }}>
-          <Text style={{ fontSize: 25, fontWeight: "bold" }}>마이페이지</Text>
+          <Text style={{ fontSize: 25, fontWeight: "bold", color:"white" }}>마이페이지</Text>
         </View>
         <View style={styles.userSupervise}>
           <TouchableOpacity onPress={() => setShouldShow(!shouldShow)}>
@@ -82,7 +82,7 @@ const MyProfile = ({ navigation }) => {
         >
           <View style={{ alignItems: "center" }}>
             <Image
-              source={require("../../assets/profile.png")}
+              source={require("../../assets/images/profileImage.png")}
               resizeMode="contain"
               style={{
                 width: "70%",
@@ -115,7 +115,7 @@ const MyProfile = ({ navigation }) => {
         <SafeAreaView
           style={{
             flex: 1,
-            backgroundColor: COLORS.white,
+            backgroundColor: "#6072e2",
             margin: 20,
           }}
         >
@@ -158,7 +158,7 @@ const MyProfile = ({ navigation }) => {
           }}
         >
           <Image
-            source={images.promoBanner}
+            source={item.img}
             resizeMode="cover"
             style={{
               width: "100%",
@@ -240,7 +240,7 @@ const MyProfile = ({ navigation }) => {
               }}
               style={styles.userProfileText}
             >
-              <Text>정보수정</Text>
+              <Text >정보수정</Text>
             </TouchableOpacity>
           </View>
           <View style={styles.profile}>
@@ -266,7 +266,7 @@ const MyProfile = ({ navigation }) => {
   }
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.white }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: "#6072e2" }}>
       {renderPromos()}
     </SafeAreaView>
   );
@@ -280,6 +280,7 @@ const styles = StyleSheet.create({
     flex: 8,
     padding: 16,
     backgroundColor: "#fff",
+    borderRadius:10,
   },
   head: {
     height: 40,
@@ -301,6 +302,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#F5EEDC",
     height: 30,
     width: "30%",
+    marginBottom: 10,
     borderRadius: 20,
   },
   modifyButton: {

@@ -2,21 +2,28 @@ import React, { useState } from "react";
 import { StyleSheet, Text, View, TouchableOpacity, Image } from "react-native";
 
 const RoutineRecord = () => {
-  const [count, setCount] = useState(0);
+  const [routine, setRoutine] = useState(0);
+  const sendData = (item) => {
+  navigation.navigate("ActivityNav", {
+    screen: item.routine,
+    params: routineCount,
+  });
+}
+
   return (
     <View style={styles.centerView}>
       <View>
-        {/* <TouchableOpacity style={styles.counter} onPress={() => setCount(count + 1)}>
+        <TouchableOpacity style={styles.counter} onPress={() => setRoutine(routine + 1)}>
           <Text style={styles.RoutineRecordText}>증가</Text>
-        </TouchableOpacity> */}
+        </TouchableOpacity>
 
         <View>
-          <Text style={styles.RoutineRecordText}>루틴: {count}</Text>
+          <Text style={styles.RoutineRecordText}>루틴: {routine}</Text>
         </View>
 
-        {/* <TouchableOpacity style={styles.counter} onPress={() => setCount(count - 1)}>
+        <TouchableOpacity style={styles.counter} onPress={() => setRoutine(routine - 1)}>
           <Text style={styles.RoutineRecordText}>감소</Text>
-        </TouchableOpacity> */}
+        </TouchableOpacity> 
 
       </View>
     </View>
