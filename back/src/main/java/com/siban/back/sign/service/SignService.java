@@ -19,20 +19,15 @@ public class SignService{
 		return signRepository.save(user);
 	}
 
-//	아이디 중복확인
-	public Boolean checkId(String userId) {
-		return signRepository.existsById(userId);
-	}
-//	이메일 중복확인
-	public Boolean checkEmail(String email) {
-		return signRepository.existsById(email);
+	
+	public boolean findByUserId(String userId) {
+		return signRepository.findByuserId(userId);
 	}
 
 	
-	public Optional<User> findbyUserId(String userId) {
-		return signRepository.findByUserId(userId);
+	public boolean findByUserEmail(String userEmail) {
+		return signRepository.findByuserEmail(userEmail);
 	}
-
 
 
 }
