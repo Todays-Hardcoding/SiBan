@@ -35,8 +35,9 @@ public class SignController {
 		System.out.println(param.get("id"));
 		// 아이디가 있으면 false
 		User checkId = signService.findByUserId(param.get("id"));
+		System.out.println(checkId);
 		if (checkId != null) {
-			temp = false;
+			temp = true;
 		}
 		result.put("checkId", temp);
 		System.out.println(temp);
@@ -52,7 +53,7 @@ public class SignController {
 	      // 이메일이 있으면 false
 	      User checkEmail = signService.findByUserEmail(param.get("email"));
 	      if(checkEmail != null) {
-	         temp = false;
+	         temp = true;
 	      }
 	      result.put("checkEmail", temp);
 	      System.out.println(temp);
