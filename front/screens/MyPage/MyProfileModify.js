@@ -1,35 +1,77 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, View, TextInput } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  TextInput,
+  TouchableOpacity,
+} from "react-native";
 import { Table, Row, Rows } from "react-native-table-component-2";
 import RNPickerSelect from "react-native-picker-select";
+import { Dimensions } from "react-native";
+
+const windowWidth = Dimensions.get("window").width;
+const windowHeight = Dimensions.get("window").height;
 
 const MyProfileModify = () => {
-  const [age, setAge] = useState("15");
-  const [gender, setGender] = useState("여");
-  const [height, setHeight] = useState("165");
-  const [weight, setweight] = useState("60");
+  const [userName, setuserName] = useState("Yoon");
+  const [userEmail, setuserEmail] = useState("abc@abc.com");
+  const [userHeight, setuserHeight] = useState("200");
+  const [userWeight, setuserWeight] = useState("100");
+  const [userTel, setuserTel] = useState("01000001111");
+
+  const profileTest = () => {
+    const url = "http://192.168.45.96:8282/updateUserInfo.act";
+
+    fetch(url, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        userEmail,
+        userName,
+        userTel,
+        userHeight,
+        userWeight,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => console.log("안녕"))
+      // .then((data) => console.log(JSON.stringify(data)))
+      .catch((error) => console.log(error));
+  };
 
   return (
     <View style={styles.container}>
       <View style={styles.eachBox}>
-        <Text style={styles.text}>나이</Text>
+        <Text style={styles.text}>이메일</Text>
         <TextInput
           style={styles.input}
           keyboardType="numeric"
-          onChangeText={(age) => setAge(age)}
-          value={age}
+          onChangeText={(userEmail) => setuserEmail(userEmail)}
+          value={userEmail}
         />
       </View>
 
       <View style={styles.eachBox}>
-        <Text style={styles.text}>성별</Text>
-        <RNPickerSelect
-          onValueChange={(value) => setGender(value)}
-          items={[
-            { label: "남", value: "남", key: "0" },
-            { label: "여", value: "여", key: "1" },
-          ]}
-          value={gender}
+        <Text style={styles.text}>이름</Text>
+        <TextInput
+          style={styles.input}
+          keyboardType="numeric"
+          onChangeText={(userName) => setuserName(userName)}
+          value={userName}
+        />
+      </View>
+
+      <View style={styles.eachBox}>
+        <Text style={styles.text}>전화번호</Text>
+        <TextInput
+          style={styles.input}
+          keyboardType="numeric"
+          onChangeText={(userTel) => setuserTel(userTel)}
+          value={userTel}
         />
       </View>
 
@@ -37,9 +79,9 @@ const MyProfileModify = () => {
         <Text style={styles.text}>키</Text>
         <TextInput
           style={styles.input}
-          value={height}
+          value={userHeight}
           keyboardType="numeric"
-          onChangeText={(height) => setHeight(height)}
+          onChangeText={(height) => setuserHeight(height)}
         />
       </View>
 
@@ -47,14 +89,27 @@ const MyProfileModify = () => {
         <Text style={styles.text}>몸무게</Text>
         <TextInput
           style={styles.input}
-          value={weight}
+          value={userWeight}
           keyboardType="numeric"
-          onChangeText={(weight) => setweight(weight)}
+          onChangeText={(weight) => setuserWeight(weight)}
         />
+      </View>
+      <View style={styles.buttonPart}>
+        <TouchableOpacity onPress={profileTest} style={styles.defaultButton}>
+          <Text style={styles.userProfileText}>저장</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity onPress={onPressBtn} style={styles.defaultButton}>
+          <Text style={styles.userProfileText}>뒤로</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
 };
+
+function onPressBtn() {
+  alert("버튼이당");
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -84,6 +139,19 @@ const styles = StyleSheet.create({
     marginLeft: 12,
     paddingLeft: 10,
     paddingTop: 10,
+  },
+  buttonPart: {
+    flex: 1,
+    flexDirection: "row",
+  },
+  defaultButton: {
+    backgroundColor: "#F5EEDC",
+    height: windowWidth * 0.1,
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: windowWidth * 0.04,
+    marginHorizontal: 5,
+    width: windowWidth * 0.35,
   },
 });
 

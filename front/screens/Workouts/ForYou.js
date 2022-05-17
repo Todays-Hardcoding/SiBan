@@ -4,7 +4,7 @@ import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import { FlatGrid } from "react-native-super-grid";
 
 const ForYou = ({ navigation }) => {
-  const _url = "http://112.172.225.17:8282/";
+  const _url = "http://192.168.45.96:8282/";
 
   const [courses, setCourses] = useState([
     {
@@ -12,12 +12,20 @@ const ForYou = ({ navigation }) => {
       course: "초급",
       explane: "초보자들에게 추천하는 코스입니다.",
     },
-    { screen: "Level2",course: "중급", explane: "경력 1년차 이상 코스입니다." },
-    { screen: "Level3",course: "고급", explane: "더 높은 퍼포먼스를 추구한다면" },
+    {
+      screen: "Level2",
+      course: "중급",
+      explane: "경력 1년차 이상 코스입니다.",
+    },
+    {
+      screen: "Level3",
+      course: "고급",
+      explane: "더 높은 퍼포먼스를 추구한다면",
+    },
   ]);
 
-  const [data, setData] = useState({})
-  const [newData, setNewData] = useState({})
+  const [data, setData] = useState({});
+  const [newData, setNewData] = useState({});
 
   useEffect(() => {
     fetch(_url + "test.act", {
@@ -29,30 +37,30 @@ const ForYou = ({ navigation }) => {
     })
       .then((response) => response.json())
       .then((data) => {
-        setData(data)
+        setData(data);
+
+        console.log(data);
       });
   }, []);
 
   const sendData = (item) => {
     Object.keys(data).map((key) => {
-      if(data[key].workoutCourse == item.course) {
-        console.log(key)
-        console.log("================")
-        console.log(item.course)
-        console.log("================")
-        console.log(data[key].workoutCourse)
-        setNewData({...newData, [key]: data[key]})
+      if (data[key].workoutCourse == item.course) {
+        console.log(key);
+        console.log("================");
+        console.log(item.course);
+        console.log("================");
+        console.log(data[key].workoutCourse);
+        setNewData({ ...newData, [key]: data[key] });
       }
+    });
 
-    })
-    
     // setNewData({...newData, [key]: data[key]})
     navigation.navigate("LevelDetail", {
       screen: item.screen,
       params: newData,
-    })
-
-  }
+    });
+  };
 
   return (
     <View style={styles.Container}>
