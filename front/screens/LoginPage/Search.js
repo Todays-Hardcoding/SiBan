@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, View, Button, TextInput } from "react-native";
+import { Button, Text, TextInput, View } from "react-native";
 
 const Search = () => {
   return (
@@ -30,6 +30,7 @@ const Search = () => {
         }}
         placeholder={"이메일을 입력해주세요."}
       />
+
 
       <Button
         style={{ color: "black" }}

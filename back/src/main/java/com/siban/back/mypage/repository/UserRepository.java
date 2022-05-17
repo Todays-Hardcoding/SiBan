@@ -1,4 +1,4 @@
-package com.siban.back.sign.repository;
+package com.siban.back.mypage.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -6,8 +6,7 @@ import org.springframework.stereotype.Repository;
 import com.siban.back.sign.domain.User;
 
 @Repository
-public interface SignRepository extends JpaRepository<User, Long>{
+public interface UserRepository extends JpaRepository<User, Long>{
 	
 	public User findByuserId(String userId);
-	public User findByuserEmail(String userEmail);
 }
