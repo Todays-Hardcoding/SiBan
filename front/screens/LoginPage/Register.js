@@ -158,7 +158,7 @@ const Register = ({ navigation }) => {
   };
   // 회원가입에 간한 함수
   const postRegister = () => {
-    const _url = "http://192.168.0.6:8282/register.act";
+    const _url = "http://192.168.35.133:8282/register.act";
     fetch(_url, {
       method: "POST",
       headers: {
