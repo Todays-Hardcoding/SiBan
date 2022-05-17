@@ -63,15 +63,15 @@ const QNAList = () => {
   return (
     <SafeAreaView style={styles.container}>
       <ImageBackground
-        source={require("../../assets/images/qnaBackground.jpg")}
+        source={require("../../assets/images/sibanLogo.png")}
         style={styles.image}
       >
-        <Text style={styles.text}>나의 1:1질문 목록</Text>
       </ImageBackground>
       <ScrollView style={styles.itemContainer}>
         <View>
           {data.map((item, index) => (
             <View
+              key={index}
               style={[
                 styles.item,
                 index === 0 && { borderTopWidth: 0 }, // CSS: first-child
@@ -111,11 +111,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     opacity: 0.9,
   },
-  text: {
-    fontSize: 20,
-    color: "white",
-    fontWeight: "bold",
-  },
   item: {
     flexDirection: "row",
     justifyContent: "space-between",
@@ -142,7 +137,7 @@ const styles = StyleSheet.create({
     marginLeft: 8,
   },
   searchButton: {
-    backgroundColor: "#C0D8C0",
+    backgroundColor: "#F2C9E1",
     borderRadius: 8,
     height: 40,
     alignItems: "center",

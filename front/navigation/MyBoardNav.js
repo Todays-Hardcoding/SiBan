@@ -23,7 +23,7 @@ const ServiceCenter = () => {
       <Tab.Screen
         name="QNAList"
         component={QNAList}
-        options={{ tabBarLabel: "Q&A List" }}
+        options={{ tabBarLabel: "QNA List 임시" }}
       />
     </Tab.Navigator>
   );
