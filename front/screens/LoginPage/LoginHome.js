@@ -1,23 +1,10 @@
 import React from "react";
-
 import {
-  Text,
-  View,
-  TextInput,
-  StyleSheet,
-  TouchableOpacity,
-  Image,
+  Image, StyleSheet, Text, TouchableOpacity, View
 } from "react-native";
 
-import NaverButton from "../../components/NaverButton";
-import LoginButton from "../../components/LoginButton";
-import { NavigationContainer } from "@react-navigation/native";
-
-
 const LoginHome = ({ navigation }) => {
-  //const onChangeId = (e) => { console.log(e.target.value); }
 
-  console.log();
   return (
     <>
       <View style={styles.mainContainer}>
