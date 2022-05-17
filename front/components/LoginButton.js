@@ -3,7 +3,7 @@ import { TouchableOpacity, Text } from "react-native";
 
 import { sendData2 } from "../screens/Home";
 
-const urlString = "http://192.168.45.96:8282";
+const urlString = "http://192.168.35.107:8282";
 
 const LoginButton = () => {
   const postTest = () => {

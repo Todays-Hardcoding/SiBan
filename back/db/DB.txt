@@ -333,7 +333,7 @@
     "workoutName": "10분 HIT: 안정성 트레이닝 기초",
     "workoutCourse": "초급",
     "workoutGoal": "지구력",
-    "workoutTarget": ["복근 및 코어"],
+    "workoutTarget": ["단련", "민첩성", "안정성"],
     "workoutDescription": "운동 신경은 그냥 생기는 것이 아닙니다. 숙달되는 것이죠, 짧고 굵게 끝내는 이 운동으로 민첩성, 안정성 및 조정력 기량을 쌓아보세요. "
   },
   {
