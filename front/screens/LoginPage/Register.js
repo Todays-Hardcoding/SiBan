@@ -156,9 +156,15 @@ const Register = ({ navigation }) => {
     }
     setHeight(text);
   };
-  // 회원가입에 간한 함수
-  const postRegister = () => {
-    const _url = "http://192.168.0.6:8282/register.act";
+  // 회원가입에 관한 함수
+  const postRegister = (evnet) => {
+    const _url = "http://112.172.225.17:8282/register.act";
+
+    if(checkId === false) {
+      alert("중복확인")
+      event.preventDefault();
+      return false;
+    }else{
     fetch(_url, {
       method: "POST",
       headers: {
@@ -182,10 +188,11 @@ const Register = ({ navigation }) => {
         });
         console.log(data);
       });
+    }
   };
   // 아이디 중복체크에 관한 함수
   const checkId = () => {
-    const _url = "http://192.168.0.6:8282/checkId.act";
+    const _url = "http://112.172.225.17:8282/checkId.act";
     fetch(_url, {
       method: "POST",
       headers: {
@@ -193,7 +200,7 @@ const Register = ({ navigation }) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        id,
+        "id":id,
       }),
     })
       .then((response) => response.json())
@@ -383,7 +390,7 @@ const Register = ({ navigation }) => {
                 width: 100,
                 alignItems: "center",
               }}
-              onPress={postRegister}
+              onPress={(event) => postRegister(event)}
             >
               <Text style={{ fontSize: 18, color: "white" }}>가입</Text>
             </TouchableOpacity>
