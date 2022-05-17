@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.reactive.result.condition.ParamsRequestCondition;
 
 import com.siban.back.sign.domain.User;
 import com.siban.back.sign.service.SignService;
@@ -22,6 +21,7 @@ public class SignController {
 
 	@PostMapping("/register.act")
 	public User register(@RequestBody Map<String, String> param) {
+<<<<<<< HEAD
 		User user = new User();
 		String id = param.get("id");
 		String pw = param.get("pw");
@@ -42,6 +42,11 @@ public class SignController {
 		// boolean result = false;
 		// if(signService.findbyUserId(id).isPresent()) {
 
+=======
+		User user = User.builder().userId(param.get("id")).userPassword(param.get("pw")).userEmail(param.get("email"))
+				.userName(param.get("name")).userTel(param.get("tel")).userHeight(param.get("height"))
+				.userWeight(param.get("weight")).build();
+>>>>>>> f07df6eb78380dd1ce9614f747743a5bab73e273
 		signService.insertUser(user);
 
 		return user;
@@ -51,13 +56,18 @@ public class SignController {
 	@PostMapping("/checkId.act")
 	public Map<String, Boolean> checkId(@RequestBody Map<String, String> param) {
 		Map<String, Boolean> result = new HashMap<>();
-		boolean temp = true;
+		boolean temp = false;
 		System.out.println(param.get("id"));
-		// 아이디가 있으면 true
+		// 아이디가 있으면 false
 		User checkId = signService.findByUserId(param.get("id"));
+<<<<<<< HEAD
 		if (checkId != null) {
 			temp = false;
 		} else {
+=======
+		System.out.println(checkId);
+		if (checkId != null) {
+>>>>>>> f07df6eb78380dd1ce9614f747743a5bab73e273
 			temp = true;
 		}
 		result.put("checkId", temp);
@@ -65,6 +75,7 @@ public class SignController {
 		System.out.println(result);
 		return result;
 	}
+<<<<<<< HEAD
 	/*
 	 * @PostMapping("/checkEmail.act") public Map<String, Boolean>
 	 * checkEmail(@RequestBody Map<String, String> param) { Map<String, Boolean>
@@ -101,3 +112,23 @@ public class SignController {
 	 */
 
 }
+=======
+	
+	   @PostMapping("/checkEmail.act")
+	   public Map<String, Boolean> checkEmail(@RequestBody Map<String, String> param) {
+	      Map<String, Boolean> result = new HashMap<>();
+	      boolean temp = false;
+	      System.out.println(param.get("email"));
+	      // 이메일이 있으면 false
+	      User checkEmail = signService.findByUserEmail(param.get("email"));
+	      if(checkEmail != null) {
+	         temp = true;
+	      }
+	      result.put("checkEmail", temp);
+	      System.out.println(temp);
+	      System.out.println(result);
+	      return result;
+	   }
+
+}
+>>>>>>> f07df6eb78380dd1ce9614f747743a5bab73e273

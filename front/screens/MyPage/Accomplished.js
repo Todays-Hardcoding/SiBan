@@ -1,3 +1,4 @@
+/*
 import React from "react";
 import {
   StyleSheet,
@@ -222,3 +223,4 @@ const styles = StyleSheet.create({
 });
 
 export default Accomplished;
+*/
