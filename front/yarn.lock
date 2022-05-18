@@ -4751,6 +4751,20 @@
   dependencies:
     "fontfaceobserver" "^2.1.0"
 
+"expo-image-loader@~3.2.0":
+  "integrity" "sha512-LU3Q2prn64/HxdToDmxgMIRXS1ZvD9Q3iCxRVTZn1fPQNNDciIQFE5okaa74Ogx20DFHs90r6WoUd7w9Af1OGQ=="
+  "resolved" "https://registry.npmjs.org/expo-image-loader/-/expo-image-loader-3.2.0.tgz"
+  "version" "3.2.0"
+
+"expo-image-picker@~13.1.1":
+  "integrity" "sha512-fU8oONRkKg5DvuU+7KvnuOtf1ubzXNU/OsE/T6yB149LbXb+ZN5A49NicvJ+cOG4Oa5NAnILt0aAAkchIr3iRQ=="
+  "resolved" "https://registry.npmjs.org/expo-image-picker/-/expo-image-picker-13.1.1.tgz"
+  "version" "13.1.1"
+  dependencies:
+    "@expo/config-plugins" "^4.0.14"
+    "expo-image-loader" "~3.2.0"
+    "uuid" "7.0.2"
+
 "expo-keep-awake@~10.1.1":
   "integrity" "sha512-9zC0sdhQljUeMr2yQ7o4kzEZXVAy82fFOAZE1+TwPL7qR0b0sphe7OJ5T1GX1qLcwuVaJ8YewaPoLSHRk79+Rg=="
   "resolved" "https://registry.npmjs.org/expo-keep-awake/-/expo-keep-awake-10.1.1.tgz"
@@ -4785,6 +4799,11 @@
   dependencies:
     "compare-versions" "^3.4.0"
     "invariant" "^2.2.4"
+
+"expo-permissions@~13.2.0":
+  "integrity" "sha512-fAvutJjlUjlmyR2jjI9uQT0LXQ+A3U8hZnA4twQG8eXEURR3/V5WSGkx5wwX+7OF6qWR68rvs7Xjkd3ghsCm4w=="
+  "resolved" "https://registry.npmjs.org/expo-permissions/-/expo-permissions-13.2.0.tgz"
+  "version" "13.2.0"
 
 "expo-pwa@0.0.119":
   "integrity" "sha512-TGoZ+IFp5+wPlHESuBXc8VsLNnk41FDe1e+nENcM3Exty4uD/galsAG3RLrt2RSxBw3bDLtSNJOD0ZhmYLg6QQ=="
@@ -9065,6 +9084,11 @@
   "resolved" "https://registry.npmjs.org/react-native-image-header/-/react-native-image-header-1.0.1.tgz"
   "version" "1.0.1"
 
+"react-native-image-picker@^4.8.3":
+  "integrity" "sha512-mA3xKN8TtXpLl3Aoo65ArZvusv3gCsbe3/hsOLKI1DcC+QcYPcDnsYK/ft05rWBj4BdiJ9E2JoveiHNtU8W9GA=="
+  "resolved" "https://registry.npmjs.org/react-native-image-picker/-/react-native-image-picker-4.8.3.tgz"
+  "version" "4.8.3"
+
 "react-native-image-slider-box@^1.1.23":
   "integrity" "sha512-+hca7DojXOTzh2LO/eHBhjzqp1wxxfjm4yc+wL4xrYc/g3R4m8DkN7HL8LrGqEewz0kmtSZDAJLg9EuUWzEuzg=="
   "resolved" "https://registry.npmjs.org/react-native-image-slider-box/-/react-native-image-slider-box-1.1.23.tgz"
@@ -11076,6 +11100,11 @@
   "integrity" "sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg=="
   "resolved" "https://registry.npmjs.org/uuid/-/uuid-8.3.2.tgz"
   "version" "8.3.2"
+
+"uuid@7.0.2":
+  "integrity" "sha512-vy9V/+pKG+5ZTYKf+VcphF5Oc6EFiu3W8Nv3P3zIh0EqVI80ZxOzuPfe9EHjkFNvf8+xuTHVeei4Drydlx4zjw=="
+  "resolved" "https://registry.npmjs.org/uuid/-/uuid-7.0.2.tgz"
+  "version" "7.0.2"
 
 "valid-url@~1.0.9":
   "integrity" "sha1-HBRHm0DxOXp1eC8RXkCGRHQzogA="
