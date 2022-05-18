@@ -17,9 +17,11 @@ public class UserController {
 	
 	@PostMapping("/showUserInfo.act")
 	public User showUserInfo(@RequestBody Map<String, String> param) {
+		
 		User user = userService.findByUserId(param.get("userId"));
+		
+		
 		System.out.println("show connected");
-	
 		return user;
 	
 	}
