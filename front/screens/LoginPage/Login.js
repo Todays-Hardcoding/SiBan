@@ -40,8 +40,6 @@ const Login = ({ navigation }) => {
       setLoginIdCheck(true);
     }
     setLoginId(text);
-    // console.log(loginIdCheck);
-    // console.log(loginId);
   };
   const setPw = (text) => {
     if (text.trim().length === 0) {
@@ -51,8 +49,6 @@ const Login = ({ navigation }) => {
       setLoginPwCheck(true);
     }
     setLoginPw(text);
-    // console.log(loginPwCheck);
-    // console.log(loginPw);
   };
 
   const postTest = () => {
@@ -71,8 +67,7 @@ const Login = ({ navigation }) => {
     })
       .then((response) => response.json())
       .then((data) => console.log(data));
-    // .then((data) => console.log(JSON.stringify(data)))
-    // .catch((error) => console.log(error));
+
   };
 
   return (
