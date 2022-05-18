@@ -42,9 +42,10 @@ const QNAList = ({navigation}) => {
   return (
     <SafeAreaView style={styles.container}>
       <ImageBackground
-        source={require("../../assets/images/sibanLogo.png")}
+        source={require("../../assets/images/moonhi3.jpg")}
         style={styles.image}
       >
+        <Text style={styles.moonhiText}>문희사항</Text>
       </ImageBackground>
       <ScrollView>
         <View>
@@ -152,6 +153,13 @@ const styles = StyleSheet.create({
   },
   contentText: {
     fontWeight: "bold"
+  },
+  moonhiText: {
+    fontWeight: "bold",
+    color: "#ffffff",
+    fontSize: 20,
+    marginTop:100,
+    marginLeft:50
   }
 });
 
