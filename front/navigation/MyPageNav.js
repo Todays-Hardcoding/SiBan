@@ -12,7 +12,6 @@ import Accomplished from "../screens/MyPage/Accomplished";
 import MyProfile from "../screens/MyPage/MyProfile";
 
 import MealPlanHome from "../screens/MyPage/MealPlan/MealPlanHome";
-import MealPlanWrite from "../screens/MyPage/MealPlan/MealPlanWrite";
 
 import MyProfileModify from "../screens/MyPage/MyProfileModify";
 

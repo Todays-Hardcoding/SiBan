@@ -216,16 +216,7 @@ const MealPlanWrite = ({ navigation: { goBack } }) => {
   };
 
   return (
-    <View
-      style={{
-        backgroundColor: "#cab8ff",
-        flex: 1,
-        paddingTop: 0,
-        paddingBottom: 0,
-        paddingRight: 30,
-        paddingLeft: 30,
-      }}
-    >
+    <View>
       <MainText>나의 식단 기록일기</MainText>
       <Title>오늘 어떤 음식을 드셨나요?</Title>
       <MyMealScrollView>
