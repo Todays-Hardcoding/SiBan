@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Text, StyleSheet, TouchableOpacity, View } from "react-native";
 import { FlatGrid } from "react-native-super-grid";
 
-const Level1 = ({route}) => {
+const Level1 = () => {
   const { result } = useRoute().params
 
   const [exercises, setExercises] = useState([]);
