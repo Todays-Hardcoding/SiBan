@@ -2,6 +2,7 @@ package com.siban.back.sign.controller;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -45,20 +46,46 @@ public class SignController {
 		return result;
 	}
 	
-	   @PostMapping("/checkEmail.act")
-	   public Map<String, Boolean> checkEmail(@RequestBody Map<String, String> param) {
-	      Map<String, Boolean> result = new HashMap<>();
-	      boolean temp = false;
-	      System.out.println(param.get("email"));
-	      // 이메일이 있으면 false
-	      User checkEmail = signService.findByUserEmail(param.get("email"));
-	      if(checkEmail != null) {
-	         temp = true;
-	      }
-	      result.put("checkEmail", temp);
-	      System.out.println(temp);
-	      System.out.println(result);
-	      return result;
-	   }
+	@PostMapping("/checkEmail.act")
+	public Map<String, Boolean> checkEmail(@RequestBody Map<String, String> param) {
+		Map<String, Boolean> result = new HashMap<>();
+		boolean temp = false;
+		System.out.println(param.get("email"));
+		// 이메일이 있으면 false
+		User checkEmail = signService.findByUserEmail(param.get("email"));
+		if(checkEmail != null) {
+			temp = true;
+		}
+		result.put("checkEmail", temp);
+		System.out.println(temp);
+		System.out.println(result);
+		return result;
+	}
+	
+	@PostMapping("/login.act")
+	public Map<String, Boolean> login(@RequestBody Map<String, String> param) {
+		Map<String, Boolean> result = new HashMap<>();
+		boolean temp = false;
+		System.out.println(param.get("loginId"));
+		System.out.println(param.get("loginPw"));
+		// 이메일이 있으면 false
+		User user = signService.findByUserId(param.get("loginId"));
+		//System.out.println(user);
+		//System.out.println(user.getUserId());
+		//System.out.println(user.getUserPassword());
+		if(Objects.isNull(user)) {
+			temp = false;
+		}else if(user.getUserId().equals(param.get("loginId")) && user.getUserPassword().equals(param.get("loginPw"))){
+	
+			temp = true;
+		}
+		result.put("result", temp);
+		System.out.println(result);
+		return result;
+	}
+
+
+	
+
 
 }
