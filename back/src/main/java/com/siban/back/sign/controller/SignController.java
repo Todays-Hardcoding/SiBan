@@ -15,8 +15,8 @@ import com.siban.back.sign.service.SignService;
 @RestController
 public class SignController {
 
-	@Autowired
-	private SignService signService;
+   @Autowired
+   private SignService signService;
 
 	@PostMapping("/register.act")
 	public User register(@RequestBody Map<String, String> param) {
@@ -41,7 +41,7 @@ public class SignController {
 			temp = true;
 		}
 		result.put("checkId", temp);
-		System.out.println(temp);
+//		System.out.println(temp);
 		System.out.println(result);
 		return result;
 	}

@@ -7,7 +7,6 @@ import MainTabs from "./navigation/MainTabs";
 const Stack = createStackNavigator();
 
 export default function App() {
- 
   return (
     <NavigationContainer>
       <Stack.Navigator>

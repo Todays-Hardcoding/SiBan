@@ -41,7 +41,7 @@ const OthersNav = () => {
   );
 };
 
-const ActivityNav = () => {
+const ActivityNav = ({ route }) => {
   return (
     <Tab.Navigator
       initialLayout={{ width: windowWidth }}
@@ -59,6 +59,7 @@ const ActivityNav = () => {
       <Tab.Screen
         name="ACCOMPLISHED"
         component={Accomplished}
+        initialParams={{ params: route.params }}
         options={{ tabBarLabel: "달성 기록" }}
       />
     </Tab.Navigator>

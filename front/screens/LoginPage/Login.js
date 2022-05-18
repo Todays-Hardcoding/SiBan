@@ -51,9 +51,9 @@ const Login = ({ navigation }) => {
     // console.log(loginPw);
   };
 
- // 로그인
- const postLogin = () => {
-  const _url = "http://112.172.225.17:8282/login.act";
+  // 로그인
+  const postLogin = () => {
+    const _url = "http://192.168.35.133:8282/login.act";
 
     fetch(_url, {
       method: "POST",
@@ -69,23 +69,21 @@ const Login = ({ navigation }) => {
       .then((response) => response.json())
       .then((data) => {
         //console.log(data.result)
-        if(data.result == true){
+        if (data.result == true) {
           setSaveId(loginId);
-          alert("로그인 성공")
-          console.log(setSaveId)
-          navigation.navigate("MainTabs")
-        }else{
+          alert("로그인 성공");
+          console.log(setSaveId);
+          navigation.navigate("MainTabs");
+        } else {
           alert("다시 로그인해주세요.");
         }
-
       });
-  
-};
+  };
 
   return (
     <View
       style={{
-        flex: 0.75,
+        flex: 1,
         backgroundColor: "#fff",
         alignItems: "center",
         justifyContent: "center",
@@ -146,7 +144,7 @@ const Login = ({ navigation }) => {
           margin: 10,
           borderRadius: 5,
           paddingHorizontal: 50,
-          width: 330,
+          width: "80%",
           alignItems: "center",
         }}
         // onPress={test2}
@@ -155,24 +153,20 @@ const Login = ({ navigation }) => {
       >
         <Text style={{ fontSize: 18, color: "white" }}>로그인하기</Text>
       </TouchableOpacity>
-
-      <NaverButton />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   input: {
+    width: "80%",
     borderWidth: 1,
     padding: 10,
-    fontSize: 20,
-    borderRadius: 10,
-    paddingVertical: 10,
-
+    fontSize: 15,
+    borderRadius: 8,
+    borderWidth: 1,
     marginVertical: 5,
-    paddingHorizontal: 32,
-    marginBottom: 16,
-    width: "85%",
+    width: "80%",
   },
 });
 
