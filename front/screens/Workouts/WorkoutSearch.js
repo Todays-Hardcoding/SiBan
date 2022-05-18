@@ -45,7 +45,7 @@ const WorkoutSearch = () => {
         inlineImageLeft="search_icon"
       />
       <FlatGrid
-        itemDimension={170}
+        itemDimension={200}
         data={result}
         spacing={20}
         renderItem={({ item }) => (

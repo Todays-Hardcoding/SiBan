@@ -53,7 +53,6 @@ const ForYou = ({ navigation }) => {
       screen: item.screen,
       params: {result : result}
     })
-
   }
 
   return (
