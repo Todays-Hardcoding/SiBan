@@ -26,7 +26,7 @@ const QNA = () => {
   ]);
 
   const postBoard = () => {
-    const _url = "http://192.168.242.2:8282/insertInquiry.act"
+    const _url = "http://192.168.242.2:8282/insertInquiry.act";
 
     fetch(_url, {
       method: "POST",
@@ -40,8 +40,8 @@ const QNA = () => {
         content,
       }),
     })
-    .then((response) => response.json())
-    .then((data) => console.log(data));
+      .then((response) => response.json())
+      .then((data) => console.log(data));
   };
 
   return (
@@ -63,12 +63,12 @@ const QNA = () => {
 
         {/* textbox */}
         <View>
-          <TextInput 
+          <TextInput
             style={styles.input}
             placeholder="제목"
             value={title}
-            onChangeText={(text) => setTitle(text)} 
-           />
+            onChangeText={(text) => setTitle(text)}
+          />
           <TextInput
             style={styles.content}
             placeholder="내용을 입력해주세요."
@@ -83,10 +83,7 @@ const QNA = () => {
           <TouchableOpacity style={styles.submit}>
             <Text style={styles.buttonText}>취소</Text>
           </TouchableOpacity>
-          <TouchableOpacity 
-          style={styles.cancel}
-          onPress={postBoard}
-          >
+          <TouchableOpacity style={styles.cancel} onPress={postBoard}>
             <Text style={styles.buttonText}>제출</Text>
           </TouchableOpacity>
         </View>

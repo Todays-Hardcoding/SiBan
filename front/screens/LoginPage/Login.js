@@ -12,6 +12,7 @@ import NaverButton from "../../components/NaverButton";
 import { NavigationContainer } from "@react-navigation/native";
 //import { State } from 'react-native-gesture-handler';
 
+const url = "http://192.168.45.96:8282/test2.json";
 const Login = ({ navigation }) => {
   const [loginId, setLoginId] = useState("");
   const [loginPw, setLoginPw] = useState("");
@@ -51,9 +52,9 @@ const Login = ({ navigation }) => {
     // console.log(loginPw);
   };
 
- // 로그인
- const postLogin = () => {
-  const _url = "http://112.172.225.17:8282/login.act";
+  // 로그인
+  const postLogin = () => {
+    const _url = "http://112.172.225.17:8282/login.act";
 
     fetch(_url, {
       method: "POST",
@@ -69,18 +70,16 @@ const Login = ({ navigation }) => {
       .then((response) => response.json())
       .then((data) => {
         //console.log(data.result)
-        if(data.result == true){
+        if (data.result == true) {
           setSaveId(loginId);
-          alert("로그인 성공")
-          console.log(setSaveId)
-          navigation.navigate("MainTabs")
-        }else{
+          alert("로그인 성공");
+          console.log(setSaveId);
+          navigation.navigate("MainTabs");
+        } else {
           alert("다시 로그인해주세요.");
         }
-
       });
-  
-};
+  };
 
   return (
     <View

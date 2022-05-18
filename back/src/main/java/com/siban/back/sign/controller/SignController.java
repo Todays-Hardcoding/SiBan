@@ -7,6 +7,8 @@ import java.util.Objects;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.siban.back.sign.domain.User;
@@ -41,7 +43,7 @@ public class SignController {
 			temp = true;
 		}
 		result.put("checkId", temp);
-		System.out.println(temp);
+//		System.out.println(temp);
 		System.out.println(result);
 		return result;
 	}

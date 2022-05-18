@@ -59,21 +59,20 @@ const data = [
   },
 ];
 
-const QNAList = ({navigation}) => {
+const QNAList = ({ navigation }) => {
   return (
     <SafeAreaView style={styles.container}>
       <ImageBackground
         source={require("../../assets/images/sibanLogo.png")}
         style={styles.image}
-      >
-      </ImageBackground>
+      ></ImageBackground>
       <ScrollView>
         <View>
           {data.map((item, index) => (
             <TouchableOpacity
               key={index}
-              onPress={()=> {
-                navigation.navigate("QNADetailNav", {Screen: "QNADetail"})
+              onPress={() => {
+                navigation.navigate("QNADetailNav", { Screen: "QNADetail" });
               }}
               style={[
                 styles.item,
@@ -149,7 +148,7 @@ const styles = StyleSheet.create({
     marginLeft: 8,
   },
   buttonText: {
-    fontWeight: "bold"
+    fontWeight: "bold",
   },
   searchButton: {
     backgroundColor: "#B1BCE6",

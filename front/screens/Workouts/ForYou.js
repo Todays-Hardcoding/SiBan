@@ -4,7 +4,6 @@ import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import { FlatGrid } from "react-native-super-grid";
 
 const ForYou = ({ navigation }) => {
-  
   const [courses, setCourses] = useState([
     {
       screen: "Level1",
