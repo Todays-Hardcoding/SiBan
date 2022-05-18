@@ -48,6 +48,12 @@ public class User {
 	@NotNull
 	@Column
 	private String userHeight;
+<<<<<<< Updated upstream
+=======
+
+	@Column
+	private String userProfile;
+>>>>>>> Stashed changes
 
 	@NotNull
 	@Column
@@ -74,9 +80,14 @@ public class User {
 		this.userWeight = userWeight;
 		this.userRegDate = userRegDate;
 	}
+<<<<<<< Updated upstream
 	
 	
 	
 
 
 }
+=======
+
+}
+>>>>>>> Stashed changes
