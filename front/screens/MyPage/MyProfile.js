@@ -288,7 +288,7 @@ const styles = StyleSheet.create({
   },
   head: {
     height: 40,
-    backgroundColor: "#F5EEDC",
+    backgroundColor: "#ececec",
   },
   text: {
     margin: 6,
