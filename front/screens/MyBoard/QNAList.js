@@ -14,6 +14,8 @@ import {
 import { FlatGrid } from "react-native-super-grid";
 import { useIsFocused } from "@react-navigation/native";
 
+const _url = "http://192.168.45.96:8282";
+
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 
@@ -23,8 +25,7 @@ const QNAList = ({ navigation }) => {
   const [inquiry, setInquiry] = useState([]);
 
   useEffect(() => {
-    const _url = "http://192.168.45.96:8282/selectInquiry.act";
-    fetch(_url, {
+    fetch(_url + "/selectInquiry.act", {
       method: "POST",
       headers: {
         Accept: "application/json",

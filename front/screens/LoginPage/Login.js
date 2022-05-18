@@ -8,9 +8,10 @@ import {
   TouchableOpacity,
 } from "react-native";
 
-import NaverButton from "../../components/NaverButton";
 import { NavigationContainer } from "@react-navigation/native";
 //import { State } from 'react-native-gesture-handler';
+
+const _url = "http://192.168.45.96:8282";
 
 const Login = ({ navigation }) => {
   const [loginId, setLoginId] = useState("");
@@ -53,9 +54,7 @@ const Login = ({ navigation }) => {
 
   // 로그인
   const postLogin = () => {
-    const _url = "http://192.168.35.133:8282/login.act";
-
-    fetch(_url, {
+    fetch(_url + "/login.act", {
       method: "POST",
       headers: {
         Accept: "application/json",
