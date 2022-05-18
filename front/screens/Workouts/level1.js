@@ -1,28 +1,54 @@
+import { useRoute } from "@react-navigation/native";
 import React, { useEffect, useState } from "react";
 import { Text, StyleSheet, TouchableOpacity, View } from "react-native";
 import { FlatGrid } from "react-native-super-grid";
 
-const Level1 = () => {
-  const [items, setItems] = React.useState([
-    { name: "TURQUOISE", code: "#1abc9c" },
-    { name: "EMERALD", code: "#2ecc71" },
-    { name: "PETER RIVER", code: "#3498db" },
-    { name: "AMETHYST", code: "#9b59b6" },
-  ]);
+const Level1 = ({navigation}) => {
 
+  const [exercises, setExercises] = useState([]);
+
+  useEffect(() => {
+    const _url = "http://112.172.225.17:8282";
+    fetch(_url + "/Course.act", {
+      method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          workoutCourse : "초급",
+        }),
+    })
+    .then((response) => response.json())
+    .then((data) => {
+      setExercises(data)
+      });
+  }, []);
+  
   return (
     <View style={styles.Container}>
-      <Text style={styles.text}>{items.length}개의 운동</Text>
+      <Text style={styles.headerText}>{exercises.length}개의 운동</Text>
       <FlatGrid
-        itemDimension={170}
-        data={items}
+        itemDimension={200}
+        data={exercises}
         spacing={20}
         renderItem={({ item }) => (
           <TouchableOpacity
-            style={[styles.itemContainer, { backgroundColor: item.code }]}
+            style={[styles.itemContainer, { backgroundColor: "lightgrey" }]}
+            onPress={
+              navigation.navigate("DetailPage", {
+                exercise: item,
+              })
+            }
           >
-            <Text style={styles.itemName}>{item.name}</Text>
-            <Text style={styles.itemCode}>{item.code}</Text>
+            <View style={styles.itmeimageContainer}></View>
+            <View style={styles.itemTextContainer}>
+              <Text style={styles.itemName}>{item.workoutName}</Text>
+              <Text style={styles.itemSummary}>
+                {item.workoutCourse} - {item.workoutGoal}
+              </Text>
+              {/* <Text style={styles.itemCode}>{item.workoutDescription}</Text> */}
+            </View>
           </TouchableOpacity>
         )}
       />
@@ -36,25 +62,35 @@ const styles = StyleSheet.create({
   Container: {
     flex: 1,
   },
-  text:{
+  headerText: {
     color: "grey",
     marginHorizontal: 20,
     marginTop: 20,
   },
   itemContainer: {
-    justifyContent: "flex-end",
+    flexDirection: "row",
+    justifyContent: "center",
     borderRadius: 5,
     padding: 10,
     height: 150,
   },
-  itemName: {
-    fontSize: 16,
-    color: "#fff",
-    fontWeight: "600",
+  itmeimageContainer: {
+    flex: 1,
   },
-  itemCode: {
+  itemTextContainer: {
+    flex: 1.5,
+    justifyContent: "center",
+  },
+  itemName: {
+    margin: 5,
+    fontSize: 16,
     fontWeight: "600",
+    color: "grey",
+  },
+  itemSummary: {
+    margin: 5,
     fontSize: 12,
-    color: "#fff",
+    fontWeight: "600",
+    color: "grey",
   },
 });

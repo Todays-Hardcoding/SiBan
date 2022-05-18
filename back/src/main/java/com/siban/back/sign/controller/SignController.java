@@ -1,102 +1,91 @@
 package com.siban.back.sign.controller;
 
-import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
-
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.validation.constraints.NotNull;
+import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.siban.back.sign.domain.User;
 import com.siban.back.sign.service.SignService;
-
-import lombok.Builder;
-
 
 @RestController
 public class SignController {
 
 	@Autowired
 	private SignService signService;
-	
-	
-	@RequestMapping(value="/register.act", method = RequestMethod.POST)
-	public User register(@RequestBody Map<String, Object> param) {
-		//User user = User.builder().userId(param.get("id")).build();
-		User user = new User();
-		String id = (String) param.get("id");
-		String pw = (String) param.get("pw");
-		String email = (String) param.get("email");
-		String name = (String) param.get("name");
-		String tel = (String) param.get("tel");
-		String height = (String) param.get("height");
-		String weight = (String) param.get("weight");
 
-		user.setUserId(id);
-		user.setUserPassword(pw);
-		user.setUserEmail(email);
-		user.setUserName(name);
-		user.setUserTel(tel);
-		user.setUserHeight(height);
-		user.setUserWeight(weight);
-		
-		//boolean result = false;
-		//if(signService.findbyUserId(id).isPresent()) {
-			
-	
+	@PostMapping("/register.act")
+	public User register(@RequestBody Map<String, String> param) {
+		User user = User.builder().userId(param.get("id")).userPassword(param.get("pw")).userEmail(param.get("email"))
+				.userName(param.get("name")).userTel(param.get("tel")).userHeight(param.get("height"))
+				.userWeight(param.get("weight")).build();
 		signService.insertUser(user);
-		
-	
-		
-		return user;
-	
-	}
-	
-	
-	
 
-	
-	/*
-	@RequestMapping(value="/test2.json", method = RequestMethod.POST)
-	public Map<String, String> test2(@RequestBody Map<String, Object> param) {
-		
-		Map<String, String> result = new HashMap<String, String>();
-		
-		System.out.println(param.toString());
-//		JsonObject obj = new JsonObject();
-//		
-//		Map<String, String> data = new HashMap<String, String>();
-//		data.put("sendData", "loginId");
-//		
-		String id =  "안녕 난 괴물이라구해 "+param.get("loginId");
-		String pw = "" + param.get("loginPw");
-		
-//		System.out.println(param.get("loginId"));
-//		System.out.println(param.get("loginPw"));
-//		System.out.println("=====================================");
-//		System.out.println(id);
-//		System.out.println(pw);
-		
-		result.put("id", id);
-		
+		return user;
+
+	}
+
+	@PostMapping("/checkId.act")
+	public Map<String, Boolean> checkId(@RequestBody Map<String, String> param) {
+		Map<String, Boolean> result = new HashMap<>();
+		boolean temp = false;
+		System.out.println(param.get("id"));
+		// 아이디가 있으면 false
+		User checkId = signService.findByUserId(param.get("id"));
+		System.out.println(checkId);
+		if (checkId != null) {
+			temp = true;
+		}
+		result.put("checkId", temp);
+		System.out.println(temp);
 		System.out.println(result);
 		return result;
-		
-	}*/
+	}
 	
+	@PostMapping("/checkEmail.act")
+	public Map<String, Boolean> checkEmail(@RequestBody Map<String, String> param) {
+		Map<String, Boolean> result = new HashMap<>();
+		boolean temp = false;
+		System.out.println(param.get("email"));
+		// 이메일이 있으면 false
+		User checkEmail = signService.findByUserEmail(param.get("email"));
+		if(checkEmail != null) {
+			temp = true;
+		}
+		result.put("checkEmail", temp);
+		System.out.println(temp);
+		System.out.println(result);
+		return result;
+	}
 	
+	@PostMapping("/login.act")
+	public Map<String, Boolean> login(@RequestBody Map<String, String> param) {
+		Map<String, Boolean> result = new HashMap<>();
+		boolean temp = false;
+		System.out.println(param.get("loginId"));
+		System.out.println(param.get("loginPw"));
+		// 이메일이 있으면 false
+		User user = signService.findByUserId(param.get("loginId"));
+		//System.out.println(user);
+		//System.out.println(user.getUserId());
+		//System.out.println(user.getUserPassword());
+		if(Objects.isNull(user)) {
+			temp = false;
+		}else if(user.getUserId().equals(param.get("loginId")) && user.getUserPassword().equals(param.get("loginPw"))){
 	
+			temp = true;
+		}
+		result.put("result", temp);
+		System.out.println(result);
+		return result;
+	}
+
+
+	
+
+
 }
