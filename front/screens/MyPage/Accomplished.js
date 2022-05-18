@@ -13,10 +13,11 @@ import routine from "./RoutineRecord.js"
 
 
 
-function Accomplished({ route }) {
+function Accomplished({ route, navigation }) {
   const { routineCount } = route.params;
 
   console.log(routineCount);
+
 
   const array = [
     {
@@ -24,7 +25,7 @@ function Accomplished({ route }) {
       code: "#f1c40f",
       id: 0,
       src: require("../../assets/trophy/trophy0.png"),
-      gray: "gray"
+      gray: "gray",
     },
     {
       name: "Sample01",
@@ -171,21 +172,12 @@ function Accomplished({ route }) {
 
   // const imageList = require(`../../assets/trophy/trophy${data}.png`);
 
-  const routineCountCheck = () => {
-    console.log("배열 가동");
-    for (let i = 0; i < routineCount; i++) {
-      console.log(array[i]);
-      array[i].gray = array[i].code;
-      console.log(array[i]);
-    }
-  };
-  useEffect(() => {
-    routineCountCheck();
-  }, [routineCount]);
+  for (let i = 0; i < routineCount; i++) {
+    array[i].gray = array[i].code;
+  }
 
-
-  return (
-
+  console.log("마지막 색" + array[0].gray);
+  const grid =
     <SectionGrid
       itemDimension={140}
       // staticDimension={300}
@@ -228,7 +220,9 @@ function Accomplished({ route }) {
         </TouchableOpacity>
       ))}
     </SectionGrid>
-  );
+
+  return grid;
+
 }
 
 
