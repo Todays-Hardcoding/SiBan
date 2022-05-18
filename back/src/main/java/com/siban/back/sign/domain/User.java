@@ -47,7 +47,10 @@ public class User {
 	private String userTel;
 	@NotNull
 	@Column
-	private String userHeight;
+	private  String userHeight;
+	
+	@Column
+	private String userProfile;
 
 	@NotNull
 	@Column
@@ -75,8 +78,4 @@ public class User {
 		this.userRegDate = userRegDate;
 	}
 	
-	
-	
-
-
 }

@@ -7,15 +7,14 @@ import MainTabs from "./navigation/MainTabs";
 const Stack = createStackNavigator();
 
 export default function App() {
- 
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen
+        {/* <Stack.Screen
           name="LoginPage"
           component={LoginPage}
           options={{ headerShown: false }}
-        ></Stack.Screen>
+        ></Stack.Screen> */}
         <Stack.Screen
           name="MainTabs"
           component={MainTabs}
