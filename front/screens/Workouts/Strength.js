@@ -34,9 +34,8 @@ const Strength = ({ navigation }) => {
           <TouchableOpacity
             style={[styles.itemContainer, { backgroundColor: "lightgrey" }]}
             onPress={() =>
-              navigation.navigate("StrengthNav", {
-                screen: "StrengthDetail",
-                params: { exercise: item },
+              navigation.navigate("DetailPage", {
+                exercise: item,
               })
             }
           >
