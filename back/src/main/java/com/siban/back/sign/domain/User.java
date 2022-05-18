@@ -27,9 +27,8 @@ import lombok.Setter;
 @Entity
 public class User {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long userCode;
-
 	@NotNull
 	@Column
 	private String userId;
@@ -80,8 +79,4 @@ public class User {
 
 
 	
-	
-	
-
-
 }

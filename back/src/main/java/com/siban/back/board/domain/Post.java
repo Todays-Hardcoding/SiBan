@@ -23,13 +23,14 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 
-@Data
+@Getter
+@Setter
 @Entity
 public class Post {
 //	private User user;
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long postCode;
 	
 	@NotNull
@@ -59,5 +60,8 @@ public class Post {
 	    SimpleDateFormat date = new SimpleDateFormat("yyyy/MM/dd");
 	    postRegDate = date.format(today);
 	}
+	
+	
+	
 
 }

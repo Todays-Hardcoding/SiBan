@@ -23,7 +23,7 @@ public class PostController {
 	@Autowired
 	PostService postService;
 	
-	@RequestMapping(value="/insertInquiry.act", method = RequestMethod.POST)
+	@PostMapping("/insertInquiry.act")
 	public Post insertInquiry(@RequestBody Map<String, Object> param) {
 		Post post = new Post();
 
@@ -38,9 +38,10 @@ public class PostController {
 		return postService.insertInquiry(post);
 	}
 	
-	@RequestMapping(value="/selectInquiry.act", method = RequestMethod.POST)
+	@PostMapping("/selectInquiry.act")
 	public List<Post> selectInquiry(){
 		List<Post> result = new ArrayList<>();
+		
 		result = postService.selectInquiry();
 		
 		System.out.println(result);
