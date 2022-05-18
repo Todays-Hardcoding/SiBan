@@ -3,7 +3,7 @@ import { StyleSheet, View, Text } from "react-native";
 import { TextInput, TouchableOpacity } from "react-native-gesture-handler";
 import { FlatGrid } from "react-native-super-grid";
 
-const WorkoutSearch = () => {
+const WorkoutSearch = ({navigation}) => {
   const [exercises, setExercises] = useState([]);
   const [result, setResult] = useState([]);
   const [text, setText] = useState("");
@@ -50,6 +50,11 @@ const WorkoutSearch = () => {
         renderItem={({ item }) => (
           <TouchableOpacity
             style={[styles.itemContainer, { backgroundColor: "lightgrey" }]}
+            onPress={
+              navigation.navigate("DetailPage", {
+                exercise: item,
+              })
+            }
           >
             <View style={styles.itmeimageContainer}></View>
             <View style={styles.itemTextContainer}>

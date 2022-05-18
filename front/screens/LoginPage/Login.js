@@ -69,18 +69,16 @@ const Login = ({ navigation }) => {
       .then((response) => response.json())
       .then((data) => {
         //console.log(data.result)
-        if(data.result == true){
+        if (data.result == true) {
           setSaveId(loginId);
-          alert("로그인 성공")
-          console.log(setSaveId)
-          navigation.navigate("MainTabs")
-        }else{
+          alert("로그인 성공");
+          console.log(setSaveId);
+          navigation.navigate("MainTabs");
+        } else {
           alert("다시 로그인해주세요.");
         }
-
       });
-  
-};
+  };
 
   return (
     <View
@@ -163,7 +161,6 @@ const Login = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   input: {
-
     width: "80%",
     borderWidth: 1,
     padding: 10,
@@ -171,7 +168,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     borderWidth: 1,
     marginVertical: 5,
-    width: "80%",
+   
   },
 });
 

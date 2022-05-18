@@ -1,10 +1,10 @@
 import React from "react";
 import { FontAwesome } from "@expo/vector-icons";
 import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
-import { NavigationContainer } from "@react-navigation/native";
-const StrengthDetail = ({ route, navigation }) => {
+
+const DetailPage = ({ route, navigation }) => {
   const { exercise } = route.params;
-  
+
   return (
     <View style={styles.Container}>
       <View style={styles.headerContainer}>
@@ -30,7 +30,9 @@ const styles = StyleSheet.create({
   headerContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
+    marginHorizontal: 20,
+    marginTop: 20,
   },
 });
 
-export default StrengthDetail;
+export default DetailPage;

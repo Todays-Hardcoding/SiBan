@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Text, StyleSheet, TouchableOpacity, View } from "react-native";
 import { FlatGrid } from "react-native-super-grid";
 
-const Level1 = () => {
+const Level1 = ({navigation}) => {
 
   const [exercises, setExercises] = useState([]);
 
@@ -35,6 +35,11 @@ const Level1 = () => {
         renderItem={({ item }) => (
           <TouchableOpacity
             style={[styles.itemContainer, { backgroundColor: "lightgrey" }]}
+            onPress={
+              navigation.navigate("DetailPage", {
+                exercise: item,
+              })
+            }
           >
             <View style={styles.itmeimageContainer}></View>
             <View style={styles.itemTextContainer}>
