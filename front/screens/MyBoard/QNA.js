@@ -122,7 +122,7 @@ const styles = StyleSheet.create({
   submit: {
     width: 120,
     height: 40,
-    backgroundColor: "#EEB0B0",
+    backgroundColor: "#F2C9E1",
     alignItems: "center",
     justifyContent: "center",
     margin: 15,
@@ -131,7 +131,7 @@ const styles = StyleSheet.create({
   cancel: {
     width: 120,
     height: 40,
-    backgroundColor: "#AACFCF",
+    backgroundColor: "#B1BCE6",
     alignItems: "center",
     justifyContent: "center",
     margin: 15,
