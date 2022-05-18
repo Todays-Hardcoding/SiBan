@@ -5,7 +5,6 @@ import LoginHome from "../screens/LoginPage/LoginHome";
 import Register from "../screens/LoginPage/Register";
 import Search from "../screens/LoginPage/Search";
 
-
 const Stack = createStackNavigator();
 
 const LoginPage = () => {

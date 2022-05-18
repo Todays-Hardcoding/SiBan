@@ -15,15 +15,15 @@ const ServiceCenter = () => {
   return (
     <Tab.Navigator>
       <Tab.Screen name="FNA" component={FNA} options={{ tabBarLabel: "FAQ" }} />
-      <Tab.Screen
+      {/* <Tab.Screen
         name="QNA"
         component={QNA}
         options={{ tabBarLabel: "1:1 문의" }}
-      />
+      /> */}
       <Tab.Screen
         name="QNAList"
         component={QNAList}
-        options={{ tabBarLabel: "QNA List 임시" }}
+        options={{ tabBarLabel: "QNA" }}
       />
     </Tab.Navigator>
   );
@@ -45,12 +45,22 @@ const QNADetailNav = () => {
   );
 };
 
+// test
+const QNANav = () => {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name="QNA" component={QNA} />
+    </Stack.Navigator>
+  );
+};
+
 const MyBoardNav = () => {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="ServiceCenter" component={ServiceCenter} />
       <Stack.Screen name="ChallengeDetailNav" component={ChallengeDetailNav} />
       <Stack.Screen name="QNADetailNav" component={QNADetailNav} />
+      <Stack.Screen name="QNANav" component={QNANav} />
     </Stack.Navigator>
   );
 };

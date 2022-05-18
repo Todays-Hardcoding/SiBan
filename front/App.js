@@ -28,6 +28,11 @@ export default function App() {
     // <LoginHome></LoginHome>
     <NavigationContainer>
       <Stack.Navigator>
+        {/* <Stack.Screen
+          name="LoginPage"
+          component={LoginPage}
+          options={{ headerShown: false }}
+        ></Stack.Screen> */}
         <Stack.Screen
           name="MainTabs"
           component={MainTabs}
