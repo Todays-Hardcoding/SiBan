@@ -21,7 +21,6 @@ export default function App() {
           component={MainTabs}
           options={{ headerShown: false }}
         ></Stack.Screen>
-
       </Stack.Navigator>
     </NavigationContainer>
   );
