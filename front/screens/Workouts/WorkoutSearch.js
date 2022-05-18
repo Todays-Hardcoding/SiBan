@@ -3,13 +3,14 @@ import { StyleSheet, View, Text } from "react-native";
 import { TextInput, TouchableOpacity } from "react-native-gesture-handler";
 import { FlatGrid } from "react-native-super-grid";
 
+const _url = "http://112.172.225.17:8282";
+
 const WorkoutSearch = ({ navigation }) => {
   const [exercises, setExercises] = useState([]);
   const [result, setResult] = useState([]);
   const [text, setText] = useState("");
 
   useEffect(() => {
-    const _url = "http://112.172.225.17:8282";
     fetch(_url + "/FindAll.act", {
       method: "GET",
       headers: {

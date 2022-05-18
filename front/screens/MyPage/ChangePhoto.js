@@ -13,6 +13,8 @@ import * as ImagePicker from "expo-image-picker";
 
 import { Dimensions } from "react-native";
 
+const url = "http://192.168.45.96:8282";
+
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 console.log(windowWidth);
@@ -68,9 +70,7 @@ const ChangePhoto = ({ navigation, onPress }) => {
     }
   };
   const profileTest = (navigation) => {
-    const url = "http://192.168.45.96:8282/updateUserImage.act";
-
-    fetch(url, {
+    fetch(url + "/updateUserImage.act", {
       method: "POST",
       headers: {
         Accept: "application/json",

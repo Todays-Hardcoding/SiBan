@@ -11,6 +11,8 @@ import {
 import { COLORS, SIZES, images } from "../../constants";
 import { Table, Row, Rows } from "react-native-table-component-2";
 
+const startUrl = "http://192.168.45.96:8282";
+
 const MyProfile = ({ navigation }) => {
   const [userHeight, setuserHeight] = useState("");
   const [userWeight, setuserWeight] = useState("");
@@ -199,9 +201,7 @@ const MyProfile = ({ navigation }) => {
       const userId = "TTAA";
 
       const onScreenLoad = () => {
-        const startUrl = "http://192.168.45.96:8282/showUserInfo.act";
-
-        fetch(startUrl, {
+        fetch(startUrl + "/showUserInfo.act", {
           method: "POST",
           headers: {
             Accept: "application/json",
