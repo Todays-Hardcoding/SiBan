@@ -29,7 +29,7 @@ const basePhoto =
 const ChangePhoto = ({ navigation, onPress }) => {
   // The path of the picked image
   const [userProfile, setuserProfile] = useState(basePhoto);
-  const userId = "TTAA";
+  const userId = "TATA";
 
   // This function is triggered when the "Select an image" button pressed
   const showImagePicker = async () => {

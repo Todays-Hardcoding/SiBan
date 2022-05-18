@@ -29,7 +29,6 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long userCode;
-
 	@NotNull
 	@Column
 	private String userId;
@@ -61,7 +60,6 @@ public class User {
 	public void createDate() {
 		this.userRegDate = LocalDateTime.now();
 	}
-
 	@Builder
 	public User(Long userCode, @NotNull String userId, @NotNull String userPassword, @NotNull String userEmail,
 			@NotNull String userName, @NotNull String userTel, @NotNull String userHeight, String userProfile,
@@ -81,8 +79,4 @@ public class User {
 
 
 	
-	
-	
-
-
 }
