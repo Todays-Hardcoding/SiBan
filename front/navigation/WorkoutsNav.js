@@ -10,7 +10,7 @@ import Level3 from "../screens/Workouts/level3";
 import Mobility from "../screens/Workouts/Mobility";
 import Plans from "../screens/Workouts/Plans";
 import Strength from "../screens/Workouts/Strength";
-import StrengthDetail from "../screens/Workouts/StrengthDetail";
+import DetailPage from "../screens/Workouts/DetailPage";
 import WorkoutSearch from "../screens/Workouts/WorkoutSearch";
 
 const Tab = createMaterialTopTabNavigator();
@@ -33,7 +33,7 @@ const Workouts = () => {
       <Tab.Screen
         name="Browse"
         component={Browse}
-        options={{ tabBarLabel: "운동" }}
+        options={{ tabBarLabel: "탐색" }}
       />
       <Tab.Screen
         name="Plans"
@@ -55,8 +55,8 @@ const BrowseDetail = () => {
       }}
     >
       <Tab.Screen
-        name="StrengthNav"
-        component={StrengthNav}
+        name="Strength"
+        component={Strength}
         options={{ tabBarLabel: "근력" }}
       />
       <Tab.Screen
@@ -70,18 +70,6 @@ const BrowseDetail = () => {
         options={{ tabBarLabel: "활동성" }}
       />
     </Tab.Navigator>
-  );
-};
-
-const StrengthNav = () => {
-  return (
-    <Stack.Navigator
-      initialRouteName="Strength"
-      screenOptions={{ headerShown: false }}
-    >
-      <Stack.Screen name="Strength" component={Strength} />
-      <Stack.Screen name="StrengthDetail" component={StrengthDetail} />
-    </Stack.Navigator>
   );
 };
 
@@ -119,6 +107,7 @@ const WorkoutsNav = () => {
         <Stack.Screen name="Workouts" component={Workouts} />
         <Stack.Screen name="BrowseDetail" component={BrowseDetail} />
         <Stack.Screen name="LevelDetail" component={LevelDetail} />
+        <Stack.Screen name="DetailPage" component={DetailPage} />
         <Stack.Screen name="WorkoutSearch" component={WorkoutSearch} />
     </Stack.Navigator>
   );

@@ -17,14 +17,14 @@ const windowHeight = Dimensions.get("window").height;
 
 const QNADetail = () => {
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={styles.container} >
       <ImageBackground
-        source={require("../../assets/images/qnaBackground.jpg")}
+        source={require("../../assets/images/sibanLogo.png")}
         style={styles.image}
       >
-        <Text style={styles.text}>나의 1:1질문</Text>
+       
       </ImageBackground>
-      <ScrollView>
+      <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.postContainer}>
         <View style={styles.postHeader}>
           <View>
@@ -48,10 +48,14 @@ const QNADetail = () => {
             <Text>이용문의 내용 TEST</Text>
           </View>
         </View>
+        <View style={styles.postAnswer}>
+          {/* 1:1 Q&A 답변 */}
+          <Text>QNA 답변란</Text>
+        </View>
         <View style={styles.commentContainer}>
           <TextInput style={styles.commentInput} placeholder="답변"></TextInput>
           <TouchableOpacity style={styles.commentButton}>
-            <Text>제출</Text>
+            <Text style={styles.text}>제출</Text>
           </TouchableOpacity>
         </View>
       </ScrollView>
@@ -72,11 +76,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     opacity: 0.9,
-  },
-  text: {
-    fontSize: 20,
-    color: "white",
-    fontWeight: "bold",
+    resizeMode: 'contain',
+    
   },
   postContainer: {
     flex: 1,
@@ -87,7 +88,7 @@ const styles = StyleSheet.create({
     flex: 0.1,
     flexDirection: "row",
     alignItems: "center",
-    backgroundColor: "#DAD0C2",
+    backgroundColor: "#F2F2F2",
     marginTop: 10,
     height: 50,
     justifyContent: "space-between",
@@ -99,7 +100,9 @@ const styles = StyleSheet.create({
     flex: 0.1,
     flexDirection: "row",
     alignItems: "center",
-    backgroundColor: "#DAD0C2",
+    //backgroundColor: "#B1BCE6",
+    borderWidth: 1,
+    borderColor:"#DDDDDD",
     marginTop: 10,
     height: 50,
     justifyContent: "space-between",
@@ -111,24 +114,35 @@ const styles = StyleSheet.create({
     flex: 0.1,
     flexDirection: "row",
     alignItems: "center",
-    backgroundColor: "#DAD0C2",
+    //backgroundColor: "#B1BCE6",
+    borderWidth: 1,
+    borderColor:"#DDDDDD",
     marginTop: 10,
     height: 50,
     justifyContent: "flex-start",
     width: windowWidth *0.9,
-    padding: 15,
+    padding: 10,
     borderRadius: 8,
   },
   line: {
     borderWidth: 0.5,
     width: windowWidth *0.9,
-    borderColor: "black",
+    borderColor: "gray",
     marginTop: 10,
   },
   postBody: {
     width: windowWidth * 0.9,
     height: windowHeight * 0.3,
-    backgroundColor: "#C0D8C0",
+    //backgroundColor: "#DDDDDD",
+    borderWidth: 1,
+    borderColor:"#DDDDDD",
+    borderRadius: 8,
+    marginTop: 10,
+    padding: 15,
+  },
+  postAnswer: {
+    width: windowWidth * 0.9,
+    backgroundColor: "#DDDDDD",
     borderRadius: 8,
     marginTop: 10,
     padding: 15,
@@ -155,7 +169,10 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 5,
     marginTop: 10,
-    backgroundColor: "#C0D8C0",
+    backgroundColor: "#F2C9E1",
+  },
+  text: {
+    fontWeight: "bold",
   },
 });
 
