@@ -36,6 +36,8 @@ const Login = ({ navigation }) => {
       setLoginIdCheck(true);
     }
     setLoginId(text);
+    // console.log(loginIdCheck);
+    // console.log(loginId);
   };
   const setPw = (text) => {
     if (text.trim().length === 0) {
@@ -45,6 +47,8 @@ const Login = ({ navigation }) => {
       setLoginPwCheck(true);
     }
     setLoginPw(text);
+    // console.log(loginPwCheck);
+    // console.log(loginPw);
   };
 
  // 로그인
@@ -69,9 +73,7 @@ const Login = ({ navigation }) => {
           setSaveId(loginId);
           alert("로그인 성공")
           console.log(setSaveId)
-          navigation.navigate("LoginPage", {
-            screen: "MYPAGE",
-          })
+          navigation.navigate("MainTabs")
         }else{
           alert("다시 로그인해주세요.");
         }

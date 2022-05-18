@@ -7,20 +7,8 @@ import MainTabs from "./navigation/MainTabs";
 const Stack = createStackNavigator();
 
 export default function App() {
-  const [isLogin, setIsLogin] = useState(false);
-
-  return !isLogin ? (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen
-          name="LoginPage"
-          component={LoginPage}
-          options={{ headerShown: false }}
-        ></Stack.Screen>
-      </Stack.Navigator>
-    </NavigationContainer>
-  ) : (
-    // <LoginHome></LoginHome>
+ 
+  return (
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen
@@ -33,6 +21,7 @@ export default function App() {
           component={MainTabs}
           options={{ headerShown: false }}
         ></Stack.Screen>
+
       </Stack.Navigator>
     </NavigationContainer>
   );

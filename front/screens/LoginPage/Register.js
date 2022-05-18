@@ -209,7 +209,7 @@ const Register = ({ navigation }) => {
       })
         .then((response) => response.json())
         .then((data) => {
-          console.log(data.checkId);
+          console.log(data.checkEmail);
 
           if (data.checkEmail === true) {
             alert("사용 불가능한 Email");
