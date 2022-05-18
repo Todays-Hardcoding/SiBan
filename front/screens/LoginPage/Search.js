@@ -22,8 +22,13 @@ const Search = () => {
         })
           .then((response) => response.json())
           .then((data) => {
+            if(data.searchId == ""){
             console.log(data.searchId);
+            alert("존재하지 않는 이메일입니다.");
+          }else{
+            
             alert("회원님의 아이디는 "+data.searchId + "입니다.")
+          }
           });
       
     };
@@ -44,8 +49,13 @@ const Search = () => {
           })
             .then((response) => response.json())
             .then((data) => {
-              console.log(data.searchPw);
-              alert("회원님의 비밀번호는 "+data.searchPw + "입니다.")
+              if(data.searchPw == ""){
+                console.log(data.searchPw);
+                alert("전화번호와 아이디를 다시입력해주세요.");
+              }else{
+                
+                alert("회원님의 비밀번호는 "+data.searchPw + "입니다.")
+              }
             });
         
       };
