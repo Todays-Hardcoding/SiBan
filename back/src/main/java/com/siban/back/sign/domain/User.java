@@ -40,6 +40,9 @@ public class User {
 	@NotNull
 	@Column
 	private  String userHeight;
+	
+	@Column
+	private String userProfile;
 
 	@NotNull
 	@Column
