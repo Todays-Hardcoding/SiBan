@@ -6,7 +6,7 @@ import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const View = styled.View`
-  background-color: #cab8ff;
+  background-color: #6072e2;
   flex: 1;
   padding: 0 30px;
 `;
@@ -17,7 +17,7 @@ const MainText = styled.Text`
   margin-top: 20px;
 `;
 const Title = styled.Text`
-  background-color: #cab8ff;
+  background-color: #6072e2;
   color: white;
   margin-top: 10px;
   margin-right: 40px;
