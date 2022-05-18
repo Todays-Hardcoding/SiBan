@@ -33,9 +33,9 @@ const Mobility = ({ navigation }) => {
         renderItem={({ item }) => (
           <TouchableOpacity
             style={[styles.itemContainer, { backgroundColor: "lightgrey" }]}
-            onPress={
+            onPress={() =>
               navigation.navigate("DetailPage", {
-                exercise: item,
+                result: item,
               })
             }
           >
