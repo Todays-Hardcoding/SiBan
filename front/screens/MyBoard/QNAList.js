@@ -96,7 +96,6 @@ const QNAList = ({navigation}) => {
           <Text style={styles.buttonText}>검색</Text>
         </TouchableOpacity>
         <TouchableOpacity 
-          //key={index} 했다 ~!~!~!~!!~~~~
           onPress={()=> {
           navigation.navigate("QNANav", {Screen: "QNA"})
           }}

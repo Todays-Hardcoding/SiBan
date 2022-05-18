@@ -49,7 +49,7 @@ const FNA = () => {
               <Text>내플랜</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.button}>
-              <Text>챌린지</Text>
+              <Text>식단관리</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.button}>
               <Text>기타</Text>
