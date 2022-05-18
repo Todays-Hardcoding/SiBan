@@ -23,7 +23,7 @@ const MyProfileModify = () => {
   const [userTel, setuserTel] = useState();
   const userId = "TATA";
 
-  const onScreenLoad = ({ navigation }) => {
+  const onScreenLoad = () => {
     fetch(url + "/showUserInfo.act", {
       method: "POST",
       headers: {
@@ -50,10 +50,6 @@ const MyProfileModify = () => {
     onScreenLoad();
   }, []);
 
-  const onPressBtn = () => {
-    navigation.pop();
-  };
-
   const profileTest = (navigation) => {
     fetch(url + "/updateUserInfo.act", {
       method: "POST",
@@ -71,10 +67,9 @@ const MyProfileModify = () => {
       }),
     })
       .then((response) => response.json())
-      .then((data) => console.log(data), navigation.pop())
+      .then((data) => console.log(data))
       // .then(navigation.navigate("OthersNav", { screen: "MYPROFILE" }))
       // .then((data) => console.log(JSON.stringify(data)))
-
       .catch((error) => console.log(error));
   };
 
@@ -143,6 +138,10 @@ const MyProfileModify = () => {
     </View>
   );
 };
+
+function onPressBtn() {
+  alert("버튼이당");
+}
 
 const styles = StyleSheet.create({
   container: {

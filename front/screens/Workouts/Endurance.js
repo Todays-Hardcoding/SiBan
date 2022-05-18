@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { FlatGrid } from "react-native-super-grid";
 
-const _url = "http://112.172.225.17:8282";
+const _url = "http://192.168.0.6:8282";
 const Endurance = ({ navigation }) => {
   const [exercises, setExercises] = useState([]);
 

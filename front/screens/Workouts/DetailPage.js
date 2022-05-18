@@ -1,22 +1,26 @@
 import React, { useEffect, useState } from "react";
-import { FontAwesome } from "@expo/vector-icons";
-import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
+import { FontAwesome, Ionicons, MaterialIcons } from "@expo/vector-icons";
+import {
+  StyleSheet,
+  View,
+  Text,
+  TouchableOpacity,
+  ImageBackground,
+} from "react-native";
 
-const DetailPage = ({ route }) => {
-  const { exercise } = route.params;
-  // 콘솔 안나옴
-  console.log(exercise.workoutName);
+const DetailPage = ({ route, navigation }) => {
+  const { result } = route.params;
+
   return (
     <View style={styles.Container}>
-      <View style={styles.secondContainer}>
+      <ImageBackground
+        source={require("../../assets/images/workout/workout1.jpg")}
+        resizeMode="cover"
+        style={styles.image}
+      >
         <View style={styles.headerContainer}>
-          <TouchableOpacity>
-            <FontAwesome
-              style={styles.headerBtn}
-              name="arrow-left"
-              size={24}
-              color="black"
-            />
+          <TouchableOpacity onPress={() => navigation.pop()}>
+            <MaterialIcons name="arrow-back-ios" size={30} color="black" />
           </TouchableOpacity>
           <TouchableOpacity>
             <FontAwesome
@@ -27,17 +31,27 @@ const DetailPage = ({ route }) => {
             />
           </TouchableOpacity>
         </View>
-        <View style={styles.workoutNameView}>
-          <Text style={styles.workoutNameText}>{exercise.workoutName}</Text>
+        <Text style={styles.workoutNameText}>{result.workoutName}</Text>
+      </ImageBackground>
+
+      <View style={styles.workoutDescriptionView}>
+        <Text style={styles.workoutDescriptionText}>
+          {result.workoutDescription}
+        </Text>
+        <View>
+          <View style={styles.workoutInfoView}>
+            <Ionicons name="ios-battery-charging" size={30} color="white" />
+            <Text style={styles.workoutInfo}>{result.workoutCourse}</Text>
+          </View>
+          <View style={styles.workoutInfoView}>
+            <Ionicons name="fitness" size={30} color="white" />
+            <Text style={styles.workoutInfo}>{result.workoutGoal}</Text>
+          </View>
+          <View style={styles.workoutInfoView}>
+            <Ionicons name="body" size={30} color="white" />
+            <Text style={styles.workoutInfo}>{result.workoutTarget}</Text>
+          </View>
         </View>
-        <View style={styles.workoutDescriptionView}>
-          <Text style={styles.workoutDescriptionText}>
-            {exercise.workoutDescription}
-          </Text>
-        </View>
-        <Text>{exercise.workoutCourse}</Text>
-        <Text>{exercise.workoutGoal}</Text>
-        <Text>{exercise.workoutTarget}</Text>
       </View>
     </View>
   );
@@ -46,37 +60,51 @@ const DetailPage = ({ route }) => {
 const styles = StyleSheet.create({
   Container: {
     flex: 1,
-    backgroundColor: "#252525",
-    alignItems: "center",
+    wordBreak: "keep-all",
   },
   headerContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
+    marginTop: 50,
+    marginLeft: 30,
+    marginRight: 30,
   },
-  secondContainer: { width: "90%", flex: 1 },
-  headerBtn: { color: "white" },
-  workoutNameView: {
-    flex: 1,
-    verticalAlign: "bottom",
-    backgroundColor: "red",
+  image: {
+    flex: 1.5,
+    justifyContent: "center",
   },
   workoutNameText: {
     fontSize: "50",
     fontWeight: "500",
     color: "white",
+    lineHeight: 550,
+    marginLeft: 20,
   },
   workoutDescriptionView: {
     flex: 1,
     backgroundColor: "#252525",
+    padding: 20,
   },
   workoutDescriptionText: {
     color: "white",
-    fontSize: "20",
+    fontSize: 20,
     fontWeight: "500",
+    marginBottom: 20,
   },
   bodyContainer: {
     justifyContent: "center",
     alignItems: "center",
+  },
+  workoutInfoView: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    marginHorizontal: 90,
+  },
+  workoutInfo: {
+    color: "#e9e9e9",
+    fontSize: 18,
+    margin: 20,
   },
 });
 

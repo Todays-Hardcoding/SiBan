@@ -11,13 +11,9 @@ import {
 import { COLORS, SIZES, images } from "../../constants";
 import { Table, Row, Rows } from "react-native-table-component-2";
 
-const startUrl = "http://192.168.45.96:8282";
+const url = "http://192.168.45.96:8282";
 
-const MyProfile = ({ navigation, route }) => {
-  const { userId } = route.params;
-
-  console.log(userId);
-
+const MyProfile = ({ navigation }) => {
   const [userHeight, setuserHeight] = useState("");
   const [userWeight, setuserWeight] = useState("");
   const [routineCount, setRoutineCount] = useState(0);
@@ -91,7 +87,7 @@ const MyProfile = ({ navigation, route }) => {
         >
           <View style={{ alignItems: "center" }}>
             <Image
-              source={require("../../assets/images/profileImage.png")}
+              source={require("../../assets/images/profileImage2.png")}
               resizeMode="contain"
               style={{
                 width: "70%",
@@ -124,7 +120,7 @@ const MyProfile = ({ navigation, route }) => {
         <SafeAreaView
           style={{
             flex: 1,
-            backgroundColor: "#6072e2",
+            backgroundColor: "#191919",
             margin: 20,
           }}
         >
@@ -205,7 +201,7 @@ const MyProfile = ({ navigation, route }) => {
       const userId = "TATA";
 
       const onScreenLoad = () => {
-        fetch(startUrl + "/showUserInfo.act", {
+        fetch(url + "/showUserInfo.act", {
           method: "POST",
           headers: {
             Accept: "application/json",
@@ -275,7 +271,7 @@ const MyProfile = ({ navigation, route }) => {
   }
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: "#6072e2" }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: "#191919" }}>
       {renderPromos()}
     </SafeAreaView>
   );
