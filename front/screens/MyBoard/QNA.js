@@ -9,6 +9,7 @@ import {
 import { SafeAreaView, TextInput, ScrollView } from "react-native";
 import DropDownPicker from "react-native-dropdown-picker";
 
+const _url = "http://192.168.45.96:8282";
 const windowWidth = Dimensions.get("window").width;
 
 const QNA = () => {
@@ -26,9 +27,7 @@ const QNA = () => {
   ]);
 
   const postBoard = () => {
-    const _url = "http://192.168.242.2:8282/insertInquiry.act";
-
-    fetch(_url, {
+    fetch(_url + "/insertInquiry.act", {
       method: "POST",
       headers: {
         Accept: "application/json",

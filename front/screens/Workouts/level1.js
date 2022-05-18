@@ -3,28 +3,27 @@ import React, { useEffect, useState } from "react";
 import { Text, StyleSheet, TouchableOpacity, View } from "react-native";
 import { FlatGrid } from "react-native-super-grid";
 
-const Level1 = ({navigation}) => {
-
+const _url = "http://112.172.225.17:8282";
+const Level1 = ({ navigation }) => {
   const [exercises, setExercises] = useState([]);
 
   useEffect(() => {
-    const _url = "http://112.172.225.17:8282";
     fetch(_url + "/Course.act", {
       method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          workoutCourse : "초급",
-        }),
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        workoutCourse: "초급",
+      }),
     })
-    .then((response) => response.json())
-    .then((data) => {
-      setExercises(data)
+      .then((response) => response.json())
+      .then((data) => {
+        setExercises(data);
       });
   }, []);
-  
+
   return (
     <View style={styles.Container}>
       <Text style={styles.headerText}>{exercises.length}개의 운동</Text>
@@ -35,11 +34,9 @@ const Level1 = ({navigation}) => {
         renderItem={({ item }) => (
           <TouchableOpacity
             style={[styles.itemContainer, { backgroundColor: "lightgrey" }]}
-            onPress={
-              navigation.navigate("DetailPage", {
-                exercise: item,
-              })
-            }
+            onPress={navigation.navigate("DetailPage", {
+              exercise: item,
+            })}
           >
             <View style={styles.itmeimageContainer}></View>
             <View style={styles.itemTextContainer}>
