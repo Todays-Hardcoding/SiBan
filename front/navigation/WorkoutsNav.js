@@ -11,7 +11,7 @@ import Mobility from "../screens/Workouts/Mobility";
 import Plans from "../screens/Workouts/Plans";
 import Strength from "../screens/Workouts/Strength";
 import StrengthDetail from "../screens/Workouts/StrengthDetail";
-
+import WorkoutSearch from "../screens/Workouts/WorkoutSearch";
 
 const Tab = createMaterialTopTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -75,7 +75,10 @@ const BrowseDetail = () => {
 
 const StrengthNav = () => {
   return (
-    <Stack.Navigator initialRouteName="Strength" screenOptions={{headerShown: false}}>
+    <Stack.Navigator
+      initialRouteName="Strength"
+      screenOptions={{ headerShown: false }}
+    >
       <Stack.Screen name="Strength" component={Strength} />
       <Stack.Screen name="StrengthDetail" component={StrengthDetail} />
     </Stack.Navigator>
@@ -114,12 +117,11 @@ const LevelDetail = () => {
 const WorkoutsNav = () => {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="Workouts" component={Workouts} />
-      <Stack.Screen name="BrowseDetail" component={BrowseDetail} />
-      <Stack.Screen name="LevelDetail" component={LevelDetail} />
-      {/* <Stack.Screen name="StrengthNav" component={StrengthNav} /> */}
+        <Stack.Screen name="Workouts" component={Workouts} />
+        <Stack.Screen name="BrowseDetail" component={BrowseDetail} />
+        <Stack.Screen name="LevelDetail" component={LevelDetail} />
+        <Stack.Screen name="WorkoutSearch" component={WorkoutSearch} />
     </Stack.Navigator>
-
   );
 };
 
