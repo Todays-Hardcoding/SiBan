@@ -57,7 +57,9 @@ const MyProfile = ({ navigation }) => {
         }}
       >
         <View style={{ flex: 1, alignItems: "center", left: 30 }}>
-          <Text style={{ fontSize: 25, fontWeight: "bold", color: "white" }}>마이페이지</Text>
+          <Text style={{ fontSize: 25, fontWeight: "bold", color: "white" }}>
+            마이페이지
+          </Text>
         </View>
         <View style={styles.userSupervise}>
           <TouchableOpacity onPress={() => setShouldShow(!shouldShow)}>
@@ -148,7 +150,7 @@ const MyProfile = ({ navigation }) => {
         }}
         onPress={() => {
           navigation.navigate(item.code, {
-            params: { routineCount: routineCount }
+            params: { routineCount: routineCount },
           });
         }}
       >
@@ -197,7 +199,7 @@ const MyProfile = ({ navigation }) => {
       const userId = "TTAA";
 
       const onScreenLoad = () => {
-        const startUrl = "http://192.168.35.107:8282/showUserInfo.act";
+        const startUrl = "http://192.168.45.96:8282/showUserInfo.act";
 
         fetch(startUrl, {
           method: "POST",
@@ -217,7 +219,7 @@ const MyProfile = ({ navigation }) => {
             setuserTel(data.userTel);
             setuserHeight(data.userHeight);
             setuserWeight(data.userWeight);
-          })
+          });
       };
       useEffect(() => {
         onScreenLoad();
@@ -243,7 +245,7 @@ const MyProfile = ({ navigation }) => {
               }}
               style={styles.userProfileText}
             >
-              <Text >정보수정</Text>
+              <Text>정보수정</Text>
             </TouchableOpacity>
           </View>
           <View style={styles.profile}>
