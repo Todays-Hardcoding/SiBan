@@ -125,7 +125,7 @@ const Register = ({ navigation }) => {
       duplicatedId === true &&
       duplicatedEmail === true
     ) {
-      fetch(_url + "/resister.act", {
+      fetch(_url + "/register.act", {
         method: "POST",
         headers: {
           Accept: "application/json",
