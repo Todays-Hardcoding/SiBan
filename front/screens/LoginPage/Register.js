@@ -191,33 +191,6 @@ const Register = ({ navigation }) => {
 
   // 이메일 중복체크에 관한 함수
   const checkEmail = () => {
-<<<<<<< HEAD
-    const _url = "http://192.168.0.6:8282/checkEmail.act";
-    fetch(_url, {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email: email,
-      }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data.checkId);
-
-        if (data.checkEmail === true) {
-          alert("사용 불가능한 Email");
-        } else {
-          if (data.checkId == false) {
-            alert("사용불가능아이디");
-          } else {
-            alert("사용가능");
-          }
-        }
-      });
-=======
     const _url = "http://112.172.225.17:8282/checkEmail.act";
     const emailRegex =
       /^[0-9?A-z0-9?]+(\.)?[0-9?A-z0-9?]+@[0-9?A-z]+\.[A-z]{2}.?[A-z]{0,3}$/;
@@ -246,7 +219,6 @@ const Register = ({ navigation }) => {
           }
         });
     }
->>>>>>> c718e20f6168f49693e778f80a826708138e36bd
   };
 
   return (

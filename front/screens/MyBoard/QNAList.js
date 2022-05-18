@@ -59,7 +59,23 @@ const data = [
   },
 ];
 
+const [inquiry, setInquiry] = useState([]);
 const QNAList = ({navigation}) => {
+  const _url = "http://192.168.242.2:8282/selectInquiry.act"
+  fetch(_url, {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data)
+      setInquiry(data);
+    });
+    // navigation.navigate("QNADetailNav", {Screen: "QNADetail"})
+
   return (
     <SafeAreaView style={styles.container}>
       <ImageBackground
@@ -68,24 +84,31 @@ const QNAList = ({navigation}) => {
       >
       </ImageBackground>
       <ScrollView>
-        <View>
-          {data.map((item, index) => (
-            <TouchableOpacity
-              key={index}
-              onPress={()=> {
-                navigation.navigate("QNADetailNav", {Screen: "QNADetail"})
-              }}
-              style={[
-                styles.item,
-                index === 0 && { borderTopWidth: 0 }, // CSS: first-child
-                index % 2 === 1 && { backgroundColor: "#EAEAEA" }, // CSS: nth-child(even)
-              ]}
-            >
-              <Text>{item.name}</Text>
-              <Text>{item.date}</Text>
-            </TouchableOpacity>
-          ))}
-        </View>
+      <FlatGrid
+        itemDimension={170}
+        data={exercises}
+        spacing={20}
+        renderItem={({ item }) => (
+          <TouchableOpacity
+            style={[styles.itemContainer, { backgroundColor: "lightgrey" }]}
+            onPress={() =>
+              navigation.navigate("QNADetailNav", {
+                screen: "QNADetail",
+                params: { exercise: item },
+              })
+            }
+          >
+            <View style={styles.itmeimageContainer}></View>
+            <View style={styles.itemTextContainer}>
+              <Text style={styles.itemName}>{item.workoutName}</Text>
+              <Text style={styles.itemSummary}>
+                {item.workoutCourse} - {item.workoutGoal}
+              </Text>
+              {/* <Text style={styles.itemCode}>{item.workoutDescription}</Text> */}
+            </View>
+          </TouchableOpacity>
+        )}
+      />
       </ScrollView>
       <View style={styles.searchContainer}>
         <TextInput
