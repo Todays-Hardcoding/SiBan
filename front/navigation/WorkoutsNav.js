@@ -33,7 +33,7 @@ const Workouts = () => {
       <Tab.Screen
         name="Browse"
         component={Browse}
-        options={{ tabBarLabel: "운동" }}
+        options={{ tabBarLabel: "탐색" }}
       />
       <Tab.Screen
         name="Plans"
