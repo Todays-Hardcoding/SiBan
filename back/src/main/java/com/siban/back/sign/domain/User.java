@@ -78,10 +78,6 @@ public class User {
 		this.userRegDate = userRegDate;
 	}
 
-<<<<<<< HEAD
-	
-=======
->>>>>>> 2812626f51a5f56c944aa0497457c245f9cdad75
 
 	
 	
