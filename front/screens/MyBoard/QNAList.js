@@ -14,6 +14,8 @@ import {
 import { FlatGrid } from "react-native-super-grid";
 import { useIsFocused } from "@react-navigation/native";
 
+const _url = "http://192.168.45.96:8282";
+
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 
@@ -23,8 +25,7 @@ const QNAList = ({ navigation }) => {
   const [inquiry, setInquiry] = useState([]);
 
   useEffect(() => {
-    const _url = "http://192.168.45.96:8282/selectInquiry.act";
-    fetch(_url, {
+    fetch(_url + "/selectInquiry.act", {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -41,11 +42,9 @@ const QNAList = ({ navigation }) => {
   return (
     <SafeAreaView style={styles.container}>
       <ImageBackground
-        source={require("../../assets/images/moonhi3.jpg")}
+        source={require("../../assets/images/sibanLogo.png")}
         style={styles.image}
-      >
-        <Text style={styles.moonhiText}>문희사항</Text>
-      </ImageBackground>
+      ></ImageBackground>
       <ScrollView>
         <View>
           {inquiry.map((item, index) => (
@@ -100,7 +99,7 @@ const styles = StyleSheet.create({
   },
   image: {
     width: windowWidth,
-    height: windowHeight * 0.2,
+    height: windowHeight * 0.3,
     alignItems: "center",
     justifyContent: "center",
     opacity: 0.9,

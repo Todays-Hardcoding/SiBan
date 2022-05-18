@@ -27,7 +27,7 @@ import lombok.Setter;
 @Entity
 public class User {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long userCode;
 
 	@NotNull
@@ -64,8 +64,8 @@ public class User {
 
 	@Builder
 	public User(Long userCode, @NotNull String userId, @NotNull String userPassword, @NotNull String userEmail,
-			@NotNull String userName, @NotNull String userTel, @NotNull String userHeight, @NotNull String userWeight,
-			LocalDateTime userRegDate) {
+			@NotNull String userName, @NotNull String userTel, @NotNull String userHeight, String userProfile,
+			@NotNull String userWeight, LocalDateTime userRegDate) {
 		super();
 		this.userCode = userCode;
 		this.userId = userId;
@@ -74,8 +74,11 @@ public class User {
 		this.userName = userName;
 		this.userTel = userTel;
 		this.userHeight = userHeight;
+		this.userProfile = userProfile;
 		this.userWeight = userWeight;
 		this.userRegDate = userRegDate;
 	}
+
+
 	
 }
