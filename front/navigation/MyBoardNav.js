@@ -40,7 +40,7 @@ const ChallengeDetailNav = () => {
 const QNADetailNav = () => {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="QNADetail" component={QNADetail} />
+      <Stack.Screen name="QNA" component={QNADetail} />
     </Stack.Navigator>
   );
 };
