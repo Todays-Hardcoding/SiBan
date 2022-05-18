@@ -42,11 +42,9 @@ const QNAList = ({ navigation }) => {
   return (
     <SafeAreaView style={styles.container}>
       <ImageBackground
-        source={require("../../assets/images/moonhi3.jpg")}
+        source={require("../../assets/images/sibanLogo.png")}
         style={styles.image}
-      >
-        <Text style={styles.moonhiText}>문희사항</Text>
-      </ImageBackground>
+      ></ImageBackground>
       <ScrollView>
         <View>
           {inquiry.map((item, index) => (
@@ -101,7 +99,7 @@ const styles = StyleSheet.create({
   },
   image: {
     width: windowWidth,
-    height: windowHeight * 0.2,
+    height: windowHeight * 0.3,
     alignItems: "center",
     justifyContent: "center",
     opacity: 0.9,

@@ -4,6 +4,7 @@ import { Text, StyleSheet, TouchableOpacity, View } from "react-native";
 import { FlatGrid } from "react-native-super-grid";
 
 const _url = "http://112.172.225.17:8282";
+
 const Level1 = ({ navigation }) => {
   const [exercises, setExercises] = useState([]);
 
@@ -34,9 +35,11 @@ const Level1 = ({ navigation }) => {
         renderItem={({ item }) => (
           <TouchableOpacity
             style={[styles.itemContainer, { backgroundColor: "lightgrey" }]}
-            onPress={navigation.navigate("DetailPage", {
-              exercise: item,
-            })}
+            onPress={() =>
+              navigation.navigate("DetailPage", {
+                result: item,
+              })
+            }
           >
             <View style={styles.itmeimageContainer}></View>
             <View style={styles.itemTextContainer}>

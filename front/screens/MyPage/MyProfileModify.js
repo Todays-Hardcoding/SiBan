@@ -21,9 +21,9 @@ const MyProfileModify = () => {
   const [userHeight, setuserHeight] = useState("");
   const [userWeight, setuserWeight] = useState("");
   const [userTel, setuserTel] = useState();
-  const userId = "TTAA";
+  const userId = "TATA";
 
-  const onScreenLoad = () => {
+  const onScreenLoad = ({ navigation }) => {
     fetch(url + "/showUserInfo.act", {
       method: "POST",
       headers: {
@@ -50,6 +50,10 @@ const MyProfileModify = () => {
     onScreenLoad();
   }, []);
 
+  const onPressBtn = () => {
+    navigation.pop();
+  };
+
   const profileTest = (navigation) => {
     fetch(url + "/updateUserInfo.act", {
       method: "POST",
@@ -67,9 +71,10 @@ const MyProfileModify = () => {
       }),
     })
       .then((response) => response.json())
-      .then((data) => console.log(data))
+      .then((data) => console.log(data), navigation.pop())
       // .then(navigation.navigate("OthersNav", { screen: "MYPROFILE" }))
       // .then((data) => console.log(JSON.stringify(data)))
+
       .catch((error) => console.log(error));
   };
 
@@ -138,10 +143,6 @@ const MyProfileModify = () => {
     </View>
   );
 };
-
-function onPressBtn() {
-  alert("버튼이당");
-}
 
 const styles = StyleSheet.create({
   container: {
