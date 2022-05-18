@@ -21,6 +21,8 @@ import lombok.Setter;
 import lombok.ToString;
 
 
+@Getter
+@Setter
 @Table
 @Entity
 public class User {
