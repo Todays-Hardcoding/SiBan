@@ -7,8 +7,6 @@ import java.util.Objects;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.siban.back.sign.domain.User;
@@ -17,8 +15,8 @@ import com.siban.back.sign.service.SignService;
 @RestController
 public class SignController {
 
-	@Autowired
-	private SignService signService;
+   @Autowired
+   private SignService signService;
 
 	@PostMapping("/register.act")
 	public User register(@RequestBody Map<String, String> param) {

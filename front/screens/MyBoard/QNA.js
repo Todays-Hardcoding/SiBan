@@ -45,50 +45,47 @@ const QNA = () => {
   };
 
   return (
-    <ScrollView>
-      <View style={styles.container}>
-        {/* dropdown */}
-        <DropDownPicker
-          style={styles.category}
-          placeholder="상세 분류"
-          open={open}
-          value={categoriValue}
-          items={items}
-          setOpen={setOpen}
-          setValue={setCategoriValue}
-          setItems={setItems}
-          containerStyle={{ alignItems: "center" }}
-          dropDownContainerStyle={{ width: windowWidth * 0.9 }}
+    <View style={styles.container}>
+      {/* dropdown */}
+      <DropDownPicker
+        style={styles.category}
+        placeholder="상세 분류"
+        open={open}
+        value={categoriValue}
+        items={items}
+        setOpen={setOpen}
+        setValue={setCategoriValue}
+        setItems={setItems}
+        containerStyle={{ alignItems: "center" }}
+        dropDownContainerStyle={{ width: windowWidth * 0.9 }}
+      />
+      {/* textbox */}
+      <View>
+        <TextInput
+          style={styles.input}
+          placeholder="제목"
+          value={title}
+          onChangeText={(text) => setTitle(text)}
         />
-
-        {/* textbox */}
-        <View>
-          <TextInput
-            style={styles.input}
-            placeholder="제목"
-            value={title}
-            onChangeText={(text) => setTitle(text)}
-          />
-          <TextInput
-            style={styles.content}
-            placeholder="내용을 입력해주세요."
-            multiline={true}
-            value={content}
-            onChangeText={(text) => setContent(text)}
-          />
-        </View>
-
-        {/* button */}
-        <View style={styles.buttonContainer}>
-          <TouchableOpacity style={styles.submit}>
-            <Text style={styles.buttonText}>취소</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.cancel} onPress={postBoard}>
-            <Text style={styles.buttonText}>제출</Text>
-          </TouchableOpacity>
-        </View>
+        <TextInput
+          style={styles.content}
+          placeholder="내용을 입력해주세요."
+          multiline={true}
+          value={content}
+          onChangeText={(text) => setContent(text)}
+        />
       </View>
-    </ScrollView>
+
+      {/* button */}
+      <View style={styles.buttonContainer}>
+        <TouchableOpacity style={styles.submit}>
+          <Text style={styles.buttonText}>취소</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.cancel} onPress={postBoard}>
+          <Text style={styles.buttonText}>제출</Text>
+        </TouchableOpacity>
+      </View>
+    </View>
   );
 };
 
@@ -112,7 +109,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   content: {
-    height: 400,
+    height: 300,
     marginTop: 12,
     borderWidth: 1,
     width: windowWidth * 0.9,
@@ -125,7 +122,7 @@ const styles = StyleSheet.create({
   submit: {
     width: 120,
     height: 40,
-    backgroundColor: "#F2C9E1",
+    backgroundColor: "#EEB0B0",
     alignItems: "center",
     justifyContent: "center",
     margin: 15,
@@ -134,7 +131,7 @@ const styles = StyleSheet.create({
   cancel: {
     width: 120,
     height: 40,
-    backgroundColor: "#B1BCE6",
+    backgroundColor: "#AACFCF",
     alignItems: "center",
     justifyContent: "center",
     margin: 15,
