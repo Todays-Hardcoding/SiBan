@@ -87,7 +87,45 @@ public class SignController {
 		System.out.println(result);
 		return result;
 	}
-
+	@PostMapping("/searchEmail.act")
+	public Map<String, String> searchEmail(@RequestBody Map<String, String> param) {
+		Map<String, String> result = new HashMap<>();
+		String temp = "";
+		System.out.println(param.get("searchEmail"));
+		// 아이디가 있으면 false
+		User user = signService.findByUserEmail(param.get("searchEmail"));
+		System.out.println(user);
+		if (user != null) {
+			temp = user.getUserId();
+		}
+		
+		
+		result.put("searchId", temp);
+//		System.out.println(temp);
+		System.out.println(result);
+		return result;
+	}
+	
+	
+	
+	@PostMapping("/SearchPw.act")
+	public Map<String, String> SearchPw(@RequestBody Map<String, String> param) {
+		Map<String, String> result = new HashMap<>();
+		String temp = "";
+		System.out.println(param.get("searchId"));
+		System.out.println(param.get("searchTel"));
+		// 아이디가 있으면 false
+		User user = signService.findByUserId(param.get("searchId"));
+		//System.out.println(user);
+		if (user.getUserId().equals(param.get("searchId")) && user.getUserTel().equals(param.get("searchTel"))) {
+			System.out.println(user.getUserPassword());
+			temp = user.getUserPassword();
+		}
+		result.put("searchPw", temp);
+//		System.out.println(temp);
+		System.out.println(result);
+		return result;
+	}
 
 	
 

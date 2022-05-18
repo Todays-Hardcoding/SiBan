@@ -72,11 +72,14 @@ const Login = ({ navigation }) => {
           setSaveId(loginId);
           alert("로그인 성공");
           console.log(setSaveId);
-          navigation.navigate("MainTabs");
+          navigation.navigate("MainTabs", {
+            userId: loginId,
+          });
         } else {
           alert("다시 로그인해주세요.");
         }
-      });
+      })
+      .catch((error) => console.log(error));
   };
 
   return (
@@ -165,7 +168,6 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     borderWidth: 1,
     marginVertical: 5,
-    width: "80%",
   },
 });
 
