@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FontAwesome } from "@expo/vector-icons";
 import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
 
@@ -73,6 +73,10 @@ const styles = StyleSheet.create({
     color: "white",
     fontSize: "20",
     fontWeight: "500",
+  },
+  bodyContainer: {
+    justifyContent: "center",
+    alignItems: "center",
   },
 });
 

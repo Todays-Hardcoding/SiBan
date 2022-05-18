@@ -9,9 +9,11 @@ import {
 import { SafeAreaView, TextInput, ScrollView } from "react-native";
 import DropDownPicker from "react-native-dropdown-picker";
 
+const _url = "http://192.168.45.96:8282";
+
 const windowWidth = Dimensions.get("window").width;
 
-const QNA = () => {
+const QNA = ({ navigation }) => {
   const [open, setOpen] = useState(false);
 
   const [categoriValue, setCategoriValue] = useState(null);
@@ -25,10 +27,12 @@ const QNA = () => {
     { label: "기타 문의", value: "기타 문의" },
   ]);
 
-  const postBoard = () => {
-    const _url = "http://192.168.242.2:8282/insertInquiry.act"
+  const cancel = () => {
+    navigation.pop();
+  };
 
-    fetch(_url, {
+  const postBoard = () => {
+    fetch(_url + "/insertInquiry.act", {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -40,58 +44,56 @@ const QNA = () => {
         content,
       }),
     })
-    .then((response) => response.json())
-    .then((data) => console.log(data));
+      .then((response) => response.json())
+      .then((data) => {
+        if (data != null) {
+          navigation.pop();
+        }
+      });
   };
 
   return (
-    <ScrollView>
-      <View style={styles.container}>
-        {/* dropdown */}
-        <DropDownPicker
-          style={styles.category}
-          placeholder="상세 분류"
-          open={open}
-          value={categoriValue}
-          items={items}
-          setOpen={setOpen}
-          setValue={setCategoriValue}
-          setItems={setItems}
-          containerStyle={{ alignItems: "center" }}
-          dropDownContainerStyle={{ width: windowWidth * 0.9 }}
+    <View style={styles.container}>
+      {/* dropdown */}
+      <DropDownPicker
+        style={styles.category}
+        placeholder="상세 분류"
+        open={open}
+        value={categoriValue}
+        items={items}
+        setOpen={setOpen}
+        setValue={setCategoriValue}
+        setItems={setItems}
+        containerStyle={{ alignItems: "center" }}
+        dropDownContainerStyle={{ width: windowWidth * 0.9 }}
+      />
+      {/* textbox */}
+      <View>
+        <TextInput
+          style={styles.input}
+          placeholder="제목"
+          value={title}
+          onChangeText={(text) => setTitle(text)}
         />
-
-        {/* textbox */}
-        <View>
-          <TextInput 
-            style={styles.input}
-            placeholder="제목"
-            value={title}
-            onChangeText={(text) => setTitle(text)} 
-           />
-          <TextInput
-            style={styles.content}
-            placeholder="내용을 입력해주세요."
-            multiline={true}
-            value={content}
-            onChangeText={(text) => setContent(text)}
-          />
-        </View>
-
-        {/* button */}
-        <View style={styles.buttonContainer}>
-          <TouchableOpacity style={styles.submit}>
-            <Text style={styles.buttonText}>취소</Text>
-          </TouchableOpacity>
-          <TouchableOpacity 
-          style={styles.cancel}
-          onPress={postBoard}
-          >
-            <Text style={styles.buttonText}>제출</Text>
-          </TouchableOpacity>
-        </View>
+        <TextInput
+          style={styles.content}
+          placeholder="내용을 입력해주세요."
+          multiline={true}
+          value={content}
+          onChangeText={(text) => setContent(text)}
+        />
       </View>
-    </ScrollView>
+
+      {/* button */}
+      <View style={styles.buttonContainer}>
+        <TouchableOpacity style={styles.submit} onPress={cancel}>
+          <Text style={styles.buttonText}>취소</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.cancel} onPress={postBoard}>
+          <Text style={styles.buttonText}>제출</Text>
+        </TouchableOpacity>
+      </View>
+    </View>
   );
 };
 
@@ -115,7 +117,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   content: {
-    height: 400,
+    height: 300,
     marginTop: 12,
     borderWidth: 1,
     width: windowWidth * 0.9,

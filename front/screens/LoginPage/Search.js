@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import { StyleSheet, Button, Text, TextInput, View } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
-const _url = "http://192.168.0.6:8282";
-
+const _url = "http://192.168.45.96:8282";
 const Search = () => {
   const [searchEmail, setSearchEmail] = useState("");
   const [searchPw, setSearchPw] = useState("");
@@ -12,7 +11,9 @@ const Search = () => {
 
   // 아이디 유무 관한 함수
   const postSearchEmail = () => {
-    fetch(_url + "searchEmail.act", {
+    const _url = "http://192.168.35.133:8282/searchEmail.act";
+
+    fetch(_url, {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -34,7 +35,9 @@ const Search = () => {
   };
   // 비번찾기
   const postSearchPw = () => {
-    fetch(_url + "SearchPw.act", {
+    const _url = "http://192.168.35.133:8282/SearchPw.act";
+
+    fetch(_url, {
       method: "POST",
       headers: {
         Accept: "application/json",

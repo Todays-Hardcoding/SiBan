@@ -1,6 +1,8 @@
 package com.siban.back.board.domain;
 
 import java.time.LocalDateTime;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -21,13 +23,14 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 
-@Data
+@Getter
+@Setter
 @Entity
 public class Post {
 //	private User user;
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long postCode;
 	
 	@NotNull
@@ -43,7 +46,7 @@ public class Post {
 	private String postContent;
 	
 	@Column
-	private LocalDateTime postRegDate;
+	private String postRegDate;
 	
 	@Column
 	private int postViews;
@@ -51,8 +54,14 @@ public class Post {
 	@PrePersist
 	@PreUpdate
 	public void createDate() {
-		this.postRegDate = LocalDateTime.now();
 		this.postViews = 0;
+	    Date today = new Date();
+
+	    SimpleDateFormat date = new SimpleDateFormat("yyyy/MM/dd");
+	    postRegDate = date.format(today);
 	}
+	
+	
+	
 
 }
