@@ -4,8 +4,9 @@ import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import { FlatGrid } from "react-native-super-grid";
 
 const ForYou = ({ navigation }) => {
-  const _url = "http://192.168.45.96:8282/";
 
+  const [exercises, setExercises] = useState([]);
+  const [result, setResult] = useState([]);
   const [courses, setCourses] = useState([
     {
       screen: "Level1",
@@ -24,11 +25,9 @@ const ForYou = ({ navigation }) => {
     },
   ]);
 
-  const [data, setData] = useState({});
-  const [newData, setNewData] = useState({});
-
-  useEffect(() => {
-    fetch(_url + "test.act", {
+   useEffect(() => {
+    const _url = "http://112.172.225.17:8282";
+    fetch(_url + "/FindAll.act", {
       method: "GET",
       headers: {
         Accept: "application/json",
@@ -37,30 +36,25 @@ const ForYou = ({ navigation }) => {
     })
       .then((response) => response.json())
       .then((data) => {
-        setData(data);
-
-        console.log(data);
+        setExercises(data);
       });
   }, []);
 
   const sendData = (item) => {
-    Object.keys(data).map((key) => {
-      if (data[key].workoutCourse == item.course) {
-        console.log(key);
-        console.log("================");
-        console.log(item.course);
-        console.log("================");
-        console.log(data[key].workoutCourse);
-        setNewData({ ...newData, [key]: data[key] });
+    const newResult = new Array();
+    exercises.map((exercise) => {
+      if (exercise.workoutCourse === item.course) {
+        newResult.push(exercise);
       }
     });
+    setResult([...newResult]);
 
-    // setNewData({...newData, [key]: data[key]})
     navigation.navigate("LevelDetail", {
       screen: item.screen,
-      params: newData,
-    });
-  };
+      params: {result : result}
+    })
+
+  }
 
   return (
     <View style={styles.Container}>
@@ -72,7 +66,9 @@ const ForYou = ({ navigation }) => {
         renderItem={({ item }) => (
           <TouchableOpacity
             style={[styles.itemContainer, { backgroundColor: "grey" }]}
-            onPress={() => sendData(item)}
+            onPress={() =>
+              sendData(item)
+            }
           >
             <Text style={styles.itemName}>{item.course}</Text>
             <Text style={styles.itemExplane}>{item.explane}</Text>

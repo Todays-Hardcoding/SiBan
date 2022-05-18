@@ -11,55 +11,34 @@ import {
   TextInput,
   ImageBackground,
 } from "react-native";
+import { FlatGrid } from "react-native-super-grid";
+import { useIsFocused } from '@react-navigation/native';
+
 
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 
-// 내질문, 날짜 예시
-const data = [
-  {
-    name: "내 1:1 질문 10",
-    date: "22-02-05",
-  },
-  {
-    name: "내 1:1 질문 9",
-    date: "22-02-05",
-  },
-  {
-    name: "내 1:1 질문 8",
-    date: "22-02-05",
-  },
-  {
-    name: "내 1:1 질문 7",
-    date: "22-02-05",
-  },
-  {
-    name: "내 1:1 질문 6",
-    date: "22-02-05",
-  },
-  {
-    name: "내 1:1 질문 5",
-    date: "22-02-05",
-  },
-  {
-    name: "내 1:1 질문 4",
-    date: "22-02-04",
-  },
-  {
-    name: "내 1:1 질문 3",
-    date: "22-02-03",
-  },
-  {
-    name: "내 1:1 질문 2",
-    date: "22-02-02",
-  },
-  {
-    name: "내 1:1 질문 1",
-    date: "22-02-01",
-  },
-];
-
 const QNAList = ({navigation}) => {
+  const isFocused = useIsFocused();
+
+  const [inquiry, setInquiry] = useState([]);
+
+  useEffect(() => {
+    const _url = "http://192.168.242.2:8282/selectInquiry.act"
+    fetch(_url, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        setInquiry(data);
+      });
+  }, [isFocused]);
+
   return (
     <SafeAreaView style={styles.container}>
       <ImageBackground
@@ -69,32 +48,36 @@ const QNAList = ({navigation}) => {
       </ImageBackground>
       <ScrollView>
         <View>
-          {data.map((item, index) => (
-            <TouchableOpacity
-              key={index}
-              onPress={()=> {
-                navigation.navigate("QNADetailNav", {Screen: "QNADetail"})
-              }}
-              style={[
-                styles.item,
-                index === 0 && { borderTopWidth: 0 }, // CSS: first-child
-                index % 2 === 1 && { backgroundColor: "#EAEAEA" }, // CSS: nth-child(even)
-              ]}
-            >
-              <Text>{item.name}</Text>
-              <Text>{item.date}</Text>
-            </TouchableOpacity>
-          ))}
+          {inquiry.map((item, index) => 
+          <TouchableOpacity
+            key={index}
+            onPress={()=> {
+              navigation.navigate("ServiceCenter", {Screen: "QNAList"})
+            }}
+            style={[
+              styles.item,
+              index === 0 && { borderTopWidth: 0 }, // CSS: first-child
+              index % 2 === 1 && { backgroundColor: "#EAEAEA" }, // CSS: nth-child(even)
+            ]}
+          >
+            <Text style={styles.contentText}>{item.postCategory}   {item.postTitle}</Text>
+            <Text style={[styles.contentText, {textAlign: "right"}]}>{item.postRegDate}</Text>
+
+          </TouchableOpacity>
+          )}
         </View>
       </ScrollView>
+
       <View style={styles.searchContainer}>
         <TextInput
           style={styles.searchInput}
           placeholder="검색어를 입력해주세요"
         ></TextInput>
+
         <TouchableOpacity style={styles.searchButton}>
           <Text style={styles.buttonText}>검색</Text>
         </TouchableOpacity>
+
         <TouchableOpacity 
           onPress={()=> {
           navigation.navigate("QNANav", {Screen: "QNA"})
@@ -164,6 +147,12 @@ const styles = StyleSheet.create({
     width: windowWidth * 0.15,
     marginLeft: 10,
   },
+  contentContainer: {
+    flexDirection: "row"
+  },
+  contentText: {
+    fontWeight: "bold"
+  }
 });
 
 export default QNAList;

@@ -1,18 +1,17 @@
-import React from "react";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-
-import ForYou from "../screens/Workouts/ForYou";
+import React from "react";
 import Browse from "../screens/Workouts/Browse";
-import Plans from "../screens/Workouts/Plans";
-import StrengthMain from "../screens/Workouts/StrengthMain";
-import StrengthDetail from "../screens/Workouts/StrengthDetail";
 import Endurance from "../screens/Workouts/Endurance";
-import Mobility from "../screens/Workouts/Mobility";
+import ForYou from "../screens/Workouts/ForYou";
 import Level1 from "../screens/Workouts/level1";
 import Level2 from "../screens/Workouts/level2";
 import Level3 from "../screens/Workouts/level3";
+import Mobility from "../screens/Workouts/Mobility";
+import Plans from "../screens/Workouts/Plans";
 import Strength from "../screens/Workouts/Strength";
+import StrengthDetail from "../screens/Workouts/StrengthDetail";
+import WorkoutSearch from "../screens/Workouts/WorkoutSearch";
 
 const Tab = createMaterialTopTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -76,7 +75,10 @@ const BrowseDetail = () => {
 
 const StrengthNav = () => {
   return (
-    <Stack.Navigator initialRouteName="Strength" screenOptions={{headerShown: false}}>
+    <Stack.Navigator
+      initialRouteName="Strength"
+      screenOptions={{ headerShown: false }}
+    >
       <Stack.Screen name="Strength" component={Strength} />
       <Stack.Screen name="StrengthDetail" component={StrengthDetail} />
     </Stack.Navigator>
@@ -115,12 +117,11 @@ const LevelDetail = () => {
 const WorkoutsNav = () => {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="Workouts" component={Workouts} />
-      <Stack.Screen name="BrowseDetail" component={BrowseDetail} />
-      <Stack.Screen name="LevelDetail" component={LevelDetail} />
-      {/* <Stack.Screen name="StrengthNav" component={StrengthNav} /> */}
+        <Stack.Screen name="Workouts" component={Workouts} />
+        <Stack.Screen name="BrowseDetail" component={BrowseDetail} />
+        <Stack.Screen name="LevelDetail" component={LevelDetail} />
+        <Stack.Screen name="WorkoutSearch" component={WorkoutSearch} />
     </Stack.Navigator>
-
   );
 };
 

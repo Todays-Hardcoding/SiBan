@@ -1,10 +1,13 @@
 package com.siban.back.board.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -12,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.siban.back.board.domain.Post;
 import com.siban.back.board.service.PostService;
+import com.siban.back.workout.domain.Workout;
 
 @RestController
 public class PostController {
@@ -32,5 +36,15 @@ public class PostController {
 		post.setPostContent(content);
 		
 		return postService.insertInquiry(post);
+	}
+	
+	@RequestMapping(value="/selectInquiry.act", method = RequestMethod.POST)
+	public List<Post> selectInquiry(){
+		List<Post> result = new ArrayList<>();
+		result = postService.selectInquiry();
+		
+		System.out.println(result);
+		
+		return result;
 	}
 }

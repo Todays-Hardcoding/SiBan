@@ -95,7 +95,7 @@ const Register = ({ navigation }) => {
     const weightRegex = /^[0-9].{0,2}$/;
     if (!weightRegex.test(weight)) {
       setWeightCheck(false);
-      setWeightError("몸무게(kg)를 다시 입력해주세요");
+      setWeightError("몸무게를 다시 입력해주세요");
     } else {
       setWeightCheck(true);
     }
@@ -104,14 +104,14 @@ const Register = ({ navigation }) => {
     const heightRegex = /^[0-9].{0,2}$/;
     if (!heightRegex.test(height)) {
       setHeightCheck(false);
-      setHeightError("키(cm)를 다시 입력해주세요.");
+      setHeightError("키를 다시 입력해주세요.");
     } else {
       setHeightCheck(true);
     }
   };
   // 회원가입에 간한 함수
   const postRegister = (e) => {
-    const _url = "http://112.172.225.17:8282/register.act";
+    const _url = "http://192.168.35.133:8282/register.act";
 
     if (
       idCheck === true &&
@@ -161,7 +161,7 @@ const Register = ({ navigation }) => {
   };
   // 아이디 중복체크에 관한 함수
   const checkId = () => {
-    const _url = "http://112.172.225.17:8282/checkId.act";
+    const _url = "http://192.168.35.133:8282/checkId.act";
 
     const idRegex = /^[A-Za-z]{1}[A-Za-z0-9_-]{3,19}$/;
     if (idRegex.test(id) === false) {
@@ -191,31 +191,34 @@ const Register = ({ navigation }) => {
 
   // 이메일 중복체크에 관한 함수
   const checkEmail = () => {
-    const _url = "http://192.168.0.6:8282/checkEmail.act";
-    fetch(_url, {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email: email,
-      }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data.checkId);
+    const _url = "http://192.168.35.133:8282/checkEmail.act";
+    const emailRegex =
+      /^[0-9?A-z0-9?]+(\.)?[0-9?A-z0-9?]+@[0-9?A-z]+\.[A-z]{2}.?[A-z]{0,3}$/;
+    if (!emailRegex.test(email)) {
+      alert("이메일형식에 맞게 다시 입력해주세요");
+    } else {
+      fetch(_url, {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: email,
+        }),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data.checkId);
 
-        if (data.checkEmail === true) {
-          alert("사용 불가능한 Email");
-        } else {
-          if (data.checkId == false) {
-            alert("사용불가능아이디");
+          if (data.checkEmail === true) {
+            alert("사용 불가능한 Email");
           } else {
-            alert("사용가능");
+            alert("사용 가능");
+            setDuplicatedEmail(true);
           }
-        }
-      });
+        });
+    }
   };
 
   return (
