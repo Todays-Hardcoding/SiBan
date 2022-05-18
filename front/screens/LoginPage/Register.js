@@ -3,6 +3,8 @@ import { StyleSheet, Text, TextInput, View } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
+const _url = "http://192.168.45.96:8282";
+
 const Register = ({ navigation }) => {
   //아이디,비번,이메일,전화번호
   const [id, setId] = useState("");
@@ -95,7 +97,7 @@ const Register = ({ navigation }) => {
     const weightRegex = /^[0-9].{0,2}$/;
     if (!weightRegex.test(weight)) {
       setWeightCheck(false);
-      setWeightError("몸무게(kg)를 다시 입력해주세요");
+      setWeightError("몸무게를 다시 입력해주세요");
     } else {
       setWeightCheck(true);
     }
@@ -104,15 +106,13 @@ const Register = ({ navigation }) => {
     const heightRegex = /^[0-9].{0,2}$/;
     if (!heightRegex.test(height)) {
       setHeightCheck(false);
-      setHeightError("키(cm)를 다시 입력해주세요.");
+      setHeightError("키를 다시 입력해주세요.");
     } else {
       setHeightCheck(true);
     }
   };
   // 회원가입에 간한 함수
   const postRegister = (e) => {
-    const _url = "http://192.168.0.6:8282/register.act";
-
     if (
       idCheck === true &&
       pwCheck === true &&
@@ -125,7 +125,7 @@ const Register = ({ navigation }) => {
       duplicatedId === true &&
       duplicatedEmail === true
     ) {
-      fetch(_url, {
+      fetch(_url + "/register.act", {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -161,13 +161,11 @@ const Register = ({ navigation }) => {
   };
   // 아이디 중복체크에 관한 함수
   const checkId = () => {
-    const _url = "http://192.168.0.6:8282/checkId.act";
-
     const idRegex = /^[A-Za-z]{1}[A-Za-z0-9_-]{3,19}$/;
     if (idRegex.test(id) === false) {
       alert("4자리 이상 영문자로 시작하는 아이디를 입력해주세요.");
     } else {
-      fetch(_url, {
+      fetch(_url + "/checkId.act", {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -180,9 +178,9 @@ const Register = ({ navigation }) => {
         .then((response) => response.json())
         .then((data) => {
           if (data.checkId === true) {
-            alert("사용 불가능한 아이디입니다.");
+            alert("사용 불가능아이디");
           } else {
-            alert("사용 가능한 아이디입니다.");
+            alert("사용 가능");
             setDuplicatedID(true);
           }
         });
@@ -191,13 +189,12 @@ const Register = ({ navigation }) => {
 
   // 이메일 중복체크에 관한 함수
   const checkEmail = () => {
-    const _url = "http://192.168.0.6:8282/checkEmail.act";
     const emailRegex =
       /^[0-9?A-z0-9?]+(\.)?[0-9?A-z0-9?]+@[0-9?A-z]+\.[A-z]{2}.?[A-z]{0,3}$/;
     if (!emailRegex.test(email)) {
       alert("이메일형식에 맞게 다시 입력해주세요");
     } else {
-      fetch(_url, {
+      fetch(_url + "/checkEmail.act", {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -214,265 +211,259 @@ const Register = ({ navigation }) => {
           if (data.checkEmail === true) {
             alert("사용 불가능한 Email");
           } else {
-            if (data.checkId == false) {
-              alert("사용불가능아이디");
-            } else {
-              alert("사용가능");
-            }
+            alert("사용 가능");
+            setDuplicatedEmail(true);
           }
         });
     }
+  };
 
-    return (
-      <View
+  return (
+    <View
+      style={{
+        flex: 1,
+        backgroundColor: "#fff",
+        alignItems: "center",
+        justifyContent: "center",
+        paddingTop: 90,
+        width: "100%",
+      }}
+    >
+      <KeyboardAwareScrollView
+        extraScrollHeight={10}
         style={{
-          flex: 1,
+          // flex: 1,
           backgroundColor: "#fff",
-          alignItems: "center",
-          justifyContent: "center",
-          paddingTop: 90,
           width: "100%",
         }}
       >
-        <KeyboardAwareScrollView
-          extraScrollHeight={10}
+        <View
           style={{
-            // flex: 1,
             backgroundColor: "#fff",
+            alignItems: "center",
+            justifyContent: "center",
             width: "100%",
+            alignItems: "center",
           }}
         >
-          <View
+          <Text
             style={{
-              backgroundColor: "#fff",
-              alignItems: "center",
+              fontSize: 30,
+              fontWeight: "bold",
+              marginTop: 40,
               justifyContent: "center",
-              width: "100%",
+            }}
+          >
+            시반 회원가입
+          </Text>
+          <Text
+            style={{
+              color: "gray",
+              justifyContent: "center",
+              width: "50%",
               alignItems: "center",
             }}
           >
-            <Text
+            {"\n"}멤버가 되어 시반이 제공하는 {"\n"}
+            최고의 제품과 혜택을 만나보세요 {"\n"}{" "}
+          </Text>
+          <View
+            style={{
+              flexDirection: "row",
+              justifyContent: "space-between",
+              alignItems: "center",
+            }}
+          >
+            <TextInput
+              style={styles.inputId}
+              value={id}
+              onChangeText={(text) => setId(text)}
+              onEndEditing={() => onChangeId()}
+              returnKeyType="next"
+              // autoFocus={true}
+              placeholder="아이디를 입력해주세요."
+            />
+            {/* 아이디 중복확인 버튼 */}
+            <TouchableOpacity
               style={{
-                fontSize: 40,
-                fontWeight: "bold",
-                marginTop: 40,
-                justifyContent: "center",
-              }}
-            >
-              시반 회원가입
-            </Text>
-            <Text
-              style={{
-                color: "gray",
-                justifyContent: "center",
-                width: "50%",
+                backgroundColor: "gray",
+                padding: 5,
+                margin: 5,
+                borderRadius: 10,
+                width: 60,
                 alignItems: "center",
               }}
+              onPress={checkId}
             >
-              {"\n"}멤버가 되어 시반이 제공하는 {"\n"}
-              최고의 제품과 혜택을 만나보세요 {"\n"}{" "}
-            </Text>
-            <View
-              style={{
-                flexDirection: "row",
-                justifyContent: "space-between",
-                alignItems: "center",
-              }}
-            >
-              <TextInput
-                style={styles.inputId}
-                value={id}
-                onChangeText={(text) => setId(text)}
-                onEndEditing={() => onChangeId()}
-                returnKeyType="next"
-                // autoFocus={true}
-                placeholder="아이디를 입력해주세요."
-              />
-              {/* 아이디 중복확인 버튼 */}
-              <TouchableOpacity
-                style={{
-                  backgroundColor: "#778beb",
-                  padding: 10,
-                  margin: 10,
-                  borderRadius: 10,
-                  width: 100,
-                  alignItems: "center",
-                }}
-                onPress={checkId}
-              >
-                <Text style={{ fontSize: 18, color: "white" }}>중복확인</Text>
-              </TouchableOpacity>
-            </View>
-            {!idCheck && <Text style={{ color: "red" }}>{idError}</Text>}
-
-            <TextInput
-              style={styles.input}
-              value={pw}
-              returnKeyType="next"
-              onChangeText={(text) => setPw(text)}
-              onEndEditing={() => onChangePw()}
-              secureTextEntry={true}
-              placeholder={"비밀번호를 입력해주세요"}
-            />
-            {!pwCheck && <Text style={{ color: "red" }}>{pwError}</Text>}
-
-            <TextInput
-              style={styles.input}
-              value={pwConfirm}
-              returnKeyType="next"
-              onChangeText={(text) => setPwConfirm(text)}
-              onEndEditing={() => onChangePw2()}
-              secureTextEntry={true}
-              placeholder={"비밀번호를 다시 입력해주세요"}
-            />
-            {!pwConfirmCheck && (
-              <Text style={{ color: "red" }}>{pwConfirmError}</Text>
-            )}
-
-            <View
-              style={{
-                flexDirection: "row",
-                justifyContent: "space-between",
-                alignItems: "center",
-              }}
-            >
-              <TextInput
-                style={styles.inputId}
-                value={email}
-                returnKeyType="next"
-                onChangeText={(text) => setEmail(text)}
-                onEndEditing={() => onChangeEmail()}
-                placeholder={"이메일을 입력해주세요."}
-              />
-              {/* 이메일 중복확인 버튼 */}
-              <TouchableOpacity
-                style={{
-                  backgroundColor: "#778beb",
-                  padding: 10,
-                  margin: 10,
-                  borderRadius: 10,
-                  width: 100,
-                  alignItems: "center",
-                }}
-                onPress={checkEmail}
-              >
-                <Text style={{ fontSize: 18, color: "white" }}>중복확인</Text>
-              </TouchableOpacity>
-            </View>
-            {!emailCheck && <Text style={{ color: "red" }}>{emailError}</Text>}
-
-            <TextInput
-              style={styles.input}
-              value={name}
-              returnKeyType="next"
-              onChangeText={(text) => setName(text)}
-              onEndEditing={() => onChangeName()}
-              placeholder={"이름을 입력해주세요."}
-            />
-            {!nameCheck && <Text style={{ color: "red" }}>{nameError}</Text>}
-            <TextInput
-              style={styles.input}
-              value={tel}
-              onChangeText={(text) => setTel(text)}
-              onEndEditing={() => onChangeTel()}
-              placeholder={"휴대폰번호를 입력해주세요."}
-              returnKeyType="next"
-            />
-            {!telCheck && <Text style={{ color: "red" }}>{telError}</Text>}
-
-            <TextInput
-              style={styles.input}
-              value={height}
-              returnKeyType="next"
-              onChangeText={(text) => setHeight(text)}
-              onEndEditing={() => onChangeHeight()}
-              placeholder={"키를 입력해주세요."}
-            />
-
-            {!heightCheck && (
-              <Text style={{ color: "red" }}>{heightError}</Text>
-            )}
-
-            <TextInput
-              style={styles.input}
-              value={weight}
-              returnKeyType="next"
-              onChangeText={(text) => setWeight(text)}
-              onEndEditing={() => onChangeWeight()}
-              placeholder={"몸무게를 입력해주세요."}
-            />
-            {!weightCheck && (
-              <Text style={{ color: "red" }}>{weightError}</Text>
-            )}
-
-            <View style={styles.BtnBox}>
-              {/* 가입버튼 */}
-              <TouchableOpacity
-                style={{
-                  backgroundColor: "black",
-                  padding: 10,
-                  margin: 10,
-                  borderRadius: 10,
-                  width: 100,
-                  alignItems: "center",
-                }}
-                onPress={(event) => postRegister(event)}
-              >
-                <Text style={{ fontSize: 18, color: "white" }}>가입</Text>
-              </TouchableOpacity>
-              <TouchableOpacity
-                style={{
-                  backgroundColor: "#c44569",
-                  padding: 10,
-                  margin: 10,
-                  borderRadius: 10,
-                  width: 100,
-                  alignItems: "center",
-                }}
-                onPress={() =>
-                  navigation.navigate("LoginPage", {
-                    screen: "LoginHome",
-                  })
-                }
-              >
-                <Text style={{ fontSize: 18, color: "white" }}>취소</Text>
-              </TouchableOpacity>
-            </View>
+              <Text style={{ fontSize: 13, color: "white" }}>중복확인</Text>
+            </TouchableOpacity>
           </View>
-        </KeyboardAwareScrollView>
-      </View>
-    );
-  };
+          {!idCheck && <Text style={{ color: "red" }}>{idError}</Text>}
 
-  const styles = StyleSheet.create({
-    registerContainer: {
-      flex: 1,
-      alignItems: "center",
-      justifyContent: "center",
-      marginTop: 20,
-    },
-    input: {
-      borderWidth: 1,
-      padding: 10,
-      fontSize: 15,
-      borderRadius: 8,
-      borderWidth: 1,
-      marginVertical: 5,
-      width: "80%",
-    },
-    inputId: {
-      borderWidth: 1,
-      padding: 10,
-      fontSize: 15,
-      borderRadius: 8,
-      borderWidth: 1,
-      marginVertical: 5,
-      width: "50%",
-    },
-    idCheckBtn: {},
-    BtnBox: {
-      flexDirection: "row",
-    },
-  });
+          <TextInput
+            style={styles.input}
+            value={pw}
+            returnKeyType="next"
+            onChangeText={(text) => setPw(text)}
+            onEndEditing={() => onChangePw()}
+            secureTextEntry={true}
+            placeholder={"비밀번호를 입력해주세요"}
+          />
+          {!pwCheck && <Text style={{ color: "red" }}>{pwError}</Text>}
+
+          <TextInput
+            style={styles.input}
+            value={pwConfirm}
+            returnKeyType="next"
+            onChangeText={(text) => setPwConfirm(text)}
+            onEndEditing={() => onChangePw2()}
+            secureTextEntry={true}
+            placeholder={"비밀번호를 다시 입력해주세요"}
+          />
+          {!pwConfirmCheck && (
+            <Text style={{ color: "red" }}>{pwConfirmError}</Text>
+          )}
+
+          <View
+            style={{
+              flexDirection: "row",
+              justifyContent: "space-between",
+              alignItems: "center",
+            }}
+          >
+            <TextInput
+              style={styles.inputId}
+              value={email}
+              returnKeyType="next"
+              onChangeText={(text) => setEmail(text)}
+              onEndEditing={() => onChangeEmail()}
+              placeholder={"이메일을 입력해주세요."}
+            />
+            {/* 이메일 중복확인 버튼 */}
+            <TouchableOpacity
+              style={{
+                backgroundColor: "gray",
+                padding: 5,
+                margin: 5,
+                borderRadius: 10,
+                width: 60,
+                alignItems: "center",
+              }}
+              onPress={checkEmail}
+            >
+              <Text style={{ fontSize: 13, color: "white" }}>중복확인</Text>
+            </TouchableOpacity>
+          </View>
+          {!emailCheck && <Text style={{ color: "red" }}>{emailError}</Text>}
+
+          <TextInput
+            style={styles.input}
+            value={name}
+            returnKeyType="next"
+            onChangeText={(text) => setName(text)}
+            onEndEditing={() => onChangeName()}
+            placeholder={"이름을 입력해주세요."}
+          />
+          {!nameCheck && <Text style={{ color: "red" }}>{nameError}</Text>}
+          <TextInput
+            style={styles.input}
+            value={tel}
+            onChangeText={(text) => setTel(text)}
+            onEndEditing={() => onChangeTel()}
+            placeholder={"휴대폰번호를 입력해주세요."}
+            returnKeyType="next"
+          />
+          {!telCheck && <Text style={{ color: "red" }}>{telError}</Text>}
+
+          <TextInput
+            style={styles.input}
+            value={height}
+            returnKeyType="next"
+            onChangeText={(text) => setHeight(text)}
+            onEndEditing={() => onChangeHeight()}
+            placeholder={"키를 입력해주세요."}
+          />
+
+          {!heightCheck && <Text style={{ color: "red" }}>{heightError}</Text>}
+
+          <TextInput
+            style={styles.input}
+            value={weight}
+            returnKeyType="next"
+            onChangeText={(text) => setWeight(text)}
+            onEndEditing={() => onChangeWeight()}
+            placeholder={"몸무게를 입력해주세요."}
+          />
+          {!weightCheck && <Text style={{ color: "red" }}>{weightError}</Text>}
+
+          <View style={styles.BtnBox}>
+            {/* 가입버튼 */}
+            <TouchableOpacity
+              style={{
+                backgroundColor: "black",
+                padding: 10,
+                margin: 10,
+                borderRadius: 10,
+                width: 100,
+                alignItems: "center",
+              }}
+              onPress={(event) => postRegister(event)}
+            >
+              <Text style={{ fontSize: 15, color: "white" }}>register</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={{
+                backgroundColor: "gray",
+                padding: 10,
+                margin: 10,
+                borderRadius: 10,
+                width: 100,
+                alignItems: "center",
+              }}
+              onPress={() =>
+                navigation.navigate("LoginPage", {
+                  screen: "LoginHome",
+                })
+              }
+            >
+              <Text style={{ fontSize: 15, color: "white" }}>cancel</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </KeyboardAwareScrollView>
+    </View>
+  );
 };
+
+const styles = StyleSheet.create({
+  registerContainer: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: 20,
+  },
+  input: {
+    borderWidth: 1,
+    padding: 10,
+    fontSize: 15,
+    borderRadius: 8,
+    borderWidth: 1,
+    marginVertical: 5,
+    width: "80%",
+  },
+  inputId: {
+    borderWidth: 1,
+    padding: 10,
+    fontSize: 15,
+    borderRadius: 8,
+    borderWidth: 1,
+    marginVertical: 5,
+    width: "62%",
+  },
+  idCheckBtn: {},
+  BtnBox: {
+    flexDirection: "row",
+  },
+});
+
 export default Register;

@@ -7,11 +7,8 @@ import {
   StyleSheet,
   TouchableOpacity,
 } from "react-native";
-//import TextInput from 'react-native-input-validator';
-//import KakaoButton from '../../components/KakaoButton';
-//import LoginButton from '../../components/LoginButton';
+
 import NaverButton from "../../components/NaverButton";
-//import LoginButton from "../../components/LoginButton";
 import { NavigationContainer } from "@react-navigation/native";
 //import { State } from 'react-native-gesture-handler';
 
@@ -25,7 +22,7 @@ const Login = ({ navigation }) => {
   const [idError, setIdError] = useState("");
   const [pwError, setPwError] = useState("");
 
-  const sendData = [{ loginId }, { loginPw }];
+  const [saveId, setSaveId] = useState("");
 
   const data = new FormData();
   data.append("userId", "loginId");
@@ -54,10 +51,11 @@ const Login = ({ navigation }) => {
     // console.log(loginPw);
   };
 
-  const postTest = () => {
-    const url = "http://192.168.35.133:8282/test2.json";
+ // 로그인
+ const postLogin = () => {
+  const _url = "http://192.168.35.133:8282/login.act";
 
-    fetch(url, {
+    fetch(_url, {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -69,10 +67,20 @@ const Login = ({ navigation }) => {
       }),
     })
       .then((response) => response.json())
-      .then((data) => console.log(data));
-    // .then((data) => console.log(JSON.stringify(data)))
-    // .catch((error) => console.log(error));
-  };
+      .then((data) => {
+        //console.log(data.result)
+        if(data.result == true){
+          setSaveId(loginId);
+          alert("로그인 성공")
+          console.log(setSaveId)
+          navigation.navigate("MainTabs")
+        }else{
+          alert("다시 로그인해주세요.");
+        }
+
+      });
+  
+};
 
   return (
     <View
@@ -143,7 +151,7 @@ const Login = ({ navigation }) => {
         }}
         // onPress={test2}
 
-        onPress={postTest}
+        onPress={postLogin}
       >
         <Text style={{ fontSize: 18, color: "white" }}>로그인하기</Text>
       </TouchableOpacity>
