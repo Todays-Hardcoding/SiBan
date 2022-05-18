@@ -11,7 +11,7 @@ import DropDownPicker from "react-native-dropdown-picker";
 
 const windowWidth = Dimensions.get("window").width;
 
-const QNA = ({navigation}) => {
+const QNA = () => {
   const [open, setOpen] = useState(false);
 
   const [categoriValue, setCategoriValue] = useState(null);
@@ -25,9 +25,6 @@ const QNA = ({navigation}) => {
     { label: "기타 문의", value: "기타 문의" },
   ]);
 
-  const cancel = () => {
-    navigation.navigate("ServiceCenter", {Screen: "QNAList"})
-  }
   const postBoard = () => {
     const _url = "http://192.168.242.2:8282/insertInquiry.act";
 
@@ -44,10 +41,7 @@ const QNA = ({navigation}) => {
       }),
     })
       .then((response) => response.json())
-      .then((data) => {
-        console.log(data)
-        navigation.navigate("ServiceCenter", {Screen: "QNAList"})
-      });
+      .then((data) => console.log(data));
   };
 
   return (
@@ -84,7 +78,7 @@ const QNA = ({navigation}) => {
 
       {/* button */}
       <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.submit} onPress={cancel}>
+        <TouchableOpacity style={styles.submit}>
           <Text style={styles.buttonText}>취소</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.cancel} onPress={postBoard}>
