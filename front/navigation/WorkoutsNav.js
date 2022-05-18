@@ -91,7 +91,6 @@ const LevelDetail = () => {
       initialRouteName="LEVEL1"
       screenOptions={{
         tabBarLabelStyle: { fontSize: 15, color: "black" },
-
         tabBarStyle: { backgroundColor: "grey" },
       }}
     >

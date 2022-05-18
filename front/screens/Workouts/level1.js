@@ -1,11 +1,10 @@
+import { useRoute } from "@react-navigation/native";
 import React, { useEffect, useState } from "react";
 import { Text, StyleSheet, TouchableOpacity, View } from "react-native";
 import { FlatGrid } from "react-native-super-grid";
 
-const Level1 = (route) => {
-  const { result } = route.parmas;
+const Level1 = () => {
 
-  console.log(result);
   const [exercises, setExercises] = useState([]);
 
   useEffect(() => {
@@ -25,12 +24,12 @@ const Level1 = (route) => {
       setExercises(data)
       });
   }, []);
-
+  
   return (
     <View style={styles.Container}>
       <Text style={styles.headerText}>{exercises.length}개의 운동</Text>
       <FlatGrid
-        itemDimension={170}
+        itemDimension={200}
         data={exercises}
         spacing={20}
         renderItem={({ item }) => (

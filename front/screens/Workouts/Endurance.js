@@ -27,7 +27,7 @@ const Endurance = ({ navigation }) => {
     <View style={styles.Container}>
       <Text style={styles.headerText}>{exercises.length}개의 운동</Text>
       <FlatGrid
-        itemDimension={170}
+        itemDimension={200}
         data={exercises}
         spacing={20}
         renderItem={({ item }) => (
