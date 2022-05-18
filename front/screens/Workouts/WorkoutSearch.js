@@ -7,7 +7,6 @@ const WorkoutSearch = () => {
   const [exercises, setExercises] = useState([]);
   const [result, setResult] = useState([]);
   const [text, setText] = useState("");
-  const [success, setSuccess] = useState(false);
 
   useEffect(() => {
     const _url = "http://112.172.225.17:8282";

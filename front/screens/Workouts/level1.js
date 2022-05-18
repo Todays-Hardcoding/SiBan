@@ -4,33 +4,26 @@ import { Text, StyleSheet, TouchableOpacity, View } from "react-native";
 import { FlatGrid } from "react-native-super-grid";
 
 const Level1 = () => {
-  const { result } = useRoute().params
 
   const [exercises, setExercises] = useState([]);
 
   useEffect(() => {
-    setExercises([...result])
-  }, [])
-
-  // const [exercises, setExercises] = useState([]);
-
-  // useEffect(() => {
-  //   const _url = "http://112.172.225.17:8282";
-  //   fetch(_url + "/Course.act", {
-  //     method: "POST",
-  //       headers: {
-  //         Accept: "application/json",
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify({
-  //         workoutCourse : "초급",
-  //       }),
-  //   })
-  //   .then((response) => response.json())
-  //   .then((data) => {
-  //     setExercises(data)
-  //     });
-  // }, []);
+    const _url = "http://112.172.225.17:8282";
+    fetch(_url + "/Course.act", {
+      method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          workoutCourse : "초급",
+        }),
+    })
+    .then((response) => response.json())
+    .then((data) => {
+      setExercises(data)
+      });
+  }, []);
   
   return (
     <View style={styles.Container}>

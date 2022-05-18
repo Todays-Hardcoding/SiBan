@@ -4,9 +4,7 @@ import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import { FlatGrid } from "react-native-super-grid";
 
 const ForYou = ({ navigation }) => {
-
-  const [exercises, setExercises] = useState([]);
-  const [result, setResult] = useState([]);
+  
   const [courses, setCourses] = useState([
     {
       screen: "Level1",
@@ -25,36 +23,6 @@ const ForYou = ({ navigation }) => {
     },
   ]);
 
-   useEffect(() => {
-    const _url = "http://112.172.225.17:8282";
-    fetch(_url + "/FindAll.act", {
-      method: "GET",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        setExercises(data);
-      });
-  }, []);
-
-  const sendData = (item) => {
-    const newResult = new Array();
-    exercises.map((exercise) => {
-      if (exercise.workoutCourse === item.course) {
-        newResult.push(exercise);
-      }
-    });
-    setResult([...newResult]);
-
-    navigation.navigate("LevelDetail", {
-      screen: item.screen,
-      params: {result : result}
-    })
-  }
-
   return (
     <View style={styles.Container}>
       <FlatGrid
@@ -66,7 +34,9 @@ const ForYou = ({ navigation }) => {
           <TouchableOpacity
             style={[styles.itemContainer, { backgroundColor: "grey" }]}
             onPress={() =>
-              sendData(item)
+              navigation.navigate("LevelDetail", {
+                screen: item.screen,
+              })
             }
           >
             <Text style={styles.itemName}>{item.course}</Text>
