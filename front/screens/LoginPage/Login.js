@@ -1,16 +1,13 @@
 import React, { useState } from "react";
-
 import {
-  Text,
-  View,
-  TextInput,
   StyleSheet,
+  Text,
+  TextInput,
   TouchableOpacity,
+  View,
 } from "react-native";
 
-import NaverButton from "../../components/NaverButton";
-import { NavigationContainer } from "@react-navigation/native";
-//import { State } from 'react-native-gesture-handler';
+const _url = "http://112.172.225.17:8282";
 
 const Login = ({ navigation }) => {
   const [loginId, setLoginId] = useState("");
@@ -36,8 +33,6 @@ const Login = ({ navigation }) => {
       setLoginIdCheck(true);
     }
     setLoginId(text);
-    // console.log(loginIdCheck);
-    // console.log(loginId);
   };
   const setPw = (text) => {
     if (text.trim().length === 0) {
@@ -47,15 +42,11 @@ const Login = ({ navigation }) => {
       setLoginPwCheck(true);
     }
     setLoginPw(text);
-    // console.log(loginPwCheck);
-    // console.log(loginPw);
   };
 
   // 로그인
   const postLogin = () => {
-    const _url = "http://192.168.35.133:8282/login.act";
-
-    fetch(_url, {
+    fetch(_url + "/login.act", {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -69,18 +60,15 @@ const Login = ({ navigation }) => {
       .then((response) => response.json())
       .then((data) => {
         //console.log(data.result)
-        if(data.result == true){
+        if (data.result == true) {
           setSaveId(loginId);
-          alert("로그인 성공")
-          console.log(setSaveId)
-          navigation.navigate("MainTabs")
-        }else{
+          alert("로그인 성공");
+          navigation.navigate("MainTabs");
+        } else {
           alert("다시 로그인해주세요.");
         }
-
       });
-  
-};
+  };
 
   return (
     <View
