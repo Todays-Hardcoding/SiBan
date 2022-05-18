@@ -73,9 +73,7 @@ const Login = ({ navigation }) => {
           setSaveId(loginId);
           alert("로그인 성공")
           console.log(setSaveId)
-          navigation.navigate("LoginPage", {
-            screen: "MYPAGE",
-          })
+          navigation.navigate("MainTabs")
         }else{
           alert("다시 로그인해주세요.");
         }
