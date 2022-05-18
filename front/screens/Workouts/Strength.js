@@ -6,7 +6,7 @@ const Strength = ({ navigation }) => {
   const [exercises, setExercises] = useState([]);
 
   useEffect(() => {
-    const _url = "http://112.172.225.17:8282";
+    const _url = "http://192.168.35.133:8282";
     fetch(_url + "/Goal.act", {
       method: "POST",
       headers: {

@@ -1,14 +1,15 @@
 import React from "react";
 import { FontAwesome } from "@expo/vector-icons";
 import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
-
-const StrengthDetail = ({ route }) => {
+import { NavigationContainer } from "@react-navigation/native";
+const StrengthDetail = ({ route, navigation }) => {
   const { exercise } = route.params;
   
   return (
     <View style={styles.Container}>
       <View style={styles.headerContainer}>
-        <TouchableOpacity>
+        <TouchableOpacity
+        onPress={() => navigation.pop()}>
           <FontAwesome name="arrow-left" size={24} color="black" />
         </TouchableOpacity>
         <TouchableOpacity>
