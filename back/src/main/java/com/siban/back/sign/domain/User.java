@@ -20,10 +20,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@Setter
-@Getter
-@ToString
-@NoArgsConstructor
+
 @Table
 @Entity
 public class User {
@@ -75,5 +72,9 @@ public class User {
 		this.userWeight = userWeight;
 		this.userRegDate = userRegDate;
 	}
+	
+	
+	
+
 
 }

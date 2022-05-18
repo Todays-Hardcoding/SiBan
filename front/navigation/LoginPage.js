@@ -6,7 +6,6 @@ import Register from "../screens/LoginPage/Register";
 import Search from "../screens/LoginPage/Search";
 import MYPAGE from "../screens/MyPage/MyPage";
 
-
 const Stack = createStackNavigator();
 
 const LoginPage = () => {
