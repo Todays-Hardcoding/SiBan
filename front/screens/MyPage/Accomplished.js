@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   StyleSheet,
   Text,
@@ -13,12 +13,10 @@ import routine from "./RoutineRecord.js"
 
 
 
-function Accomplished() {
-  const routineCount =  (item) => {
-    if(routineCount > 2 && item.id == 0){
-      item.gray = "white"
-    }
-  };
+function Accomplished({ route }) {
+  const { routineCount } = route.params;
+
+  console.log(routineCount);
 
   const array = [
     {
@@ -27,7 +25,6 @@ function Accomplished() {
       id: 0,
       src: require("../../assets/trophy/trophy0.png"),
       gray: "gray"
-
     },
     {
       name: "Sample01",
@@ -174,6 +171,17 @@ function Accomplished() {
 
   // const imageList = require(`../../assets/trophy/trophy${data}.png`);
 
+  const routineCountCheck = () => {
+    console.log("배열 가동");
+    for (let i = 0; i < routineCount; i++) {
+      console.log(array[i]);
+      array[i].gray = array[i].code;
+      console.log(array[i]);
+    }
+  };
+  useEffect(() => {
+    routineCountCheck();
+  }, [routineCount]);
 
 
   return (
@@ -197,12 +205,12 @@ function Accomplished() {
           data: array.slice(12, 21),
         },
       ]}
-      
+
       renderItem={({ item }) => (
-   
+
         <TouchableOpacity>
           <View style={[styles.itemContainer, { backgroundColor: item.code }]}>
-            <Image style={styles.itemCode} source={item.src} backgroundColor={routineCount}/>
+            <Image style={styles.itemCode} source={item.src} backgroundColor={item.gray} />
           </View>
         </TouchableOpacity>
       )}
