@@ -35,7 +35,7 @@ const Strength = ({ route, navigation }) => {
             style={[styles.itemContainer, { backgroundColor: "lightgrey" }]}
             onPress={() =>
               navigation.navigate("StrengthNav", {
-                screen: "StrengthDetail",
+                screen: "DetailPage",
                 params: { exercise: item },
               })
             }
