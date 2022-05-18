@@ -33,6 +33,7 @@ const Register = ({ navigation }) => {
   const [heightError, setHeightError] = useState("");
   const [weightError, setWeightError] = useState("");
   //중복검사
+<<<<<<< HEAD
   const [checkIdVal, setCheckIdVal] = useState(true);
 
   const register = () => {
@@ -58,6 +59,12 @@ const Register = ({ navigation }) => {
   };
 
   const onChangeId = (text) => {
+=======
+  const [duplicatedId, setDuplicatedID] = useState(false);
+  const [duplicatedEmail, setDuplicatedEmail] = useState(false);
+
+  const onChangeId = () => {
+>>>>>>> 4320776f8a53872803b34693df8d9b349278e009
     const idRegex = /^[A-Za-z]{1}[A-Za-z0-9_-]{3,19}$/;
     if (idRegex.test(id) === false) {
       setIdCheck(false);
@@ -65,7 +72,10 @@ const Register = ({ navigation }) => {
     } else {
       setIdCheck(true);
     }
+<<<<<<< HEAD
     setId(text);
+=======
+>>>>>>> 4320776f8a53872803b34693df8d9b349278e009
   };
   const onChangePw = () => {
     const pwRegex = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,25}$/;
@@ -75,7 +85,10 @@ const Register = ({ navigation }) => {
     } else {
       setPwCheck(true);
     }
+<<<<<<< HEAD
     setPw(text);
+=======
+>>>>>>> 4320776f8a53872803b34693df8d9b349278e009
   };
 
   const onChangePw2 = () => {
@@ -85,19 +98,29 @@ const Register = ({ navigation }) => {
     } else {
       setPwConfirmCheck(true);
     }
+<<<<<<< HEAD
     setPwConfirm(text);
+=======
+>>>>>>> 4320776f8a53872803b34693df8d9b349278e009
   };
 
   const onChangeEmail = () => {
     const emailRegex =
       /^[0-9?A-z0-9?]+(\.)?[0-9?A-z0-9?]+@[0-9?A-z]+\.[A-z]{2}.?[A-z]{0,3}$/;
+<<<<<<< HEAD
     if (!emailRegex.test(text)) {
+=======
+    if (!emailRegex.test(email)) {
+>>>>>>> 4320776f8a53872803b34693df8d9b349278e009
       setEmailError("이메일형식에 맞게 다시 입력해주세요");
       setEmailCheck(false);
     } else {
       setEmailCheck(true);
     }
+<<<<<<< HEAD
     setEmail(text);
+=======
+>>>>>>> 4320776f8a53872803b34693df8d9b349278e009
   };
   const onChangeName = () => {
     if (name.trim().length === 0) {
@@ -106,7 +129,10 @@ const Register = ({ navigation }) => {
     } else {
       setNameCheck(true);
     }
+<<<<<<< HEAD
     setName(text);
+=======
+>>>>>>> 4320776f8a53872803b34693df8d9b349278e009
   };
   const onChangeTel = () => {
     const telRegex = /^[0-9]{8,13}$/;
@@ -116,7 +142,10 @@ const Register = ({ navigation }) => {
     } else {
       setTelCheck(true);
     }
+<<<<<<< HEAD
     setTel(text);
+=======
+>>>>>>> 4320776f8a53872803b34693df8d9b349278e009
   };
   const onChangeWeight = () => {
     const weightRegex = /^[0-9].{0,2}$/;
@@ -137,11 +166,29 @@ const Register = ({ navigation }) => {
     }
   };
   // 회원가입에 간한 함수
+<<<<<<< HEAD
   const postRegister = () => {
     const _url = "http://192.168.35.133:8282/register.act";
     if (!checkIdVal) {
       alert("아이디 중복확인을 해주세요.");
     } else {
+=======
+  const postRegister = (e) => {
+    const _url = "http://112.172.225.17:8282/register.act";
+
+    if (
+      idCheck === true &&
+      pwCheck === true &&
+      pwConfirmCheck === true &&
+      emailCheck === true &&
+      nameCheck === true &&
+      telCheck === true &&
+      heightCheck === true &&
+      weightCheck === true &&
+      duplicatedId === true &&
+      duplicatedEmail === true
+    ) {
+>>>>>>> 4320776f8a53872803b34693df8d9b349278e009
       fetch(_url, {
         method: "POST",
         headers: {
@@ -164,11 +211,58 @@ const Register = ({ navigation }) => {
             screen: "LoginHome",
           });
         });
+<<<<<<< HEAD
+=======
+    } else {
+      onChangeId();
+      onChangePw();
+      onChangeEmail();
+      onChangeName();
+      onChangeTel();
+      onChangeHeight();
+      onChangeWeight();
+      alert("모두 입력해 주세요.");
+      return false;
+>>>>>>> 4320776f8a53872803b34693df8d9b349278e009
     }
   };
   // 아이디 중복체크에 관한 함수
   const checkId = () => {
+<<<<<<< HEAD
     const _url = "http://192.168.45.96:8282/checkId.act";
+=======
+    const _url = "http://112.172.225.17:8282/checkId.act";
+
+    const idRegex = /^[A-Za-z]{1}[A-Za-z0-9_-]{3,19}$/;
+    if (idRegex.test(id) === false) {
+      alert("4자리 이상 영문자로 시작하는 아이디를 입력해주세요.");
+    } else {
+      fetch(_url, {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          id: id,
+        }),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.checkId === true) {
+            alert("사용 불가능아이디");
+          } else {
+            alert("사용 가능");
+            setDuplicatedID(true);
+          }
+        });
+    }
+  };
+
+  // 이메일 중복체크에 관한 함수
+  const checkEmail = () => {
+    const _url = "http://192.168.0.6:8282/checkEmail.act";
+>>>>>>> 4320776f8a53872803b34693df8d9b349278e009
     fetch(_url, {
       method: "POST",
       headers: {
@@ -181,7 +275,21 @@ const Register = ({ navigation }) => {
     })
       .then((response) => response.json())
       .then((data) => {
+<<<<<<< HEAD
         console.log(data);
+=======
+        console.log(data.checkId);
+
+        if (data.checkEmail === true) {
+          alert("사용 불가능한 Email");
+        } else {
+          if (data.checkId == false) {
+            alert("사용불가능아이디");
+          } else {
+            alert("사용가능");
+          }
+        }
+>>>>>>> 4320776f8a53872803b34693df8d9b349278e009
       });
   };
 
