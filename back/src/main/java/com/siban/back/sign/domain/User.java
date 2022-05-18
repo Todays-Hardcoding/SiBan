@@ -1,6 +1,7 @@
 package com.siban.back.sign.domain;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -20,7 +21,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-
+@Getter
+@ToString
+@NoArgsConstructor
 @Table
 @Entity
 public class User {

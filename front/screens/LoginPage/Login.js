@@ -49,7 +49,7 @@ const Login = ({ navigation }) => {
 
  // 로그인
  const postLogin = () => {
-  const _url = "http://192.168.35.133:8282/login.act";
+  const _url = "http://112.172.225.17:8282/login.act";
 
     fetch(_url, {
       method: "POST",

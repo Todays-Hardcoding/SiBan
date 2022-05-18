@@ -7,7 +7,7 @@ import MainTabs from "./navigation/MainTabs";
 const Stack = createStackNavigator();
 
 export default function App() {
-  const [isLogin, setIsLogin] = useState(true);
+  const [isLogin, setIsLogin] = useState(false);
 
   return !isLogin ? (
     <NavigationContainer>
