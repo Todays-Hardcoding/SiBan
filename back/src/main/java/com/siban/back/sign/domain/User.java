@@ -10,17 +10,18 @@ import javax.persistence.Id;
 import javax.persistence.PrePersist;
 
 import javax.persistence.Table;
-
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 
-
+@Getter
+@Setter
+@NoArgsConstructor
 @Table
 @Entity
 public class User {
