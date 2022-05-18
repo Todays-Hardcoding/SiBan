@@ -21,9 +21,12 @@ function onPressBtn() {
   alert("버튼이당");
 }
 
+const basePhoto =
+  "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-1.2.1&raw_url=true&q=80&fm=jpg&crop=entropy&cs=tinysrgb&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687";
+
 const ChangePhoto = ({ navigation, onPress }) => {
   // The path of the picked image
-  const [pickedImagePath, setPickedImagePath] = useState("");
+  const [pickedImagePath, setPickedImagePath] = useState(basePhoto);
 
   // This function is triggered when the "Select an image" button pressed
   const showImagePicker = async () => {
@@ -66,6 +69,9 @@ const ChangePhoto = ({ navigation, onPress }) => {
 
   return (
     <View style={styles.screen}>
+      <View style={styles.imageContainer}>
+        <Image source={{ uri: pickedImagePath }} style={styles.image} />
+      </View>
       <View style={styles.buttonContainer}>
         <Button
           style={styles.buttons}
@@ -76,14 +82,6 @@ const ChangePhoto = ({ navigation, onPress }) => {
           style={styles.buttons}
           onPress={openCamera}
           title="Open camera"
-        />
-      </View>
-
-      <View style={styles.imageContainer}>
-        <Image source={{ uri: pickedImagePath }} style={styles.image} />
-        <Image
-          source={require("../../assets/profile.png")}
-          style={styles.image}
         />
       </View>
     </View>
@@ -104,14 +102,15 @@ const styles = StyleSheet.create({
     justifyContent: "space-around",
   },
   buttons: {
-    backgroundColor: "#6072e2",
+    color: "black",
   },
   imageContainer: {
     padding: 30,
   },
   image: {
-    width: 200,
-    height: 200,
+    width: 300,
+    height: 300,
+    borderRadius: 20,
     resizeMode: "cover",
   },
 });
