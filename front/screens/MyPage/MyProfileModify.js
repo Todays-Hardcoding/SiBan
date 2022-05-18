@@ -22,7 +22,7 @@ const MyProfileModify = () => {
   const userId = "TTAA";
 
   const onScreenLoad = () => {
-    const startUrl = "http://192.168.35.107:8282/showUserInfo.act";
+    const startUrl = "http://192.168.45.96:8282/showUserInfo.act";
 
     fetch(startUrl, {
       method: "POST",
@@ -50,8 +50,8 @@ const MyProfileModify = () => {
     onScreenLoad();
   }, []);
 
-  const profileTest = (navigation ) => {
-    const url = "http://192.168.35.107:8282/updateUserInfo.act";
+  const profileTest = (navigation) => {
+    const url = "http://192.168.45.96:8282/updateUserInfo.act";
 
     fetch(url, {
       method: "POST",
@@ -128,13 +128,13 @@ const MyProfileModify = () => {
       </View>
       <View style={styles.buttonCase}>
         <View style={styles.buttonPart}>
-        <TouchableOpacity onPress={profileTest} style={styles.defaultButton}>
-          <Text style={styles.userProfileText}>저장</Text>
-        </TouchableOpacity>
+          <TouchableOpacity onPress={profileTest} style={styles.defaultButton}>
+            <Text style={styles.userProfileText}>저장</Text>
+          </TouchableOpacity>
 
-        <TouchableOpacity onPress={onPressBtn} style={styles.defaultButton}>
-          <Text style={styles.userProfileText}>뒤로</Text>
-        </TouchableOpacity>
+          <TouchableOpacity onPress={onPressBtn} style={styles.defaultButton}>
+            <Text style={styles.userProfileText}>뒤로</Text>
+          </TouchableOpacity>
         </View>
       </View>
     </View>
@@ -174,9 +174,9 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
     paddingTop: 10,
   },
-  buttonCase:{
+  buttonCase: {
     flex: 1,
-    alignItems: "flex-end"
+    alignItems: "flex-end",
   },
   buttonPart: {
     flex: 1,

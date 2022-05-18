@@ -65,4 +65,19 @@ public class UserController {
 		return user;
 	
 	}
+	
+	@PostMapping("/updateUserImage.act")
+	public User profileImage(@RequestBody Map<String, String> param) {
+		
+		User user = userService.findByUserId(param.get("userId"));
+		
+		
+		String userProfile = param.get("userProfile");
+		
+		user.setUserProfile(userProfile);
+		
+		userService.updateUser(user);
+		
+		return user;
+	}
 }

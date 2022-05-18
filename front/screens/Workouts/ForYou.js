@@ -4,8 +4,6 @@ import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import { FlatGrid } from "react-native-super-grid";
 
 const ForYou = ({ navigation }) => {
-  const _url = "http://192.168.45.96:8282/";
-
   const [courses, setCourses] = useState([
     {
       screen: "Level1",
@@ -24,44 +22,6 @@ const ForYou = ({ navigation }) => {
     },
   ]);
 
-  const [data, setData] = useState({});
-  const [newData, setNewData] = useState({});
-
-  useEffect(() => {
-    fetch(_url + "test.act", {
-      method: "GET",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        setData(data);
-
-        console.log(data);
-      });
-  }, []);
-
-  const sendData = (item) => {
-    Object.keys(data).map((key) => {
-      if (data[key].workoutCourse == item.course) {
-        console.log(key);
-        console.log("================");
-        console.log(item.course);
-        console.log("================");
-        console.log(data[key].workoutCourse);
-        setNewData({ ...newData, [key]: data[key] });
-      }
-    });
-
-    // setNewData({...newData, [key]: data[key]})
-    navigation.navigate("LevelDetail", {
-      screen: item.screen,
-      params: newData,
-    });
-  };
-
   return (
     <View style={styles.Container}>
       <FlatGrid
@@ -72,7 +32,11 @@ const ForYou = ({ navigation }) => {
         renderItem={({ item }) => (
           <TouchableOpacity
             style={[styles.itemContainer, { backgroundColor: "grey" }]}
-            onPress={() => sendData(item)}
+            onPress={() =>
+              navigation.navigate("LevelDetail", {
+                screen: item.screen,
+              })
+            }
           >
             <Text style={styles.itemName}>{item.course}</Text>
             <Text style={styles.itemExplane}>{item.explane}</Text>
@@ -86,12 +50,7 @@ const ForYou = ({ navigation }) => {
 const styles = StyleSheet.create({
   Container: {
     flex: 1,
-  },
-  inputContainer: {
-    padding: 10,
-    margin: 20,
-    backgroundColor: "lightgrey",
-    borderRadius: 20,
+    paddingTop: 40,
   },
   itemContainer: {
     justifyContent: "flex-end",

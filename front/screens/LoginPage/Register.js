@@ -1,10 +1,7 @@
 import React, { useState } from "react";
-import { Text, View, TextInput, StyleSheet } from "react-native";
-
-import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
-import RegisterButton from "../../components/RegisterButton";
-import CancelButton from "../../components/CancelButton";
+import { StyleSheet, Text, TextInput, View } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
 const Register = ({ navigation }) => {
   //아이디,비번,이메일,전화번호
@@ -36,117 +33,98 @@ const Register = ({ navigation }) => {
   const [heightError, setHeightError] = useState("");
   const [weightError, setWeightError] = useState("");
   //중복검사
-  const [checkIdVal, setCheckIdVal] = useState(true);
+  const [duplicatedId, setDuplicatedID] = useState(false);
+  const [duplicatedEmail, setDuplicatedEmail] = useState(false);
 
-  const register = () => {
-    const _url = "http://192.168.45.96:8282/register.act";
-
-    fetch(_url, {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        id,
-        pw,
-        pwConfirm,
-        email,
-        name,
-        tel,
-        height,
-        weight,
-      }),
-    }).then((response) => response.json());
-  };
-
-  const onChangeId = (text) => {
+  const onChangeId = () => {
     const idRegex = /^[A-Za-z]{1}[A-Za-z0-9_-]{3,19}$/;
-    if (!idRegex.test(text)) {
+    if (idRegex.test(id) === false) {
       setIdCheck(false);
       setIdError("4자리 이상 영문자로 시작하는 아이디를 입력해주세요.");
     } else {
       setIdCheck(true);
     }
-    setId(text);
   };
-  const onChangePw = (text) => {
+  const onChangePw = () => {
     const pwRegex = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,25}$/;
-    if (!pwRegex.test(text)) {
+    if (pwRegex.test(pw) === false) {
       setPwCheck(false);
       setPwError("숫자+영문자+특수문자 조합으로 8자리 이상 입력해주세요");
     } else {
       setPwCheck(true);
     }
-    setPw(text);
   };
 
-  const onChangePw2 = (text) => {
-    if (text !== pw) {
+  const onChangePw2 = () => {
+    if (pwConfirm !== pw) {
       setPwConfirmCheck(false);
       setPwConfirmError("비밀번호를 다시 확인해주세요.");
     } else {
       setPwConfirmCheck(true);
     }
-    setPwConfirm(text);
   };
 
-  const onChangeEmail = (text) => {
+  const onChangeEmail = () => {
     const emailRegex =
       /^[0-9?A-z0-9?]+(\.)?[0-9?A-z0-9?]+@[0-9?A-z]+\.[A-z]{2}.?[A-z]{0,3}$/;
-    if (!emailRegex.test(text)) {
+    if (!emailRegex.test(email)) {
       setEmailError("이메일형식에 맞게 다시 입력해주세요");
       setEmailCheck(false);
     } else {
       setEmailCheck(true);
     }
-    setEmail(text);
   };
-  const onChangeName = (text) => {
-    if (text.trim().length === 0) {
+  const onChangeName = () => {
+    if (name.trim().length === 0) {
       setNameCheck(false);
       setNameError("이름을 다시 입력해주세요");
     } else {
       setNameCheck(true);
     }
-    setName(text);
   };
-  const onChangeTel = (text) => {
+  const onChangeTel = () => {
     const telRegex = /^[0-9]{8,13}$/;
-    if (!telRegex.test(text)) {
+    if (!telRegex.test(tel)) {
       setTelCheck(false);
       setTelError("(-)를 제외한 전화번호을 다시 입력해주세요");
     } else {
       setTelCheck(true);
     }
-    setTel(text);
   };
-  const onChangeWeight = (text) => {
+  const onChangeWeight = () => {
     const weightRegex = /^[0-9].{0,2}$/;
-    if (!weightRegex.test(text)) {
+    if (!weightRegex.test(weight)) {
       setWeightCheck(false);
       setWeightError("몸무게를 다시 입력해주세요");
     } else {
       setWeightCheck(true);
     }
-    setWeight(text);
   };
-  const onChangeHeight = (text) => {
+  const onChangeHeight = () => {
     const heightRegex = /^[0-9].{0,2}$/;
-    if (!heightRegex.test(text)) {
+    if (!heightRegex.test(height)) {
       setHeightCheck(false);
       setHeightError("키를 다시 입력해주세요.");
     } else {
       setHeightCheck(true);
     }
-    setHeight(text);
   };
   // 회원가입에 간한 함수
-  const postRegister = () => {
+  const postRegister = (e) => {
     const _url = "http://192.168.35.133:8282/register.act";
-    if (!checkIdVal) {
-      alert("아이디 중복확인을 해주세요.");
-    } else {
+
+    if (
+      idCheck === true &&
+      pwCheck === true &&
+      pwConfirmCheck === true &&
+      emailCheck === true &&
+      nameCheck === true &&
+      telCheck === true &&
+      heightCheck === true &&
+      weightCheck === true &&
+      duplicatedId === true &&
+      duplicatedEmail === true
+    ) {
       fetch(_url, {
         method: "POST",
         headers: {
@@ -169,25 +147,78 @@ const Register = ({ navigation }) => {
             screen: "LoginHome",
           });
         });
+    } else {
+      onChangeId();
+      onChangePw();
+      onChangeEmail();
+      onChangeName();
+      onChangeTel();
+      onChangeHeight();
+      onChangeWeight();
+      alert("모두 입력해 주세요.");
+      return false;
     }
   };
   // 아이디 중복체크에 관한 함수
   const checkId = () => {
-    const _url = "http://192.168.45.96:8282/checkId.act";
-    fetch(_url, {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        id,
-      }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-      });
+    const _url = "http://192.168.35.133:8282/checkId.act";
+
+    const idRegex = /^[A-Za-z]{1}[A-Za-z0-9_-]{3,19}$/;
+    if (idRegex.test(id) === false) {
+      alert("4자리 이상 영문자로 시작하는 아이디를 입력해주세요.");
+    } else {
+      fetch(_url, {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          id: id,
+        }),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.checkId === true) {
+            alert("사용 불가능아이디");
+          } else {
+            alert("사용 가능");
+            setDuplicatedID(true);
+          }
+        });
+    }
+  };
+
+  // 이메일 중복체크에 관한 함수
+  const checkEmail = () => {
+    const _url = "http://112.172.225.17:8282/checkEmail.act";
+    const emailRegex =
+      /^[0-9?A-z0-9?]+(\.)?[0-9?A-z0-9?]+@[0-9?A-z]+\.[A-z]{2}.?[A-z]{0,3}$/;
+    if (!emailRegex.test(email)) {
+      alert("이메일형식에 맞게 다시 입력해주세요");
+    } else {
+      fetch(_url, {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: email,
+        }),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data.checkEmail);
+
+          if (data.checkEmail === true) {
+            alert("사용 불가능한 Email");
+          } else {
+            alert("사용 가능");
+            setDuplicatedEmail(true);
+          }
+        });
+    }
   };
 
   return (
@@ -220,7 +251,7 @@ const Register = ({ navigation }) => {
         >
           <Text
             style={{
-              fontSize: 40,
+              fontSize: 30,
               fontWeight: "bold",
               marginTop: 40,
               justifyContent: "center",
@@ -239,7 +270,6 @@ const Register = ({ navigation }) => {
             {"\n"}멤버가 되어 시반이 제공하는 {"\n"}
             최고의 제품과 혜택을 만나보세요 {"\n"}{" "}
           </Text>
-          <Text></Text>
           <View
             style={{
               flexDirection: "row",
@@ -250,7 +280,8 @@ const Register = ({ navigation }) => {
             <TextInput
               style={styles.inputId}
               value={id}
-              onChangeText={(text) => onChangeId(text)}
+              onChangeText={(text) => setId(text)}
+              onEndEditing={() => onChangeId()}
               returnKeyType="next"
               // autoFocus={true}
               placeholder="아이디를 입력해주세요."
@@ -258,39 +289,44 @@ const Register = ({ navigation }) => {
             {/* 아이디 중복확인 버튼 */}
             <TouchableOpacity
               style={{
-                backgroundColor: "#778beb",
-                padding: 10,
-                margin: 10,
+                backgroundColor: "gray",
+                padding: 5,
+                margin: 5,
                 borderRadius: 10,
-                width: 100,
+                width: 60,
                 alignItems: "center",
               }}
               onPress={checkId}
             >
-              <Text style={{ fontSize: 18, color: "white" }}>중복확인</Text>
+              <Text style={{ fontSize: 13, color: "white" }}>중복확인</Text>
             </TouchableOpacity>
           </View>
           {!idCheck && <Text style={{ color: "red" }}>{idError}</Text>}
+
           <TextInput
             style={styles.input}
             value={pw}
             returnKeyType="next"
-            onChangeText={(text) => onChangePw(text)}
+            onChangeText={(text) => setPw(text)}
+            onEndEditing={() => onChangePw()}
             secureTextEntry={true}
             placeholder={"비밀번호를 입력해주세요"}
           />
           {!pwCheck && <Text style={{ color: "red" }}>{pwError}</Text>}
+
           <TextInput
             style={styles.input}
             value={pwConfirm}
             returnKeyType="next"
-            onChangeText={(text) => onChangePw2(text)}
+            onChangeText={(text) => setPwConfirm(text)}
+            onEndEditing={() => onChangePw2()}
             secureTextEntry={true}
             placeholder={"비밀번호를 다시 입력해주세요"}
           />
           {!pwConfirmCheck && (
             <Text style={{ color: "red" }}>{pwConfirmError}</Text>
           )}
+
           <View
             style={{
               flexDirection: "row",
@@ -302,57 +338,67 @@ const Register = ({ navigation }) => {
               style={styles.inputId}
               value={email}
               returnKeyType="next"
-              onChangeText={(text) => onChangeEmail(text)}
+              onChangeText={(text) => setEmail(text)}
+              onEndEditing={() => onChangeEmail()}
               placeholder={"이메일을 입력해주세요."}
             />
             {/* 이메일 중복확인 버튼 */}
             <TouchableOpacity
               style={{
-                backgroundColor: "#778beb",
-                padding: 10,
-                margin: 10,
+                backgroundColor: "gray",
+                padding: 5,
+                margin: 5,
                 borderRadius: 10,
-                width: 100,
+                width: 60,
                 alignItems: "center",
               }}
-              onPress={() => {}}
+              onPress={checkEmail}
             >
-              <Text style={{ fontSize: 18, color: "white" }}>중복확인</Text>
+              <Text style={{ fontSize: 13, color: "white" }}>중복확인</Text>
             </TouchableOpacity>
           </View>
           {!emailCheck && <Text style={{ color: "red" }}>{emailError}</Text>}
+
           <TextInput
             style={styles.input}
             value={name}
             returnKeyType="next"
-            onChangeText={(text) => onChangeName(text)}
+            onChangeText={(text) => setName(text)}
+            onEndEditing={() => onChangeName()}
             placeholder={"이름을 입력해주세요."}
           />
           {!nameCheck && <Text style={{ color: "red" }}>{nameError}</Text>}
           <TextInput
             style={styles.input}
             value={tel}
-            onChangeText={(text) => onChangeTel(text)}
+            onChangeText={(text) => setTel(text)}
+            onEndEditing={() => onChangeTel()}
             placeholder={"휴대폰번호를 입력해주세요."}
             returnKeyType="next"
           />
           {!telCheck && <Text style={{ color: "red" }}>{telError}</Text>}
+
           <TextInput
             style={styles.input}
             value={height}
             returnKeyType="next"
-            onChangeText={(text) => onChangeHeight(text)}
+            onChangeText={(text) => setHeight(text)}
+            onEndEditing={() => onChangeHeight()}
             placeholder={"키를 입력해주세요."}
           />
+
           {!heightCheck && <Text style={{ color: "red" }}>{heightError}</Text>}
+
           <TextInput
             style={styles.input}
             value={weight}
             returnKeyType="next"
-            onChangeText={(text) => onChangeWeight(text)}
+            onChangeText={(text) => setWeight(text)}
+            onEndEditing={() => onChangeWeight()}
             placeholder={"몸무게를 입력해주세요."}
           />
           {!weightCheck && <Text style={{ color: "red" }}>{weightError}</Text>}
+
           <View style={styles.BtnBox}>
             {/* 가입버튼 */}
             <TouchableOpacity
@@ -364,13 +410,13 @@ const Register = ({ navigation }) => {
                 width: 100,
                 alignItems: "center",
               }}
-              onPress={postRegister}
+              onPress={(event) => postRegister(event)}
             >
-              <Text style={{ fontSize: 18, color: "white" }}>가입</Text>
+              <Text style={{ fontSize: 15, color: "white" }}>register</Text>
             </TouchableOpacity>
             <TouchableOpacity
               style={{
-                backgroundColor: "#c44569",
+                backgroundColor: "gray",
                 padding: 10,
                 margin: 10,
                 borderRadius: 10,
@@ -383,7 +429,7 @@ const Register = ({ navigation }) => {
                 })
               }
             >
-              <Text style={{ fontSize: 18, color: "white" }}>취소</Text>
+              <Text style={{ fontSize: 15, color: "white" }}>cancel</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -415,7 +461,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     borderWidth: 1,
     marginVertical: 5,
-    width: "50%",
+    width: "62%",
   },
   idCheckBtn: {},
   BtnBox: {

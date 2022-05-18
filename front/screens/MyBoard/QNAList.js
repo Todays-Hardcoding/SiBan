@@ -11,87 +11,83 @@ import {
   TextInput,
   ImageBackground,
 } from "react-native";
+import { FlatGrid } from "react-native-super-grid";
+import { useIsFocused } from "@react-navigation/native";
 
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 
-// 내질문, 날짜 예시
-const data = [
-  {
-    name: "내 1:1 질문 10",
-    date: "22-02-05",
-  },
-  {
-    name: "내 1:1 질문 9",
-    date: "22-02-05",
-  },
-  {
-    name: "내 1:1 질문 8",
-    date: "22-02-05",
-  },
-  {
-    name: "내 1:1 질문 7",
-    date: "22-02-05",
-  },
-  {
-    name: "내 1:1 질문 6",
-    date: "22-02-05",
-  },
-  {
-    name: "내 1:1 질문 5",
-    date: "22-02-05",
-  },
-  {
-    name: "내 1:1 질문 4",
-    date: "22-02-04",
-  },
-  {
-    name: "내 1:1 질문 3",
-    date: "22-02-03",
-  },
-  {
-    name: "내 1:1 질문 2",
-    date: "22-02-02",
-  },
-  {
-    name: "내 1:1 질문 1",
-    date: "22-02-01",
-  },
-];
+const QNAList = ({ navigation }) => {
+  const isFocused = useIsFocused();
 
-const QNAList = () => {
+  const [inquiry, setInquiry] = useState([]);
+
+  useEffect(() => {
+    const _url = "http://192.168.45.96:8282/selectInquiry.act";
+    fetch(_url, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        setInquiry(data);
+      });
+  }, [isFocused]);
+
   return (
     <SafeAreaView style={styles.container}>
       <ImageBackground
-        source={require("../../assets/images/qnaBackground.jpg")}
+        source={require("../../assets/images/moonhi3.jpg")}
         style={styles.image}
       >
-        <Text style={styles.text}>나의 1:1질문 목록</Text>
+        <Text style={styles.moonhiText}>문희사항</Text>
       </ImageBackground>
-      <ScrollView style={styles.itemContainer}>
+      <ScrollView>
         <View>
-          {data.map((item, index) => (
-            <View
+          {inquiry.map((item, index) => (
+            <TouchableOpacity
               key={index}
+              onPress={() => {
+                navigation.navigate("ServiceCenter", { Screen: "QNAList" });
+              }}
               style={[
                 styles.item,
                 index === 0 && { borderTopWidth: 0 }, // CSS: first-child
                 index % 2 === 1 && { backgroundColor: "#EAEAEA" }, // CSS: nth-child(even)
               ]}
             >
-              <Text>{item.name}</Text>
-              <Text>{item.date}</Text>
-            </View>
+              <Text style={styles.contentText}>
+                {item.postCategory} {item.postTitle}
+              </Text>
+              <Text style={[styles.contentText, { textAlign: "right" }]}>
+                {item.postRegDate}
+              </Text>
+            </TouchableOpacity>
           ))}
         </View>
       </ScrollView>
+
       <View style={styles.searchContainer}>
         <TextInput
           style={styles.searchInput}
           placeholder="검색어를 입력해주세요"
         ></TextInput>
+
         <TouchableOpacity style={styles.searchButton}>
-          <Text>검색</Text>
+          <Text style={styles.buttonText}>검색</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate("QNANav", { Screen: "QNA" });
+          }}
+          style={styles.writeButton}
+        >
+          <Text style={styles.buttonText}>글작성</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>
@@ -102,9 +98,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  itemContainer: {
-    //flex: 1,
-  },
   image: {
     width: windowWidth,
     height: windowHeight * 0.2,
@@ -112,10 +105,14 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     opacity: 0.9,
   },
-  text: {
-    fontSize: 20,
-    color: "white",
-    fontWeight: "bold",
+  writeButton: {
+    backgroundColor: "#F2C9E1",
+    borderRadius: 8,
+    height: 40,
+    alignItems: "center",
+    justifyContent: "center",
+    width: windowWidth * 0.15,
+    marginLeft: 10,
   },
   item: {
     flexDirection: "row",
@@ -135,21 +132,37 @@ const styles = StyleSheet.create({
   },
   searchInput: {
     borderWidth: 1,
-    width: windowWidth * 0.7,
+    width: windowWidth * 0.55,
     height: 40,
     padding: 10,
     borderRadius: 5,
     marginRight: 13,
     marginLeft: 8,
   },
+  buttonText: {
+    fontWeight: "bold",
+  },
   searchButton: {
-    backgroundColor: "#C0D8C0",
+    backgroundColor: "#B1BCE6",
     borderRadius: 8,
     height: 40,
     alignItems: "center",
     justifyContent: "center",
     width: windowWidth * 0.15,
     marginLeft: 10,
+  },
+  contentContainer: {
+    flexDirection: "row",
+  },
+  contentText: {
+    fontWeight: "bold",
+  },
+  moonhiText: {
+    fontWeight: "bold",
+    color: "#ffffff",
+    fontSize: 20,
+    marginTop: 100,
+    marginLeft: 50,
   },
 });
 

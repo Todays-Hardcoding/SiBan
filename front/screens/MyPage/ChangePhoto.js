@@ -26,7 +26,8 @@ const basePhoto =
 
 const ChangePhoto = ({ navigation, onPress }) => {
   // The path of the picked image
-  const [pickedImagePath, setPickedImagePath] = useState(basePhoto);
+  const [userProfile, setuserProfile] = useState(basePhoto);
+  const userId = "TTAA";
 
   // This function is triggered when the "Select an image" button pressed
   const showImagePicker = async () => {
@@ -42,8 +43,9 @@ const ChangePhoto = ({ navigation, onPress }) => {
     const result = await ImagePicker.launchImageLibraryAsync();
 
     if (!result.cancelled) {
-      setPickedImagePath(result.uri);
-      console.log(result.uri);
+      setuserProfile(result.uri);
+      profileTest(result.uri);
+      // console.log(result.uri);
     }
   };
 
@@ -63,23 +65,42 @@ const ChangePhoto = ({ navigation, onPress }) => {
 
     if (!result.cancelled) {
       setPickedImagePath(result.uri);
-      console.log(result.uri);
     }
+  };
+  const profileTest = (navigation) => {
+    const url = "http://192.168.45.96:8282/updateUserImage.act";
+
+    fetch(url, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        userId,
+        userProfile,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => console.log(data))
+      .catch((error) => console.log(error));
   };
 
   return (
     <View style={styles.screen}>
       <View style={styles.imageContainer}>
-        <Image source={{ uri: pickedImagePath }} style={styles.image} />
+        <Image source={{ uri: userProfile }} style={styles.image} />
       </View>
       <View style={styles.buttonContainer}>
         <Button
           style={styles.buttons}
+          color={""}
           onPress={showImagePicker}
           title="Select an image"
         />
         <Button
           style={styles.buttons}
+          color={""}
           onPress={openCamera}
           title="Open camera"
         />

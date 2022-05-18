@@ -12,7 +12,6 @@ import Accomplished from "../screens/MyPage/Accomplished";
 import MyProfile from "../screens/MyPage/MyProfile";
 
 import MealPlanHome from "../screens/MyPage/MealPlan/MealPlanHome";
-import MealPlanWrite from "../screens/MyPage/MealPlan/MealPlanWrite";
 
 import MyProfileModify from "../screens/MyPage/MyProfileModify";
 
@@ -69,18 +68,10 @@ const ActivityNav = ({ route }) => {
 
 const MealPlanNav = () => {
   return (
-    <Stack.Navigator
-      initialRouteName="MealPlanHome"
-      screenOptions={{ presentation: "modal" }}
-    >
+    <Stack.Navigator initialRouteName="MealPlanHome">
       <Stack.Screen
         name="MealPlanHome"
         component={MealPlanHome}
-        options={{ headerShown: false }}
-      />
-      <Stack.Screen
-        name="MealPlanWrite"
-        component={MealPlanWrite}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>

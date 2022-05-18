@@ -1,6 +1,8 @@
 package com.siban.back.board.domain;
 
 import java.time.LocalDateTime;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -43,7 +45,7 @@ public class Post {
 	private String postContent;
 	
 	@Column
-	private LocalDateTime postRegDate;
+	private String postRegDate;
 	
 	@Column
 	private int postViews;
@@ -51,8 +53,11 @@ public class Post {
 	@PrePersist
 	@PreUpdate
 	public void createDate() {
-		this.postRegDate = LocalDateTime.now();
 		this.postViews = 0;
+	    Date today = new Date();
+
+	    SimpleDateFormat date = new SimpleDateFormat("yyyy/MM/dd");
+	    postRegDate = date.format(today);
 	}
 
 }
