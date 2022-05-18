@@ -1,5 +1,7 @@
 package com.siban.back.board.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,4 +17,9 @@ public class PostService {
 	public Post insertInquiry(Post post) {
 		return postRepository.save(post);
 	}
+	
+	public List<Post> selectInquiry() {
+		return postRepository.findAll();
+	}
+	
 }

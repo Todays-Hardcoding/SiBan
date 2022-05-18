@@ -1,7 +1,6 @@
 package com.siban.back.workout.service;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,7 +18,12 @@ public class WorkoutService {
 		return workoutRepository.findAll();
 	}
 	
-	public Workout selectOne(long id) {
-		return workoutRepository.getById(id);
+	public List<Workout> findByWorkoutCourse(String workoutCourse) {
+		return workoutRepository.findByWorkoutCourse(workoutCourse);
 	}
+	
+	public List<Workout> findByWorkoutGoal(String workoutGoal) {
+		return workoutRepository.findByWorkoutGoal(workoutGoal);
+	}
+	
 }

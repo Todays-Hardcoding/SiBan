@@ -1,21 +1,22 @@
 import React, { useEffect, useState } from "react";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { StyleSheet, View, Text } from "react-native";
+import { TextInput, TouchableOpacity } from "react-native-gesture-handler";
 import { FlatGrid } from "react-native-super-grid";
 
 const _url = "http://112.172.225.17:8282";
-const Mobility = ({ navigation }) => {
+
+const WorkoutSearch = ({ navigation }) => {
   const [exercises, setExercises] = useState([]);
+  const [result, setResult] = useState([]);
+  const [text, setText] = useState("");
 
   useEffect(() => {
-    fetch(_url + "/Goal.act", {
-      method: "POST",
+    fetch(_url + "/FindAll.act", {
+      method: "GET",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        workoutGoal: "활동성",
-      }),
     })
       .then((response) => response.json())
       .then((data) => {
@@ -23,12 +24,29 @@ const Mobility = ({ navigation }) => {
       });
   }, []);
 
+  const search = () => {
+    const newResult = new Array();
+    exercises.map((exercise) => {
+      if (exercise.workoutName.includes(text)) {
+        newResult.push(exercise);
+      }
+    });
+    setResult([...newResult]);
+  };
+
   return (
     <View style={styles.Container}>
-      <Text style={styles.headerText}>{exercises.length}개의 운동</Text>
+      <TextInput
+        value={text}
+        onChangeText={(text) => setText(text)}
+        onSubmitEditing={search}
+        placeholder="검색"
+        style={styles.inputContainer}
+        inlineImageLeft="search_icon"
+      />
       <FlatGrid
         itemDimension={200}
-        data={exercises}
+        data={result}
         spacing={20}
         renderItem={({ item }) => (
           <TouchableOpacity
@@ -56,10 +74,12 @@ const styles = StyleSheet.create({
   Container: {
     flex: 1,
   },
-  headerText: {
-    color: "grey",
+  inputContainer: {
+    padding: 10,
     marginHorizontal: 20,
     marginTop: 20,
+    backgroundColor: "lightgrey",
+    borderRadius: 20,
   },
   itemContainer: {
     flexDirection: "row",
@@ -89,4 +109,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Mobility;
+export default WorkoutSearch;

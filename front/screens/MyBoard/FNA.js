@@ -49,7 +49,7 @@ const FNA = () => {
               <Text>내플랜</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.button}>
-              <Text>챌린지</Text>
+              <Text>식단관리</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.button}>
               <Text>기타</Text>
@@ -61,7 +61,7 @@ const FNA = () => {
         <Collapse>
           <CollapseHeader>
             <View style={styles.accodionHeader}>
-              <Text style={styles.text} multiline={true}>
+              <Text style={styles.headerText} multiline={true}>
                 닉네임을 변경하고 싶어요.
               </Text>
             </View>
@@ -74,7 +74,7 @@ const FNA = () => {
             </View>
           </CollapseBody>
         </Collapse>
-        {/* 자주 묻는 질문 생각해보기..*/}
+        {/* 자주 묻는 질문 생각해보기*/}
         <Collapse>
           <CollapseHeader>
             <View style={styles.accodionHeader}>
@@ -86,47 +86,46 @@ const FNA = () => {
           <CollapseBody>
             <View style={styles.accodionBody}>
               <Text style={styles.text} multiline={true}>
-                test
+                사용자의 퍼포먼스에 따라 초급 - 중급 - 고급으로 나뉜 추천 코스를 이용해보세요.
               </Text>
             </View>
           </CollapseBody>
         </Collapse>
-        {/* 자주 묻는 질문 생각해보기.. 아코디언 삐져나오는거 하드코딩 해말어....*/}
+        {/* 자주 묻는 질문 생각해보기*/}
         <Collapse>
           <CollapseHeader>
             <View style={styles.accodionHeader}>
               <Text style={styles.text} multiline={true}>
-                순위는 어떻게 올릴수 있나요?
+                식단을 기록하고 싶어요.
               </Text>
             </View>
           </CollapseHeader>
           <CollapseBody>
             <View style={styles.accodionBody}>
               <Text style={styles.text} multiline={true}>
-                test
+                마이페이지를 통해 식단관리 페이지로 이동한 다음 우측 하단 버튼을 눌러서 오늘의 식단을 추가해보세요.
               </Text>
             </View>
           </CollapseBody>
         </Collapse>
-        {/* 자주 묻는 질문 생각해보기..*/}
-        {/* 자주 묻는 질문 생각해보기.. 아코디언 삐져나오는거 하드코딩 해말어....*/}
+        {/* 자주 묻는 질문 생각해보기*/}
         <Collapse>
           <CollapseHeader>
             <View style={styles.accodionHeader}>
               <Text style={styles.text} multiline={true}>
-                챌린지에 실패할 경우 패널티가 있나요?
+                일정을 추가하고 싶어요.
               </Text>
             </View>
           </CollapseHeader>
           <CollapseBody>
             <View style={styles.accodionBody}>
               <Text style={styles.text} multiline={true}>
-                test
+                마이페이지를 통해 일정관리 페이지로 이동한 다음 일정을 입력하고 ADD 버튼을 눌러 일정을 추가해보세요. 완료된 일정을 체크하고 삭제를 통해 관리해보세요.
               </Text>
             </View>
           </CollapseBody>
         </Collapse>
-        {/* 자주 묻는 질문 생각해보기..*/}
+        {/* 자주 묻는 질문 생각해보기*/}
         <Collapse>
           <CollapseHeader>
             <View style={styles.accodionHeader}>
@@ -160,7 +159,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold"
   },
   accodionHeader: {
-    backgroundColor: "#DAD0C2",
+    backgroundColor: "#DDDDDD",
     marginTop: 10,
     height: 50,
     justifyContent: "center",
@@ -182,7 +181,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
   button: {
-    backgroundColor: "#C0D8C0",
+    backgroundColor: "#B1BCE6",
     alignItems: "center",
     justifyContent: "center",
     margin: 3,
@@ -213,7 +212,7 @@ const styles = StyleSheet.create({
     marginLeft: 20,
   },
   searchButton: {
-    backgroundColor: "#C0D8C0",
+    backgroundColor: "#F2C9E1",
     borderRadius: 8,
     height: 40,
     alignItems: "center",

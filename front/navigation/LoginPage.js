@@ -4,7 +4,7 @@ import Login from "../screens/LoginPage/Login";
 import LoginHome from "../screens/LoginPage/LoginHome";
 import Register from "../screens/LoginPage/Register";
 import Search from "../screens/LoginPage/Search";
-
+import MYPAGE from "../screens/MyPage/MyPage";
 
 const Stack = createStackNavigator();
 
@@ -16,11 +16,16 @@ const LoginPage = () => {
         component={LoginHome}
         options={{ headerShown: false }}
       />
-      {/* <Stack.Screen
+            <Stack.Screen
+        name="MYPAGE"
+        component={MYPAGE}
+        options={{ headerShown: false }}
+      />
+       <Stack.Screen
         name="Login"
         component={Login}
         options={{ headerShown: false }}
-      /> */}
+      /> 
       <Stack.Screen
         name="Register"
         component={Register}

@@ -9,13 +9,21 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.PrePersist;
+
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-
-@Data
+@Getter
+@Setter
+@NoArgsConstructor
+@Table
 @Entity
 public class User {
 	@Id
@@ -27,16 +35,16 @@ public class User {
 	private String userId;
 	@NotNull
 	@Column
-	private  String userPassword;
+	private String userPassword;
 	@NotNull
 	@Column
-	private  String userEmail;
+	private String userEmail;
 	@NotNull
 	@Column
-	private  String userName;
+	private String userName;
 	@NotNull
 	@Column
-	private  String userTel;
+	private String userTel;
 	@NotNull
 	@Column
 	private  String userHeight;
@@ -46,18 +54,18 @@ public class User {
 
 	@NotNull
 	@Column
-	private  String userWeight;
+	private String userWeight;
 	private LocalDateTime userRegDate;
 
 	@PrePersist
 	public void createDate() {
 		this.userRegDate = LocalDateTime.now();
 	}
-	/*
+
 	@Builder
 	public User(Long userCode, @NotNull String userId, @NotNull String userPassword, @NotNull String userEmail,
-			@NotNull String userName, @NotNull String userTel, @NotNull String userHeight, @NotNull String userWeight,
-			LocalDateTime userRegDate) {
+			@NotNull String userName, @NotNull String userTel, @NotNull String userHeight, String userProfile,
+			@NotNull String userWeight, LocalDateTime userRegDate) {
 		super();
 		this.userCode = userCode;
 		this.userId = userId;
@@ -66,12 +74,15 @@ public class User {
 		this.userName = userName;
 		this.userTel = userTel;
 		this.userHeight = userHeight;
+		this.userProfile = userProfile;
 		this.userWeight = userWeight;
 		this.userRegDate = userRegDate;
 	}
 
-	*/
 
+	
+	
+	
 
 
 }
