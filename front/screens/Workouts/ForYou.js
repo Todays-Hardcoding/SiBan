@@ -4,7 +4,6 @@ import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import { FlatGrid } from "react-native-super-grid";
 
 const ForYou = ({ navigation }) => {
-
   const [exercises, setExercises] = useState([]);
   const [result, setResult] = useState([]);
   const [courses, setCourses] = useState([
@@ -25,7 +24,7 @@ const ForYou = ({ navigation }) => {
     },
   ]);
 
-   useEffect(() => {
+  useEffect(() => {
     const _url = "http://112.172.225.17:8282";
     fetch(_url + "/FindAll.act", {
       method: "GET",
@@ -51,10 +50,9 @@ const ForYou = ({ navigation }) => {
 
     navigation.navigate("LevelDetail", {
       screen: item.screen,
-      params: {result : result}
-    })
-
-  }
+      params: { result: result },
+    });
+  };
 
   return (
     <View style={styles.Container}>
@@ -66,9 +64,7 @@ const ForYou = ({ navigation }) => {
         renderItem={({ item }) => (
           <TouchableOpacity
             style={[styles.itemContainer, { backgroundColor: "grey" }]}
-            onPress={() =>
-              sendData(item)
-            }
+            onPress={() => sendData(item)}
           >
             <Text style={styles.itemName}>{item.course}</Text>
             <Text style={styles.itemExplane}>{item.explane}</Text>

@@ -16,7 +16,7 @@ const StrengthDetail = ({ route }) => {
         </TouchableOpacity>
       </View>
       <View>
-        <Text>{exercise.name}</Text>
+        <Text>{exercise.workoutname}</Text>
       </View>
     </View>
   );

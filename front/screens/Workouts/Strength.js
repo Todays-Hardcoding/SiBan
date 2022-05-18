@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { FlatGrid } from "react-native-super-grid";
 
-const Strength = ({ navigation }) => {
+const Strength = ({ route, navigation }) => {
   const [exercises, setExercises] = useState([]);
 
   useEffect(() => {
