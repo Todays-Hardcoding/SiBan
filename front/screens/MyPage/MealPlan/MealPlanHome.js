@@ -168,7 +168,7 @@ const MealPlanWrite = ({ navigation: { goBack } }) => {
   };
   const loadMealPlan = async () => {
     const s = await AsyncStorage.getItem(STORAGE_KEY);
-    setMealPlan(JSON.parse(s));
+    s !== null ? setMealPlan(JSON.parse(s)) : null;
   };
 
   const addMealPlan = async () => {
