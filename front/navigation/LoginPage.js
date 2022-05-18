@@ -5,7 +5,6 @@ import LoginHome from "../screens/LoginPage/LoginHome";
 import Register from "../screens/LoginPage/Register";
 import Search from "../screens/LoginPage/Search";
 
-
 const Stack = createStackNavigator();
 
 const LoginPage = () => {
@@ -16,11 +15,11 @@ const LoginPage = () => {
         component={LoginHome}
         options={{ headerShown: false }}
       />
-      {/* <Stack.Screen
+      <Stack.Screen
         name="Login"
         component={Login}
         options={{ headerShown: false }}
-      /> */}
+      />
       <Stack.Screen
         name="Register"
         component={Register}

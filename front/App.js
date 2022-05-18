@@ -12,7 +12,7 @@ import LoginHome from "./screens/LoginPage/LoginHome";
 const Stack = createStackNavigator();
 
 export default function App() {
-  const [isLogin, setIsLogin] = useState(false);
+  const [isLogin, setIsLogin] = useState(true);
 
   return !isLogin ? (
     <NavigationContainer>
@@ -28,6 +28,11 @@ export default function App() {
     // <LoginHome></LoginHome>
     <NavigationContainer>
       <Stack.Navigator>
+        <Stack.Screen
+          name="LoginPage"
+          component={LoginPage}
+          options={{ headerShown: false }}
+        ></Stack.Screen>
         <Stack.Screen
           name="MainTabs"
           component={MainTabs}

@@ -33,6 +33,8 @@ const Register = ({ navigation }) => {
   const [heightError, setHeightError] = useState("");
   const [weightError, setWeightError] = useState("");
   //중복검사
+  const [duplicatedId, setDuplicatedID] = useState(false);
+  const [duplicatedEmail, setDuplicatedEmail] = useState(false);
 
   const onChangeId = () => {
     const idRegex = /^[A-Za-z]{1}[A-Za-z0-9_-]{3,19}$/;
@@ -107,12 +109,6 @@ const Register = ({ navigation }) => {
       setHeightCheck(true);
     }
   };
-<<<<<<< HEAD
-  // 회원가입에 관한 함수
-  const postRegister = () => {
-    const _url = "http://192.168.35.133:8282/register.act";
-
-=======
   // 회원가입에 간한 함수
   const postRegister = (e) => {
     const _url = "http://112.172.225.17:8282/register.act";
@@ -125,7 +121,9 @@ const Register = ({ navigation }) => {
       nameCheck === true &&
       telCheck === true &&
       heightCheck === true &&
-      weightCheck === true
+      weightCheck === true &&
+      duplicatedId === true &&
+      duplicatedEmail === true
     ) {
       fetch(_url, {
         method: "POST",
@@ -150,82 +148,25 @@ const Register = ({ navigation }) => {
           });
         });
     } else {
-      // onChangeId;
-      // onChangePw;
-      // onChangeEmail;
-      // onChangeName;
-      // onChangeTel;
-      // onChangeHeight;
-      // onChangeWeight;
-      alert("모두 입력해 주세요.")
-      e.preventdefault();
+      onChangeId();
+      onChangePw();
+      onChangeEmail();
+      onChangeName();
+      onChangeTel();
+      onChangeHeight();
+      onChangeWeight();
+      alert("모두 입력해 주세요.");
       return false;
     }
-
   };
   // 아이디 중복체크에 관한 함수
   const checkId = () => {
     const _url = "http://112.172.225.17:8282/checkId.act";
->>>>>>> 27e59e4345f680ca34b3d372892a6393c5cfe0ee
-    fetch(_url, {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        id: id,
-      }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-<<<<<<< HEAD
-        
-        navigation.navigate("LoginPage", {
-          screen: "LoginHome",
-        });
-   
-      });
-    
-  };
-  // 이메일 중복체크에 관한 함수
-  const checkEmail = () => {
-    const _url = "http://192.168.35.133:8282/checkEmail.act";
-    fetch(_url, {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email,
-      }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data.checkEmail)
-  
-        if(data.checkEmail==false){
-        alert("사용불가능한 이메일입니다.")
-        }else{
-        alert("사용가능한 이메일입니다.")
-        }
-      });
-      
-=======
-        console.log(data.checkId);
 
-        if (data.checkId == false) {
-          alert("사용불가능아이디");
-        } else {
-          alert("사용가능");
-        }
-      });
->>>>>>> 27e59e4345f680ca34b3d372892a6393c5cfe0ee
-  };
-    // 아이디 중복체크에 관한 함수
-    const checkId = () => {
-      const _url = "http://192.168.35.133:8282/checkId.act";
+    const idRegex = /^[A-Za-z]{1}[A-Za-z0-9_-]{3,19}$/;
+    if (idRegex.test(id) === false) {
+      alert("4자리 이상 영문자로 시작하는 아이디를 입력해주세요.");
+    } else {
       fetch(_url, {
         method: "POST",
         headers: {
@@ -233,21 +174,52 @@ const Register = ({ navigation }) => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          id,
+          id: id,
         }),
       })
         .then((response) => response.json())
         .then((data) => {
-          console.log(data.checkId)
-    
-          if(data.checkId==false){
-          alert("사용불가능한 아이디입니다.")
-          }else{
-          alert("사용가능한 아이디입니다.")
+          if (data.checkId === true) {
+            alert("사용 불가능아이디");
+          } else {
+            alert("사용 가능");
+            setDuplicatedID(true);
           }
         });
-        
-    };
+    }
+  };
+
+  // 이메일 중복체크에 관한 함수
+  const checkEmail = () => {
+    const _url = "http://112.172.225.17:8282/checkEmail.act";
+    const emailRegex =
+      /^[0-9?A-z0-9?]+(\.)?[0-9?A-z0-9?]+@[0-9?A-z]+\.[A-z]{2}.?[A-z]{0,3}$/;
+    if (!emailRegex.test(email)) {
+      alert("이메일형식에 맞게 다시 입력해주세요");
+    } else {
+      fetch(_url, {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: email,
+        }),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data.checkId);
+
+          if (data.checkEmail === true) {
+            alert("사용 불가능한 Email");
+          } else {
+            alert("사용 가능");
+            setDuplicatedEmail(true);
+          }
+        });
+    }
+  };
 
   return (
     <View
@@ -346,7 +318,7 @@ const Register = ({ navigation }) => {
             style={styles.input}
             value={pwConfirm}
             returnKeyType="next"
-            onChangeText={(text) => setPwCheck(text)}
+            onChangeText={(text) => setPwConfirm(text)}
             onEndEditing={() => onChangePw2()}
             secureTextEntry={true}
             placeholder={"비밀번호를 다시 입력해주세요"}

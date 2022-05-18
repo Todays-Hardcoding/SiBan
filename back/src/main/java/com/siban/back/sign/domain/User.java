@@ -8,11 +8,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.PrePersist;
-<<<<<<< HEAD
-import javax.validation.Valid;
-=======
+
 import javax.persistence.Table;
->>>>>>> 27e59e4345f680ca34b3d372892a6393c5cfe0ee
+
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
@@ -22,10 +20,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@Setter
-@Getter
-@ToString
-@NoArgsConstructor
+
 @Table
 @Entity
 public class User {
@@ -35,7 +30,6 @@ public class User {
 
 	@NotNull
 	@Column
-	@Pattern(regexp = "/^[A-Za-z]{1}[A-Za-z0-9_-]{3,19}$/")
 	private String userId;
 	@NotNull
 	@Column
@@ -78,5 +72,9 @@ public class User {
 		this.userWeight = userWeight;
 		this.userRegDate = userRegDate;
 	}
+	
+	
+	
+
 
 }
