@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Alert } from "react-native";
-import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
 import styled from "styled-components/native";
-import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const View = styled.View`
