@@ -11,7 +11,6 @@ import {
   TextInput,
   ImageBackground,
 } from "react-native";
-import { FlatGrid } from "react-native-super-grid";
 import { useIsFocused } from "@react-navigation/native";
 
 const windowWidth = Dimensions.get("window").width;
@@ -23,7 +22,7 @@ const QNAList = ({ navigation }) => {
   const [inquiry, setInquiry] = useState([]);
 
   useEffect(() => {
-    const _url = "http://192.168.45.96:8282/selectInquiry.act";
+    const _url = "http://192.168.242.2:8282/selectInquiry.act";
     fetch(_url, {
       method: "POST",
       headers: {
