@@ -98,6 +98,10 @@ public class SignController {
 	}
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+>>>>>>> c050c000199e4f5823c3fc9569bba81da0e7c9cb
 	
 	   @PostMapping("/checkEmail.act")
 	   public Map<String, Boolean> checkEmail(@RequestBody Map<String, String> param) {
@@ -115,6 +119,7 @@ public class SignController {
 	      return result;
 	   }
 
+<<<<<<< HEAD
 }
 =======
 =======
@@ -179,3 +184,7 @@ public class SignController {
 }
 >>>>>>> f07df6eb78380dd1ce9614f747743a5bab73e273
 >>>>>>> 4320776f8a53872803b34693df8d9b349278e009
+=======
+
+}
+>>>>>>> c050c000199e4f5823c3fc9569bba81da0e7c9cb
