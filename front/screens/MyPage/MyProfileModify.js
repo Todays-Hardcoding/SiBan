@@ -22,7 +22,7 @@ const MyProfileModify = () => {
   const userId = "TTAA";
 
   const onScreenLoad = () => {
-    const startUrl = "http://192.168.45.96:8282/showUserInfo.act";
+    const startUrl = "http://192.168.35.107:8282/showUserInfo.act";
 
     fetch(startUrl, {
       method: "POST",
@@ -51,7 +51,7 @@ const MyProfileModify = () => {
   }, []);
 
   const profileTest = (navigation ) => {
-    const url = "http://192.168.45.96:8282/updateUserInfo.act";
+    const url = "http://192.168.35.107:8282/updateUserInfo.act";
 
     fetch(url, {
       method: "POST",

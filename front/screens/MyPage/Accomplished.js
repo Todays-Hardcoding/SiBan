@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   StyleSheet,
   Text,
@@ -11,12 +11,12 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 import { SectionGrid } from "react-native-super-grid";
 import routine from "./RoutineRecord.js";
 
-function Accomplished() {
-  const routineCount = (item) => {
-    if (routineCount > 2 && item.id == 0) {
-      item.gray = "white";
-    }
-  };
+
+function Accomplished({ route, navigation }) {
+  const { routineCount } = route.params;
+
+  console.log(routineCount);
+
 
   const array = [
     {
@@ -171,7 +171,13 @@ function Accomplished() {
 
   // const imageList = require(`../../assets/trophy/trophy${data}.png`);
 
-  return (
+
+  for (let i = 0; i < routineCount; i++) {
+    array[i].gray = array[i].code;
+  }
+
+  console.log("마지막 색" + array[0].gray);
+  const grid =
     <SectionGrid
       itemDimension={140}
       // staticDimension={300}
@@ -191,10 +197,13 @@ function Accomplished() {
           data: array.slice(12, 21),
         },
       ]}
+
+
       renderItem={({ item }) => (
+
         <TouchableOpacity>
           <View style={[styles.itemContainer, { backgroundColor: item.code }]}>
-            <Image style={styles.itemCode} source={item.src} />
+            <Image style={styles.itemCode} source={item.src} backgroundColor={item.gray} />
           </View>
         </TouchableOpacity>
       )}
@@ -212,7 +221,9 @@ function Accomplished() {
         </TouchableOpacity>
       ))}
     </SectionGrid>
-  );
+
+  return grid;
+
 }
 
 const styles = StyleSheet.create({

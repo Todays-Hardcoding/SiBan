@@ -14,6 +14,7 @@ import { Table, Row, Rows } from "react-native-table-component-2";
 const MyProfile = ({ navigation }) => {
   const [userHeight, setuserHeight] = useState("");
   const [userWeight, setuserWeight] = useState("");
+  const [routineCount, setRoutineCount] = useState(0);
   const specialPromoData = [
     {
       id: 1,
@@ -56,7 +57,7 @@ const MyProfile = ({ navigation }) => {
         }}
       >
         <View style={{ flex: 1, alignItems: "center", left: 30 }}>
-          <Text style={{ fontSize: 25, fontWeight: "bold", color:"white" }}>마이페이지</Text>
+          <Text style={{ fontSize: 25, fontWeight: "bold", color: "white" }}>마이페이지</Text>
         </View>
         <View style={styles.userSupervise}>
           <TouchableOpacity onPress={() => setShouldShow(!shouldShow)}>
@@ -146,7 +147,9 @@ const MyProfile = ({ navigation }) => {
           width: SIZES.width / 2.5,
         }}
         onPress={() => {
-          navigation.navigate(item.code);
+          navigation.navigate(item.code, {
+            params: { routineCount: routineCount }
+          });
         }}
       >
         <View
@@ -194,7 +197,7 @@ const MyProfile = ({ navigation }) => {
       const userId = "TTAA";
 
       const onScreenLoad = () => {
-        const startUrl = "http://192.168.45.96:8282/showUserInfo.act";
+        const startUrl = "http://192.168.35.107:8282/showUserInfo.act";
 
         fetch(startUrl, {
           method: "POST",
@@ -280,7 +283,7 @@ const styles = StyleSheet.create({
     flex: 8,
     padding: 16,
     backgroundColor: "#fff",
-    borderRadius:10,
+    borderRadius: 10,
   },
   head: {
     height: 40,
