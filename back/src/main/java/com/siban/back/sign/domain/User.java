@@ -8,8 +8,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.PrePersist;
+
 import javax.persistence.Table;
+
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 import lombok.Builder;
 import lombok.Getter;
@@ -17,10 +20,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@Setter
-@Getter
-@ToString
-@NoArgsConstructor
+
 @Table
 @Entity
 public class User {
@@ -72,5 +72,9 @@ public class User {
 		this.userWeight = userWeight;
 		this.userRegDate = userRegDate;
 	}
+	
+	
+	
+
 
 }
