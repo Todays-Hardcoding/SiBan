@@ -45,7 +45,6 @@ public class SignController {
 			temp = true;
 		}
 		result.put("checkId", temp);
-//		System.out.println(temp);
 		System.out.println(result);
 		return result;
 	}
@@ -72,11 +71,7 @@ public class SignController {
 		boolean temp = false;
 		System.out.println(param.get("loginId"));
 		System.out.println(param.get("loginPw"));
-		// 이메일이 있으면 false
 		User user = signService.findByUserId(param.get("loginId"));
-		//System.out.println(user);
-		//System.out.println(user.getUserId());
-		//System.out.println(user.getUserPassword());
 		if(Objects.isNull(user)) {
 			temp = false;
 		}else if(user.getUserId().equals(param.get("loginId")) && user.getUserPassword().equals(param.get("loginPw"))){

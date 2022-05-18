@@ -1,17 +1,13 @@
 import React, { useState } from "react";
-
 import {
-  Text,
-  View,
-  TextInput,
   StyleSheet,
+  Text,
+  TextInput,
   TouchableOpacity,
+  View
 } from "react-native";
 
-import { NavigationContainer } from "@react-navigation/native";
-//import { State } from 'react-native-gesture-handler';
-
-const _url = "http://192.168.45.96:8282";
+const _url = "http://112.172.225.17:8282";
 
 const Login = ({ navigation }) => {
   const [loginId, setLoginId] = useState("");
@@ -37,8 +33,6 @@ const Login = ({ navigation }) => {
       setLoginIdCheck(true);
     }
     setLoginId(text);
-    // console.log(loginIdCheck);
-    // console.log(loginId);
   };
   const setPw = (text) => {
     if (text.trim().length === 0) {
@@ -48,8 +42,6 @@ const Login = ({ navigation }) => {
       setLoginPwCheck(true);
     }
     setLoginPw(text);
-    // console.log(loginPwCheck);
-    // console.log(loginPw);
   };
 
   // 로그인
@@ -71,7 +63,6 @@ const Login = ({ navigation }) => {
         if (data.result == true) {
           setSaveId(loginId);
           alert("로그인 성공");
-          console.log(setSaveId);
           navigation.navigate("MainTabs");
         } else {
           alert("다시 로그인해주세요.");

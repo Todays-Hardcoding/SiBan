@@ -33,9 +33,11 @@ const Endurance = ({ navigation }) => {
         renderItem={({ item }) => (
           <TouchableOpacity
             style={[styles.itemContainer, { backgroundColor: "lightgrey" }]}
-            onPress={navigation.navigate("DetailPage", {
-              exercise: item,
-            })}
+            onPress={() =>
+              navigation.navigate("DetailPage", {
+                result: item,
+              })
+            }
           >
             <View style={styles.itmeimageContainer}></View>
             <View style={styles.itemTextContainer}>
