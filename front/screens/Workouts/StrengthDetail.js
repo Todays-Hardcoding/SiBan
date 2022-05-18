@@ -4,7 +4,8 @@ import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
 
 const StrengthDetail = ({ route }) => {
   const { exercise } = route.params;
-  console.log(exercise);
+  // 콘솔 안나옴
+  console.log(exercise.workoutName);
   return (
     <View style={styles.Container}>
       <View style={styles.headerContainer}>
@@ -16,7 +17,12 @@ const StrengthDetail = ({ route }) => {
         </TouchableOpacity>
       </View>
       <View>
-        <Text>{exercise.workoutname}</Text>
+        <Text>{exercise.workoutName}</Text>
+        <Text>{exercise.workout_course}</Text>
+        <Text>{exercise.workout_goal}</Text>
+        <Text>{exercise.workout_target}</Text>
+        <Text>{exercise.workout_description}</Text>
+        <Text>{exercise.workout_regdate}</Text>
       </View>
     </View>
   );
