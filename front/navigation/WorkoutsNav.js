@@ -33,7 +33,7 @@ const Workouts = () => {
       <Tab.Screen
         name="Browse"
         component={Browse}
-        options={{ tabBarLabel: "운동" }}
+        options={{ tabBarLabel: "탐색" }}
       />
       <Tab.Screen
         name="Plans"
@@ -55,8 +55,8 @@ const BrowseDetail = () => {
       }}
     >
       <Tab.Screen
-        name="StrengthNav"
-        component={StrengthNav}
+        name="Strength"
+        component={Strength}
         options={{ tabBarLabel: "근력" }}
       />
       <Tab.Screen
@@ -73,25 +73,12 @@ const BrowseDetail = () => {
   );
 };
 
-const StrengthNav = () => {
-  return (
-    <Stack.Navigator
-      initialRouteName="Strength"
-      screenOptions={{ headerShown: false }}
-    >
-      <Stack.Screen name="Strength" component={Strength} />
-      <Stack.Screen name="DetailPage" component={DetailPage} />
-    </Stack.Navigator>
-  );
-};
-
 const LevelDetail = () => {
   return (
     <Tab.Navigator
       initialRouteName="LEVEL1"
       screenOptions={{
         tabBarLabelStyle: { fontSize: 15, color: "black" },
-
         tabBarStyle: { backgroundColor: "grey" },
       }}
     >
@@ -120,6 +107,7 @@ const WorkoutsNav = () => {
       <Stack.Screen name="Workouts" component={Workouts} />
       <Stack.Screen name="BrowseDetail" component={BrowseDetail} />
       <Stack.Screen name="LevelDetail" component={LevelDetail} />
+      <Stack.Screen name="DetailPage" component={DetailPage} />
       <Stack.Screen name="WorkoutSearch" component={WorkoutSearch} />
     </Stack.Navigator>
   );

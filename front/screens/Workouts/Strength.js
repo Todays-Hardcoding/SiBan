@@ -27,16 +27,15 @@ const Strength = ({ route, navigation }) => {
     <View style={styles.Container}>
       <Text style={styles.headerText}>{exercises.length}개의 운동</Text>
       <FlatGrid
-        itemDimension={170}
+        itemDimension={200}
         data={exercises}
         spacing={20}
         renderItem={({ item }) => (
           <TouchableOpacity
             style={[styles.itemContainer, { backgroundColor: "lightgrey" }]}
             onPress={() =>
-              navigation.navigate("StrengthNav", {
-                screen: "DetailPage",
-                params: { exercise: item },
+              navigation.navigate("DetailPage", {
+                exercise: item,
               })
             }
           >

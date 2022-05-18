@@ -4,8 +4,6 @@ import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import { FlatGrid } from "react-native-super-grid";
 
 const ForYou = ({ navigation }) => {
-  const [exercises, setExercises] = useState([]);
-  const [result, setResult] = useState([]);
   const [courses, setCourses] = useState([
     {
       screen: "Level1",
@@ -24,36 +22,6 @@ const ForYou = ({ navigation }) => {
     },
   ]);
 
-  useEffect(() => {
-    const _url = "http://112.172.225.17:8282";
-    fetch(_url + "/FindAll.act", {
-      method: "GET",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        setExercises(data);
-      });
-  }, []);
-
-  const sendData = (item) => {
-    const newResult = new Array();
-    exercises.map((exercise) => {
-      if (exercise.workoutCourse === item.course) {
-        newResult.push(exercise);
-      }
-    });
-    setResult([...newResult]);
-
-    navigation.navigate("LevelDetail", {
-      screen: item.screen,
-      params: { result: result },
-    });
-  };
-
   return (
     <View style={styles.Container}>
       <FlatGrid
@@ -64,7 +32,11 @@ const ForYou = ({ navigation }) => {
         renderItem={({ item }) => (
           <TouchableOpacity
             style={[styles.itemContainer, { backgroundColor: "grey" }]}
-            onPress={() => sendData(item)}
+            onPress={() =>
+              navigation.navigate("LevelDetail", {
+                screen: item.screen,
+              })
+            }
           >
             <Text style={styles.itemName}>{item.course}</Text>
             <Text style={styles.itemExplane}>{item.explane}</Text>
@@ -78,12 +50,7 @@ const ForYou = ({ navigation }) => {
 const styles = StyleSheet.create({
   Container: {
     flex: 1,
-  },
-  inputContainer: {
-    padding: 10,
-    margin: 20,
-    backgroundColor: "lightgrey",
-    borderRadius: 20,
+    paddingTop: 40,
   },
   itemContainer: {
     justifyContent: "flex-end",
