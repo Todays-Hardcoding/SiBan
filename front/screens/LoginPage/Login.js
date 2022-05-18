@@ -51,9 +51,9 @@ const Login = ({ navigation }) => {
     // console.log(loginPw);
   };
 
- // 로그인
- const postLogin = () => {
-  const _url = "http://192.168.35.133:8282/login.act";
+  // 로그인
+  const postLogin = () => {
+    const _url = "http://192.168.35.133:8282/login.act";
 
     fetch(_url, {
       method: "POST",
@@ -155,15 +155,12 @@ const Login = ({ navigation }) => {
       >
         <Text style={{ fontSize: 18, color: "white" }}>로그인하기</Text>
       </TouchableOpacity>
-
-    
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   input: {
-
     width: "80%",
     borderWidth: 1,
     padding: 10,
