@@ -2,58 +2,67 @@ import React, { useState } from "react";
 import { StyleSheet, Button, Text, TextInput, View } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
-const _url = "http://192.168.45.96:8282";
+const _url = "http://192.168.35.133:8282";
+
 const Search = () => {
   const [searchEmail, setSearchEmail] = useState("");
   const [searchPw, setSearchPw] = useState("");
   const [searchId, setSearchId] = useState("");
   const [searchTel, setSearchTel] = useState("");
 
-  // 아이디 유무 관한 함수
-  const postSearchEmail = () => {
-    fetch(_url + "/searchEmail.act", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        searchEmail,
-      }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.searchId == "") {
-          console.log(data.searchId);
-          alert("존재하지 않는 이메일입니다.");
-        } else {
-          alert("회원님의 아이디는 " + data.searchId + "입니다.");
-        }
-      });
-  };
-  // 비번찾기
-  const postSearchPw = () => {
-    fetch(_url + "/SearchPw.act", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        searchId,
-        searchTel,
-      }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.searchPw == "") {
-          console.log(data.searchPw);
-          alert("전화번호와 아이디를 다시입력해주세요.");
-        } else {
-          alert("회원님의 비밀번호는 " + data.searchPw + "입니다.");
-        }
-      });
-  };
+    // 아이디 유무 관한 함수
+    const postSearchEmail = () => {
+     
+  
+        fetch(_url + "searchEmail.act", {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            searchEmail,
+          }),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            if(data.searchId == ""){
+            console.log(data.searchId);
+            alert("존재하지 않는 이메일입니다.");
+          }else{
+            
+            alert("회원님의 아이디는 "+data.searchId + "입니다.")
+          }
+          });
+      
+    };
+       // 비번찾기 
+       const postSearchPw = () => {
+     
+    
+          fetch(_url +"SearchPw.act", {
+            method: "POST",
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              searchId,
+              searchTel,
+            }),
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              if(data.searchPw == ""){
+                console.log(data.searchPw);
+                alert("전화번호와 아이디를 다시입력해주세요.");
+              }else{
+                
+                alert("회원님의 비밀번호는 "+data.searchPw + "입니다.")
+              }
+            });
+        
+      };
 
   return (
     <View

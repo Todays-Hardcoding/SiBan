@@ -1,10 +1,12 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, TextInput, View } from "react-native";
+import { Button, StyleSheet, Text, TextInput, View } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
-const _url = "http://192.168.0.6:8282";
-const Register = ({ navigation }) => {
+const _url = "http://192.168.35.133:8282";
+const Register = ({ route, navigation }) => {
+
+
   //아이디,비번,이메일,전화번호
   const [id, setId] = useState("");
   const [pw, setPw] = useState("");
@@ -12,6 +14,7 @@ const Register = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [tel, setTel] = useState("");
+  const [addr, setAddr] = useState("");
   const [height, setHeight] = useState("");
   const [weight, setWeight] = useState("");
   //유효성
@@ -36,7 +39,9 @@ const Register = ({ navigation }) => {
   //중복검사
   const [duplicatedId, setDuplicatedID] = useState(false);
   const [duplicatedEmail, setDuplicatedEmail] = useState(false);
-
+  
+  const { result } = route.params;
+  setAddr(result);
   const onChangeId = () => {
     const idRegex = /^[A-Za-z]{1}[A-Za-z0-9_-]{3,19}$/;
     if (idRegex.test(id) === false) {
@@ -136,6 +141,7 @@ const Register = ({ navigation }) => {
           email,
           name,
           tel,
+         addr,
           height,
           weight,
         }),
@@ -177,6 +183,7 @@ const Register = ({ navigation }) => {
         .then((response) => response.json())
         .then((data) => {
           if (data.checkId === true) {
+            console.log(data.checkId)
             alert("사용 불가능아이디");
           } else {
             alert("사용 가능");
@@ -273,6 +280,7 @@ const Register = ({ navigation }) => {
               alignItems: "center",
             }}
           >
+
             <TextInput
               style={styles.inputId}
               value={id}
@@ -354,7 +362,34 @@ const Register = ({ navigation }) => {
             </TouchableOpacity>
           </View>
           {!emailCheck && <Text style={{ color: "red" }}>{emailError}</Text>}
-
+          <View
+            style={{
+              flexDirection: "row",
+              justifyContent: "space-between",
+              alignItems: "center",
+            }}
+          >
+            <Text
+              style={styles.inputId}
+            >{addr}</Text>
+            {/* 주소검색 버튼 */}
+            <TouchableOpacity
+              style={{
+                backgroundColor: "gray",
+                padding: 5,
+                margin: 5,
+                borderRadius: 10,
+                width: 60,
+                alignItems: "center",
+              }}
+              onPress={() =>
+                navigation.navigate("address", {
+                  screen: "address",
+                })}
+            >
+              <Text style={{ fontSize: 13, color: "white" }}>주소검색</Text>
+            </TouchableOpacity>
+          </View>
           <TextInput
             style={styles.input}
             value={name}
