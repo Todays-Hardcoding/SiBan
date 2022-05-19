@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,7 +24,7 @@ public class PostController {
 	@Autowired
 	PostService postService;
 	
-	@RequestMapping(value="/insertInquiry.act", method = RequestMethod.POST)
+	@PostMapping("/insertInquiry.act")
 	public Post insertInquiry(@RequestBody Map<String, Object> param) {
 		Post post = new Post();
 
@@ -38,13 +39,24 @@ public class PostController {
 		return postService.insertInquiry(post);
 	}
 	
-	@RequestMapping(value="/selectInquiry.act", method = RequestMethod.POST)
+	@PostMapping("/selectInquiry.act")
 	public List<Post> selectInquiry(){
 		List<Post> result = new ArrayList<>();
+		
 		result = postService.selectInquiry();
 		
 		System.out.println(result);
 		
+		return result;
+		
+	}
+	
+	@PostMapping("/selectDetail.act")
+	public Optional<Post> selectDetail(@RequestBody Map<String, Long> param) {
+		Optional<Post> result = Optional.of(new Post());
+		result = postService.selectDetail(param.get("result"));
+		System.out.println(param);
+		System.out.println("미나 와따감");
 		return result;
 	}
 }

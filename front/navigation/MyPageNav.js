@@ -47,8 +47,8 @@ const ActivityNav = ({ route }) => {
       initialLayout={{ width: windowWidth }}
       initialRouteName="ROUTINERECORD"
       screenOptions={{
-        tabBarLabelStyle: { fontSize: 15, color: "black" },
-        tabBarStyle: { backgroundColor: "#ECB390", paddingVertical: 10 },
+        tabBarLabelStyle: { fontSize: 15, color: "white" },
+        tabBarStyle: { backgroundColor: "#191919", paddingVertical: 10 },
       }}
     >
       <Tab.Screen

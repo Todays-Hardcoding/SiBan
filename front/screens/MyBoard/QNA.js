@@ -9,9 +9,11 @@ import {
 import { SafeAreaView, TextInput, ScrollView } from "react-native";
 import DropDownPicker from "react-native-dropdown-picker";
 
+const _url = "http://192.168.56.1:8282";
+
 const windowWidth = Dimensions.get("window").width;
 
-const QNA = () => {
+const QNA = ({ navigation }) => {
   const [open, setOpen] = useState(false);
 
   const [categoriValue, setCategoriValue] = useState(null);
@@ -25,10 +27,12 @@ const QNA = () => {
     { label: "기타 문의", value: "기타 문의" },
   ]);
 
-  const postBoard = () => {
-    const _url = "http://192.168.242.2:8282/insertInquiry.act";
+  const cancel = () => {
+    navigation.pop();
+  };
 
-    fetch(_url, {
+  const postBoard = () => {
+    fetch(_url + "/insertInquiry.act", {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -41,7 +45,11 @@ const QNA = () => {
       }),
     })
       .then((response) => response.json())
-      .then((data) => console.log(data));
+      .then((data) => {
+        if (data != null) {
+          navigation.pop();
+        }
+      });
   };
 
   return (
@@ -78,7 +86,7 @@ const QNA = () => {
 
       {/* button */}
       <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.submit}>
+        <TouchableOpacity style={styles.submit} onPress={cancel}>
           <Text style={styles.buttonText}>취소</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.cancel} onPress={postBoard}>
@@ -122,7 +130,7 @@ const styles = StyleSheet.create({
   submit: {
     width: 120,
     height: 40,
-    backgroundColor: "#EEB0B0",
+    backgroundColor: "#7f8c8d",
     alignItems: "center",
     justifyContent: "center",
     margin: 15,
@@ -131,7 +139,7 @@ const styles = StyleSheet.create({
   cancel: {
     width: 120,
     height: 40,
-    backgroundColor: "#AACFCF",
+    backgroundColor: "#34495e",
     alignItems: "center",
     justifyContent: "center",
     margin: 15,
@@ -139,6 +147,7 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     fontSize: 17,
+    color:"white"
   },
   buttonContainer: {
     flexDirection: "row",

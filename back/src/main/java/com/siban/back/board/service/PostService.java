@@ -1,6 +1,7 @@
 package com.siban.back.board.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,4 +23,7 @@ public class PostService {
 		return postRepository.findAll();
 	}
 	
+	public Optional<Post> selectDetail(Long index) {
+		return postRepository.findById(index);
+	}
 }

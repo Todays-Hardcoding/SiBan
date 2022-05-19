@@ -13,6 +13,8 @@ import {
 } from "react-native";
 import { useIsFocused } from "@react-navigation/native";
 
+const _url = "http://192.168.45.96:8282";
+
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 
@@ -22,7 +24,9 @@ const QNAList = ({ navigation }) => {
   const [inquiry, setInquiry] = useState([]);
 
   useEffect(() => {
-    const _url = "http://192.168.242.2:8282/selectInquiry.act";
+
+    const _url = "http://192.168.56.1:8282/selectInquiry.act"
+
     fetch(_url, {
       method: "POST",
       headers: {
@@ -32,7 +36,7 @@ const QNAList = ({ navigation }) => {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
+        
         setInquiry(data);
       });
   }, [isFocused]);
@@ -40,18 +44,17 @@ const QNAList = ({ navigation }) => {
   return (
     <SafeAreaView style={styles.container}>
       <ImageBackground
-        source={require("../../assets/images/moonhi3.jpg")}
+        source={require("../../assets/sibanlogo6.png")}
         style={styles.image}
-      >
-        <Text style={styles.moonhiText}>문희사항</Text>
-      </ImageBackground>
+      ></ImageBackground>
       <ScrollView>
         <View>
           {inquiry.map((item, index) => (
             <TouchableOpacity
               key={index}
               onPress={() => {
-                navigation.navigate("ServiceCenter", { Screen: "QNAList" });
+                console.log(item.postCode);
+                navigation.navigate("QNADetail" , {result: item.postCode})
               }}
               style={[
                 styles.item,
@@ -105,7 +108,7 @@ const styles = StyleSheet.create({
     opacity: 0.9,
   },
   writeButton: {
-    backgroundColor: "#F2C9E1",
+    backgroundColor: "#34495e",
     borderRadius: 8,
     height: 40,
     alignItems: "center",
@@ -140,9 +143,10 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     fontWeight: "bold",
+    color:"white"
   },
   searchButton: {
-    backgroundColor: "#B1BCE6",
+    backgroundColor: "#7f8c8d",
     borderRadius: 8,
     height: 40,
     alignItems: "center",
