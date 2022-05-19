@@ -72,7 +72,7 @@ const QNADetail = ({route}) => {
           <Text>제목 {postTitle}</Text>
         </View>
         <View style={styles.postCategory}>
-          <Text>{postCategory}</Text>
+          <Text>이용문의 {postCategory}</Text>
         </View>
         </View>
         {/* horizontal line*/}
