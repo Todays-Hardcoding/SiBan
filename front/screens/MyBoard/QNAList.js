@@ -35,7 +35,7 @@ const QNAList = ({ navigation }) => {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
+        
         setInquiry(data);
       });
   }, [isFocused]);
@@ -43,7 +43,7 @@ const QNAList = ({ navigation }) => {
   return (
     <SafeAreaView style={styles.container}>
       <ImageBackground
-        source={require("../../assets/images/sibanLogo.png")}
+        source={require("../../assets/sibanlogo6.png")}
         style={styles.image}
       ></ImageBackground>
       <ScrollView>
@@ -52,7 +52,8 @@ const QNAList = ({ navigation }) => {
             <TouchableOpacity
               key={index}
               onPress={() => {
-                navigation.navigate("ServiceCenter", { Screen: "QNAList" });
+                console.log(item.postCode);
+                navigation.navigate("QNADetail" , {result: item.postCode})
               }}
               style={[
                 styles.item,
@@ -100,13 +101,13 @@ const styles = StyleSheet.create({
   },
   image: {
     width: windowWidth,
-    height: windowHeight * 0.3,
+    height: windowHeight * 0.2,
     alignItems: "center",
     justifyContent: "center",
     opacity: 0.9,
   },
   writeButton: {
-    backgroundColor: "#F2C9E1",
+    backgroundColor: "#34495e",
     borderRadius: 8,
     height: 40,
     alignItems: "center",
@@ -141,9 +142,10 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     fontWeight: "bold",
+    color:"white"
   },
   searchButton: {
-    backgroundColor: "#B1BCE6",
+    backgroundColor: "#7f8c8d",
     borderRadius: 8,
     height: 40,
     alignItems: "center",

@@ -9,7 +9,7 @@ import {
 import { SafeAreaView, TextInput, ScrollView } from "react-native";
 import DropDownPicker from "react-native-dropdown-picker";
 
-const _url = "http://192.168.45.96:8282";
+const _url = "http://192.168.56.1:8282";
 
 const windowWidth = Dimensions.get("window").width;
 
@@ -130,7 +130,7 @@ const styles = StyleSheet.create({
   submit: {
     width: 120,
     height: 40,
-    backgroundColor: "#EEB0B0",
+    backgroundColor: "#7f8c8d",
     alignItems: "center",
     justifyContent: "center",
     margin: 15,
@@ -139,7 +139,7 @@ const styles = StyleSheet.create({
   cancel: {
     width: 120,
     height: 40,
-    backgroundColor: "#AACFCF",
+    backgroundColor: "#34495e",
     alignItems: "center",
     justifyContent: "center",
     margin: 15,
@@ -147,6 +147,7 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     fontSize: 17,
+    color:"white"
   },
   buttonContainer: {
     flexDirection: "row",
