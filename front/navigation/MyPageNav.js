@@ -4,7 +4,7 @@ import { Dimensions } from "react-native";
 import React from "react";
 
 import ChangePhoto from "../screens/MyPage/ChangePhoto";
-import MyPageMain from "../screens/MyPage/MyPage";
+import Routine from "../screens/MyPage/Routine";
 import Record from "../screens/MyPage/Record";
 
 import RoutineRecord from "../screens/MyPage/RoutineRecord";
@@ -99,6 +99,11 @@ const MyPageNav = () => {
       <Stack.Screen
         name="OthersNav"
         component={OthersNav}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="Routine"
+        component={Routine}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>

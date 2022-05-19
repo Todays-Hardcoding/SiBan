@@ -7,9 +7,15 @@ import {
   TouchableOpacity,
   ImageBackground,
 } from "react-native";
+import { ScrollView } from "react-native-gesture-handler";
 
 const DetailPage = ({ route, navigation }) => {
   const { result } = route.params;
+  const [plan, setPlan] = useState(false);
+
+  const addPlan = () => {
+    setPlan(!plan);
+  };
 
   return (
     <View style={styles.Container}>
@@ -22,12 +28,12 @@ const DetailPage = ({ route, navigation }) => {
           <TouchableOpacity onPress={() => navigation.pop()}>
             <MaterialIcons name="arrow-back-ios" size={30} color="black" />
           </TouchableOpacity>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={addPlan}>
             <FontAwesome
               style={styles.headerBtn}
               name="bookmark"
-              size={24}
-              color="black"
+              size={30}
+              color={plan ? "yellow" : "black"}
             />
           </TouchableOpacity>
         </View>
@@ -74,7 +80,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   workoutNameText: {
-    fontSize: "50",
+    fontSize: 50,
     fontWeight: "500",
     color: "white",
     lineHeight: 550,
