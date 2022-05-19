@@ -13,7 +13,7 @@ import * as ImagePicker from "expo-image-picker";
 
 import { Dimensions } from "react-native";
 
-const url = "http://192.168.45.96:8282";
+const url = "http://192.168.0.6:8282";
 
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
@@ -59,7 +59,7 @@ const ChangePhoto = ({ navigation, onPress }) => {
     if (!result.cancelled) {
       setuserProfile(result.uri);
       profileTest(result.uri);
-      // console.log(result.uri);
+      console.log(result.uri);
     }
   };
 
