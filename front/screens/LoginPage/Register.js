@@ -147,14 +147,19 @@ const Register = ({ navigation }) => {
           });
         });
     } else {
-      onChangeId();
-      onChangePw();
-      onChangeEmail();
-      onChangeName();
-      onChangeTel();
-      onChangeHeight();
-      onChangeWeight();
-      alert("모두 입력해 주세요.");
+      if (duplicatedId === true && duplicatedEmail === true) {
+        onChangeId();
+        onChangePw();
+        onChangeEmail();
+        onChangeName();
+        onChangeTel();
+        onChangeHeight();
+        onChangeWeight();
+        alert("빈칸을 모두 입력해 주세요.");
+      } else {
+        alert("중복 확인 검사를 해주세요.");
+      }
+
       return false;
     }
   };
