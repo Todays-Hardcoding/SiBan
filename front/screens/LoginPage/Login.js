@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import {
+  Button,
   StyleSheet,
   Text,
   TextInput,
@@ -7,7 +8,7 @@ import {
   View,
 } from "react-native";
 
-const _url = "http://112.172.225.17:8282";
+const _url = "http://192.168.35.133:8282";
 
 const Login = ({ navigation }) => {
   const [loginId, setLoginId] = useState("");
@@ -147,6 +148,10 @@ const Login = ({ navigation }) => {
       >
         <Text style={{ fontSize: 18, color: "white" }}>로그인하기</Text>
       </TouchableOpacity>
+      <Button title="주소" onPress={() =>
+            navigation.navigate("address", {
+              screen: "address",
+            })}></Button>
     </View>
   );
 };
