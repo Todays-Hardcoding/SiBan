@@ -1,16 +1,16 @@
 import * as React from 'react';
 import { useState, useEffect } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Button } from 'react-native';
 
 import Postcode from 'react-native-daum-postcode';
-const ChangeAddress = () => {
+const ChangeAddress = ({ navigation }) => {
   const [postcode, setPostcode] = useState("");
   const [addr, setAddr] = useState('');
   const [extraAddr, setExtraAddr] = useState('');
 
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>자택주소 수정하기</Text>
+    <View style={{ flex: 1, margin: 100, alignItems: 'center', justifyContent: 'center' }}>
+  
       <Postcode
         style={{ width: 400, height: 200 }}
         jsOptions={{ animated: true }}
@@ -42,10 +42,14 @@ const ChangeAddress = () => {
           }
         }}
       />
-      <Text>우편번호:{postcode}</Text>
+      {/*<Text>우편번호:{postcode}</Text>
       <Text>
-        도로명/지번 :{addr} ({extraAddr})
-      </Text>
+        도로명/지번 :{addr} ({extraAddr}) 
+      </Text>*/}
+      <Button title="확인" onPress={() =>
+            navigation.navigate("Register", {
+              result : addr,
+            })}></Button>
     </View>
   );
 };

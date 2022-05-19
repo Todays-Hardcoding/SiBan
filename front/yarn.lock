@@ -8861,7 +8861,6 @@
     "fbjs" "^0.8.4"
     "object-assign" "^4.1.0"
 
-<<<<<<< HEAD
 "react-daum-postcode@^3.0.3":
   "integrity" "sha512-uxr7d2GENx/m4pnowXH6mN54+pGn0TjSfJfPvnXdRTtGQH9wyu6D7xkDcYBdQfW+KfXQC2dtUQrT3BAw76kokw=="
   "resolved" "https://registry.npmjs.org/react-daum-postcode/-/react-daum-postcode-3.0.3.tgz"
@@ -8870,8 +8869,6 @@
     "prop-types" "^15.7.2"
     "react" "^17.0.2"
 
-=======
->>>>>>> 03d5caa60af0df3a40e7523ea9c7d671873e3379
 "react-dev-utils@~11.0.1":
   "integrity" "sha512-dx0LvIGHcOPtKbeiSUM4jqpBl3TcY7CDjZdfOIcKeznE7BWr9dg0iPG90G5yfVQ+p/rGNMXdbfStvzQZEVEi4A=="
   "resolved" "https://registry.npmjs.org/react-dev-utils/-/react-dev-utils-11.0.4.tgz"
@@ -9031,7 +9028,6 @@
   "resolved" "https://registry.npmjs.org/react-native-counter-input/-/react-native-counter-input-0.1.9.tgz"
   "version" "0.1.9"
 
-<<<<<<< HEAD
 "react-native-daum-postcode@^1.0.11":
   "integrity" "sha512-X8wFwnE+UNda5llqdX9JTiAkyuV+I99YmmTZqz6irUAqy7tYJnXPRxhMFi6MkVuDv9hyiacTDtaLAFcdA73ccA=="
   "resolved" "https://registry.npmjs.org/react-native-daum-postcode/-/react-native-daum-postcode-1.0.11.tgz"
@@ -9042,13 +9038,6 @@
   "resolved" "https://registry.npmjs.org/react-native-dropdown-picker/-/react-native-dropdown-picker-5.4.2.tgz"
   "version" "5.4.2"
 
-=======
-"react-native-dropdown-picker@^5.4.2":
-  "integrity" "sha512-cZBPyN+k52jA9XguFnKoF5tLf31z6gjZ8GijO/pfVNSSEtPwZ14UTUrr87JiiOnMh5K/O2kRzZ/jZN8D0MmUMA=="
-  "resolved" "https://registry.npmjs.org/react-native-dropdown-picker/-/react-native-dropdown-picker-5.4.2.tgz"
-  "version" "5.4.2"
-
->>>>>>> 03d5caa60af0df3a40e7523ea9c7d671873e3379
 "react-native-gesture-handler@^2.2.1", "react-native-gesture-handler@>= 1.0.0":
   "integrity" "sha512-P4kAPbSY8VFAjvFNzfePgFsbZEldfEnEfNqOJw6MlpcdXrPGwRbvMqWMVkA9lifdKTZ3XifvAgJ8+R+uEZN0zA=="
   "resolved" "https://registry.npmjs.org/react-native-gesture-handler/-/react-native-gesture-handler-2.2.1.tgz"
@@ -9269,11 +9258,7 @@
     "object-assign" "^4.1.1"
     "react-is" "^16.12.0 || ^17.0.0"
 
-<<<<<<< HEAD
 "react@*", "react@^16.0.0 || ^17.0.0", "react@^16.13.1", "react@^16.8.0 || ^17.0.0", "react@^17.0.0", "react@^17.0.2", "react@>= 15.2.1", "react@>= 16.8.0", "react@>= 16.x", "react@>= 16.x.x", "react@>=15.0.0", "react@>=16.8.0", "react@>=16.9.0", "react@>=17.0.1", "react@16 || 17", "react@17.0.2":
-=======
-"react@*", "react@^16.0.0 || ^17.0.0", "react@^16.13.1", "react@^16.8.0 || ^17.0.0", "react@^17.0.0", "react@>= 15.2.1", "react@>= 16.8.0", "react@>= 16.x", "react@>= 16.x.x", "react@>=15.0.0", "react@>=16.8.0", "react@>=16.9.0", "react@>=17.0.1", "react@16 || 17", "react@17.0.2":
->>>>>>> 03d5caa60af0df3a40e7523ea9c7d671873e3379
   "integrity" "sha512-gnhPt75i/dq/z3/6q/0asP78D0u592D5L1pd7M8P+dck6Fu/jJeL6iVVK23fptSUZj8Vjf++7wXA8UNclGQcbA=="
   "resolved" "https://registry.npmjs.org/react/-/react-17.0.2.tgz"
   "version" "17.0.2"

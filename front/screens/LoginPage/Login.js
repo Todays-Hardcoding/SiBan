@@ -11,6 +11,7 @@ import {
 const _url = "http://192.168.35.133:8282";
 
 const Login = ({ navigation }) => {
+  
   const [loginId, setLoginId] = useState("");
   const [loginPw, setLoginPw] = useState("");
 
@@ -148,10 +149,7 @@ const Login = ({ navigation }) => {
       >
         <Text style={{ fontSize: 18, color: "white" }}>로그인하기</Text>
       </TouchableOpacity>
-      <Button title="주소" onPress={() =>
-            navigation.navigate("address", {
-              screen: "address",
-            })}></Button>
+
     </View>
   );
 };

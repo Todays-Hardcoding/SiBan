@@ -21,6 +21,7 @@ const LoginPage = () => {
         component={address}
         options={{ headerShown: false }}
       />
+
        <Stack.Screen
         name="Login"
         component={Login}
