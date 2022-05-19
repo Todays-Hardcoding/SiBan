@@ -3,10 +3,8 @@ import { Button, StyleSheet, Text, TextInput, View } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
-const _url = "http://192.168.35.133:8282";
+const _url = "http://192.168.0.6:8282";
 const Register = ({ route, navigation }) => {
-
-
   //아이디,비번,이메일,전화번호
   const [id, setId] = useState("");
   const [pw, setPw] = useState("");
@@ -39,9 +37,9 @@ const Register = ({ route, navigation }) => {
   //중복검사
   const [duplicatedId, setDuplicatedID] = useState(false);
   const [duplicatedEmail, setDuplicatedEmail] = useState(false);
-  
+
   const { result } = route.params;
-  setAddr(result);
+
   const onChangeId = () => {
     const idRegex = /^[A-Za-z]{1}[A-Za-z0-9_-]{3,19}$/;
     if (idRegex.test(id) === false) {
@@ -117,6 +115,7 @@ const Register = ({ route, navigation }) => {
   };
   // 회원가입에 간한 함수
   const postRegister = (e) => {
+    // setAddr(result);
     if (
       idCheck === true &&
       pwCheck === true &&
@@ -141,7 +140,7 @@ const Register = ({ route, navigation }) => {
           email,
           name,
           tel,
-         addr,
+          result,
           height,
           weight,
         }),
@@ -183,7 +182,7 @@ const Register = ({ route, navigation }) => {
         .then((response) => response.json())
         .then((data) => {
           if (data.checkId === true) {
-            console.log(data.checkId)
+            console.log(data.checkId);
             alert("사용 불가능아이디");
           } else {
             alert("사용 가능");
@@ -280,7 +279,6 @@ const Register = ({ route, navigation }) => {
               alignItems: "center",
             }}
           >
-
             <TextInput
               style={styles.inputId}
               value={id}
@@ -369,9 +367,7 @@ const Register = ({ route, navigation }) => {
               alignItems: "center",
             }}
           >
-            <Text
-              style={styles.inputId}
-            >{addr}</Text>
+            <Text style={styles.inputId}>{result}</Text>
             {/* 주소검색 버튼 */}
             <TouchableOpacity
               style={{
@@ -385,7 +381,8 @@ const Register = ({ route, navigation }) => {
               onPress={() =>
                 navigation.navigate("address", {
                   screen: "address",
-                })}
+                })
+              }
             >
               <Text style={{ fontSize: 13, color: "white" }}>주소검색</Text>
             </TouchableOpacity>

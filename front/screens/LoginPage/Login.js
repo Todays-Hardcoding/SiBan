@@ -8,19 +8,15 @@ import {
   View,
 } from "react-native";
 
-const _url = "http://192.168.35.133:8282";
+const _url = "http://192.168.0.6:8282";
 
 const Login = ({ navigation }) => {
-  
   const [loginId, setLoginId] = useState("");
   const [loginPw, setLoginPw] = useState("");
-
   const [loginIdCheck, setLoginIdCheck] = useState(false);
   const [loginPwCheck, setLoginPwCheck] = useState(false);
-
   const [idError, setIdError] = useState("");
   const [pwError, setPwError] = useState("");
-
   const [saveId, setSaveId] = useState("");
 
   const data = new FormData();
@@ -78,12 +74,19 @@ const Login = ({ navigation }) => {
     <View
       style={{
         flex: 1,
-        backgroundColor: "#191919",
+        backgroundColor: "#ffffff",
         alignItems: "center",
         justifyContent: "center",
       }}
     >
-      <Text style={{ fontSize: 20, fontWeight: "bold", color: "#ececec" }}>
+      <Text
+        style={{
+          fontSize: 35,
+          fontWeight: "bold",
+          color: "#191919",
+          marginBottom: 20,
+        }}
+      >
         시반로그인
       </Text>
       <Text> </Text>
@@ -110,7 +113,7 @@ const Login = ({ navigation }) => {
 
       <TouchableOpacity style={{ flexDirection: "row" }}>
         <Text
-          style={{ color: "#ececec" }}
+          style={{ color: "gray", marginBottom: 20 }}
           onPress={() =>
             navigation.navigate("LoginPage", {
               screen: "Search",
@@ -143,13 +146,10 @@ const Login = ({ navigation }) => {
           width: "80%",
           alignItems: "center",
         }}
-        // onPress={test2}
-
         onPress={postLogin}
       >
         <Text style={{ fontSize: 18, color: "white" }}>로그인하기</Text>
       </TouchableOpacity>
-
     </View>
   );
 };

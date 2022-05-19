@@ -11,7 +11,7 @@ import {
 import { COLORS, SIZES, images } from "../../constants";
 import { Table, Row, Rows } from "react-native-table-component-2";
 
-const url = "http://192.168.45.96:8282";
+const url = "http://192.168.0.6:8282";
 
 const MyProfile = ({ navigation }) => {
   const [userHeight, setuserHeight] = useState("");

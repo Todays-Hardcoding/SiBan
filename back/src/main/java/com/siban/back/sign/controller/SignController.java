@@ -22,7 +22,7 @@ public class SignController {
 	public User register(@RequestBody Map<String, String> param) {
 		System.out.println(param);
 		User user = User.builder().userId(param.get("id")).userPassword(param.get("pw")).userEmail(param.get("email"))
-				.userName(param.get("name")).userTel(param.get("tel")).userHeight(param.get("height")).userAddr(param.get("addr"))
+				.userName(param.get("name")).userTel(param.get("tel")).userHeight(param.get("height")).userAddr(param.get("result"))
 				.userWeight(param.get("weight")).build();
 		signService.insertUser(user);
 		
