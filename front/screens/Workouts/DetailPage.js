@@ -13,51 +13,54 @@ const DetailPage = ({ route, navigation }) => {
   const { result } = route.params;
   const [planStatus, setPlanStatus] = useState(false);
   const [plans, setPlans] = useState({});
-  
+
   useEffect(() => {
-    loadPlan;
-    if(plans[result.workoutName] !== null) {
-      setPlanStatus(true)
-    }else {
-      setPlanStatus(false)
+    loadPlan();
+    // console.log(plans);
+    if (plans[result.workoutName] !== null) {
+      setPlanStatus(true);
+    } else {
+      setPlanStatus(false);
     }
   }, []);
 
   const checkPlan = () => {
-    setPlanStatus(!planStatus)
-    if(planStatus === true){
-      addPlan
-    }else {
-      deletePlan
+    setPlanStatus(!planStatus);
+    if (planStatus === true) {
+      addPlan();
+    } else {
+      deletePlan();
     }
-  }
+  };
 
   const loadPlan = async () => {
-    const data = await AsyncStorage.getItem("Plans");
-    setPlans(JSON.parse(data))
-  }
+    const data = await AsyncStorage.getItem("Plans").then((value) => {
+      if (value != null) {
+        let user = JSON.parse(value);
+        setPlans(user.plans);
+      }
+    });
+  };
 
-  const savePlan = async (save) => {
-    await AsyncStorage.setItem("Plans", JSON.stringify(save))
-  }
+  const savePlan = async () => {
+    await AsyncStorage.setItem("Plans", JSON.stringify(plans));
+  };
 
   const addPlan = async () => {
     const newPlans = {
       ...plans,
-      [result.workoutName] : result,
-    }
-    setPlans(newPlans)
-    await savePlan(newPlans)
-  }
+      [result.workoutName]: result,
+    };
+    setPlans(newPlans);
+    savePlan(newPlans);
+  };
 
   const deletePlan = async () => {
-    const newPlans = {...plans};
-    delete newPlans[result.workoutName]
-    setPlans(newPlans)
-    await savePlan(newPlans)
-  }
-
-
+    const newPlans = { ...plans };
+    delete newPlans[result.workoutName];
+    setPlans(newPlans);
+    await savePlan(newPlans);
+  };
 
   return (
     <View style={styles.Container}>
@@ -75,7 +78,7 @@ const DetailPage = ({ route, navigation }) => {
               style={styles.headerBtn}
               name="bookmark"
               size={30}
-              color= {planStatus ? "yellow" : "black"}
+              color={planStatus ? "yellow" : "black"}
             />
           </TouchableOpacity>
         </View>
