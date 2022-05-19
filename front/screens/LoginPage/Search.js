@@ -11,9 +11,8 @@ const Search = () => {
 
     // 아이디 유무 관한 함수
     const postSearchEmail = () => {
-      const _url = "http://192.168.35.133:8282/searchEmail.act";
   
-        fetch(_url, {
+        fetch(_url+"searchEmail.act", {
           method: "POST",
           headers: {
             Accept: "application/json",
@@ -37,9 +36,8 @@ const Search = () => {
     };
        // 비번찾기 
        const postSearchPw = () => {
-        const _url = "http://192.168.35.133:8282/SearchPw.act";
     
-          fetch(_url, {
+          fetch(_url+"SearchPw.act", {
             method: "POST",
             headers: {
               Accept: "application/json",

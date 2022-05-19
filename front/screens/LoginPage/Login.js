@@ -65,7 +65,7 @@ const Login = ({ navigation }) => {
           alert("로그인 성공");
           console.log(setSaveId);
           navigation.navigate("MainTabs", {
-            loginId: loginId,
+            // loginId: loginId,
           });
         } else {
           alert("다시 로그인해주세요.");

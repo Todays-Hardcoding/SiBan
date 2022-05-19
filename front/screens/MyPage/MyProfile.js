@@ -14,9 +14,9 @@ import { Table, Row, Rows } from "react-native-table-component-2";
 const startUrl = "http://192.168.45.96:8282";
 
 const MyProfile = ({ navigation, route }) => {
-  const { userId } = route.params;
+  // const { userId } = route.params;
 
-  console.log(userId);
+  // console.log(userId);
 
   const [userHeight, setuserHeight] = useState("");
   const [userWeight, setuserWeight] = useState("");
