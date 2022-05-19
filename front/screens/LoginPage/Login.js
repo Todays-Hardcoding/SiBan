@@ -1,16 +1,13 @@
 import React, { useState } from "react";
-
 import {
-  Text,
-  View,
-  TextInput,
   StyleSheet,
+  Text,
+  TextInput,
   TouchableOpacity,
+  View,
 } from "react-native";
 
-import NaverButton from "../../components/NaverButton";
-import { NavigationContainer } from "@react-navigation/native";
-//import { State } from 'react-native-gesture-handler';
+const _url = "http://192.168.45.96:8282";
 
 const Login = ({ navigation }) => {
   const [loginId, setLoginId] = useState("");
@@ -36,8 +33,6 @@ const Login = ({ navigation }) => {
       setLoginIdCheck(true);
     }
     setLoginId(text);
-    // console.log(loginIdCheck);
-    // console.log(loginId);
   };
   const setPw = (text) => {
     if (text.trim().length === 0) {
@@ -47,15 +42,11 @@ const Login = ({ navigation }) => {
       setLoginPwCheck(true);
     }
     setLoginPw(text);
-    // console.log(loginPwCheck);
-    // console.log(loginPw);
   };
 
   // 로그인
   const postLogin = () => {
-    const _url = "http://192.168.35.133:8282/login.act";
-
-    fetch(_url, {
+    fetch(_url + "/login.act", {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -77,19 +68,22 @@ const Login = ({ navigation }) => {
         } else {
           alert("다시 로그인해주세요.");
         }
-      });
+      })
+      .catch((error) => console.log(error));
   };
 
   return (
     <View
       style={{
         flex: 1,
-        backgroundColor: "#fff",
+        backgroundColor: "#191919",
         alignItems: "center",
         justifyContent: "center",
       }}
     >
-      <Text style={{ fontSize: 20, fontWeight: "bold" }}>시반로그인</Text>
+      <Text style={{ fontSize: 20, fontWeight: "bold", color: "#ececec" }}>
+        시반로그인
+      </Text>
       <Text> </Text>
       {/* 아이디 입력하는 곳 */}
       <TextInput
@@ -114,7 +108,7 @@ const Login = ({ navigation }) => {
 
       <TouchableOpacity style={{ flexDirection: "row" }}>
         <Text
-          style={{ color: "gray" }}
+          style={{ color: "#ececec" }}
           onPress={() =>
             navigation.navigate("LoginPage", {
               screen: "Search",
@@ -139,7 +133,7 @@ const Login = ({ navigation }) => {
 
       <TouchableOpacity
         style={{
-          backgroundColor: "black",
+          backgroundColor: "#0c0c0c",
           padding: 10,
           margin: 10,
           borderRadius: 5,
@@ -161,12 +155,12 @@ const styles = StyleSheet.create({
   input: {
     width: "80%",
     borderWidth: 1,
+    backgroundColor: "#ececec",
     padding: 10,
     fontSize: 15,
     borderRadius: 8,
     borderWidth: 1,
     marginVertical: 5,
-    width: "80%",
   },
 });
 

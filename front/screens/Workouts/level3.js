@@ -3,12 +3,12 @@ import React, { useEffect, useState } from "react";
 import { Text, StyleSheet, TouchableOpacity, View } from "react-native";
 import { FlatGrid } from "react-native-super-grid";
 
-const Level3 = ({navigation}) => {
-  
+const _url = "http://112.172.225.17:8282";
+
+const Level3 = ({ navigation }) => {
   const [exercises, setExercises] = useState([]);
 
   useEffect(() => {
-    const _url = "http://112.172.225.17:8282";
     fetch(_url + "/Course.act", {
       method: "POST",
       headers: {
@@ -35,9 +35,9 @@ const Level3 = ({navigation}) => {
         renderItem={({ item }) => (
           <TouchableOpacity
             style={[styles.itemContainer, { backgroundColor: "lightgrey" }]}
-            onPress={
+            onPress={() =>
               navigation.navigate("DetailPage", {
-                exercise: item,
+                result: item,
               })
             }
           >

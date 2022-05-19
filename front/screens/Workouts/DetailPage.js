@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FontAwesome } from "@expo/vector-icons";
 import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
 
 const DetailPage = ({ route, navigation }) => {
-  const { exercise } = route.params;
+  const { result } = route.params;
 
   return (
     <View style={styles.Container}>
@@ -16,8 +16,8 @@ const DetailPage = ({ route, navigation }) => {
           <FontAwesome name="bookmark" size={24} color="black" />
         </TouchableOpacity>
       </View>
-      <View>
-        <Text>{exercise.workoutName}</Text>
+      <View style={styles.bodyContainer}>
+        <Text>{result.workoutName}</Text>
       </View>
     </View>
   );
@@ -33,6 +33,10 @@ const styles = StyleSheet.create({
     marginHorizontal: 20,
     marginTop: 20,
   },
+  bodyContainer: {
+    justifyContent:"center",
+    alignItems:"center"
+  }
 });
 
 export default DetailPage;
