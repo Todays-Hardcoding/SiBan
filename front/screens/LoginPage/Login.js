@@ -7,7 +7,7 @@ import {
   View,
 } from "react-native";
 
-const _url = "http://112.172.225.17:8282";
+const _url = "http://192.168.45.96:8282";
 
 const Login = ({ navigation }) => {
   const [loginId, setLoginId] = useState("");
