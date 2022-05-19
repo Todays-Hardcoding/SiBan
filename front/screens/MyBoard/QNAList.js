@@ -24,7 +24,10 @@ const QNAList = ({ navigation }) => {
   const [inquiry, setInquiry] = useState([]);
   const [postCode, setPostCode] = useState();
   useEffect(() => {
-    fetch(_url + "/selectInquiry.act", {
+
+    const _url = "http://192.168.56.1:8282/selectInquiry.act"
+
+    fetch(_url, {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -33,6 +36,7 @@ const QNAList = ({ navigation }) => {
     })
       .then((response) => response.json())
       .then((data) => {
+        
         setInquiry(data);
       });
   }, [isFocused]);
@@ -40,7 +44,7 @@ const QNAList = ({ navigation }) => {
   return (
     <SafeAreaView style={styles.container}>
       <ImageBackground
-        source={require("../../assets/images/sibanLogo.png")}
+        source={require("../../assets/sibanlogo6.png")}
         style={styles.image}
       ></ImageBackground>
       <ScrollView>
@@ -48,16 +52,15 @@ const QNAList = ({ navigation }) => {
           {inquiry.map((item, index) => (
             <TouchableOpacity
               key={index}
+              onPress={() => {
+                console.log(item.postCode);
+                navigation.navigate("QNADetail" , {result: item.postCode})
+              }}
               style={[
                 styles.item,
                 index === 0 && { borderTopWidth: 0 }, // CSS: first-child
                 index % 2 === 1 && { backgroundColor: "#EAEAEA" }, // CSS: nth-child(even)
               ]}
-              onPress={() =>
-                navigation.navigate("QNADetail", {
-                  result: item.postCode,
-                })
-              }
             >
               <Text style={styles.contentText}>
                 {item.postCategory} {item.postTitle}
@@ -99,13 +102,13 @@ const styles = StyleSheet.create({
   },
   image: {
     width: windowWidth,
-    height: windowHeight * 0.3,
+    height: windowHeight * 0.2,
     alignItems: "center",
     justifyContent: "center",
     opacity: 0.9,
   },
   writeButton: {
-    backgroundColor: "#F2C9E1",
+    backgroundColor: "#34495e",
     borderRadius: 8,
     height: 40,
     alignItems: "center",
@@ -140,9 +143,10 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     fontWeight: "bold",
+    color:"white"
   },
   searchButton: {
-    backgroundColor: "#B1BCE6",
+    backgroundColor: "#7f8c8d",
     borderRadius: 8,
     height: 40,
     alignItems: "center",

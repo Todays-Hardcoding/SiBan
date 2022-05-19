@@ -16,41 +16,71 @@ import {
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 
+const _url = "http://192.168.56.1:8282";
+
 const QNADetail = ({route}) => {
   const {result} = route.params;
-  
-  useEffect(() => console.log(result));
+  const [postCategory,setPostCategory] = useState(); 
+  const [postCode,setPostCode] = useState(); 
+  const [postContent,setPostContent] = useState(); 
+  const [postRegDate,setPostRegDate] = useState(); 
+  const [postTitle,setPostTitle] = useState(); 
+  const [postViews,setPostViews] = useState(); 
+
+  console.log(result);
+  useEffect(() => {
+
+    console.log(result);
+    fetch(_url + "/selectDetail.act", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        result
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        setPostCategory(data.postCategory);
+        setPostCode(data.postCode);
+        setPostContent(data.postContent);
+        setPostRegDate(data.postRegDate);
+        setPostTitle(data.postTitle);
+        setPostViews(data.postViews);
+      });
+    }, []);
   return (
     <SafeAreaView style={styles.container} >
       <ImageBackground
-        source={require("../../assets/images/sibanLogo.png")}
+        source={require("../../assets/sibanlogo6.png")}
         style={styles.image}
       >
-       
       </ImageBackground>
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.postContainer}>
         <View style={styles.postHeader}>
           <View>
-            <Text>조회수</Text>
-            <Text>{result}</Text>
+            <Text>조회수 {postViews}</Text>
           </View>
           <View>
-            <Text>22-02-22</Text>
+            <Text>{postRegDate}</Text>
           </View>
         </View>
         <View style={styles.postTitle}>
-          <Text>제목</Text>
+          <Text>제목 {postTitle}</Text>
         </View>
         <View style={styles.postCategory}>
-          <Text>이용 문의</Text>
+          <Text>{postCategory}</Text>
         </View>
         </View>
         {/* horizontal line*/}
         <View style={styles.postContainer}>
         <View style={styles.line}></View>
           <View style={styles.postBody}>
-            <Text>이용문의 내용 TEST</Text>
+            <Text>{postContent}</Text>
           </View>
         </View>
         <View style={styles.postAnswer}>
@@ -105,7 +135,6 @@ const styles = StyleSheet.create({
     flex: 0.1,
     flexDirection: "row",
     alignItems: "center",
-    //backgroundColor: "#B1BCE6",
     borderWidth: 1,
     borderColor:"#DDDDDD",
     marginTop: 10,
@@ -119,7 +148,6 @@ const styles = StyleSheet.create({
     flex: 0.1,
     flexDirection: "row",
     alignItems: "center",
-    //backgroundColor: "#B1BCE6",
     borderWidth: 1,
     borderColor:"#DDDDDD",
     marginTop: 10,
@@ -174,10 +202,11 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 5,
     marginTop: 10,
-    backgroundColor: "#F2C9E1",
+    backgroundColor: "#34495e",
   },
   text: {
     fontWeight: "bold",
+    color: "white"
   },
 });
 

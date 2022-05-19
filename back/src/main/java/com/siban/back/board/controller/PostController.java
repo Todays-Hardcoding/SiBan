@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -46,6 +47,16 @@ public class PostController {
 		
 		System.out.println(result);
 		
+		return result;
+		
+	}
+	
+	@PostMapping("/selectDetail.act")
+	public Optional<Post> selectDetail(@RequestBody Map<String, Long> param) {
+		Optional<Post> result = Optional.of(new Post());
+		result = postService.selectDetail(param.get("result"));
+		System.out.println(param);
+		System.out.println("미나 와따감");
 		return result;
 	}
 }
