@@ -2,11 +2,11 @@ import React, { useEffect, useState } from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { FlatGrid } from "react-native-super-grid";
 
+const _url = "http://112.172.225.17:8282";
 const Endurance = ({ navigation }) => {
   const [exercises, setExercises] = useState([]);
 
   useEffect(() => {
-    const _url = "http://112.172.225.17:8282";
     fetch(_url + "/Goal.act", {
       method: "POST",
       headers: {
@@ -27,16 +27,15 @@ const Endurance = ({ navigation }) => {
     <View style={styles.Container}>
       <Text style={styles.headerText}>{exercises.length}개의 운동</Text>
       <FlatGrid
-        itemDimension={170}
+        itemDimension={200}
         data={exercises}
         spacing={20}
         renderItem={({ item }) => (
           <TouchableOpacity
             style={[styles.itemContainer, { backgroundColor: "lightgrey" }]}
             onPress={() =>
-              navigation.navigate("StrengthNav", {
-                screen: "StrengthDetail",
-                params: { exercise: item },
+              navigation.navigate("DetailPage", {
+                result: item,
               })
             }
           >

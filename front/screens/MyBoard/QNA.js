@@ -9,9 +9,11 @@ import {
 import { SafeAreaView, TextInput, ScrollView } from "react-native";
 import DropDownPicker from "react-native-dropdown-picker";
 
+const _url = "http://192.168.45.96:8282";
+
 const windowWidth = Dimensions.get("window").width;
 
-const QNA = ({navigation}) => {
+const QNA = ({ navigation }) => {
   const [open, setOpen] = useState(false);
 
   const [categoriValue, setCategoriValue] = useState(null);
@@ -26,12 +28,11 @@ const QNA = ({navigation}) => {
   ]);
 
   const cancel = () => {
-    navigation.navigate("ServiceCenter", {Screen: "QNAList"})
-  }
-  const postBoard = () => {
-    const _url = "http://192.168.242.2:8282/insertInquiry.act";
+    navigation.pop();
+  };
 
-    fetch(_url, {
+  const postBoard = () => {
+    fetch(_url + "/insertInquiry.act", {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -45,8 +46,9 @@ const QNA = ({navigation}) => {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data)
-        navigation.navigate("ServiceCenter", {Screen: "QNAList"})
+        if (data != null) {
+          navigation.pop();
+        }
       });
   };
 
@@ -128,7 +130,7 @@ const styles = StyleSheet.create({
   submit: {
     width: 120,
     height: 40,
-    backgroundColor: "#F2C9E1",
+    backgroundColor: "#EEB0B0",
     alignItems: "center",
     justifyContent: "center",
     margin: 15,
@@ -137,7 +139,7 @@ const styles = StyleSheet.create({
   cancel: {
     width: 120,
     height: 40,
-    backgroundColor: "#B1BCE6",
+    backgroundColor: "#AACFCF",
     alignItems: "center",
     justifyContent: "center",
     margin: 15,

@@ -1,12 +1,14 @@
+import { useRoute } from "@react-navigation/native";
 import React, { useEffect, useState } from "react";
 import { Text, StyleSheet, TouchableOpacity, View } from "react-native";
 import { FlatGrid } from "react-native-super-grid";
 
-const Level3 = () => {
+const _url = "http://112.172.225.17:8282";
+
+const Level3 = ({ navigation }) => {
   const [exercises, setExercises] = useState([]);
 
   useEffect(() => {
-    const _url = "http://112.172.225.17:8282";
     fetch(_url + "/Course.act", {
       method: "POST",
       headers: {
@@ -27,12 +29,17 @@ const Level3 = () => {
     <View style={styles.Container}>
       <Text style={styles.headerText}>{exercises.length}개의 운동</Text>
       <FlatGrid
-        itemDimension={170}
+        itemDimension={200}
         data={exercises}
         spacing={20}
         renderItem={({ item }) => (
           <TouchableOpacity
             style={[styles.itemContainer, { backgroundColor: "lightgrey" }]}
+            onPress={() =>
+              navigation.navigate("DetailPage", {
+                result: item,
+              })
+            }
           >
             <View style={styles.itmeimageContainer}></View>
             <View style={styles.itemTextContainer}>

@@ -12,7 +12,6 @@ import Accomplished from "../screens/MyPage/Accomplished";
 import MyProfile from "../screens/MyPage/MyProfile";
 
 import MealPlanHome from "../screens/MyPage/MealPlan/MealPlanHome";
-import MealPlanWrite from "../screens/MyPage/MealPlan/MealPlanWrite";
 
 import MyProfileModify from "../screens/MyPage/MyProfileModify";
 
@@ -42,14 +41,14 @@ const OthersNav = () => {
   );
 };
 
-const ActivityNav = () => {
+const ActivityNav = ({ route }) => {
   return (
     <Tab.Navigator
       initialLayout={{ width: windowWidth }}
       initialRouteName="ROUTINERECORD"
       screenOptions={{
-        tabBarLabelStyle: { fontSize: 15, color: "black" },
-        tabBarStyle: { backgroundColor: "#ECB390", paddingVertical: 10 },
+        tabBarLabelStyle: { fontSize: 15, color: "white" },
+        tabBarStyle: { backgroundColor: "#191919", paddingVertical: 10 },
       }}
     >
       <Tab.Screen
@@ -60,6 +59,7 @@ const ActivityNav = () => {
       <Tab.Screen
         name="ACCOMPLISHED"
         component={Accomplished}
+        initialParams={{ params: route.params }}
         options={{ tabBarLabel: "달성 기록" }}
       />
     </Tab.Navigator>
@@ -68,18 +68,10 @@ const ActivityNav = () => {
 
 const MealPlanNav = () => {
   return (
-    <Stack.Navigator
-      initialRouteName="MealPlanHome"
-      screenOptions={{ presentation: "modal" }}
-    >
+    <Stack.Navigator initialRouteName="MealPlanHome">
       <Stack.Screen
         name="MealPlanHome"
         component={MealPlanHome}
-        options={{ headerShown: false }}
-      />
-      <Stack.Screen
-        name="MealPlanWrite"
-        component={MealPlanWrite}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>

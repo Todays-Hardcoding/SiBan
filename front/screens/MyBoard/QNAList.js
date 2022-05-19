@@ -12,13 +12,14 @@ import {
   ImageBackground,
 } from "react-native";
 import { FlatGrid } from "react-native-super-grid";
-import { useIsFocused } from '@react-navigation/native';
+import { useIsFocused } from "@react-navigation/native";
 
+const _url = "http://192.168.45.96:8282";
 
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 
-const QNAList = ({navigation}) => {
+const QNAList = ({ navigation }) => {
   const isFocused = useIsFocused();
 
   const [inquiry, setInquiry] = useState([]);
@@ -44,27 +45,29 @@ const QNAList = ({navigation}) => {
       <ImageBackground
         source={require("../../assets/images/sibanLogo.png")}
         style={styles.image}
-      >
-      </ImageBackground>
+      ></ImageBackground>
       <ScrollView>
         <View>
-          {inquiry.map((item, index) => 
-          <TouchableOpacity
-            key={index}
-            onPress={()=> {
-              navigation.navigate("ServiceCenter", {Screen: "QNAList"})
-            }}
-            style={[
-              styles.item,
-              index === 0 && { borderTopWidth: 0 }, // CSS: first-child
-              index % 2 === 1 && { backgroundColor: "#EAEAEA" }, // CSS: nth-child(even)
-            ]}
-          >
-            <Text style={styles.contentText}>{item.postCategory}   {item.postTitle}</Text>
-            <Text style={[styles.contentText, {textAlign: "right"}]}>{item.postRegDate}</Text>
-
-          </TouchableOpacity>
-          )}
+          {inquiry.map((item, index) => (
+            <TouchableOpacity
+              key={index}
+              onPress={() => {
+                navigation.navigate("ServiceCenter", { Screen: "QNAList" });
+              }}
+              style={[
+                styles.item,
+                index === 0 && { borderTopWidth: 0 }, // CSS: first-child
+                index % 2 === 1 && { backgroundColor: "#EAEAEA" }, // CSS: nth-child(even)
+              ]}
+            >
+              <Text style={styles.contentText}>
+                {item.postCategory} {item.postTitle}
+              </Text>
+              <Text style={[styles.contentText, { textAlign: "right" }]}>
+                {item.postRegDate}
+              </Text>
+            </TouchableOpacity>
+          ))}
         </View>
       </ScrollView>
 
@@ -78,11 +81,12 @@ const QNAList = ({navigation}) => {
           <Text style={styles.buttonText}>검색</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity 
-          onPress={()=> {
-          navigation.navigate("QNANav", {Screen: "QNA"})
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate("QNANav", { Screen: "QNA" });
           }}
-          style={styles.writeButton}>
+          style={styles.writeButton}
+        >
           <Text style={styles.buttonText}>글작성</Text>
         </TouchableOpacity>
       </View>
@@ -96,7 +100,7 @@ const styles = StyleSheet.create({
   },
   image: {
     width: windowWidth,
-    height: windowHeight * 0.2,
+    height: windowHeight * 0.3,
     alignItems: "center",
     justifyContent: "center",
     opacity: 0.9,
@@ -136,7 +140,7 @@ const styles = StyleSheet.create({
     marginLeft: 8,
   },
   buttonText: {
-    fontWeight: "bold"
+    fontWeight: "bold",
   },
   searchButton: {
     backgroundColor: "#B1BCE6",
@@ -148,11 +152,18 @@ const styles = StyleSheet.create({
     marginLeft: 10,
   },
   contentContainer: {
-    flexDirection: "row"
+    flexDirection: "row",
   },
   contentText: {
-    fontWeight: "bold"
-  }
+    fontWeight: "bold",
+  },
+  moonhiText: {
+    fontWeight: "bold",
+    color: "#ffffff",
+    fontSize: 20,
+    marginTop: 100,
+    marginLeft: 50,
+  },
 });
 
 export default QNAList;

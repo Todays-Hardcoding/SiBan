@@ -1,6 +1,7 @@
 package com.siban.back.sign.domain;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,26 +11,24 @@ import javax.persistence.Id;
 import javax.persistence.PrePersist;
 
 import javax.persistence.Table;
-
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
-
 
 @Getter
 @Setter
+@NoArgsConstructor
 @Table
 @Entity
 public class User {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long userCode;
-
 	@NotNull
 	@Column
 	private String userId;
@@ -47,7 +46,10 @@ public class User {
 	private String userTel;
 	@NotNull
 	@Column
-	private String userHeight;
+	private  String userHeight;
+	
+	@Column
+	private String userProfile;
 
 	@NotNull
 	@Column
@@ -58,11 +60,10 @@ public class User {
 	public void createDate() {
 		this.userRegDate = LocalDateTime.now();
 	}
-
 	@Builder
 	public User(Long userCode, @NotNull String userId, @NotNull String userPassword, @NotNull String userEmail,
-			@NotNull String userName, @NotNull String userTel, @NotNull String userHeight, @NotNull String userWeight,
-			LocalDateTime userRegDate) {
+			@NotNull String userName, @NotNull String userTel, @NotNull String userHeight, String userProfile,
+			@NotNull String userWeight, LocalDateTime userRegDate) {
 		super();
 		this.userCode = userCode;
 		this.userId = userId;
@@ -71,12 +72,11 @@ public class User {
 		this.userName = userName;
 		this.userTel = userTel;
 		this.userHeight = userHeight;
+		this.userProfile = userProfile;
 		this.userWeight = userWeight;
 		this.userRegDate = userRegDate;
 	}
-	
-	
-	
 
 
+	
 }

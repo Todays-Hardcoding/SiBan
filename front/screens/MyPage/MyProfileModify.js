@@ -13,18 +13,18 @@ import { Dimensions } from "react-native";
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 
+const url = "http://192.168.45.96:8282";
+
 const MyProfileModify = () => {
   const [userName, setuserName] = useState("");
   const [userEmail, setuserEmail] = useState("");
   const [userHeight, setuserHeight] = useState("");
   const [userWeight, setuserWeight] = useState("");
   const [userTel, setuserTel] = useState();
-  const userId = "TTAA";
+  const userId = "TATA";
 
   const onScreenLoad = () => {
-    const startUrl = "http://192.168.45.96:8282/showUserInfo.act";
-
-    fetch(startUrl, {
+    fetch(url + "/showUserInfo.act", {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -50,10 +50,8 @@ const MyProfileModify = () => {
     onScreenLoad();
   }, []);
 
-  const profileTest = (navigation ) => {
-    const url = "http://192.168.45.96:8282/updateUserInfo.act";
-
-    fetch(url, {
+  const profileTest = (navigation) => {
+    fetch(url + "/updateUserInfo.act", {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -128,13 +126,13 @@ const MyProfileModify = () => {
       </View>
       <View style={styles.buttonCase}>
         <View style={styles.buttonPart}>
-        <TouchableOpacity onPress={profileTest} style={styles.defaultButton}>
-          <Text style={styles.userProfileText}>저장</Text>
-        </TouchableOpacity>
+          <TouchableOpacity onPress={profileTest} style={styles.defaultButton}>
+            <Text style={styles.userProfileText}>저장</Text>
+          </TouchableOpacity>
 
-        <TouchableOpacity onPress={onPressBtn} style={styles.defaultButton}>
-          <Text style={styles.userProfileText}>뒤로</Text>
-        </TouchableOpacity>
+          <TouchableOpacity onPress={onPressBtn} style={styles.defaultButton}>
+            <Text style={styles.userProfileText}>뒤로</Text>
+          </TouchableOpacity>
         </View>
       </View>
     </View>
@@ -174,9 +172,9 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
     paddingTop: 10,
   },
-  buttonCase:{
+  buttonCase: {
     flex: 1,
-    alignItems: "flex-end"
+    alignItems: "flex-end",
   },
   buttonPart: {
     flex: 1,
@@ -184,13 +182,16 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   defaultButton: {
-    backgroundColor: "#F5EEDC",
+    backgroundColor: "#191919",
     height: windowWidth * 0.1,
     alignItems: "center",
     justifyContent: "center",
     borderRadius: windowWidth * 0.04,
     marginHorizontal: 5,
     width: windowWidth * 0.35,
+  },
+  userProfileText: {
+    color: "#ececec",
   },
 });
 

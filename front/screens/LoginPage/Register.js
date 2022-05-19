@@ -3,6 +3,7 @@ import { StyleSheet, Text, TextInput, View } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
+const _url = "http://112.172.225.17:8282";
 const Register = ({ navigation }) => {
   //아이디,비번,이메일,전화번호
   const [id, setId] = useState("");
@@ -111,8 +112,6 @@ const Register = ({ navigation }) => {
   };
   // 회원가입에 간한 함수
   const postRegister = (e) => {
-    const _url = "http://192.168.35.133:8282/register.act";
-
     if (
       idCheck === true &&
       pwCheck === true &&
@@ -125,7 +124,7 @@ const Register = ({ navigation }) => {
       duplicatedId === true &&
       duplicatedEmail === true
     ) {
-      fetch(_url, {
+      fetch(_url + "/register.act", {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -161,13 +160,11 @@ const Register = ({ navigation }) => {
   };
   // 아이디 중복체크에 관한 함수
   const checkId = () => {
-    const _url = "http://192.168.35.133:8282/checkId.act";
-
     const idRegex = /^[A-Za-z]{1}[A-Za-z0-9_-]{3,19}$/;
     if (idRegex.test(id) === false) {
       alert("4자리 이상 영문자로 시작하는 아이디를 입력해주세요.");
     } else {
-      fetch(_url, {
+      fetch(_url + "/checkId.act", {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -191,13 +188,12 @@ const Register = ({ navigation }) => {
 
   // 이메일 중복체크에 관한 함수
   const checkEmail = () => {
-    const _url = "http://192.168.35.133:8282/checkEmail.act";
     const emailRegex =
       /^[0-9?A-z0-9?]+(\.)?[0-9?A-z0-9?]+@[0-9?A-z]+\.[A-z]{2}.?[A-z]{0,3}$/;
     if (!emailRegex.test(email)) {
       alert("이메일형식에 맞게 다시 입력해주세요");
     } else {
-      fetch(_url, {
+      fetch(_url + "/checkEmail.act", {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -209,7 +205,7 @@ const Register = ({ navigation }) => {
       })
         .then((response) => response.json())
         .then((data) => {
-          console.log(data.checkId);
+          console.log(data.checkEmail);
 
           if (data.checkEmail === true) {
             alert("사용 불가능한 Email");
@@ -251,7 +247,7 @@ const Register = ({ navigation }) => {
         >
           <Text
             style={{
-              fontSize: 40,
+              fontSize: 30,
               fontWeight: "bold",
               marginTop: 40,
               justifyContent: "center",
@@ -270,7 +266,6 @@ const Register = ({ navigation }) => {
             {"\n"}멤버가 되어 시반이 제공하는 {"\n"}
             최고의 제품과 혜택을 만나보세요 {"\n"}{" "}
           </Text>
-          <Text></Text>
           <View
             style={{
               flexDirection: "row",
@@ -290,19 +285,20 @@ const Register = ({ navigation }) => {
             {/* 아이디 중복확인 버튼 */}
             <TouchableOpacity
               style={{
-                backgroundColor: "#778beb",
-                padding: 10,
-                margin: 10,
+                backgroundColor: "gray",
+                padding: 5,
+                margin: 5,
                 borderRadius: 10,
-                width: 100,
+                width: 60,
                 alignItems: "center",
               }}
               onPress={checkId}
             >
-              <Text style={{ fontSize: 18, color: "white" }}>중복확인</Text>
+              <Text style={{ fontSize: 13, color: "white" }}>중복확인</Text>
             </TouchableOpacity>
           </View>
           {!idCheck && <Text style={{ color: "red" }}>{idError}</Text>}
+
           <TextInput
             style={styles.input}
             value={pw}
@@ -313,6 +309,7 @@ const Register = ({ navigation }) => {
             placeholder={"비밀번호를 입력해주세요"}
           />
           {!pwCheck && <Text style={{ color: "red" }}>{pwError}</Text>}
+
           <TextInput
             style={styles.input}
             value={pwConfirm}
@@ -325,6 +322,7 @@ const Register = ({ navigation }) => {
           {!pwConfirmCheck && (
             <Text style={{ color: "red" }}>{pwConfirmError}</Text>
           )}
+
           <View
             style={{
               flexDirection: "row",
@@ -343,19 +341,20 @@ const Register = ({ navigation }) => {
             {/* 이메일 중복확인 버튼 */}
             <TouchableOpacity
               style={{
-                backgroundColor: "#778beb",
-                padding: 10,
-                margin: 10,
+                backgroundColor: "gray",
+                padding: 5,
+                margin: 5,
                 borderRadius: 10,
-                width: 100,
+                width: 60,
                 alignItems: "center",
               }}
               onPress={checkEmail}
             >
-              <Text style={{ fontSize: 18, color: "white" }}>중복확인</Text>
+              <Text style={{ fontSize: 13, color: "white" }}>중복확인</Text>
             </TouchableOpacity>
           </View>
           {!emailCheck && <Text style={{ color: "red" }}>{emailError}</Text>}
+
           <TextInput
             style={styles.input}
             value={name}
@@ -374,6 +373,7 @@ const Register = ({ navigation }) => {
             returnKeyType="next"
           />
           {!telCheck && <Text style={{ color: "red" }}>{telError}</Text>}
+
           <TextInput
             style={styles.input}
             value={height}
@@ -382,7 +382,9 @@ const Register = ({ navigation }) => {
             onEndEditing={() => onChangeHeight()}
             placeholder={"키를 입력해주세요."}
           />
+
           {!heightCheck && <Text style={{ color: "red" }}>{heightError}</Text>}
+
           <TextInput
             style={styles.input}
             value={weight}
@@ -392,6 +394,7 @@ const Register = ({ navigation }) => {
             placeholder={"몸무게를 입력해주세요."}
           />
           {!weightCheck && <Text style={{ color: "red" }}>{weightError}</Text>}
+
           <View style={styles.BtnBox}>
             {/* 가입버튼 */}
             <TouchableOpacity
@@ -405,11 +408,11 @@ const Register = ({ navigation }) => {
               }}
               onPress={(event) => postRegister(event)}
             >
-              <Text style={{ fontSize: 18, color: "white" }}>가입</Text>
+              <Text style={{ fontSize: 15, color: "#ececec" }}>register</Text>
             </TouchableOpacity>
             <TouchableOpacity
               style={{
-                backgroundColor: "#c44569",
+                backgroundColor: "gray",
                 padding: 10,
                 margin: 10,
                 borderRadius: 10,
@@ -422,7 +425,7 @@ const Register = ({ navigation }) => {
                 })
               }
             >
-              <Text style={{ fontSize: 18, color: "white" }}>취소</Text>
+              <Text style={{ fontSize: 15, color: "white" }}>cancel</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -454,7 +457,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     borderWidth: 1,
     marginVertical: 5,
-    width: "50%",
+    width: "62%",
   },
   idCheckBtn: {},
   BtnBox: {
