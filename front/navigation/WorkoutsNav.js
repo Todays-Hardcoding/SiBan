@@ -104,11 +104,11 @@ const LevelDetail = () => {
 const WorkoutsNav = () => {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
-        <Stack.Screen name="Workouts" component={Workouts} />
-        <Stack.Screen name="BrowseDetail" component={BrowseDetail} />
-        <Stack.Screen name="LevelDetail" component={LevelDetail} />
-        <Stack.Screen name="DetailPage" component={DetailPage} />
-        <Stack.Screen name="WorkoutSearch" component={WorkoutSearch} />
+      <Stack.Screen name="Workouts" component={Workouts} />
+      <Stack.Screen name="BrowseDetail" component={BrowseDetail} />
+      <Stack.Screen name="LevelDetail" component={LevelDetail} />
+      <Stack.Screen name="DetailPage" component={DetailPage} />
+      <Stack.Screen name="WorkoutSearch" component={WorkoutSearch} />
     </Stack.Navigator>
   );
 };
