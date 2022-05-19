@@ -16,7 +16,7 @@ import {
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 
-const _url = "http://192.168.56.1:8282";
+const _url = "http://192.168.242.2:8282";
 
 const QNADetail = ({route}) => {
   const {result} = route.params;
