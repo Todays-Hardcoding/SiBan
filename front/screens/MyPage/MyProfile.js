@@ -18,6 +18,7 @@ const MyProfile = ({ navigation }) => {
   const [userHeight, setuserHeight] = useState("");
   const [userWeight, setuserWeight] = useState("");
   const [routineCount, setRoutineCount] = useState(0);
+
   const specialPromoData = [
     {
       id: 1,
@@ -82,7 +83,10 @@ const MyProfile = ({ navigation }) => {
       }
     });
   };
-  getData();
+
+  useEffect(() => {
+    getData();
+  }, []);
   function renderBanner() {
     return (
       <View
