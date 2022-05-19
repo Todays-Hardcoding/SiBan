@@ -9,6 +9,8 @@ import {
 } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
+const STORAGE_KEY = "@plans";
+
 const DetailPage = ({ route, navigation }) => {
   const { result } = route.params;
   const [planStatus, setPlanStatus] = useState(false);
@@ -16,48 +18,41 @@ const DetailPage = ({ route, navigation }) => {
 
   useEffect(() => {
     loadPlan();
-    // console.log(plans);
-    if (plans[result.workoutName] !== null) {
-      setPlanStatus(true);
-    } else {
-      setPlanStatus(false);
-    }
+    console.log(plans);
   }, []);
 
-  const checkPlan = () => {
+  const onChangePlan = (payload) => {
     setPlanStatus(!planStatus);
     if (planStatus === true) {
       addPlan();
+      setPlans(payload);
     } else {
       deletePlan();
     }
   };
 
   const loadPlan = async () => {
-    const data = await AsyncStorage.getItem("Plans").then((value) => {
-      if (value != null) {
-        let user = JSON.parse(value);
-        setPlans(user.plans);
-      }
-    });
+    const data = await AsyncStorage.getItem(STORAGE_KEY);
+    data !== null ? setPlans(JSON.parse(s)) : null;
   };
 
-  const savePlan = async () => {
-    await AsyncStorage.setItem("Plans", JSON.stringify(plans));
+  const savePlan = async (toSave) => {
+    const s = await AsyncStorage.getItem(toSave);
+    await AsyncStorage.setItem(STORAGE_KEY, s);
   };
 
   const addPlan = async () => {
     const newPlans = {
       ...plans,
-      [result.workoutName]: result,
+      [result.workoutName]: { result },
     };
     setPlans(newPlans);
-    savePlan(newPlans);
+    await savePlan(newPlans);
   };
 
   const deletePlan = async () => {
     const newPlans = { ...plans };
-    delete newPlans[result.workoutName];
+    delete newPlans[key];
     setPlans(newPlans);
     await savePlan(newPlans);
   };
@@ -73,7 +68,7 @@ const DetailPage = ({ route, navigation }) => {
           <TouchableOpacity onPress={() => navigation.pop()}>
             <MaterialIcons name="arrow-back-ios" size={30} color="black" />
           </TouchableOpacity>
-          <TouchableOpacity onPress={checkPlan}>
+          <TouchableOpacity onPress={onChangePlan}>
             <FontAwesome
               style={styles.headerBtn}
               name="bookmark"
