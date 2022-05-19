@@ -23,7 +23,7 @@ const MyProfileModify = () => {
   const [userTel, setuserTel] = useState();
   const userId = "TATA";
 
-  const onScreenLoad = ({ navigation }) => {
+  const onScreenLoad = () => {
     fetch(url + "/showUserInfo.act", {
       method: "POST",
       headers: {
@@ -50,10 +50,6 @@ const MyProfileModify = () => {
     onScreenLoad();
   }, []);
 
-  const onPressBtn = () => {
-    navigation.pop();
-  };
-
   const profileTest = (navigation) => {
     fetch(url + "/updateUserInfo.act", {
       method: "POST",
@@ -71,10 +67,9 @@ const MyProfileModify = () => {
       }),
     })
       .then((response) => response.json())
-      .then((data) => console.log(data), navigation.pop())
+      .then((data) => console.log(data))
       // .then(navigation.navigate("OthersNav", { screen: "MYPROFILE" }))
       // .then((data) => console.log(JSON.stringify(data)))
-
       .catch((error) => console.log(error));
   };
 
@@ -144,6 +139,10 @@ const MyProfileModify = () => {
   );
 };
 
+function onPressBtn() {
+  alert("버튼이당");
+}
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -183,13 +182,16 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   defaultButton: {
-    backgroundColor: "#F5EEDC",
+    backgroundColor: "#191919",
     height: windowWidth * 0.1,
     alignItems: "center",
     justifyContent: "center",
     borderRadius: windowWidth * 0.04,
     marginHorizontal: 5,
     width: windowWidth * 0.35,
+  },
+  userProfileText: {
+    color: "#ececec",
   },
 });
 
