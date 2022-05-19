@@ -4,7 +4,7 @@ import styled from "styled-components/native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const View = styled.View`
-  background-color: #6072e2;
+  background-color: #191919;
   flex: 1;
   padding: 0 30px;
 `;
@@ -15,7 +15,7 @@ const MainText = styled.Text`
   margin-top: 20px;
 `;
 const Title = styled.Text`
-  background-color: #6072e2;
+  background-color: #191919;
   color: white;
   margin-top: 10px;
   margin-right: 40px;
@@ -52,7 +52,7 @@ const Btn = styled.TouchableOpacity`
   width: 100%;
   margin-top: 5px;
   margin-bottom: 20px;
-  background-color: #B5DEFF;
+  background-color: #0c0c0c;
   padding: 10px 20px
   align-items: center;
   border-radius: 20px;
