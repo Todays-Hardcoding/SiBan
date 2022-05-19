@@ -1,55 +1,37 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import { StyleSheet, Text, View, Alert, TouchableOpacity } from "react-native";
 import { Fontisto } from "@expo/vector-icons";
 import { FlatGrid } from "react-native-super-grid";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const Plans = ({ navigation }) => {
-  const [myPlan, setMyPlan] = React.useState([
-    { name: "BELIZE HOLE", code: "#2980b9" },
-    { name: "WISTERIA", code: "#8e44ad" },
-    { name: "MIDNIGHT BLUE", code: "#2c3e50" },
-    { name: "SUN FLOWER", code: "#f1c40f" },
-    { name: "CARROT", code: "#e67e22" },
-    { name: "ALIZARIN", code: "#e74c3c" },
-    { name: "CLOUDS", code: "#ecf0f1" },
-  ]);
-  const [text, setText] = useState("");
-  const addPlan = () => {
-    try {
-      if (text === "") {
-        return;
-      }
-      const newMyPlan = {
-        ...myPlan,
-        [Date.now()]: { text },
-      };
-      setMyPlan(newMyPlan);
-      setText("");
-    } catch (e) {}
-  };
-  const deletePlan = (key) => {
-    Alert.alert("삭제하시겠습니까?", "정말로?", [
-      {
-        text: "취소",
-      },
-      {
-        text: "확인",
-        onPress: () => {
-          const newMyPlan = { ...myPlan };
-          delete newMyPlan[key];
-          setMyPlan(newMyPlan);
-        },
-      },
-    ]);
-    return;
-  };
+  const [result, setResult] = useState({});
+  const [plans, setPlans] = useState([]);
+  
+  useEffect(() => {
+    loadPlan;
+    ObjToArry
+  },[]);
 
+  const loadPlan = async () => {
+    const data = await AsyncStorage.getItem("Plans");
+    setResult(JSON.parse(data))
+  }
+
+  const ObjToArry = () => {
+    const newPlans = new Array;
+    Object.keys(result).map((key) => {
+      newPlans.push(result[key])
+    })
+    setPlans(newPlans)
+  }
+  
   return (
     <View style={styles.Container}>
       <FlatGrid
         itemDimension={170}
-        data={myPlan}
+        data={plans}
         spacing={20}
         renderItem={({ item }) => (
           <TouchableOpacity
