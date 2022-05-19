@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Text, StyleSheet, TouchableOpacity, View } from "react-native";
 import { FlatGrid } from "react-native-super-grid";
 
-const _url = "http://112.172.225.17:8282";
+const _url = "http://192.168.0.6:8282";
 
 const Level1 = ({ navigation }) => {
   const [exercises, setExercises] = useState([]);
@@ -23,7 +23,7 @@ const Level1 = ({ navigation }) => {
       .then((data) => {
         setExercises(data);
       })
-      .catch((e) => console.log(e))
+      .catch((e) => console.log(e));
   }, []);
 
   return (
