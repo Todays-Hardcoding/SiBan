@@ -408,7 +408,7 @@ const Register = ({ navigation }) => {
               }}
               onPress={(event) => postRegister(event)}
             >
-              <Text style={{ fontSize: 15, color: "white" }}>register</Text>
+              <Text style={{ fontSize: 15, color: "#ececec" }}>register</Text>
             </TouchableOpacity>
             <TouchableOpacity
               style={{

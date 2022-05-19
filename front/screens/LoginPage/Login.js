@@ -65,9 +65,7 @@ const Login = ({ navigation }) => {
           setSaveId(loginId);
           alert("로그인 성공");
           console.log(setSaveId);
-          navigation.navigate("MainTabs", {
-            loginId: loginId,
-          });
+          navigation.navigate("MainTabs");
         } else {
           alert("다시 로그인해주세요.");
         }
@@ -79,12 +77,14 @@ const Login = ({ navigation }) => {
     <View
       style={{
         flex: 1,
-        backgroundColor: "#fff",
+        backgroundColor: "#191919",
         alignItems: "center",
         justifyContent: "center",
       }}
     >
-      <Text style={{ fontSize: 20, fontWeight: "bold" }}>시반로그인</Text>
+      <Text style={{ fontSize: 20, fontWeight: "bold", color: "#ececec" }}>
+        시반로그인
+      </Text>
       <Text> </Text>
       {/* 아이디 입력하는 곳 */}
       <TextInput
@@ -109,7 +109,7 @@ const Login = ({ navigation }) => {
 
       <TouchableOpacity style={{ flexDirection: "row" }}>
         <Text
-          style={{ color: "gray" }}
+          style={{ color: "#ececec" }}
           onPress={() =>
             navigation.navigate("LoginPage", {
               screen: "Search",
@@ -134,7 +134,7 @@ const Login = ({ navigation }) => {
 
       <TouchableOpacity
         style={{
-          backgroundColor: "black",
+          backgroundColor: "#0c0c0c",
           padding: 10,
           margin: 10,
           borderRadius: 5,
@@ -160,6 +160,7 @@ const styles = StyleSheet.create({
   input: {
     width: "80%",
     borderWidth: 1,
+    backgroundColor: "#ececec",
     padding: 10,
     fontSize: 15,
     borderRadius: 8,
