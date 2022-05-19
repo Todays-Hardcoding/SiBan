@@ -1,3 +1,4 @@
+import { useRoute } from "@react-navigation/native";
 import React, { useEffect, useState, Component } from "react";
 
 import {
@@ -15,7 +16,10 @@ import {
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 
-const QNADetail = () => {
+const QNADetail = ({route}) => {
+  const {result} = route.params;
+  
+  useEffect(() => console.log(result));
   return (
     <SafeAreaView style={styles.container} >
       <ImageBackground
@@ -29,6 +33,7 @@ const QNADetail = () => {
         <View style={styles.postHeader}>
           <View>
             <Text>조회수</Text>
+            <Text>{result}</Text>
           </View>
           <View>
             <Text>22-02-22</Text>

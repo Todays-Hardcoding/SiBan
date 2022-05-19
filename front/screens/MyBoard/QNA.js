@@ -9,7 +9,7 @@ import {
 import { SafeAreaView, TextInput, ScrollView } from "react-native";
 import DropDownPicker from "react-native-dropdown-picker";
 
-const _url = "http://192.168.45.96:8282";
+const _url = "http://192.168.242.2:8282";
 
 const windowWidth = Dimensions.get("window").width;
 
@@ -46,6 +46,7 @@ const QNA = ({ navigation }) => {
     })
       .then((response) => response.json())
       .then((data) => {
+        console.log(data)
         if (data != null) {
           navigation.pop();
         }

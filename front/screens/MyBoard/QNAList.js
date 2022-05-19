@@ -22,7 +22,7 @@ const QNAList = ({ navigation }) => {
   const isFocused = useIsFocused();
 
   const [inquiry, setInquiry] = useState([]);
-
+  const [postCode, setPostCode] = useState();
   useEffect(() => {
     fetch(_url + "/selectInquiry.act", {
       method: "POST",
@@ -33,7 +33,6 @@ const QNAList = ({ navigation }) => {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         setInquiry(data);
       });
   }, [isFocused]);
@@ -49,14 +48,16 @@ const QNAList = ({ navigation }) => {
           {inquiry.map((item, index) => (
             <TouchableOpacity
               key={index}
-              onPress={() => {
-                navigation.navigate("QNADetailNav", { Screen: "QNADetail" });
-              }}
               style={[
                 styles.item,
                 index === 0 && { borderTopWidth: 0 }, // CSS: first-child
                 index % 2 === 1 && { backgroundColor: "#EAEAEA" }, // CSS: nth-child(even)
               ]}
+              onPress={() =>
+                navigation.navigate("QNADetail", {
+                  result: item.postCode,
+                })
+              }
             >
               <Text style={styles.contentText}>
                 {item.postCategory} {item.postTitle}
