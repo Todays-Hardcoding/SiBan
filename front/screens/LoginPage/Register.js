@@ -112,8 +112,6 @@ const Register = ({ navigation }) => {
   };
   // 회원가입에 간한 함수
   const postRegister = (e) => {
-    const _url = "http://192.168.35.133:8282/register.act";
-
     if (
       idCheck === true &&
       pwCheck === true &&
@@ -126,7 +124,7 @@ const Register = ({ navigation }) => {
       duplicatedId === true &&
       duplicatedEmail === true
     ) {
-      fetch(_url, {
+      fetch(_url + "/register.act", {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -162,13 +160,11 @@ const Register = ({ navigation }) => {
   };
   // 아이디 중복체크에 관한 함수
   const checkId = () => {
-    const _url = "http://192.168.35.133:8282/checkId.act";
-
     const idRegex = /^[A-Za-z]{1}[A-Za-z0-9_-]{3,19}$/;
     if (idRegex.test(id) === false) {
       alert("4자리 이상 영문자로 시작하는 아이디를 입력해주세요.");
     } else {
-      fetch(_url, {
+      fetch(_url + "/checkId.act", {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -192,13 +188,12 @@ const Register = ({ navigation }) => {
 
   // 이메일 중복체크에 관한 함수
   const checkEmail = () => {
-    const _url = "http://112.172.225.17:8282/checkEmail.act";
     const emailRegex =
       /^[0-9?A-z0-9?]+(\.)?[0-9?A-z0-9?]+@[0-9?A-z]+\.[A-z]{2}.?[A-z]{0,3}$/;
     if (!emailRegex.test(email)) {
       alert("이메일형식에 맞게 다시 입력해주세요");
     } else {
-      fetch(_url, {
+      fetch(_url + "/checkEmail.act", {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -413,7 +408,7 @@ const Register = ({ navigation }) => {
               }}
               onPress={(event) => postRegister(event)}
             >
-              <Text style={{ fontSize: 15, color: "white" }}>register</Text>
+              <Text style={{ fontSize: 15, color: "#ececec" }}>register</Text>
             </TouchableOpacity>
             <TouchableOpacity
               style={{

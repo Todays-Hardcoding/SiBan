@@ -1604,7 +1604,7 @@
     "mkdirp" "^1.0.4"
     "rimraf" "^3.0.2"
 
-"@react-native-async-storage/async-storage@^1.17.4":
+"@react-native-async-storage/async-storage@~1.17.3":
   "integrity" "sha512-c6GglKBRaWkjNyYd0FM8f0/neQEcwQom4MjZNqYSsIz55LcddJb7W8GM/n2dkzZ0JnaMylMX3+Vo+fpmkFEGTQ=="
   "resolved" "https://registry.npmjs.org/@react-native-async-storage/async-storage/-/async-storage-1.17.4.tgz"
   "version" "1.17.4"
@@ -4767,10 +4767,10 @@
   "resolved" "https://registry.npmjs.org/expo-permissions/-/expo-permissions-13.2.0.tgz"
   "version" "13.2.0"
 
-"expo-pwa@0.0.119":
-  "integrity" "sha512-TGoZ+IFp5+wPlHESuBXc8VsLNnk41FDe1e+nENcM3Exty4uD/galsAG3RLrt2RSxBw3bDLtSNJOD0ZhmYLg6QQ=="
-  "resolved" "https://registry.npmjs.org/expo-pwa/-/expo-pwa-0.0.119.tgz"
-  "version" "0.0.119"
+"expo-pwa@0.0.118":
+  "integrity" "sha512-zm8QDDty+AzVkYHfzox/jk/97XdYlxFBOx3Lw6zprjlnZcZgOR+VR/uuek+kgEWRo7Oxhr+4al3rNgEurIsAzw=="
+  "resolved" "https://registry.npmjs.org/expo-pwa/-/expo-pwa-0.0.118.tgz"
+  "version" "0.0.118"
   dependencies:
     "@expo/config" "6.0.23"
     "@expo/image-utils" "0.3.20"
@@ -9189,7 +9189,12 @@
     "escape-string-regexp" "2.0.0"
     "invariant" "2.2.4"
 
-"react-native@*", "react-native@^0.0.0-0 || 0.60 - 0.68 || 1000.0.0", "react-native@> 0.57", "react-native@>= 0.30.0", "react-native@>= 0.55.x", "react-native@>=0.42.0", "react-native@>=0.48.4", "react-native@>=0.50.0", "react-native@>=0.57", "react-native@>=0.59.0", "react-native@>=0.61.5", "react-native@>=0.65.0", "react-native@0.68.2":
+"react-native-wrapped-text@^1.2.2":
+  "integrity" "sha512-CglzV4GvGfbMV25W/g8DWKbcQfgOS1qG3CXkcZSMF10jKUf4GgSyf3slAeAbMaw6z96u092PeJaZhfkvQtMfyQ=="
+  "resolved" "https://registry.npmjs.org/react-native-wrapped-text/-/react-native-wrapped-text-1.2.2.tgz"
+  "version" "1.2.2"
+
+"react-native@*", "react-native@^0.0.0-0 || 0.60 - 0.68 || 1000.0.0", "react-native@> 0.57", "react-native@>= 0.30.0", "react-native@>= 0.55.x", "react-native@>=0.42.0", "react-native@>=0.48.4", "react-native@>=0.50.0", "react-native@>=0.54", "react-native@>=0.57", "react-native@>=0.59.0", "react-native@>=0.61.5", "react-native@>=0.65.0", "react-native@0.68.2":
   "integrity" "sha512-qNMz+mdIirCEmlrhapAtAG+SWVx6MAiSfCbFNhfHqiqu1xw1OKXdzIrjaBEPihRC2pcORCoCHduHGQe/Pz9Yuw=="
   "resolved" "https://registry.npmjs.org/react-native/-/react-native-0.68.2.tgz"
   "version" "0.68.2"

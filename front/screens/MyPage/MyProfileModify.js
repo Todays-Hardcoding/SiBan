@@ -13,18 +13,18 @@ import { Dimensions } from "react-native";
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 
+const url = "http://192.168.45.96:8282";
+
 const MyProfileModify = () => {
   const [userName, setuserName] = useState("");
   const [userEmail, setuserEmail] = useState("");
   const [userHeight, setuserHeight] = useState("");
   const [userWeight, setuserWeight] = useState("");
   const [userTel, setuserTel] = useState();
-  const userId = "TTAA";
+  const userId = "TATA";
 
   const onScreenLoad = () => {
-    const startUrl = "http://192.168.45.96:8282/showUserInfo.act";
-
-    fetch(startUrl, {
+    fetch(url + "/showUserInfo.act", {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -51,9 +51,7 @@ const MyProfileModify = () => {
   }, []);
 
   const profileTest = (navigation) => {
-    const url = "http://192.168.45.96:8282/updateUserInfo.act";
-
-    fetch(url, {
+    fetch(url + "/updateUserInfo.act", {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -184,13 +182,16 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   defaultButton: {
-    backgroundColor: "#F5EEDC",
+    backgroundColor: "#191919",
     height: windowWidth * 0.1,
     alignItems: "center",
     justifyContent: "center",
     borderRadius: windowWidth * 0.04,
     marginHorizontal: 5,
     width: windowWidth * 0.35,
+  },
+  userProfileText: {
+    color: "#ececec",
   },
 });
 

@@ -13,9 +13,13 @@ import * as ImagePicker from "expo-image-picker";
 
 import { Dimensions } from "react-native";
 
+const url = "http://192.168.0.6:8282";
+
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 console.log(windowWidth);
+
+const STORAGE_KEY = "@changePhoto";
 
 function onPressBtn() {
   alert("버튼이당");
@@ -27,7 +31,17 @@ const basePhoto =
 const ChangePhoto = ({ navigation, onPress }) => {
   // The path of the picked image
   const [userProfile, setuserProfile] = useState(basePhoto);
-  const userId = "TTAA";
+  const userId = "TATA";
+
+  const [changePhoto, setchangePhoto] = useState({});
+
+  // const savePhoto = async (toSave) => {
+  //   await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(toSave));
+  // };
+  // const loadPhoto = async () => {
+  //   const s = await AsyncStorage.getItem(STORAGE_KEY);
+  //   s !== null ? changePhoto(JSON.parse(s)) : null;
+  // };
 
   // This function is triggered when the "Select an image" button pressed
   const showImagePicker = async () => {
@@ -45,7 +59,7 @@ const ChangePhoto = ({ navigation, onPress }) => {
     if (!result.cancelled) {
       setuserProfile(result.uri);
       profileTest(result.uri);
-      // console.log(result.uri);
+      console.log(result.uri);
     }
   };
 
@@ -68,9 +82,7 @@ const ChangePhoto = ({ navigation, onPress }) => {
     }
   };
   const profileTest = (navigation) => {
-    const url = "http://192.168.45.96:8282/updateUserImage.act";
-
-    fetch(url, {
+    fetch(url + "/updateUserImage.act", {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -94,15 +106,15 @@ const ChangePhoto = ({ navigation, onPress }) => {
       <View style={styles.buttonContainer}>
         <Button
           style={styles.buttons}
-          color={""}
+          color="#5b5b5b"
           onPress={showImagePicker}
-          title="Select an image"
+          title="이미지 선택"
         />
         <Button
           style={styles.buttons}
-          color={""}
+          color="#5b5b5b"
           onPress={openCamera}
-          title="Open camera"
+          title="카메라 촬영"
         />
       </View>
     </View>
@@ -115,16 +127,14 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#6072e2",
+    backgroundColor: "#191919",
   },
   buttonContainer: {
     width: 400,
     flexDirection: "row",
     justifyContent: "space-around",
   },
-  buttons: {
-    color: "black",
-  },
+  buttons: {},
   imageContainer: {
     padding: 30,
   },

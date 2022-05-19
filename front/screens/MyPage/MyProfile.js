@@ -11,6 +11,8 @@ import {
 import { COLORS, SIZES, images } from "../../constants";
 import { Table, Row, Rows } from "react-native-table-component-2";
 
+const url = "http://192.168.45.96:8282";
+
 const MyProfile = ({ navigation }) => {
   const [userHeight, setuserHeight] = useState("");
   const [userWeight, setuserWeight] = useState("");
@@ -85,7 +87,7 @@ const MyProfile = ({ navigation }) => {
         >
           <View style={{ alignItems: "center" }}>
             <Image
-              source={require("../../assets/images/profileImage.png")}
+              source={require("../../assets/images/profileImage2.png")}
               resizeMode="contain"
               style={{
                 width: "70%",
@@ -118,7 +120,7 @@ const MyProfile = ({ navigation }) => {
         <SafeAreaView
           style={{
             flex: 1,
-            backgroundColor: "#6072e2",
+            backgroundColor: "#191919",
             margin: 20,
           }}
         >
@@ -159,7 +161,6 @@ const MyProfile = ({ navigation }) => {
             height: 80,
             borderTopLeftRadius: 20,
             borderTopRightRadius: 20,
-            backgroundColor: COLORS.primary,
           }}
         >
           <Image
@@ -184,7 +185,7 @@ const MyProfile = ({ navigation }) => {
             borderBottomRightRadius: 20,
           }}
         >
-          <Text>{item.title}</Text>
+          {/* <Text>{item.title}</Text> */}
           <Text>{item.description}</Text>
         </View>
       </TouchableOpacity>
@@ -196,12 +197,10 @@ const MyProfile = ({ navigation }) => {
       const [userHeight, setuserHeight] = useState("");
       const [userWeight, setuserWeight] = useState("");
       const [userTel, setuserTel] = useState();
-      const userId = "TTAA";
+      const userId = "TATA";
 
       const onScreenLoad = () => {
-        const startUrl = "http://192.168.45.96:8282/showUserInfo.act";
-
-        fetch(startUrl, {
+        fetch(url + "/showUserInfo.act", {
           method: "POST",
           headers: {
             Accept: "application/json",
@@ -271,7 +270,7 @@ const MyProfile = ({ navigation }) => {
   }
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: "#6072e2" }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: "#191919" }}>
       {renderPromos()}
     </SafeAreaView>
   );
@@ -289,7 +288,7 @@ const styles = StyleSheet.create({
   },
   head: {
     height: 40,
-    backgroundColor: "#F5EEDC",
+    backgroundColor: "#ececec",
   },
   text: {
     margin: 6,
@@ -304,7 +303,7 @@ const styles = StyleSheet.create({
   userProfileText: {
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#F5EEDC",
+    backgroundColor: "#ececec",
     height: 30,
     width: "30%",
     marginBottom: 10,
@@ -316,7 +315,7 @@ const styles = StyleSheet.create({
   userSupervise: {
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#F5EEDC",
+    backgroundColor: "#ececec",
     borderRadius: 20,
     width: 70,
   },

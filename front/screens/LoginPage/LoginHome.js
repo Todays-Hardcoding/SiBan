@@ -1,15 +1,12 @@
 import React from "react";
-import {
-  Image, StyleSheet, Text, TouchableOpacity, View
-} from "react-native";
+import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 const LoginHome = ({ navigation }) => {
-
   return (
     <>
       <View style={styles.mainContainer}>
         <Image
-          source={require("../../assets/sibanlogo.png")}
+          source={require("../../assets/sibanlogo3.png")}
           style={styles.logoImage}
           resizeMode="stretch"
         />
@@ -23,7 +20,7 @@ const LoginHome = ({ navigation }) => {
             })
           }
         >
-          <Text style={styles.inputText}>L o g i n</Text>
+          <Text style={styles.inputText}>로그인</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.inputTouchableOpacity}
@@ -33,7 +30,7 @@ const LoginHome = ({ navigation }) => {
             })
           }
         >
-          <Text style={styles.inputText}>J o i n</Text>
+          <Text style={styles.inputText}>회원가입</Text>
         </TouchableOpacity>
       </View>
     </>
@@ -42,29 +39,29 @@ const LoginHome = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   mainContainer: {
-    flex: 1,
+    flex: 1.7,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#6072e2",
+    backgroundColor: "#191919",
   },
   mainButtonContainer: {
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#6072e2",
+    backgroundColor: "#191919",
   },
   inputTouchableOpacity: {
-    margin: 30,
-    backgroundColor: "#B5DEFF",
-    width: 180,
+    margin: 15,
+    backgroundColor: "#ececec",
+    width: 140,
     alignItems: "center",
     justifyContent: "center",
-    borderRadius: 50,
+    borderRadius: 10,
   },
   inputText: {
-    fontSize: 30,
+    fontSize: 20,
     padding: 20,
-    color: "white",
+    color: "#191919",
     fontWeight: "800",
   },
   logoImage: {
