@@ -24,7 +24,7 @@ const QNAList = ({navigation}) => {
   const [inquiry, setInquiry] = useState([]);
 
   useEffect(() => {
-    const _url = "http://192.168.242.2:8282/selectInquiry.act"
+    const _url = "http://192.168.56.1:8282/selectInquiry.act"
     fetch(_url, {
       method: "POST",
       headers: {
