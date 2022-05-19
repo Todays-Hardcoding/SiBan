@@ -13,7 +13,11 @@ import { Table, Row, Rows } from "react-native-table-component-2";
 
 const startUrl = "http://192.168.45.96:8282";
 
-const MyProfile = ({ navigation }) => {
+const MyProfile = ({ navigation, route }) => {
+  // const { userId } = route.params;
+
+  // console.log(userId);
+
   const [userHeight, setuserHeight] = useState("");
   const [userWeight, setuserWeight] = useState("");
   const [routineCount, setRoutineCount] = useState(0);
@@ -198,7 +202,7 @@ const MyProfile = ({ navigation }) => {
       const [userHeight, setuserHeight] = useState("");
       const [userWeight, setuserWeight] = useState("");
       const [userTel, setuserTel] = useState();
-      const userId = "TTAA";
+      const userId = "TATA";
 
       const onScreenLoad = () => {
         fetch(startUrl + "/showUserInfo.act", {

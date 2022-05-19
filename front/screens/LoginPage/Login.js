@@ -4,7 +4,7 @@ import {
   Text,
   TextInput,
   TouchableOpacity,
-  View
+  View,
 } from "react-native";
 
 const _url = "http://112.172.225.17:8282";
@@ -63,11 +63,15 @@ const Login = ({ navigation }) => {
         if (data.result == true) {
           setSaveId(loginId);
           alert("로그인 성공");
-          navigation.navigate("MainTabs");
+          console.log(setSaveId);
+          navigation.navigate("MainTabs", {
+            // loginId: loginId,
+          });
         } else {
           alert("다시 로그인해주세요.");
         }
-      });
+      })
+      .catch((error) => console.log(error));
   };
 
   return (
@@ -156,7 +160,6 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     borderWidth: 1,
     marginVertical: 5,
-    width: "80%",
   },
 });
 
