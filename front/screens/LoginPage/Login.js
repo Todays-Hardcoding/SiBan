@@ -8,15 +8,19 @@ import {
   View,
 } from "react-native";
 
-const _url = "http://192.168.0.6:8282";
+const _url = "http://192.168.35.133:8282";
 
 const Login = ({ navigation }) => {
-  const [loginId, setLoginId] = useState("");
-  const [loginPw, setLoginPw] = useState("");
+  //아이디 , 비밀번호 
+  const [userId, setUserId] = useState("");
+  const [userPw, setUserPw] = useState("");
+  //유효성(빈칸)
   const [loginIdCheck, setLoginIdCheck] = useState(false);
   const [loginPwCheck, setLoginPwCheck] = useState(false);
+  //오류메세지 
   const [idError, setIdError] = useState("");
   const [pwError, setPwError] = useState("");
+  //로그인된 아이디
   const [saveId, setSaveId] = useState("");
 
   const data = new FormData();
@@ -30,7 +34,7 @@ const Login = ({ navigation }) => {
     } else {
       setLoginIdCheck(true);
     }
-    setLoginId(text);
+    setUserId(text);
   };
   const setPw = (text) => {
     if (text.trim().length === 0) {
@@ -39,7 +43,7 @@ const Login = ({ navigation }) => {
     } else {
       setLoginPwCheck(true);
     }
-    setLoginPw(text);
+    setUserPw(text);
   };
 
   // 로그인
@@ -51,15 +55,15 @@ const Login = ({ navigation }) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        loginId,
-        loginPw,
+        userId,
+        userPw,
       }),
     })
       .then((response) => response.json())
       .then((data) => {
         //console.log(data.result)
         if (data.result == true) {
-          setSaveId(loginId);
+          setSaveId(userId);
           alert("로그인 성공");
           console.log(setSaveId);
           navigation.navigate("MainTabs");
@@ -94,7 +98,7 @@ const Login = ({ navigation }) => {
       <TextInput
         style={styles.input}
         placeholder={"아이디를 입력해주세요"}
-        value={loginId}
+        value={userId}
         onChangeText={(text) => setId(text)}
       />
 
@@ -103,6 +107,7 @@ const Login = ({ navigation }) => {
       <TextInput
         style={styles.input}
         placeholder={"비밀번호를 입력해주세요"}
+        value={userPw}
         onChangeText={(text) => setPw(text)}
         secureTextEntry={true}
       />
