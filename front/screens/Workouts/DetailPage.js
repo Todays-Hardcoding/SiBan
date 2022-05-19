@@ -7,15 +7,57 @@ import {
   TouchableOpacity,
   ImageBackground,
 } from "react-native";
-import { ScrollView } from "react-native-gesture-handler";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const DetailPage = ({ route, navigation }) => {
   const { result } = route.params;
-  const [plan, setPlan] = useState(false);
+  const [planStatus, setPlanStatus] = useState(false);
+  const [plans, setPlans] = useState({});
+  
+  useEffect(() => {
+    loadPlan;
+    if(plans[result.workoutName] !== null) {
+      setPlanStatus(true)
+    }else {
+      setPlanStatus(false)
+    }
+  }, []);
 
-  const addPlan = () => {
-    setPlan(!plan);
-  };
+  const checkPlan = () => {
+    setPlanStatus(!planStatus)
+    if(planStatus === true){
+      addPlan
+    }else {
+      deletePlan
+    }
+  }
+
+  const loadPlan = async () => {
+    const data = await AsyncStorage.getItem("Plans");
+    setPlans(JSON.parse(data))
+  }
+
+  const savePlan = async (save) => {
+    await AsyncStorage.setItem("Plans", JSON.stringify(save))
+  }
+
+  const addPlan = async () => {
+    const newPlans = {
+      ...plans,
+      [result.workoutName] : result,
+    }
+    setPlans(newPlans)
+    await savePlan(newPlans)
+  }
+
+  const deletePlan = async () => {
+    const newPlans = {...plans};
+    delete newPlans[result.workoutName]
+    setPlans(newPlans)
+    await savePlan(newPlans)
+  }
+
+
 
   return (
     <View style={styles.Container}>
@@ -28,12 +70,12 @@ const DetailPage = ({ route, navigation }) => {
           <TouchableOpacity onPress={() => navigation.pop()}>
             <MaterialIcons name="arrow-back-ios" size={30} color="black" />
           </TouchableOpacity>
-          <TouchableOpacity onPress={addPlan}>
+          <TouchableOpacity onPress={checkPlan}>
             <FontAwesome
               style={styles.headerBtn}
               name="bookmark"
               size={30}
-              color={plan ? "yellow" : "black"}
+              color= {planStatus ? "yellow" : "black"}
             />
           </TouchableOpacity>
         </View>

@@ -3,7 +3,8 @@ import { StyleSheet, Text, TextInput, View } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
-const _url = "http://192.168.45.96:8282";
+const _url = "http://112.172.225.17:8282";
+
 const Register = ({ navigation }) => {
   //아이디,비번,이메일,전화번호
   const [id, setId] = useState("");
@@ -147,14 +148,19 @@ const Register = ({ navigation }) => {
           });
         });
     } else {
-      onChangeId();
-      onChangePw();
-      onChangeEmail();
-      onChangeName();
-      onChangeTel();
-      onChangeHeight();
-      onChangeWeight();
-      alert("모두 입력해 주세요.");
+      if (duplicatedId === true && duplicatedEmail === true) {
+        onChangeId();
+        onChangePw();
+        onChangeEmail();
+        onChangeName();
+        onChangeTel();
+        onChangeHeight();
+        onChangeWeight();
+        alert("빈칸을 모두 입력해 주세요.");
+      } else {
+        alert("중복 확인 검사를 해주세요.");
+      }
+
       return false;
     }
   };
