@@ -39,6 +39,7 @@
     "pod-install": "^0.1.36",
     "react": "17.0.2",
     "react-addons-shallow-compare": "^15.6.3",
+    "react-daum-postcode": "^3.0.3",
     "react-dom": "17.0.2",
     "react-is": "^18.1.0",
     "react-native": "0.68.2",
@@ -47,6 +48,7 @@
     "react-native-calendario": "^3.1.0",
     "react-native-calendars": "^1.1284.0",
     "react-native-counter-input": "^0.1.9",
+    "react-native-daum-postcode": "^1.0.11",
     "react-native-dropdown-picker": "^5.4.2",
     "react-native-gesture-handler": "^2.2.1",
     "react-native-image-header": "^1.0.1",
@@ -66,6 +68,7 @@
     "react-native-table-component-2": "^2.0.0",
     "react-native-web": "0.17.7",
     "react-native-webview": "11.18.1",
+    "react-native-wrapped-text": "^1.2.2",
     "styled-components": "^5.3.5",
     "webpack-dev-server": "~3.11.0"
   },

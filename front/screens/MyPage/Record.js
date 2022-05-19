@@ -59,7 +59,8 @@ const Record = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#3143e8",
+    backgroundColor: "#191919",
+    color: "#191919",
   },
   card: {
     backgroundColor: "#fff",
