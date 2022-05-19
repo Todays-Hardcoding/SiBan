@@ -13,6 +13,8 @@ import {
 } from "react-native";
 import { useIsFocused } from "@react-navigation/native";
 
+const _url = "http://192.168.242.2:8282";
+
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 
@@ -22,8 +24,7 @@ const QNAList = ({ navigation }) => {
   const [inquiry, setInquiry] = useState([]);
 
   useEffect(() => {
-    const _url = "http://192.168.242.2:8282/selectInquiry.act";
-    fetch(_url, {
+    fetch(_url+"/selectInquiry.act", {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -51,7 +52,7 @@ const QNAList = ({ navigation }) => {
             <TouchableOpacity
               key={index}
               onPress={() => {
-                navigation.navigate("ServiceCenter", { Screen: "QNAList" });
+                navigation.navigate("QNADetailNav", { Screen: "QNADetail" });
               }}
               style={[
                 styles.item,
