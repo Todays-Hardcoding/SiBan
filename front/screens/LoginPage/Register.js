@@ -3,7 +3,7 @@ import { Button, StyleSheet, Text, TextInput, View } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
-const _url = "http://192.168.35.133:8282";
+const _url = "http://192.168.0.6:8282";
 const Register = ({ route, navigation }) => {
   //아이디,비번,이메일,전화번호
   const [userId, setUserId] = useState("");
@@ -24,7 +24,7 @@ const Register = ({ route, navigation }) => {
   const [telCheck, setTelCheck] = useState(false);
   const [heightCheck, setHeightCheck] = useState(false);
   const [weightCheck, setWeightCheck] = useState(false);
- 
+
   //오류메세지
   const [idError, setIdError] = useState("");
   const [pwError, setPwError] = useState("");
@@ -440,7 +440,7 @@ const Register = ({ route, navigation }) => {
               }}
               onPress={(event) => postRegister(event)}
             >
-              <Text style={{ fontSize: 15, color: "#ececec" }}>register</Text>
+              <Text style={{ fontSize: 15, color: "#ececec" }}>등록</Text>
             </TouchableOpacity>
             <TouchableOpacity
               style={{
@@ -457,7 +457,7 @@ const Register = ({ route, navigation }) => {
                 })
               }
             >
-              <Text style={{ fontSize: 15, color: "white" }}>cancel</Text>
+              <Text style={{ fontSize: 15, color: "white" }}>취소</Text>
             </TouchableOpacity>
           </View>
         </View>

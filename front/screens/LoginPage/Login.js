@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-const _url = "http://192.168.35.133:8282";
+const _url = "http://192.168.0.6:8282";
 
 const LOGIN_STORAGE_KEY = "@loginInfo";
 
@@ -64,6 +64,7 @@ const Login = ({ navigation }) => {
 
   // 로그인
   const postLogin = () => {
+    setLoginInfo("");
     fetch(_url + "/login.act", {
       method: "POST",
       headers: {
@@ -83,7 +84,7 @@ const Login = ({ navigation }) => {
           alert("로그인 성공");
           console.log(setSaveId);
           // 아이디정보 저장해야댐
-          saveLoginInfo(loginId);
+          saveLoginInfo(userId);
           navigation.navigate("MainTabs");
         } else {
           alert("다시 로그인해주세요.");
