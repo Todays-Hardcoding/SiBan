@@ -34,7 +34,7 @@ public class User {
 	private String userId;
 	@NotNull
 	@Column
-	private String userPassword;
+	private String userPw;
 	@NotNull
 	@Column
 	private String userEmail;
@@ -46,6 +46,9 @@ public class User {
 	private String userTel;
 	@NotNull
 	@Column
+	private String userAddr;
+	@NotNull
+	@Column
 	private  String userHeight;
 	
 	@Column
@@ -54,28 +57,37 @@ public class User {
 	@NotNull
 	@Column
 	private String userWeight;
+	
 	private LocalDateTime userRegDate;
 
 	@PrePersist
 	public void createDate() {
 		this.userRegDate = LocalDateTime.now();
 	}
+
 	@Builder
-	public User(Long userCode, @NotNull String userId, @NotNull String userPassword, @NotNull String userEmail,
-			@NotNull String userName, @NotNull String userTel, @NotNull String userHeight, String userProfile,
-			@NotNull String userWeight, LocalDateTime userRegDate) {
+	public User(Long userCode, @NotNull String userId, @NotNull String userPw, @NotNull String userEmail,
+			@NotNull String userName, @NotNull String userTel, @NotNull String userAddr, @NotNull String userHeight,
+			String userProfile, @NotNull String userWeight, LocalDateTime userRegDate) {
 		super();
 		this.userCode = userCode;
 		this.userId = userId;
-		this.userPassword = userPassword;
+		this.userPw = userPw;
 		this.userEmail = userEmail;
 		this.userName = userName;
 		this.userTel = userTel;
+		this.userAddr = userAddr;
 		this.userHeight = userHeight;
 		this.userProfile = userProfile;
 		this.userWeight = userWeight;
 		this.userRegDate = userRegDate;
 	}
+
+
+
+
+
+
 
 
 	

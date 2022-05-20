@@ -11,69 +11,71 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const DetailPage = ({ route, navigation }) => {
   const { result } = route.params;
-  const [planStatus, setPlanStatus] = useState(false);
+  const [planStatus, setPlanStatus] = useState();
   const [plans, setPlans] = useState({});
 
   useEffect(() => {
-    rerendering()
+    rerendering();
   }, [navigation]);
 
   const rerendering = () => navigation.addListener('focus', () => loadPlan());
 
   const checkPlan = () => {
-    setPlanStatus(!planStatus)
+    // setPlanStatus(!planStatus);
 
     if (planStatus === true) {
-      addPlan()
-      // alert(plans.workoutName);
+      addPlan();
+      setPlanStatus(false);
+      // alert(plans);
     } else {
-      deletePlan()
-      // alert(plans.workoutName);
+      deletePlan();
+      setPlanStatus(true);
+      // alert(plans);
     }
-  }
+  };
 
-  const loadPlan = async () => {
-    await AsyncStorage.getItem("Plans").then((value) => {
+  const loadPlan = () => {
+    AsyncStorage.getItem("Plans").then((value) => {
       if (value != null) {
-        setPlans(JSON.parse(value))
+        setPlans(JSON.parse(value));
       }
     });
-    //alert(plans[result.workoutName])
-    if (plans[result.workoutName] !== null) {
-      setPlanStatus(true)
-    }
-  }
+    // alert(plans[result.workoutName]);
+    // if (plans[result.workoutName] !== null) {
+    //   setPlanStatus(true);
+    // }
 
-  const savePlan = async (save) => {
-    await AsyncStorage.setItem("Plans", JSON.stringify(save))
-  }
+    console.log(plans);
+  };
 
-  const addPlan = async () => {
+  const savePlan = (save) => {
+    AsyncStorage.setItem("Plans", JSON.stringify(save));
+  };
+
+  const addPlan = () => {
     const newPlans = {
       ...plans,
       [result.workoutName]: result,
-    }
+    };
     setPlans(newPlans);
-    // alert(plans.workoutName);
-    console.log("addPlan");
-    console.log("plans");
+    // setPlans({
+    //   ...plans,
+    //   [result.workoutName]: result,
+    // });
+    // alert(newPlans);
+    // console.log(newPlans);
+    // setPlans(plans);
     console.log(plans);
-    console.log("newplans");
-    console.log(newPlans);
-    await savePlan(plans);
-  }
+    savePlan(plans);
+  };
 
-  const deletePlan = async () => {
+  const deletePlan = () => {
     const newPlans = { ...plans };
-    delete newPlans[result.workoutName]
-    setPlans(newPlans)
-    console.log("deletePlan");
-    console.log("plans");
+    delete newPlans[result.workoutName];
+    setPlans(newPlans);
     console.log(plans);
-    console.log("newplans");
-    console.log(newPlans);
-    await savePlan(newPlans)
-  }
+    savePlan(newPlans);
+  };
 
   return (
     <View style={styles.Container}>
