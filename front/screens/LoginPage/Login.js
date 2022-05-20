@@ -14,13 +14,13 @@ const _url = "http://192.168.35.133:8282";
 const LOGIN_STORAGE_KEY = "@loginInfo";
 
 const Login = ({ navigation }) => {
-  //아이디 , 비밀번호 
+  //아이디 , 비밀번호
   const [userId, setUserId] = useState("");
   const [userPw, setUserPw] = useState("");
   //유효성(빈칸)
   const [loginIdCheck, setLoginIdCheck] = useState(false);
   const [loginPwCheck, setLoginPwCheck] = useState(false);
-  //오류메세지 
+  //오류메세지
   const [idError, setIdError] = useState("");
   const [pwError, setPwError] = useState("");
   //로그인된 아이디
