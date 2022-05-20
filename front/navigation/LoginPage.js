@@ -4,7 +4,7 @@ import Login from "../screens/LoginPage/Login";
 import LoginHome from "../screens/LoginPage/LoginHome";
 import Register from "../screens/LoginPage/Register";
 import Search from "../screens/LoginPage/Search";
-import Routine from "../screens/MyPage/Routine";
+import address from "../screens/LoginPage/address"
 
 const Stack = createStackNavigator();
 
@@ -16,12 +16,13 @@ const LoginPage = () => {
         component={LoginHome}
         options={{ headerShown: false }}
       />
-      <Stack.Screen
-        name="Routine"
-        component={Routine}
+            <Stack.Screen
+        name="address"
+        component={address}
         options={{ headerShown: false }}
       />
-      <Stack.Screen
+
+       <Stack.Screen
         name="Login"
         component={Login}
         options={{ headerShown: false }}
