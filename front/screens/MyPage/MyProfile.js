@@ -19,6 +19,8 @@ const MyProfile = ({ navigation }) => {
   const [userWeight, setuserWeight] = useState("");
   const [routineCount, setRoutineCount] = useState(0);
 
+  Font.loadAsync({ BMJUA: require("../../assets/fonts/BMJUA_ttf.tff") });
+
   const specialPromoData = [
     {
       id: 1,
@@ -61,7 +63,7 @@ const MyProfile = ({ navigation }) => {
         }}
       >
         <View style={{ flex: 1, alignItems: "center", left: 30 }}>
-          <Text style={{ fontSize: 25, fontWeight: "bold", color: "white" }}>
+          <Text style={{ fontSize: 25, fontWeight: "bold", color: "#3f3f3f" }}>
             마이페이지
           </Text>
         </View>
@@ -105,7 +107,7 @@ const MyProfile = ({ navigation }) => {
               source={{ uri: checkUri }}
               resizeMode="cover"
               style={{
-                width: "70%",
+                width: "60%",
                 height: "100%",
                 borderRadius: 20,
               }}
@@ -129,31 +131,23 @@ const MyProfile = ({ navigation }) => {
       <View
         style={{
           flexDirection: "row",
-          marginBottom: SIZES.padding,
+          marginBottom: -50,
         }}
       >
-        <SafeAreaView
-          style={{
-            flex: 1,
-            backgroundColor: "#191919",
-            margin: 20,
-          }}
-        >
-          <View>
-            {shouldShow ? (
-              <FlatList
-                renderItem={renderItem}
-                contentContainerStyle={{ paddingHorizontal: SIZES.padding * 3 }}
-                numColumns={2}
-                columnWrapperStyle={{ justifyContent: "space-between" }}
-                data={specialPromos}
-                keyExtractor={(item) => `${item.id}`}
-                showsVerticalScrollIndicator={false}
-              ></FlatList>
-            ) : (
-              MyProfileModify()
-            )}
-          </View>
+        <SafeAreaView style={styles.buttonArea}>
+          {shouldShow ? (
+            <FlatList
+              renderItem={renderItem}
+              contentContainerStyle={{ paddingHorizontal: SIZES.padding * 3 }}
+              numColumns={2}
+              columnWrapperStyle={{ justifyContent: "space-between" }}
+              data={specialPromos}
+              keyExtractor={(item) => `${item.id}`}
+              showsVerticalScrollIndicator={false}
+            ></FlatList>
+          ) : (
+            MyProfileModify()
+          )}
         </SafeAreaView>
       </View>
     );
@@ -173,7 +167,7 @@ const MyProfile = ({ navigation }) => {
       >
         <View
           style={{
-            height: 80,
+            height: 60,
             borderTopLeftRadius: 20,
             borderTopRightRadius: 20,
           }}
@@ -286,7 +280,7 @@ const MyProfile = ({ navigation }) => {
   }
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: "#191919" }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: "#e9e9e9" }}>
       {renderPromos()}
     </SafeAreaView>
   );
@@ -319,7 +313,7 @@ const styles = StyleSheet.create({
   userProfileText: {
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#ececec",
+    backgroundColor: "#949494",
     height: 30,
     width: "30%",
     marginBottom: 10,
@@ -331,9 +325,14 @@ const styles = StyleSheet.create({
   userSupervise: {
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#ececec",
+    backgroundColor: "#949494",
     borderRadius: 20,
     width: 70,
+  },
+  buttonArea: {
+    flex: 1,
+    backgroundColor: "#e9e9e9",
+    margin: 20,
   },
 });
 
