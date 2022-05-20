@@ -18,17 +18,16 @@ const DetailPage = ({ route, navigation }) => {
     rerendering()
   }, [navigation]);
 
-  const rerendering = navigation.addListener('focus', () => loadPlan());
+  const rerendering = () => navigation.addListener('focus', () => loadPlan());
 
   const checkPlan = () => {
+    
     setPlanStatus(!planStatus)
 
     if(planStatus === true){
       addPlan()
-      alert(plans)
     }else {
       deletePlan()
-      alert(plans)
     }
   }
 
@@ -38,7 +37,6 @@ const DetailPage = ({ route, navigation }) => {
         setPlans(JSON.parse(value))
       }
     });
-    alert(plans[result.workoutName])
     if(plans[result.workoutName] !== null) {
       setPlanStatus(true)
     }
@@ -53,7 +51,6 @@ const DetailPage = ({ route, navigation }) => {
       ...plans,
       [result.workoutName] : result,
     }
-    alert(newPlans)
     setPlans(newPlans)
     await savePlan(newPlans)
   }
