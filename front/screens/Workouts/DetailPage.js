@@ -13,33 +13,33 @@ const DetailPage = ({ route, navigation }) => {
   const { result } = route.params;
   const [planStatus, setPlanStatus] = useState(false);
   const [plans, setPlans] = useState({});
-  
+
   useEffect(() => {
     rerendering()
   }, [navigation]);
 
-  const rerendering = navigation.addListener('focus', () => loadPlan());
+  const rerendering = () => navigation.addListener('focus', () => loadPlan());
 
   const checkPlan = () => {
     setPlanStatus(!planStatus)
 
-    if(planStatus === true){
+    if (planStatus === true) {
       addPlan()
-      alert(plans)
-    }else {
+      // alert(plans.workoutName);
+    } else {
       deletePlan()
-      alert(plans)
+      // alert(plans.workoutName);
     }
   }
 
   const loadPlan = async () => {
     await AsyncStorage.getItem("Plans").then((value) => {
-      if(value != null) {
+      if (value != null) {
         setPlans(JSON.parse(value))
       }
     });
-    alert(plans[result.workoutName])
-    if(plans[result.workoutName] !== null) {
+    //alert(plans[result.workoutName])
+    if (plans[result.workoutName] !== null) {
       setPlanStatus(true)
     }
   }
@@ -51,17 +51,27 @@ const DetailPage = ({ route, navigation }) => {
   const addPlan = async () => {
     const newPlans = {
       ...plans,
-      [result.workoutName] : result,
+      [result.workoutName]: result,
     }
-    alert(newPlans)
-    setPlans(newPlans)
-    await savePlan(newPlans)
+    setPlans(newPlans);
+    // alert(plans.workoutName);
+    console.log("addPlan");
+    console.log("plans");
+    console.log(plans);
+    console.log("newplans");
+    console.log(newPlans);
+    await savePlan(plans);
   }
 
   const deletePlan = async () => {
-    const newPlans = {...plans};
+    const newPlans = { ...plans };
     delete newPlans[result.workoutName]
     setPlans(newPlans)
+    console.log("deletePlan");
+    console.log("plans");
+    console.log(plans);
+    console.log("newplans");
+    console.log(newPlans);
     await savePlan(newPlans)
   }
 
@@ -81,7 +91,7 @@ const DetailPage = ({ route, navigation }) => {
               style={styles.headerBtn}
               name="bookmark"
               size={30}
-              color= {planStatus ? "yellow" : "black"}
+              color={planStatus ? "yellow" : "black"}
             />
           </TouchableOpacity>
         </View>
