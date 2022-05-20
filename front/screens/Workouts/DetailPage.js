@@ -37,7 +37,7 @@ const DetailPage = ({ route, navigation }) => {
       setPlans(JSON.parse(value))
     })
     console.log(plans[result.workoutName])
-    if(plans[result.workoutName]. !== null){
+    if(plans[result.workoutName] !== null){
       console.log("나 있어유~")
     } else {
       console.log("나 없어유")
