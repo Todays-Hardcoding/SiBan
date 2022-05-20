@@ -12,12 +12,21 @@ import { COLORS, SIZES, images } from "../../constants";
 import { Table, Row, Rows } from "react-native-table-component-2";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-const url = "http://192.168.45.96:8282";
+const url = "http://192.168.0.6:8282";
+const LOGIN_STORAGE_KEY = "@loginInfo";
 
 const MyProfile = ({ navigation }) => {
   const [userHeight, setuserHeight] = useState("");
   const [userWeight, setuserWeight] = useState("");
   const [routineCount, setRoutineCount] = useState(0);
+
+  const [loginInfo, setLoginInfo] = useState("");
+
+  const loadLoginInfo = async () => {
+    const s = await AsyncStorage.getItem(LOGIN_STORAGE_KEY);
+    s !== null ? setLoginInfo(JSON.parse(s)) : null;
+  };
+
   const [checkUri, setcheckUri] = useState("");
 
   const getData = () => {
@@ -31,8 +40,10 @@ const MyProfile = ({ navigation }) => {
   // 화면 리렌더링
   useEffect(() => {
     navListener();
+    // 로그인 정보 
+    loadLoginInfo();
   }, [navigation]);
-  
+
   //이것은 혁명이다!
   const navListener = () =>
     navigation.addListener("focus", () => {
@@ -84,6 +95,7 @@ const MyProfile = ({ navigation }) => {
           <Text style={{ fontSize: 25, fontWeight: "bold", color: "#3f3f3f" }}>
             마이페이지
           </Text>
+          <Text style={{ color: "white" }}>{loginInfo}</Text>
         </View>
         <View style={styles.userSupervise}>
           <TouchableOpacity onPress={() => setShouldShow(!shouldShow)}>
