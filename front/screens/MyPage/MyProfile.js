@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import {
   StyleSheet,
   SafeAreaView,
@@ -29,8 +29,13 @@ const MyProfile = ({ navigation }) => {
     });
   };
   useEffect(() => {
-    getData();
-  });
+    navListener();
+  }, [navigation]);
+  //이것은 혁명이다!
+  const navListener = () =>
+    navigation.addListener("focus", () => {
+      getData();
+    });
 
   const specialPromoData = [
     {
