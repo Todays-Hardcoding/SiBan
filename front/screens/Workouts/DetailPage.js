@@ -7,14 +7,59 @@ import {
   TouchableOpacity,
   ImageBackground,
 } from "react-native";
-import { ScrollView } from "react-native-gesture-handler";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const DetailPage = ({ route, navigation }) => {
   const { result } = route.params;
-  const [plan, setPlan] = useState(false);
+  const [planStatus, setPlanStatus] = useState(false);
+  const [plans, setPlans] = useState({});
 
-  const addPlan = () => {
-    setPlan(!plan);
+  useEffect(() => {
+    loadPlan();
+    // console.log(plans);
+    if (plans[result.workoutName] !== null) {
+      setPlanStatus(true);
+    } else {
+      setPlanStatus(false);
+    }
+  }, []);
+
+  const checkPlan = () => {
+    setPlanStatus(!planStatus);
+    if (planStatus === true) {
+      addPlan();
+    } else {
+      deletePlan();
+    }
+  };
+
+  const loadPlan = async () => {
+    const data = await AsyncStorage.getItem("Plans").then((value) => {
+      if (value != null) {
+        let user = JSON.parse(value);
+        setPlans(user.plans);
+      }
+    });
+  };
+
+  const savePlan = async () => {
+    await AsyncStorage.setItem("Plans", JSON.stringify(plans));
+  };
+
+  const addPlan = async () => {
+    const newPlans = {
+      ...plans,
+      [result.workoutName]: result,
+    };
+    setPlans(newPlans);
+    savePlan(newPlans);
+  };
+
+  const deletePlan = async () => {
+    const newPlans = { ...plans };
+    delete newPlans[result.workoutName];
+    setPlans(newPlans);
+    await savePlan(newPlans);
   };
 
   return (
@@ -28,12 +73,12 @@ const DetailPage = ({ route, navigation }) => {
           <TouchableOpacity onPress={() => navigation.pop()}>
             <MaterialIcons name="arrow-back-ios" size={30} color="black" />
           </TouchableOpacity>
-          <TouchableOpacity onPress={addPlan}>
+          <TouchableOpacity onPress={checkPlan}>
             <FontAwesome
               style={styles.headerBtn}
               name="bookmark"
               size={30}
-              color={plan ? "yellow" : "black"}
+              color={planStatus ? "yellow" : "black"}
             />
           </TouchableOpacity>
         </View>
