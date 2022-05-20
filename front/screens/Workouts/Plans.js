@@ -10,8 +10,8 @@ const Plans = ({ navigation }) => {
   const [plans, setPlans] = useState([]);
   
   useEffect(() => {
-    loadPlan;
-    ObjToArry
+    loadPlan();
+    ObjToArry();
   },[]);
 
   const loadPlan = async () => {
