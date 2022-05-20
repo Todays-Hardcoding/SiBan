@@ -13,54 +13,57 @@ const DetailPage = ({ route, navigation }) => {
   const { result } = route.params;
   const [planStatus, setPlanStatus] = useState(false);
   const [plans, setPlans] = useState({});
-
+  
   useEffect(() => {
-    loadPlan();
-    // console.log(plans);
-    if (plans[result.workoutName] !== null) {
-      setPlanStatus(true);
-    } else {
-      setPlanStatus(false);
-    }
-  }, []);
+    rerendering()
+  }, [navigation]);
+
+  const rerendering = navigation.addListener('focus', () => loadPlan());
 
   const checkPlan = () => {
-    setPlanStatus(!planStatus);
-    if (planStatus === true) {
-      addPlan();
-    } else {
-      deletePlan();
+    setPlanStatus(!planStatus)
+
+    if(planStatus === true){
+      addPlan()
+      alert(plans)
+    }else {
+      deletePlan()
+      alert(plans)
     }
-  };
+  }
 
   const loadPlan = async () => {
-    const data = await AsyncStorage.getItem("Plans").then((value) => {
-      if (value != null) {
-        let user = JSON.parse(value);
-        setPlans(user.plans);
+    await AsyncStorage.getItem("Plans").then((value) => {
+      if(value != null) {
+        setPlans(JSON.parse(value))
       }
     });
-  };
+    alert(plans[result.workoutName])
+    if(plans[result.workoutName] !== null) {
+      setPlanStatus(true)
+    }
+  }
 
-  const savePlan = async () => {
-    await AsyncStorage.setItem("Plans", JSON.stringify(plans));
-  };
+  const savePlan = async (save) => {
+    await AsyncStorage.setItem("Plans", JSON.stringify(save))
+  }
 
   const addPlan = async () => {
     const newPlans = {
       ...plans,
-      [result.workoutName]: result,
-    };
-    setPlans(newPlans);
-    savePlan(newPlans);
-  };
+      [result.workoutName] : result,
+    }
+    alert(newPlans)
+    setPlans(newPlans)
+    await savePlan(newPlans)
+  }
 
   const deletePlan = async () => {
-    const newPlans = { ...plans };
-    delete newPlans[result.workoutName];
-    setPlans(newPlans);
-    await savePlan(newPlans);
-  };
+    const newPlans = {...plans};
+    delete newPlans[result.workoutName]
+    setPlans(newPlans)
+    await savePlan(newPlans)
+  }
 
   return (
     <View style={styles.Container}>
@@ -73,12 +76,12 @@ const DetailPage = ({ route, navigation }) => {
           <TouchableOpacity onPress={() => navigation.pop()}>
             <MaterialIcons name="arrow-back-ios" size={30} color="black" />
           </TouchableOpacity>
-          <TouchableOpacity onPress={checkPlan}>
+          <TouchableOpacity onPress={() => checkPlan()}>
             <FontAwesome
               style={styles.headerBtn}
               name="bookmark"
               size={30}
-              color={planStatus ? "yellow" : "black"}
+              color= {planStatus ? "yellow" : "black"}
             />
           </TouchableOpacity>
         </View>
