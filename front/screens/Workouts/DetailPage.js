@@ -15,16 +15,23 @@ const DetailPage = ({ route, navigation }) => {
   const [planStatus, setPlanStatus] = useState("");
   const [plans, setPlans] = useState({});
 
-  // yellow = false
-  // black = true
+  useEffect(() => {
+    loadPlan();
+    // if(plans[result.workoutName].workoutName !== result.workoutName) {
+    //   setPlanStatus(true)
+    // }else {
+    //   setPlanStatus(false)
+    // }
+    alert(plans[result.workoutName])
+  }, []);
+
   const checkPlan = () => {
-    setPlanStatus(!planStatus);
-    if (planStatus == true) {
-      console.log(addPlan);
-      deletePlan();
-    } else {
-      addPlan();
-      console.log(deletePlan);
+    setPlanStatus(!planStatus)
+    if(planStatus === true){
+      addPlan()
+      alert(plans)
+    }else {
+      deletePlan()
     }
   };
 
@@ -58,7 +65,7 @@ const DetailPage = ({ route, navigation }) => {
           <TouchableOpacity onPress={() => navigation.pop()}>
             <MaterialIcons name="arrow-back-ios" size={30} color="black" />
           </TouchableOpacity>
-          <TouchableOpacity onPress={checkPlan}>
+          <TouchableOpacity onPress={() => checkPlan()}>
             <FontAwesome
               style={styles.headerBtn}
               name="bookmark"
