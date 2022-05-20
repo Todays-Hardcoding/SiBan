@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import {
   StyleSheet,
   SafeAreaView,
@@ -28,9 +28,16 @@ const MyProfile = ({ navigation }) => {
       }
     });
   };
+  // 화면 리렌더링
   useEffect(() => {
-    getData();
-  });
+    navListener();
+  }, [navigation]);
+  
+  //이것은 혁명이다!
+  const navListener = () =>
+    navigation.addListener("focus", () => {
+      getData();
+    });
 
   const specialPromoData = [
     {
@@ -204,7 +211,7 @@ const MyProfile = ({ navigation }) => {
       const [userHeight, setuserHeight] = useState("");
       const [userWeight, setuserWeight] = useState("");
       const [userTel, setuserTel] = useState();
-      const userId = "TATA";
+      const userId = "TTAA";
 
       const onScreenLoad = () => {
         fetch(url + "/showUserInfo.act", {
