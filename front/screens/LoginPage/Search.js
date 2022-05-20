@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { StyleSheet, Button, Text, TextInput, View } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
-const _url = "http://192.168.45.96:8282";
+const _url = "http://192.168.35.107:8282";
 const Search = () => {
   const [searchEmail, setSearchEmail] = useState("");
   const [searchPw, setSearchPw] = useState("");
