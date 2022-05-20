@@ -7,7 +7,7 @@ import {
   View,
 } from "react-native";
 
-const _url = "http://192.168.35.107:8282";
+const _url = "http://192.168.45.96:8282";
 
 const Login = ({ navigation }) => {
   const [loginId, setLoginId] = useState("");
@@ -18,7 +18,6 @@ const Login = ({ navigation }) => {
 
   const [idError, setIdError] = useState("");
   const [pwError, setPwError] = useState("");
-
   const [saveId, setSaveId] = useState("");
 
   const data = new FormData();
