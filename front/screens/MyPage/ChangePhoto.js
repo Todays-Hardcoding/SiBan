@@ -20,9 +20,7 @@ const windowHeight = Dimensions.get("window").height;
 
 // 이미지 선택
 const ChangePhoto = ({ navigation }) => {
-  const [userProfile, setuserProfile] = useState(
-    "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-1.2.1&raw_url=true&q=80&fm=jpg&crop=entropy&cs=tinysrgb&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687"
-  );
+  const [userProfile, setuserProfile] = useState();
   const userId = "TATA";
 
   const getData = () => {
@@ -51,9 +49,10 @@ const ChangePhoto = ({ navigation }) => {
       await AsyncStorage.setItem("photoUri", result.uri);
       console.log("userProfile" + userProfile);
       console.log("result.uri" + result.uri);
-      navigation.push("MYPAGE");
+      navigation.navigate("MYPAGE");
     }
   };
+
   // 카메라 촬영
   const openCamera = async () => {
     const permissionResult = await ImagePicker.requestCameraPermissionsAsync();
