@@ -46,6 +46,9 @@ public class User {
 	private String userTel;
 	@NotNull
 	@Column
+	private String userAddr;
+	@NotNull
+	@Column
 	private  String userHeight;
 	
 	@Column
@@ -60,10 +63,11 @@ public class User {
 	public void createDate() {
 		this.userRegDate = LocalDateTime.now();
 	}
+
 	@Builder
 	public User(Long userCode, @NotNull String userId, @NotNull String userPassword, @NotNull String userEmail,
-			@NotNull String userName, @NotNull String userTel, @NotNull String userHeight, String userProfile,
-			@NotNull String userWeight, LocalDateTime userRegDate) {
+			@NotNull String userName, @NotNull String userTel, @NotNull String userAddr, @NotNull String userHeight,
+			String userProfile, @NotNull String userWeight, LocalDateTime userRegDate) {
 		super();
 		this.userCode = userCode;
 		this.userId = userId;
@@ -71,11 +75,15 @@ public class User {
 		this.userEmail = userEmail;
 		this.userName = userName;
 		this.userTel = userTel;
+		this.userAddr = userAddr;
 		this.userHeight = userHeight;
 		this.userProfile = userProfile;
 		this.userWeight = userWeight;
 		this.userRegDate = userRegDate;
 	}
+
+
+
 
 
 	
