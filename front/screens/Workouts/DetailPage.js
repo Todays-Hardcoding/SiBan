@@ -15,55 +15,62 @@ const DetailPage = ({ route, navigation }) => {
   const [plans, setPlans] = useState({});
   
   useEffect(() => {
-    rerendering()
-  }, [navigation]);
+    loadPlan()
+  }, []);
 
   const rerendering = () => navigation.addListener('focus', () => loadPlan());
 
-  const checkPlan = () => {
-    
-    setPlanStatus(!planStatus)
+  const checkPlan = async() => {
 
     if(planStatus === true){
-      addPlan()
-    }else {
       deletePlan()
-    }
-  }
-
-  const loadPlan = async () => {
-    await AsyncStorage.getItem("Plans").then((value) => {
-      if(value != null) {
-        setPlans(JSON.parse(value))
-      }
-    });
-    if(plans[result.workoutName] !== null) {
+      setPlanStatus(false)
+    }else {
+      addPlan()
       setPlanStatus(true)
     }
   }
 
-  const savePlan = async (save) => {
-    await AsyncStorage.setItem("Plans", JSON.stringify(save))
+  const loadPlan = () => {
+    AsyncStorage.getItem("Plans").then(value => {
+      console.log(value)
+      setPlans(JSON.parse(value))
+    })
+    console.log(plans[result.workoutName])
+    if(plans[result.workoutName]. !== null){
+      console.log("나 있어유~")
+    } else {
+      console.log("나 없어유")
+    }
   }
 
-  const addPlan = async () => {
+  const savePlan = (save) => {
+    console.log("너 세이브니?")
+    console.log(save)
+    AsyncStorage.setItem("Plans", JSON.stringify(save))
+  }
+
+  const addPlan = () => {
     const newPlans = {
       ...plans,
       [result.workoutName] : result,
     }
     setPlans(newPlans)
-    await savePlan(newPlans)
+    savePlan(newPlans)
   }
 
-  const deletePlan = async () => {
+  const deletePlan = () => {
     const newPlans = {...plans};
     delete newPlans[result.workoutName]
     setPlans(newPlans)
-    await savePlan(newPlans)
+    savePlan(newPlans)
   }
 
   return (
     <View style={styles.Container}>
+      {/* <View>
+        <Text>{plans !== null ? plans[result.workoutName]: "몰루"}</Text>
+      </View> */}
       <ImageBackground
         source={require("../../assets/images/workout/workout1.jpg")}
         resizeMode="cover"
