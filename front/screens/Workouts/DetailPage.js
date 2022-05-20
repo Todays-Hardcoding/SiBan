@@ -18,9 +18,7 @@ const DetailPage = ({ route, navigation }) => {
     loadPlan()
   }, []);
 
-  const rerendering = () => navigation.addListener('focus', () => loadPlan());
-
-  const checkPlan = async() => {
+  const checkPlan = () => {
 
     if(planStatus === true){
       deletePlan()
@@ -33,19 +31,26 @@ const DetailPage = ({ route, navigation }) => {
 
   const loadPlan = () => {
     AsyncStorage.getItem("Plans").then(value => {
-      console.log(value)
       setPlans(JSON.parse(value))
+      const mark = JSON.parse(value);
+      console.log(mark[result.workoutCode].workoutCode)
+      if(mark[result.workoutCode].workoutCode === result.workoutCode) {
+        setPlanStatus(true)
+      } else {
+        setPlanStatus(false)
+      }
     })
-    console.log(plans[result.workoutName])
-    if(plans[result.workoutName] !== null){
-      console.log("나 있어유~")
-    } else {
-      console.log("나 없어유")
-    }
   }
 
+  // const checkMark = () => {
+  //   Object.keys(plans).map((key) => {
+  //     if(key === result.workoutName)
+  //       setPlanStatus(true)
+  //   })
+  // }
+
   const savePlan = (save) => {
-    console.log("너 세이브니?")
+    console.log("=============저장============")
     console.log(save)
     AsyncStorage.setItem("Plans", JSON.stringify(save))
   }
@@ -53,7 +58,7 @@ const DetailPage = ({ route, navigation }) => {
   const addPlan = () => {
     const newPlans = {
       ...plans,
-      [result.workoutName] : result,
+      [result.workoutCode] : result,
     }
     setPlans(newPlans)
     savePlan(newPlans)
@@ -61,7 +66,7 @@ const DetailPage = ({ route, navigation }) => {
 
   const deletePlan = () => {
     const newPlans = {...plans};
-    delete newPlans[result.workoutName]
+    delete newPlans[result.workoutCode]
     setPlans(newPlans)
     savePlan(newPlans)
   }
