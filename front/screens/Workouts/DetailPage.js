@@ -12,7 +12,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 const DetailPage = ({ route, navigation }) => {
   const { result } = route.params;
   const [planStatus, setPlanStatus] = useState();
-  const [plans, setPlans] = useState({});
+  const [plans, setPlans] = useState();
 
   useEffect(() => {
     rerendering();
@@ -24,11 +24,11 @@ const DetailPage = ({ route, navigation }) => {
     // setPlanStatus(!planStatus);
 
     if (planStatus === true) {
-      addPlan();
+      deletePlan();
       setPlanStatus(false);
       // alert(plans);
     } else {
-      deletePlan();
+      addPlan();
       setPlanStatus(true);
       // alert(plans);
     }
@@ -38,18 +38,15 @@ const DetailPage = ({ route, navigation }) => {
     AsyncStorage.getItem("Plans").then((value) => {
       if (value != null) {
         setPlans(JSON.parse(value));
+        console.log("load");
+        console.log(value);
       }
     });
+    //AsyncStorage.removeItem("Plans");
     // alert(plans[result.workoutName]);
     // if (plans[result.workoutName] !== null) {
     //   setPlanStatus(true);
     // }
-
-    console.log(plans);
-  };
-
-  const savePlan = (save) => {
-    AsyncStorage.setItem("Plans", JSON.stringify(save));
   };
 
   const addPlan = () => {
@@ -65,16 +62,25 @@ const DetailPage = ({ route, navigation }) => {
     // alert(newPlans);
     // console.log(newPlans);
     // setPlans(plans);
+    console.log("addplan");
     console.log(plans);
-    savePlan(plans);
+    console.log("save");
+    console.log(plans);
+    AsyncStorage.setItem("Plans", JSON.stringify(plans));
   };
 
   const deletePlan = () => {
     const newPlans = { ...plans };
-    delete newPlans[result.workoutName];
-    setPlans(newPlans);
+    console.log("workoutname" + result.workoutName);
+    // delete newPlans[result.workoutName];
+    AsyncStorage.removeItem(result.workoutName);
+    // console.log(newPlans);
+    // setPlans(newPlans);
+    console.log("deletePlan");
     console.log(plans);
-    savePlan(newPlans);
+    console.log("save");
+    console.log(plans);
+    AsyncStorage.setItem("Plans", JSON.stringify(plans));
   };
 
   return (
