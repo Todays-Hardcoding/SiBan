@@ -13,7 +13,7 @@ import { Dimensions } from "react-native";
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 
-const url = "http://192.168.45.96:8282";
+const url = "http://192.168.35.107:8282";
 
 const MyProfileModify = ({ navigation }) => {
   const [userName, setuserName] = useState("");
@@ -21,7 +21,7 @@ const MyProfileModify = ({ navigation }) => {
   const [userHeight, setuserHeight] = useState("");
   const [userWeight, setuserWeight] = useState("");
   const [userTel, setuserTel] = useState();
-  const userId = "TATA";
+  const userId = "TTAA";
 
   const onScreenLoad = () => {
     fetch(url + "/showUserInfo.act", {

@@ -49,7 +49,7 @@ const ChangePhoto = ({ navigation }) => {
       await AsyncStorage.setItem("photoUri", result.uri);
       console.log("userProfile" + userProfile);
       console.log("result.uri" + result.uri);
-      navigation.push("MYPAGE");
+      navigation.navigate("MYPAGE");
     }
   };
   // 카메라 촬영
