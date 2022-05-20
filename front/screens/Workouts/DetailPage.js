@@ -6,64 +6,49 @@ import {
   Text,
   TouchableOpacity,
   ImageBackground,
+  addons,
 } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const DetailPage = ({ route, navigation }) => {
   const { result } = route.params;
-  const [planStatus, setPlanStatus] = useState(false);
+  const [planStatus, setPlanStatus] = useState("");
   const [plans, setPlans] = useState({});
 
-  useEffect(() => {
-    loadPlan();
-    // console.log(plans);
-    if (plans[result.workoutName] !== null) {
-      setPlanStatus(true);
-    } else {
-      setPlanStatus(false);
-    }
-  }, []);
-
+  // yellow = false
+  // black = true
   const checkPlan = () => {
     setPlanStatus(!planStatus);
-    if (planStatus === true) {
-      addPlan();
-    } else {
+    if (planStatus == true) {
+      console.log(addPlan);
       deletePlan();
+    } else {
+      addPlan();
+      console.log(deletePlan);
     }
   };
 
-  const loadPlan = async () => {
-    const data = await AsyncStorage.getItem("Plans").then((value) => {
-      if (value != null) {
-        let user = JSON.parse(value);
-        setPlans(user.plans);
-      }
+  const addPlan = () => {
+    AsyncStorage.setItem("sendData", JSON.stringify(true));
+  };
+  const deletePlan = () => {
+    AsyncStorage.setItem("sendData", JSON.stringify(false));
+  };
+
+  const getData = () => {
+    AsyncStorage.getItem("sendData").then((value) => {
+      let psp = JSON.stringify(value);
+      setPlanStatus(psp);
+      console.log(planStatus);
     });
-  };
-
-  const savePlan = async () => {
-    await AsyncStorage.setItem("Plans", JSON.stringify(plans));
-  };
-
-  const addPlan = async () => {
-    const newPlans = {
-      ...plans,
-      [result.workoutName]: result,
-    };
-    setPlans(newPlans);
-    savePlan(newPlans);
-  };
-
-  const deletePlan = async () => {
-    const newPlans = { ...plans };
-    delete newPlans[result.workoutName];
-    setPlans(newPlans);
-    await savePlan(newPlans);
   };
 
   return (
     <View style={styles.Container}>
+      <TouchableOpacity onPress={getData}>
+        <FontAwesome style={styles.headerBtn} name="bookmark" size={50} />
+      </TouchableOpacity>
+      <Text>{planStatus}</Text>
       <ImageBackground
         source={require("../../assets/images/workout/workout1.jpg")}
         resizeMode="cover"
