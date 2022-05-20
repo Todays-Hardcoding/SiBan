@@ -4,7 +4,6 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
 const _url = "http://192.168.45.96:8282";
-
 const Register = ({ navigation }) => {
   //아이디,비번,이메일,전화번호
   const [id, setId] = useState("");
