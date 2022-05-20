@@ -35,7 +35,7 @@ const DetailPage = ({ route, navigation }) => {
   const loadPlan = async () => {
     await AsyncStorage.getItem("Plans").then((value) => {
       if(value != null) {
-        setPlans(JSON.parse(data))
+        setPlans(JSON.parse(value))
       }
     });
     alert(plans[result.workoutName])
