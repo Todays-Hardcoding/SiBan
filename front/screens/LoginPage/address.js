@@ -48,7 +48,7 @@ const ChangeAddress = ({ navigation }) => {
       </Text>*/}
       <Button title="확인" onPress={() =>
             navigation.navigate("Register", {
-              result : addr,
+              userAddr : addr,
             })}></Button>
     </View>
   );

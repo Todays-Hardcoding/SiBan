@@ -20,7 +20,8 @@ const Endurance = ({ navigation }) => {
       .then((response) => response.json())
       .then((data) => {
         setExercises(data);
-      });
+      })
+      .catch((e) => console.log(e))
   }, []);
 
   return (

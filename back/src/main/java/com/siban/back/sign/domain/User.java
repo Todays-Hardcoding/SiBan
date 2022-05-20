@@ -34,7 +34,7 @@ public class User {
 	private String userId;
 	@NotNull
 	@Column
-	private String userPassword;
+	private String userPw;
 	@NotNull
 	@Column
 	private String userEmail;
@@ -57,6 +57,7 @@ public class User {
 	@NotNull
 	@Column
 	private String userWeight;
+	
 	private LocalDateTime userRegDate;
 
 	@PrePersist
@@ -65,13 +66,13 @@ public class User {
 	}
 
 	@Builder
-	public User(Long userCode, @NotNull String userId, @NotNull String userPassword, @NotNull String userEmail,
+	public User(Long userCode, @NotNull String userId, @NotNull String userPw, @NotNull String userEmail,
 			@NotNull String userName, @NotNull String userTel, @NotNull String userAddr, @NotNull String userHeight,
 			String userProfile, @NotNull String userWeight, LocalDateTime userRegDate) {
 		super();
 		this.userCode = userCode;
 		this.userId = userId;
-		this.userPassword = userPassword;
+		this.userPw = userPw;
 		this.userEmail = userEmail;
 		this.userName = userName;
 		this.userTel = userTel;
@@ -81,6 +82,9 @@ public class User {
 		this.userWeight = userWeight;
 		this.userRegDate = userRegDate;
 	}
+
+
+
 
 
 

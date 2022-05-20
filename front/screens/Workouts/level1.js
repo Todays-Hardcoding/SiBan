@@ -1,3 +1,4 @@
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useRoute } from "@react-navigation/native";
 import React, { useEffect, useState } from "react";
 import { Text, StyleSheet, TouchableOpacity, View } from "react-native";
@@ -7,7 +8,6 @@ const _url = "http://112.172.225.17:8282";
 
 const Level1 = ({ navigation }) => {
   const [exercises, setExercises] = useState([]);
-
   useEffect(() => {
     fetch(_url + "/Course.act", {
       method: "POST",
@@ -22,7 +22,8 @@ const Level1 = ({ navigation }) => {
       .then((response) => response.json())
       .then((data) => {
         setExercises(data);
-      });
+      })
+      .catch((e) => console.log(e));
   }, []);
 
   return (

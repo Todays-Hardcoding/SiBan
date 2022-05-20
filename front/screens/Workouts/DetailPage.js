@@ -7,9 +7,63 @@ import {
   TouchableOpacity,
   ImageBackground,
 } from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const DetailPage = ({ route, navigation }) => {
   const { result } = route.params;
+  const [planStatus, setPlanStatus] = useState(false);
+  const [plans, setPlans] = useState({});
+  
+  useEffect(() => {
+    rerendering()
+  }, [navigation]);
+
+  const rerendering = navigation.addListener('focus', () => loadPlan());
+
+  const checkPlan = () => {
+    setPlanStatus(!planStatus)
+
+    if(planStatus === true){
+      addPlan()
+      alert(plans)
+    }else {
+      deletePlan()
+      alert(plans)
+    }
+  }
+
+  const loadPlan = async () => {
+    await AsyncStorage.getItem("Plans").then((value) => {
+      if(value != null) {
+        setPlans(JSON.parse(value))
+      }
+    });
+    alert(plans[result.workoutName])
+    if(plans[result.workoutName] !== null) {
+      setPlanStatus(true)
+    }
+  }
+
+  const savePlan = async (save) => {
+    await AsyncStorage.setItem("Plans", JSON.stringify(save))
+  }
+
+  const addPlan = async () => {
+    const newPlans = {
+      ...plans,
+      [result.workoutName] : result,
+    }
+    alert(newPlans)
+    setPlans(newPlans)
+    await savePlan(newPlans)
+  }
+
+  const deletePlan = async () => {
+    const newPlans = {...plans};
+    delete newPlans[result.workoutName]
+    setPlans(newPlans)
+    await savePlan(newPlans)
+  }
 
   return (
     <View style={styles.Container}>
@@ -22,12 +76,12 @@ const DetailPage = ({ route, navigation }) => {
           <TouchableOpacity onPress={() => navigation.pop()}>
             <MaterialIcons name="arrow-back-ios" size={30} color="black" />
           </TouchableOpacity>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => checkPlan()}>
             <FontAwesome
               style={styles.headerBtn}
               name="bookmark"
-              size={24}
-              color="black"
+              size={30}
+              color= {planStatus ? "yellow" : "black"}
             />
           </TouchableOpacity>
         </View>
@@ -74,7 +128,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   workoutNameText: {
-    fontSize: "50",
+    fontSize: 50,
     fontWeight: "500",
     color: "white",
     lineHeight: 550,

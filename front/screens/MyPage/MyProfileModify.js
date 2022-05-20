@@ -13,15 +13,15 @@ import { Dimensions } from "react-native";
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 
-const url = "http://192.168.45.96:8282";
+const url = "http://192.168.35.107:8282";
 
-const MyProfileModify = () => {
+const MyProfileModify = ({ navigation }) => {
   const [userName, setuserName] = useState("");
   const [userEmail, setuserEmail] = useState("");
   const [userHeight, setuserHeight] = useState("");
   const [userWeight, setuserWeight] = useState("");
   const [userTel, setuserTel] = useState();
-  const userId = "TATA";
+  const userId = "TTAA";
 
   const onScreenLoad = () => {
     fetch(url + "/showUserInfo.act", {
@@ -50,7 +50,11 @@ const MyProfileModify = () => {
     onScreenLoad();
   }, []);
 
-  const profileTest = (navigation) => {
+  const cancel = () => {
+    navigation.pop();
+  };
+
+  const profileTest = () => {
     fetch(url + "/updateUserInfo.act", {
       method: "POST",
       headers: {
@@ -67,9 +71,7 @@ const MyProfileModify = () => {
       }),
     })
       .then((response) => response.json())
-      .then((data) => console.log(data))
-      // .then(navigation.navigate("OthersNav", { screen: "MYPROFILE" }))
-      // .then((data) => console.log(JSON.stringify(data)))
+      .then((data) => console.log(data), navigation.pop())
       .catch((error) => console.log(error));
   };
 
@@ -130,7 +132,7 @@ const MyProfileModify = () => {
             <Text style={styles.userProfileText}>저장</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={onPressBtn} style={styles.defaultButton}>
+          <TouchableOpacity onPress={cancel} style={styles.defaultButton}>
             <Text style={styles.userProfileText}>뒤로</Text>
           </TouchableOpacity>
         </View>
@@ -162,7 +164,8 @@ const styles = StyleSheet.create({
   },
   input: {
     height: 40,
-    margin: 12,
+    marginLeft: 12,
+    marginRight: 12,
     borderWidth: 1,
     padding: 10,
   },
