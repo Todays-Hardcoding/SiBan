@@ -16,20 +16,21 @@ const DetailPage = ({ route, navigation }) => {
 
   useEffect(() => {
     loadPlan();
-    // console.log(plans);
-    if (plans[result.workoutName] !== null) {
-      setPlanStatus(true);
-    } else {
-      setPlanStatus(false);
-    }
+    // if(plans[result.workoutName].workoutName !== result.workoutName) {
+    //   setPlanStatus(true)
+    // }else {
+    //   setPlanStatus(false)
+    // }
+    alert(plans[result.workoutName])
   }, []);
 
   const checkPlan = () => {
-    setPlanStatus(!planStatus);
-    if (planStatus === true) {
-      addPlan();
-    } else {
-      deletePlan();
+    setPlanStatus(!planStatus)
+    if(planStatus === true){
+      addPlan()
+      alert(plans)
+    }else {
+      deletePlan()
     }
   };
 
@@ -73,7 +74,7 @@ const DetailPage = ({ route, navigation }) => {
           <TouchableOpacity onPress={() => navigation.pop()}>
             <MaterialIcons name="arrow-back-ios" size={30} color="black" />
           </TouchableOpacity>
-          <TouchableOpacity onPress={checkPlan}>
+          <TouchableOpacity onPress={() => checkPlan()}>
             <FontAwesome
               style={styles.headerBtn}
               name="bookmark"
