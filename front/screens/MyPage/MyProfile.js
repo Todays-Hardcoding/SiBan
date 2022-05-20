@@ -10,6 +10,7 @@ import {
 } from "react-native";
 import { COLORS, SIZES, images } from "../../constants";
 import { Table, Row, Rows } from "react-native-table-component-2";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const url = "http://192.168.45.96:8282";
 
@@ -72,6 +73,16 @@ const MyProfile = ({ navigation }) => {
     );
   }
 
+  const [checkUri, setcheckUri] = useState("");
+
+  const getData = () => {
+    AsyncStorage.getItem("photoUri").then((value) => {
+      if (value != null) {
+        setcheckUri(value);
+      }
+    });
+  };
+  getData();
   function renderBanner() {
     return (
       <View
@@ -87,8 +98,8 @@ const MyProfile = ({ navigation }) => {
         >
           <View style={{ alignItems: "center" }}>
             <Image
-              source={require("../../assets/images/profileImage2.png")}
-              resizeMode="contain"
+              source={{ uri: checkUri }}
+              resizeMode="cover"
               style={{
                 width: "70%",
                 height: "100%",
@@ -241,6 +252,7 @@ const MyProfile = ({ navigation }) => {
             <TouchableOpacity
               onPress={() => {
                 navigation.navigate("OthersNav", { screen: "MyProfileModify" });
+                setShouldShow(!shouldShow);
               }}
               style={styles.userProfileText}
             >
@@ -282,9 +294,8 @@ const styles = StyleSheet.create({
   },
   profile: {
     flex: 8,
-    padding: 16,
     backgroundColor: "#fff",
-    borderRadius: 10,
+    borderRadius: 2,
   },
   head: {
     height: 40,
@@ -300,6 +311,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     flexDirection: "row",
   },
+  //정보 수정 버튼
   userProfileText: {
     alignItems: "center",
     justifyContent: "center",
