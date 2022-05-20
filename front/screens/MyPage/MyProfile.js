@@ -12,12 +12,23 @@ import { COLORS, SIZES, images } from "../../constants";
 import { Table, Row, Rows } from "react-native-table-component-2";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-const url = "http://192.168.45.96:8282";
+const url = "http://192.168.0.6:8282";
+const LOGIN_STORAGE_KEY = "@loginInfo";
 
 const MyProfile = ({ navigation }) => {
   const [userHeight, setuserHeight] = useState("");
   const [userWeight, setuserWeight] = useState("");
   const [routineCount, setRoutineCount] = useState(0);
+  const [loginInfo, setLoginInfo] = useState("");
+
+  useEffect(() => {
+    loadLoginInfo();
+  }, []);
+  const loadLoginInfo = async () => {
+    const s = await AsyncStorage.getItem(LOGIN_STORAGE_KEY);
+    s !== null ? setLoginInfo(JSON.parse(s)) : null;
+  };
+
   const specialPromoData = [
     {
       id: 1,
@@ -63,6 +74,7 @@ const MyProfile = ({ navigation }) => {
           <Text style={{ fontSize: 25, fontWeight: "bold", color: "white" }}>
             마이페이지
           </Text>
+          <Text style={{ color: "white" }}>{loginInfo}</Text>
         </View>
         <View style={styles.userSupervise}>
           <TouchableOpacity onPress={() => setShouldShow(!shouldShow)}>
