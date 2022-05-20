@@ -18,7 +18,6 @@ const Login = ({ navigation }) => {
 
   const [idError, setIdError] = useState("");
   const [pwError, setPwError] = useState("");
-
   const [saveId, setSaveId] = useState("");
 
   const data = new FormData();
