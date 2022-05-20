@@ -15,7 +15,7 @@ const Plans = ({ navigation }) => {
   }, []);
 
   const loadPlan = async () => {
-    const data = await AsyncStorage.getItem("Plans");
+    const data = await AsyncStorage.getItem("plan");
     setResult(JSON.parse(data));
   };
 

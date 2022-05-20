@@ -15,70 +15,62 @@ const DetailPage = ({ route, navigation }) => {
   const [plans, setPlans] = useState({});
 
   useEffect(() => {
-    rerendering();
-  }, [navigation]);
+    loadPlan()
+  }, []);
 
-  const rerendering = () => navigation.addListener("focus", () => loadPlan());
+  const rerendering = () => navigation.addListener('focus', () => loadPlan());
 
-  const checkPlan = () => {
-    // setPlanStatus(!planStatus);
+  const checkPlan = async() => {
 
-    if (planStatus === true) {
-      addPlan();
-      setPlanStatus(false);
-      // alert(plans);
-    } else {
-      deletePlan();
-      setPlanStatus(true);
-      // alert(plans);
+    if(planStatus === true){
+      deletePlan()
+      setPlanStatus(false)
+    }else {
+      addPlan()
+      setPlanStatus(true)
     }
-  };
+  }
 
   const loadPlan = () => {
-    AsyncStorage.getItem("Plans").then((value) => {
-      if (value != null) {
-        setPlans(JSON.parse(value));
-      }
-    });
-    // alert(plans[result.workoutName]);
-    // if (plans[result.workoutName] !== null) {
-    //   setPlanStatus(true);
-    // }
-
-    console.log(plans);
-  };
+    AsyncStorage.getItem("Plans").then(value => {
+      console.log(value)
+      setPlans(JSON.parse(value))
+    })
+    console.log(plans[result.workoutName])
+    if(plans[result.workoutName] !== null){
+      console.log("나 있어유~")
+    } else {
+      console.log("나 없어유")
+    }
+  }
 
   const savePlan = (save) => {
-    AsyncStorage.setItem("Plans", JSON.stringify(save));
-  };
+    console.log("너 세이브니?")
+    console.log(save)
+    AsyncStorage.setItem("Plans", JSON.stringify(save))
+  }
 
   const addPlan = () => {
     const newPlans = {
       ...plans,
-      [result.workoutName]: result,
-    };
-    setPlans(newPlans);
-    // setPlans({
-    //   ...plans,
-    //   [result.workoutName]: result,
-    // });
-    // alert(newPlans);
-    // console.log(newPlans);
-    // setPlans(plans);
-    console.log(plans);
-    savePlan(plans);
-  };
+      [result.workoutName] : result,
+    }
+    setPlans(newPlans)
+    savePlan(newPlans)
+  }
 
   const deletePlan = () => {
-    const newPlans = { ...plans };
-    delete newPlans[result.workoutName];
-    setPlans(newPlans);
-    console.log(plans);
-    savePlan(newPlans);
-  };
+    const newPlans = {...plans};
+    delete newPlans[result.workoutName]
+    setPlans(newPlans)
+    savePlan(newPlans)
+  }
 
   return (
     <View style={styles.Container}>
+      {/* <View>
+        <Text>{plans !== null ? plans[result.workoutName]: "몰루"}</Text>
+      </View> */}
       <ImageBackground
         source={require("../../assets/images/workout/workout1.jpg")}
         resizeMode="cover"
