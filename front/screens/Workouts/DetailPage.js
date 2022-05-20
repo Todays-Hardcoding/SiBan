@@ -6,56 +6,67 @@ import {
   Text,
   TouchableOpacity,
   ImageBackground,
-  addons,
 } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const DetailPage = ({ route, navigation }) => {
   const { result } = route.params;
-  const [planStatus, setPlanStatus] = useState("");
+  const [planStatus, setPlanStatus] = useState(false);
   const [plans, setPlans] = useState({});
-
+  
   useEffect(() => {
-    loadPlan();
-    // if(plans[result.workoutName].workoutName !== result.workoutName) {
-    //   setPlanStatus(true)
-    // }else {
-    //   setPlanStatus(false)
-    // }
-    alert(plans[result.workoutName])
-  }, []);
+    rerendering()
+  }, [navigation]);
+
+  const rerendering = navigation.addListener('focus', () => loadPlan());
 
   const checkPlan = () => {
     setPlanStatus(!planStatus)
+
     if(planStatus === true){
       addPlan()
       alert(plans)
     }else {
       deletePlan()
+      alert(plans)
     }
-  };
+  }
 
-  const addPlan = () => {
-    AsyncStorage.setItem("sendData", JSON.stringify(true));
-  };
-  const deletePlan = () => {
-    AsyncStorage.setItem("sendData", JSON.stringify(false));
-  };
-
-  const getData = () => {
-    AsyncStorage.getItem("sendData").then((value) => {
-      let psp = JSON.stringify(value);
-      setPlanStatus(psp);
-      console.log(planStatus);
+  const loadPlan = async () => {
+    await AsyncStorage.getItem("Plans").then((value) => {
+      if(value != null) {
+        setPlans(JSON.parse(data))
+      }
     });
-  };
+    alert(plans[result.workoutName])
+    if(plans[result.workoutName] !== null) {
+      setPlanStatus(true)
+    }
+  }
+
+  const savePlan = async (save) => {
+    await AsyncStorage.setItem("Plans", JSON.stringify(save))
+  }
+
+  const addPlan = async () => {
+    const newPlans = {
+      ...plans,
+      [result.workoutName] : result,
+    }
+    alert(newPlans)
+    setPlans(newPlans)
+    await savePlan(newPlans)
+  }
+
+  const deletePlan = async () => {
+    const newPlans = {...plans};
+    delete newPlans[result.workoutName]
+    setPlans(newPlans)
+    await savePlan(newPlans)
+  }
 
   return (
     <View style={styles.Container}>
-      <TouchableOpacity onPress={getData}>
-        <FontAwesome style={styles.headerBtn} name="bookmark" size={50} />
-      </TouchableOpacity>
-      <Text>{planStatus}</Text>
       <ImageBackground
         source={require("../../assets/images/workout/workout1.jpg")}
         resizeMode="cover"
@@ -70,7 +81,7 @@ const DetailPage = ({ route, navigation }) => {
               style={styles.headerBtn}
               name="bookmark"
               size={30}
-              color={planStatus ? "yellow" : "black"}
+              color= {planStatus ? "yellow" : "black"}
             />
           </TouchableOpacity>
         </View>
