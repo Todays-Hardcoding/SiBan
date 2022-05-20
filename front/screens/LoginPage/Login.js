@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Button,
   StyleSheet,
@@ -7,8 +7,11 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const _url = "http://192.168.35.133:8282";
+
+const LOGIN_STORAGE_KEY = "@loginInfo";
 
 const Login = ({ navigation }) => {
   //아이디 , 비밀번호 
@@ -22,10 +25,23 @@ const Login = ({ navigation }) => {
   const [pwError, setPwError] = useState("");
   //로그인된 아이디
   const [saveId, setSaveId] = useState("");
+  const [loginInfo, setLoginInfo] = useState("");
 
   const data = new FormData();
   data.append("userId", "loginId");
   data.append("userPw", "loginPw");
+
+  useEffect(() => {
+    loadLoginInfo();
+  }, []);
+
+  const loadLoginInfo = async () => {
+    const s = await AsyncStorage.getItem(LOGIN_STORAGE_KEY);
+    s !== null ? setLoginInfo(JSON.parse(s)) : null;
+  };
+  const saveLoginInfo = async (toSave) => {
+    await AsyncStorage.setItem(LOGIN_STORAGE_KEY, JSON.stringify(toSave));
+  };
 
   const setId = (text) => {
     if (text.trim().length === 0) {
@@ -66,6 +82,8 @@ const Login = ({ navigation }) => {
           setSaveId(userId);
           alert("로그인 성공");
           console.log(setSaveId);
+          // 아이디정보 저장해야댐
+          saveLoginInfo(loginId);
           navigation.navigate("MainTabs");
         } else {
           alert("다시 로그인해주세요.");
