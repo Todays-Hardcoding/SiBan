@@ -8,25 +8,25 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 const Plans = ({ navigation }) => {
   const [result, setResult] = useState({});
   const [plans, setPlans] = useState([]);
-  
+
   useEffect(() => {
-    loadPlan();
-    ObjToArry();
-  },[]);
+    loadPlan;
+    ObjToArry;
+  }, []);
 
   const loadPlan = async () => {
     const data = await AsyncStorage.getItem("Plans");
-    setResult(JSON.parse(data))
-  }
+    setResult(JSON.parse(data));
+  };
 
   const ObjToArry = () => {
-    const newPlans = new Array;
+    const newPlans = new Array();
     Object.keys(result).map((key) => {
-      newPlans.push(result[key])
-    })
-    setPlans(newPlans)
-  }
-  
+      newPlans.push(result[key]);
+    });
+    setPlans(newPlans);
+  };
+
   return (
     <View style={styles.Container}>
       <FlatGrid
