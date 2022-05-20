@@ -15,20 +15,22 @@ const DetailPage = ({ route, navigation }) => {
   const [plans, setPlans] = useState({});
   
   useEffect(() => {
-    loadPlan;
-    if(plans[result.workoutName] !== null) {
-      setPlanStatus(true)
-    }else {
-      setPlanStatus(false)
-    }
+    loadPlan();
+    // if(plans[result.workoutName].workoutName !== result.workoutName) {
+    //   setPlanStatus(true)
+    // }else {
+    //   setPlanStatus(false)
+    // }
+    alert(plans[result.workoutName])
   }, []);
 
   const checkPlan = () => {
     setPlanStatus(!planStatus)
     if(planStatus === true){
-      addPlan
+      addPlan()
+      alert(plans)
     }else {
-      deletePlan
+      deletePlan()
     }
   }
 
@@ -46,6 +48,7 @@ const DetailPage = ({ route, navigation }) => {
       ...plans,
       [result.workoutName] : result,
     }
+    alert(newPlans)
     setPlans(newPlans)
     await savePlan(newPlans)
   }
@@ -56,8 +59,6 @@ const DetailPage = ({ route, navigation }) => {
     setPlans(newPlans)
     await savePlan(newPlans)
   }
-
-
 
   return (
     <View style={styles.Container}>
@@ -70,7 +71,7 @@ const DetailPage = ({ route, navigation }) => {
           <TouchableOpacity onPress={() => navigation.pop()}>
             <MaterialIcons name="arrow-back-ios" size={30} color="black" />
           </TouchableOpacity>
-          <TouchableOpacity onPress={checkPlan}>
+          <TouchableOpacity onPress={() => checkPlan()}>
             <FontAwesome
               style={styles.headerBtn}
               name="bookmark"
