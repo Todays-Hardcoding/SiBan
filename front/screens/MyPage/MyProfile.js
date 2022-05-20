@@ -12,7 +12,7 @@ import { COLORS, SIZES, images } from "../../constants";
 import { Table, Row, Rows } from "react-native-table-component-2";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-const url = "http://192.168.0.6:8282";
+const url = "http://192.168.35.107:8282";
 const LOGIN_STORAGE_KEY = "@loginInfo";
 
 const MyProfile = ({ navigation }) => {
@@ -20,11 +20,11 @@ const MyProfile = ({ navigation }) => {
   const [userWeight, setuserWeight] = useState("");
   const [routineCount, setRoutineCount] = useState(0);
 
-  const [loginInfo, setLoginInfo] = useState("");
+  const [userId, setuserId] = useState("");
 
-  const loadLoginInfo = async () => {
+  const loaduserId = async () => {
     const s = await AsyncStorage.getItem(LOGIN_STORAGE_KEY);
-    s !== null ? setLoginInfo(JSON.parse(s)) : null;
+    s !== null ? setuserId(JSON.parse(s)) : null;
   };
 
   const [checkUri, setcheckUri] = useState("");
@@ -41,7 +41,7 @@ const MyProfile = ({ navigation }) => {
   useEffect(() => {
     navListener();
     // 로그인 정보 
-    loadLoginInfo();
+    loaduserId();
   }, [navigation]);
 
   //이것은 혁명이다!
@@ -95,10 +95,10 @@ const MyProfile = ({ navigation }) => {
           <Text style={{ fontSize: 25, fontWeight: "bold", color: "#3f3f3f" }}>
             마이페이지
           </Text>
-          <Text style={{ color: "white" }}>{loginInfo}</Text>
+          <Text style={{ color: "black" }}>{userId}님 환영합니다</Text>
         </View>
-        <View style={styles.userSupervise}>
-          <TouchableOpacity onPress={() => setShouldShow(!shouldShow)}>
+        <View style={styles.upperButton}>
+          <TouchableOpacity style={styles.userSupervise} onPress={() => setShouldShow(!shouldShow)}>
             <Text>회원 관리</Text>
           </TouchableOpacity>
         </View>
@@ -223,7 +223,6 @@ const MyProfile = ({ navigation }) => {
       const [userHeight, setuserHeight] = useState("");
       const [userWeight, setuserWeight] = useState("");
       const [userTel, setuserTel] = useState();
-      const userId = "TTAA";
 
       const onScreenLoad = () => {
         fetch(url + "/showUserInfo.act", {
@@ -261,17 +260,34 @@ const MyProfile = ({ navigation }) => {
         ],
       };
 
+      const removeValue = async () => {
+        try {
+          await AsyncStorage.removeItem(LOGIN_STORAGE_KEY, loaduserId);
+          onScreenLoad();
+          console.log()
+          console.log(userId);
+          return true;
+        } catch (e) {
+          console.log(e);
+        }
+
+      }
+
       return (
         <View>
           <View style={styles.modifyButton}>
             <TouchableOpacity
               onPress={() => {
-                navigation.navigate("OthersNav", { screen: "MyProfileModify" });
+                loaduserId();
+                navigation.navigate("OthersNav", { screen: "MyProfileModify", params: { userId: userId } });
                 setShouldShow(!shouldShow);
               }}
               style={styles.userProfileText}
             >
               <Text>정보수정</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.userProfileText} onPress={() => { removeValue(); navigation.navigate("MYPAGE") }}>
+              <Text>로그아웃</Text>
             </TouchableOpacity>
           </View>
           <View style={styles.profile}>
@@ -335,9 +351,14 @@ const styles = StyleSheet.create({
     width: "30%",
     marginBottom: 10,
     borderRadius: 20,
+    marginHorizontal: 10,
   },
   modifyButton: {
-    alignItems: "flex-end",
+    justifyContent: "center",
+    flexDirection: "row",
+  },
+  upperButton: {
+    flexDirection: "row",
   },
   userSupervise: {
     alignItems: "center",
