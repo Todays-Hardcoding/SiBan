@@ -12,6 +12,8 @@ import {
   TextInput,
   ImageBackground,
 } from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+const LOGIN_STORAGE_KEY = "@loginInfo";
 
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
@@ -20,17 +22,18 @@ const _url = "http://192.168.242.2:8282";
 
 const QNADetail = ({route}) => {
   const {result} = route.params;
-  const [postCategory,setPostCategory] = useState(); 
-  const [postCode,setPostCode] = useState(); 
-  const [postContent,setPostContent] = useState(); 
-  const [postRegDate,setPostRegDate] = useState(); 
-  const [postTitle,setPostTitle] = useState(); 
-  const [postViews,setPostViews] = useState(); 
 
-  console.log(result);
+  const [loginInfo, setLoginInfo] = useState("");
+
+  const [postInfo, setPostInfo] = useState([]);
+
+  const loadLoginInfo = async () => {
+    const s = await AsyncStorage.getItem(LOGIN_STORAGE_KEY);
+    s !== null ? setLoginInfo(JSON.parse(s)) : null;
+  };
+
   useEffect(() => {
-
-    console.log(result);
+    loadLoginInfo()
     fetch(_url + "/selectDetail.act", {
       method: "POST",
       headers: {
@@ -43,15 +46,13 @@ const QNADetail = ({route}) => {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
-        setPostCategory(data.postCategory);
-        setPostCode(data.postCode);
-        setPostContent(data.postContent);
-        setPostRegDate(data.postRegDate);
-        setPostTitle(data.postTitle);
-        setPostViews(data.postViews);
+        console.log(data)
+        setPostInfo(data);
       });
     }, []);
+
+    
+
   return (
     <SafeAreaView style={styles.container} >
       <ImageBackground
@@ -59,28 +60,31 @@ const QNADetail = ({route}) => {
         style={styles.image}
       >
       </ImageBackground>
+
       <ScrollView showsVerticalScrollIndicator={false}>
+        
         <View style={styles.postContainer}>
-        <View style={styles.postHeader}>
-          <View>
-            <Text>조회수 {postViews}</Text>
+          <View style={styles.postHeader}>
+            <View>
+              <Text>조회수 {postInfo.postViews}</Text>
+            </View>
+            <View>
+              <Text>{postInfo.postRegDate}</Text>
+            </View>
           </View>
-          <View>
-            <Text>{postRegDate}</Text>
+          <View style={styles.postTitle}>
+            <Text>제목 {postInfo.postTitle}</Text>
           </View>
-        </View>
-        <View style={styles.postTitle}>
-          <Text>제목 {postTitle}</Text>
-        </View>
-        <View style={styles.postCategory}>
-          <Text>{postCategory}</Text>
-        </View>
+          <View style={[styles.postCategory, {flexDirection: "row"}, {justifyContent:"space-between"}]}>
+            <Text>{postInfo.postCategory}</Text>
+            <Text>작성자 : {postInfo.user}</Text>
+          </View>
         </View>
         {/* horizontal line*/}
         <View style={styles.postContainer}>
         <View style={styles.line}></View>
           <View style={styles.postBody}>
-            <Text>{postContent}</Text>
+            <Text>{postInfo.postContent}</Text>
           </View>
         </View>
         <View style={styles.postAnswer}>

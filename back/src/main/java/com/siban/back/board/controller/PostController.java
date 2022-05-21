@@ -6,6 +6,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,8 +18,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.siban.back.board.domain.Post;
 import com.siban.back.board.service.PostService;
+import com.siban.back.sign.service.SignService;
 import com.siban.back.workout.domain.Workout;
 
 @RestController
@@ -24,6 +31,9 @@ public class PostController {
 	@Autowired
 	PostService postService;
 	
+	@Autowired
+	SignService signService;
+	
 	@PostMapping("/insertInquiry.act")
 	public Post insertInquiry(@RequestBody Map<String, Object> param) {
 		Post post = new Post();
@@ -31,10 +41,14 @@ public class PostController {
 		String categori = (String) param.get("categoriValue");
 		String title = (String) param.get("title");
 		String content = (String) param.get("content");
+		String loginInfo = (String) param.get("loginInfo");
+
+		System.out.println(loginInfo);
 		
 		post.setPostCategory(categori);
 		post.setPostTitle(title);
 		post.setPostContent(content);
+		post.setUser(signService.findByUserId(loginInfo));
 		
 		return postService.insertInquiry(post);
 	}
@@ -45,18 +59,30 @@ public class PostController {
 		
 		result = postService.selectInquiry();
 		
-		System.out.println(result);
+		for(Post temp : result) {
+			System.out.println(temp.toString());
+		}
 		
 		return result;
 		
 	}
 	
 	@PostMapping("/selectDetail.act")
-	public Optional<Post> selectDetail(@RequestBody Map<String, Long> param) {
-		Optional<Post> result = Optional.of(new Post());
-		result = postService.selectDetail(param.get("result"));
-		System.out.println(param);
-		System.out.println("미나 와따감");
+	public Map<String, String> selectDetail(@RequestBody Map<String, Long> param) {
+		Map<String, String> result = new HashMap<>();
+	
+		Post post = new Post();
+		postService.updateViews(param.get("result"));
+		post = postService.selectDetail(param.get("result"));
+
+		result.put("postCode", ""+post.getPostCode());
+		result.put("postCategory", ""+post.getPostCategory());
+		result.put("postTitle", ""+post.getPostTitle());
+		result.put("postContent", ""+post.getPostContent());
+		result.put("postRegDate", ""+post.getPostRegDate());
+		result.put("postViews", ""+post.getPostViews());
+		result.put("user", post.getUser().getUserId());
+				
 		return result;
 	}
 }

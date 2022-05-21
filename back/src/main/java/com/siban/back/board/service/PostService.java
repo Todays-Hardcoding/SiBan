@@ -23,7 +23,11 @@ public class PostService {
 		return postRepository.findAll();
 	}
 	
-	public Optional<Post> selectDetail(Long index) {
-		return postRepository.findById(index);
+	public Post selectDetail(Long index) {
+		return postRepository.findByPostCode(index);
+	}
+	
+	public void updateViews(Long index) {
+		postRepository.updateViews(index);
 	}
 }

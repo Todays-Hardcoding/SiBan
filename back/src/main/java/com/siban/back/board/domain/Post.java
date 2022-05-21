@@ -60,15 +60,19 @@ public class Post {
 	
 	@PrePersist
 	@PreUpdate
-	public void createDate() {
+	public void createdAt() {
 		this.postViews = 0;
 	    Date today = new Date();
 
 	    SimpleDateFormat date = new SimpleDateFormat("yyyy/MM/dd");
 	    postRegDate = date.format(today);
 	}
-	
-	
-	
+
+	@Override
+	public String toString() {
+		return "Post [user=" + user + ", postCode=" + postCode + ", postCategory=" + postCategory + ", postTitle="
+				+ postTitle + ", postContent=" + postContent + ", postRegDate=" + postRegDate + ", postViews="
+				+ postViews + "]";
+	}
 
 }

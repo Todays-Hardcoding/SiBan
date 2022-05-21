@@ -12,8 +12,10 @@ import {
   ImageBackground,
 } from "react-native";
 import { useIsFocused } from "@react-navigation/native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const _url = "http://192.168.242.2:8282";
+const LOGIN_STORAGE_KEY = "@loginInfo";
 
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
@@ -22,12 +24,16 @@ const QNAList = ({ navigation }) => {
   const isFocused = useIsFocused();
 
   const [inquiry, setInquiry] = useState([]);
-  const [postCode, setPostCode] = useState();
+  const [loginInfo, setLoginInfo] = useState("");
+
+  const loadLoginInfo = async () => {
+    const s = await AsyncStorage.getItem(LOGIN_STORAGE_KEY);
+    s !== null ? setLoginInfo(JSON.parse(s)) : null;
+  };
+
   useEffect(() => {
-
-    const _url = "http://192.168.242.2:8282/selectInquiry.act"
-
-    fetch(_url, {
+    loadLoginInfo();
+    fetch(_url + "/selectInquiry.act", {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -36,7 +42,7 @@ const QNAList = ({ navigation }) => {
     })
       .then((response) => response.json())
       .then((data) => {
-        
+        // console.log(data)
         setInquiry(data);
       });
   }, [isFocused]);
@@ -53,7 +59,6 @@ const QNAList = ({ navigation }) => {
             <TouchableOpacity
               key={index}
               onPress={() => {
-                console.log(item.postCode);
                 navigation.navigate("QNADetail" , {result: item.postCode})
               }}
               style={[
