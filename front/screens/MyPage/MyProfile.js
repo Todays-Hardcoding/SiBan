@@ -40,7 +40,7 @@ const MyProfile = ({ navigation }) => {
   // 화면 리렌더링
   useEffect(() => {
     navListener();
-    // 로그인 정보 
+    // 로그인 정보
     loadLoginInfo();
   }, [navigation]);
 
@@ -345,6 +345,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#949494",
     borderRadius: 20,
     width: 70,
+    height: 35,
   },
   buttonArea: {
     flex: 1,

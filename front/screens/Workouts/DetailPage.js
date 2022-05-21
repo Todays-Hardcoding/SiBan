@@ -15,32 +15,31 @@ const DetailPage = ({ route, navigation }) => {
   const [plans, setPlans] = useState({});
 
   useEffect(() => {
-    loadPlan()
+    loadPlan();
   }, []);
 
   const checkPlan = () => {
-
-    if(planStatus === true){
-      deletePlan()
-      setPlanStatus(false)
-    }else {
-      addPlan()
-      setPlanStatus(true)
+    if (planStatus === true) {
+      deletePlan();
+      setPlanStatus(false);
+    } else {
+      addPlan();
+      setPlanStatus(true);
     }
-  }
+  };
 
   const loadPlan = () => {
-    AsyncStorage.getItem("Plans").then(value => {
-      setPlans(JSON.parse(value))
+    AsyncStorage.getItem("Plans").then((value) => {
+      setPlans(JSON.parse(value));
       const mark = JSON.parse(value);
-      console.log(mark[result.workoutCode].workoutCode)
-      if(mark[result.workoutCode].workoutCode === result.workoutCode) {
-        setPlanStatus(true)
+      console.log(mark[result.workoutCode].workoutCode);
+      if (mark[result.workoutCode].workoutCode === result.workoutCode) {
+        setPlanStatus(true);
       } else {
-        setPlanStatus(false)
+        setPlanStatus(false);
       }
-    })
-  }
+    });
+  };
 
   // const checkMark = () => {
   //   Object.keys(plans).map((key) => {
@@ -50,26 +49,26 @@ const DetailPage = ({ route, navigation }) => {
   // }
 
   const savePlan = (save) => {
-    console.log("=============저장============")
-    console.log(save)
-    AsyncStorage.setItem("Plans", JSON.stringify(save))
-  }
+    console.log("=============저장============");
+    console.log(save);
+    AsyncStorage.setItem("Plans", JSON.stringify(save));
+  };
 
   const addPlan = () => {
     const newPlans = {
       ...plans,
-      [result.workoutCode] : result,
-    }
-    setPlans(newPlans)
-    savePlan(newPlans)
-  }
+      [result.workoutCode]: result,
+    };
+    setPlans(newPlans);
+    savePlan(newPlans);
+  };
 
   const deletePlan = () => {
-    const newPlans = {...plans};
-    delete newPlans[result.workoutCode]
-    setPlans(newPlans)
-    savePlan(newPlans)
-  }
+    const newPlans = { ...plans };
+    delete newPlans[result.workoutCode];
+    setPlans(newPlans);
+    savePlan(newPlans);
+  };
 
   return (
     <View style={styles.Container}>
