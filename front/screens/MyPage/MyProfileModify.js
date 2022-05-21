@@ -9,29 +9,43 @@ import {
 import { Table, Row, Rows } from "react-native-table-component-2";
 import RNPickerSelect from "react-native-picker-select";
 import { Dimensions } from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 
 const url = "http://192.168.35.107:8282";
+const LOGIN_STORAGE_KEY = "@loginInfo";
 
-const MyProfileModify = ({ navigation }) => {
+const MyProfileModify = ({ navigation, route }) => {
+  const [userId, setuserId] = useState("");
+
+  const loaduserId = async () => {
+    const s = await AsyncStorage.getItem(LOGIN_STORAGE_KEY);
+    s !== null ? setuserId(JSON.parse(s)) : null;
+  };
+
   const [userName, setuserName] = useState("");
   const [userEmail, setuserEmail] = useState("");
   const [userHeight, setuserHeight] = useState("");
   const [userWeight, setuserWeight] = useState("");
   const [userTel, setuserTel] = useState();
-  const userId = "TTAA";
 
-  const onScreenLoad = () => {
-    fetch(url + "/showUserInfo.act", {
+  // const navListener = () =>
+  //   navigation.addListener("focus", () => {
+  //     onScreenLoad();
+  //   });
+
+  const onScreenLoad = async () => {
+    console.log(route.params.userId);
+    await fetch(url + "/showUserInfo.act", {
       method: "POST",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        userId,
+        userId: route.params.userId,
       }),
     })
       .then((response) => response.json())
@@ -47,6 +61,8 @@ const MyProfileModify = ({ navigation }) => {
       .catch((error) => console.log(error));
   };
   useEffect(() => {
+    // navListener();
+    // loaduserId();
     onScreenLoad();
   }, []);
 
@@ -62,7 +78,7 @@ const MyProfileModify = ({ navigation }) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        userId,
+        userId: route.params.userId,
         userEmail,
         userName,
         userTel,
@@ -72,7 +88,7 @@ const MyProfileModify = ({ navigation }) => {
     })
       .then((response) => response.json())
       .then((data) => console.log(data), navigation.pop())
-      .catch((error) => console.log(error));
+    // .catch((error) => console.log(error));
   };
 
   return (
@@ -183,6 +199,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "row",
     marginTop: 20,
+    justifyContent: "center",
   },
   defaultButton: {
     backgroundColor: "#191919",

@@ -12,7 +12,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 const DetailPage = ({ route, navigation }) => {
   const { result } = route.params;
   const [planStatus, setPlanStatus] = useState();
-  const [plans, setPlans] = useState({});
+  const [plans, setPlans] = useState();
 
   useEffect(() => {
     loadPlan();

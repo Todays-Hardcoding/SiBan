@@ -10,17 +10,25 @@ import {
 } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-const Routine = () => {
+const Routine = ({ navigation }) => {
   const [checkUri, setcheckUri] = useState("");
 
+  const rerendering = () => navigation.addListener('focus', () => getData());
   useEffect(() => {
-    getData();
-  }, []);
+    rerendering();
+  }, [navigation]);
+
 
   const getData = () => {
-    AsyncStorage.getItem("photoUri").then((value) => {
+    // AsyncStorage.getItem("photoUri").then((value) => {
+    //   if (value != null) {
+    //     setcheckUri(value);
+    //   }
+    // });
+    AsyncStorage.getItem("Plans").then((value) => {
       if (value != null) {
-        setcheckUri(value);
+        console.log("load");
+        console.log(value);
       }
     });
   };
