@@ -22,10 +22,10 @@ const _url = "http://192.168.242.2:8282";
 
 const QNADetail = ({route}) => {
   const {result} = route.params;
-
   const [loginInfo, setLoginInfo] = useState("");
-
   const [postInfo, setPostInfo] = useState([]);
+
+  const [reply, setReply] = useState();
 
   const loadLoginInfo = async () => {
     const s = await AsyncStorage.getItem(LOGIN_STORAGE_KEY);
@@ -51,6 +51,25 @@ const QNADetail = ({route}) => {
       });
     }, []);
 
+    const submit = () => {
+      fetch(_url + "/insertInquiry.act", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          result,
+          reply
+        }),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          if (data != null) {
+            console.log(data)
+          }
+        });
+    };
     
 
   return (
@@ -93,7 +112,13 @@ const QNADetail = ({route}) => {
         </View>
         <View style={styles.commentContainer}>
           <TextInput style={styles.commentInput} placeholder="답변"></TextInput>
-          <TouchableOpacity style={styles.commentButton}>
+          <TouchableOpacity 
+            style={styles.commentButton}
+            onPress={submit}
+            multiline={true}
+            value={reply}
+            onChangeText={(text) => setReply(text)}
+          >
             <Text style={styles.text}>제출</Text>
           </TouchableOpacity>
         </View>
