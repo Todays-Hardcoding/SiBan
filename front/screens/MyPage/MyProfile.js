@@ -33,7 +33,6 @@ const MyProfile = ({ navigation }) => {
     AsyncStorage.getItem("photoUri").then((value) => {
       if (value != null) {
         setcheckUri(value);
-        console.log("call func getData");
       }
     });
   };
@@ -354,8 +353,8 @@ const styles = StyleSheet.create({
   },
   profile: {
     flex: 8,
-    backgroundColor: "#e9e9e9",
     borderRadius: 2,
+    marginBottom: -40,
   },
   head: {
     height: 40,
@@ -374,9 +373,13 @@ const styles = StyleSheet.create({
   userProfileBox: {
     flex: 1,
     flexDirection: "row",
-
     padding: 10,
+    marginBottom: 10,
     justifyContent: "space-between",
+    borderColor: "#2c2c2c",
+    borderStyle: "solid",
+    borderWidth: 3,
+    borderRadius: 15,
   },
   profileText: {
     fontSize: 20,

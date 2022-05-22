@@ -89,7 +89,7 @@ const DetailPage = ({ route, navigation }) => {
               style={styles.headerBtn}
               name="bookmark"
               size={30}
-              color={planStatus ? "yellow" : "black"}
+              color={planStatus ? "#Bff000" : "black"}
             />
           </TouchableOpacity>
         </View>
