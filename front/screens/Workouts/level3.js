@@ -1,12 +1,15 @@
 import { useRoute } from "@react-navigation/native";
 import React, { useEffect, useState } from "react";
-import { Text, StyleSheet, TouchableOpacity, View } from "react-native";
+import { Text, StyleSheet, TouchableOpacity, View, Image } from "react-native";
 import { FlatGrid } from "react-native-super-grid";
 
 const _url = "http://192.168.0.6:8282";
 
 const Level3 = ({ navigation }) => {
   const [exercises, setExercises] = useState([]);
+  const [courses, setCourses] = useState({
+    src: require("../../assets/images/level3.png"),
+  });
 
   useEffect(() => {
     fetch(_url + "/Course.act", {
@@ -42,7 +45,9 @@ const Level3 = ({ navigation }) => {
               })
             }
           >
-            <View style={styles.itmeimageContainer}></View>
+            <View style={styles.itmeimageContainer}>
+              <Image source={courses.src}></Image>
+            </View>
             <View style={styles.itemTextContainer}>
               <Text style={styles.itemName}>{item.workoutName}</Text>
               <Text style={styles.itemSummary}>
@@ -77,10 +82,12 @@ const styles = StyleSheet.create({
   },
   itmeimageContainer: {
     flex: 1,
+    justifyContent: "center",
   },
   itemTextContainer: {
     flex: 1.5,
     justifyContent: "center",
+    alignItems: "flex-end",
   },
   itemName: {
     margin: 5,

@@ -1,13 +1,24 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useRoute } from "@react-navigation/native";
 import React, { useEffect, useState } from "react";
-import { Text, StyleSheet, TouchableOpacity, View } from "react-native";
+import {
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  View,
+  Image,
+  ImageBackground,
+} from "react-native";
 import { FlatGrid } from "react-native-super-grid";
 
 const _url = "http://192.168.0.6:8282";
 
 const Level1 = ({ navigation }) => {
   const [exercises, setExercises] = useState([]);
+  const [courses, setCourses] = useState({
+    src: require("../../assets/images/level1.png"),
+  });
+
   useEffect(() => {
     fetch(_url + "/Course.act", {
       method: "POST",
@@ -42,12 +53,15 @@ const Level1 = ({ navigation }) => {
               })
             }
           >
-            <View style={styles.itmeimageContainer}></View>
+            <View style={styles.itmeimageContainer}>
+              <Image source={courses.src}></Image>
+            </View>
             <View style={styles.itemTextContainer}>
               <Text style={styles.itemName}>{item.workoutName}</Text>
               <Text style={styles.itemSummary}>
                 {item.workoutCourse} - {item.workoutGoal}
               </Text>
+
               {/* <Text style={styles.itemCode}>{item.workoutDescription}</Text> */}
             </View>
           </TouchableOpacity>
@@ -75,11 +89,19 @@ const styles = StyleSheet.create({
     padding: 10,
     height: 150,
   },
+  image: {
+    flex: 1.5,
+    justifyContent: "center",
+    width: "100%",
+    height: "100%",
+  },
   itmeimageContainer: {
     flex: 1,
+    justifyContent: "center",
   },
   itemTextContainer: {
     flex: 1.5,
+    alignItems: "flex-end",
     justifyContent: "center",
   },
   itemName: {
