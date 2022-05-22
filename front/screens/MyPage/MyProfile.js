@@ -55,7 +55,7 @@ const MyProfile = ({ navigation }) => {
       img: images.myroutine,
       title: "내 루틴",
       description: "설정한 내 루틴을 확인해 보세요!",
-      code: "Plans",
+      code: "Workout",
     },
     {
       id: 2,
