@@ -9,7 +9,11 @@ import {
 } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
+<<<<<<< HEAD
+const _url = "http://192.168.242.2:8282";
+=======
 const _url = "http://192.168.45.96:8282";
+>>>>>>> 803063d7cd09a0db933d7759280670ae22e6e291
 
 const LOGIN_STORAGE_KEY = "@loginInfo";
 

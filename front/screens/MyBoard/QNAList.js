@@ -11,10 +11,11 @@ import {
   TextInput,
   ImageBackground,
 } from "react-native";
-import { FlatGrid } from "react-native-super-grid";
 import { useIsFocused } from "@react-navigation/native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
-const _url = "http://192.168.45.96:8282";
+const _url = "http://192.168.242.2:8282";
+const LOGIN_STORAGE_KEY = "@loginInfo";
 
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
@@ -23,8 +24,15 @@ const QNAList = ({ navigation }) => {
   const isFocused = useIsFocused();
 
   const [inquiry, setInquiry] = useState([]);
+  const [loginInfo, setLoginInfo] = useState("");
+
+  const loadLoginInfo = async () => {
+    const s = await AsyncStorage.getItem(LOGIN_STORAGE_KEY);
+    s !== null ? setLoginInfo(JSON.parse(s)) : null;
+  };
 
   useEffect(() => {
+    loadLoginInfo();
     fetch(_url + "/selectInquiry.act", {
       method: "POST",
       headers: {
@@ -34,7 +42,7 @@ const QNAList = ({ navigation }) => {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data)
         setInquiry(data);
       });
   }, [isFocused]);
@@ -42,7 +50,7 @@ const QNAList = ({ navigation }) => {
   return (
     <SafeAreaView style={styles.container}>
       <ImageBackground
-        source={require("../../assets/images/sibanLogo.png")}
+        source={require("../../assets/sibanlogo6.png")}
         style={styles.image}
       ></ImageBackground>
       <ScrollView>
@@ -51,7 +59,7 @@ const QNAList = ({ navigation }) => {
             <TouchableOpacity
               key={index}
               onPress={() => {
-                navigation.navigate("ServiceCenter", { Screen: "QNAList" });
+                navigation.navigate("QNADetail" , {result: item.postCode})
               }}
               style={[
                 styles.item,
@@ -99,13 +107,13 @@ const styles = StyleSheet.create({
   },
   image: {
     width: windowWidth,
-    height: windowHeight * 0.3,
+    height: windowHeight * 0.2,
     alignItems: "center",
     justifyContent: "center",
     opacity: 0.9,
   },
   writeButton: {
-    backgroundColor: "#F2C9E1",
+    backgroundColor: "#34495e",
     borderRadius: 8,
     height: 40,
     alignItems: "center",
@@ -140,9 +148,10 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     fontWeight: "bold",
+    color:"white"
   },
   searchButton: {
-    backgroundColor: "#B1BCE6",
+    backgroundColor: "#7f8c8d",
     borderRadius: 8,
     height: 40,
     alignItems: "center",
