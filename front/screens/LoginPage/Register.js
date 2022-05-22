@@ -3,7 +3,7 @@ import { Button, StyleSheet, Text, TextInput, View } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
-const _url = "http://192.168.45.96:8282";
+const _url = "http://192.168.0.6:8282";
 const Register = ({ route, navigation }) => {
   //아이디,비번,이메일,전화번호
   const [userId, setUserId] = useState("");
@@ -233,8 +233,6 @@ const Register = ({ route, navigation }) => {
       style={{
         flex: 1,
         backgroundColor: "#fff",
-        alignItems: "center",
-        justifyContent: "center",
         paddingTop: 90,
         width: "100%",
       }}
@@ -250,48 +248,44 @@ const Register = ({ route, navigation }) => {
         <View
           style={{
             backgroundColor: "#fff",
-            alignItems: "center",
-            justifyContent: "center",
             width: "100%",
-            alignItems: "center",
           }}
         >
-          <Text
-            style={{
-              fontSize: 30,
-              fontWeight: "bold",
-              marginTop: 40,
-              justifyContent: "center",
-            }}
-          >
-            시반 회원가입
-          </Text>
-          <Text
-            style={{
-              color: "gray",
-              justifyContent: "center",
-              width: "50%",
-              alignItems: "center",
-            }}
-          >
-            {"\n"}멤버가 되어 시반이 제공하는 {"\n"}
-            최고의 제품과 혜택을 만나보세요 {"\n"}{" "}
-          </Text>
-          <View
-            style={{
-              flexDirection: "row",
-              justifyContent: "space-between",
-              alignItems: "center",
-            }}
-          >
+          <View style={styles.registerHeader}>
+            <Text
+              style={{
+                fontSize: 30,
+                fontWeight: "bold",
+                marginTop: 20,
+                justifyContent: "center",
+              }}
+            >
+              시반 회원가입
+            </Text>
+            <Text
+              style={{
+                color: "gray",
+                width: "50%",
+                alignItems: "center",
+              }}
+            >
+              {"\n"}멤버가 되어 시반이 제공하는 {"\n"}
+              최고의 제품과 혜택을 만나보세요. {"\n"}
+            </Text>
+          </View>
+          <View style={styles.inputTitle}>
+            <Text style={styles.inputTitleText}>아이디</Text>
+          </View>
+          <View style={styles.inputStyleViewRow}>
+            {/* 아이디 입력 */}
             <TextInput
               style={styles.inputId}
               value={userId}
               onChangeText={(text) => setUserId(text)}
               onEndEditing={() => onChangeId()}
-              returnKeyType="next"
+              returnKeyType="done"
               // autoFocus={true}
-              placeholder="아이디를 입력해주세요."
+              placeholder="4자리 이상 영문자인 아이디 입력"
             />
             {/* 아이디 중복확인 버튼 */}
             <TouchableOpacity
@@ -308,39 +302,71 @@ const Register = ({ route, navigation }) => {
               <Text style={{ fontSize: 13, color: "white" }}>중복확인</Text>
             </TouchableOpacity>
           </View>
-          {!idCheck && <Text style={{ color: "red" }}>{idError}</Text>}
+          <View style={styles.inputStyleView}>
+            {!idCheck ? (
+              <Text style={{ color: "red" }}>{idError}</Text>
+            ) : (
+              <Text style={{ color: "green", marginBottom: 5 }}>
+                올바르게 입력했습니다.
+              </Text>
+            )}
+          </View>
 
-          <TextInput
-            style={styles.input}
-            value={userPw}
-            returnKeyType="next"
-            onChangeText={(text) => setUserPw(text)}
-            onEndEditing={() => onChangePw()}
-            secureTextEntry={true}
-            placeholder={"비밀번호를 입력해주세요"}
-          />
-          {!pwCheck && <Text style={{ color: "red" }}>{pwError}</Text>}
+          {/* 비밀번호 입력 */}
+          <View style={styles.inputTitle}>
+            <Text style={styles.inputTitleText}>비밀번호</Text>
+          </View>
+          <View style={styles.inputStyleView}>
+            <TextInput
+              style={styles.input}
+              value={userPw}
+              returnKeyType="done"
+              onChangeText={(text) => setUserPw(text)}
+              onEndEditing={() => onChangePw()}
+              secureTextEntry={true}
+              placeholder={"숫자+영문자+특수문자 조합으로 8자리 이상"}
+            />
+          </View>
+          <View style={styles.inputStyleView}>
+            {!pwCheck ? (
+              <Text style={{ color: "red" }}>{pwError}</Text>
+            ) : (
+              <Text style={{ color: "green", marginBottom: 5 }}>
+                올바르게 입력했습니다.
+              </Text>
+            )}
+          </View>
 
-          <TextInput
-            style={styles.input}
-            value={pwConfirm}
-            returnKeyType="next"
-            onChangeText={(text) => setPwConfirm(text)}
-            onEndEditing={() => onChangePw2()}
-            secureTextEntry={true}
-            placeholder={"비밀번호를 다시 입력해주세요"}
-          />
-          {!pwConfirmCheck && (
-            <Text style={{ color: "red" }}>{pwConfirmError}</Text>
-          )}
+          {/* 비밀번호 확인 입력 */}
+          <View style={styles.inputTitle}>
+            <Text style={styles.inputTitleText}>비밀번호 확인</Text>
+          </View>
+          <View style={styles.inputStyleView}>
+            <TextInput
+              style={styles.input}
+              value={pwConfirm}
+              returnKeyType="done"
+              onChangeText={(text) => setPwConfirm(text)}
+              onEndEditing={() => onChangePw2()}
+              secureTextEntry={true}
+              placeholder={"비밀번호를 다시 입력해주세요."}
+            />
+          </View>
+          <View style={styles.inputStyleView}>
+            {!pwConfirmCheck ? (
+              <Text style={{ color: "red" }}>{pwConfirmError}</Text>
+            ) : (
+              <Text style={{ color: "green", marginBottom: 5 }}>
+                올바르게 입력했습니다.
+              </Text>
+            )}
+          </View>
 
-          <View
-            style={{
-              flexDirection: "row",
-              justifyContent: "space-between",
-              alignItems: "center",
-            }}
-          >
+          <View style={styles.inputTitle}>
+            <Text style={styles.inputTitleText}>이메일</Text>
+          </View>
+          <View style={styles.inputStyleViewRow}>
+            {/* 이메일 입력 */}
             <TextInput
               style={styles.inputId}
               value={userEmail}
@@ -364,14 +390,22 @@ const Register = ({ route, navigation }) => {
               <Text style={{ fontSize: 13, color: "white" }}>중복확인</Text>
             </TouchableOpacity>
           </View>
-          {!emailCheck && <Text style={{ color: "red" }}>{emailError}</Text>}
-          <View
-            style={{
-              flexDirection: "row",
-              justifyContent: "space-between",
-              alignItems: "center",
-            }}
-          >
+          <View style={styles.inputStyleView}>
+            {!emailCheck ? (
+              <Text style={{ color: "red" }}>{emailError}</Text>
+            ) : (
+              <Text style={{ color: "green", marginBottom: 5 }}>
+                올바르게 입력했습니다.
+              </Text>
+            )}
+          </View>
+
+          {/* 주소 검색 */}
+          <View style={styles.inputTitle}>
+            <Text style={styles.inputTitleText}>주소</Text>
+          </View>
+          <View style={styles.inputStyleViewRow}>
+            {/* 주소검색 창 */}
             <Text style={styles.inputId}>{userAddr}</Text>
             {/* 주소검색 버튼 */}
             <TouchableOpacity
@@ -392,45 +426,100 @@ const Register = ({ route, navigation }) => {
               <Text style={{ fontSize: 13, color: "white" }}>주소검색</Text>
             </TouchableOpacity>
           </View>
-          <TextInput
-            style={styles.input}
-            value={userName}
-            returnKeyType="next"
-            onChangeText={(text) => setUserName(text)}
-            onEndEditing={() => onChangeName()}
-            placeholder={"이름을 입력해주세요."}
-          />
-          {!nameCheck && <Text style={{ color: "red" }}>{nameError}</Text>}
-          <TextInput
-            style={styles.input}
-            value={userTel}
-            onChangeText={(text) => setUserTel(text)}
-            onEndEditing={() => onChangeTel()}
-            placeholder={"휴대폰번호를 입력해주세요."}
-            returnKeyType="next"
-          />
-          {!telCheck && <Text style={{ color: "red" }}>{telError}</Text>}
 
-          <TextInput
-            style={styles.input}
-            value={userHeight}
-            returnKeyType="next"
-            onChangeText={(text) => setUserHeight(text)}
-            onEndEditing={() => onChangeHeight()}
-            placeholder={"키를 입력해주세요."}
-          />
+          {/* 이름 입력 */}
+          <View style={styles.inputTitle}>
+            <Text style={styles.inputTitleText}>이름</Text>
+          </View>
+          <View style={styles.inputStyleView}>
+            <TextInput
+              style={styles.input}
+              value={userName}
+              returnKeyType="done"
+              onChangeText={(text) => setUserName(text)}
+              onEndEditing={() => onChangeName()}
+              placeholder={"이름을 입력해주세요."}
+            />
+            <View style={styles.inputStyleView}>
+              {!nameCheck ? (
+                <Text style={{ color: "red" }}>{nameError}</Text>
+              ) : (
+                <Text style={{ color: "green", marginBottom: 5 }}>
+                  올바르게 입력했습니다.
+                </Text>
+              )}
+            </View>
+          </View>
 
-          {!heightCheck && <Text style={{ color: "red" }}>{heightError}</Text>}
+          {/* 휴대폰번호 입력 */}
+          <View style={styles.inputTitle}>
+            <Text style={styles.inputTitleText}>휴대폰 번호</Text>
+          </View>
+          <View style={styles.inputStyleView}>
+            <TextInput
+              style={styles.input}
+              value={userTel}
+              onChangeText={(text) => setUserTel(text)}
+              onEndEditing={() => onChangeTel()}
+              placeholder={"(-)을 제외하고 입력해주세요."}
+              returnKeyType="done"
+            />
+            <View style={styles.inputStyleView}>
+              {!telCheck ? (
+                <Text style={{ color: "red" }}>{telError}</Text>
+              ) : (
+                <Text style={{ color: "green", marginBottom: 5 }}>
+                  올바르게 입력했습니다.
+                </Text>
+              )}
+            </View>
+          </View>
 
-          <TextInput
-            style={styles.input}
-            value={userWeight}
-            returnKeyType="next"
-            onChangeText={(text) => setUserWeight(text)}
-            onEndEditing={() => onChangeWeight()}
-            placeholder={"몸무게를 입력해주세요."}
-          />
-          {!weightCheck && <Text style={{ color: "red" }}>{weightError}</Text>}
+          {/* 키 입력 */}
+          <View style={styles.inputTitle}>
+            <Text style={styles.inputTitleText}>키(cm)</Text>
+          </View>
+          <View style={styles.inputStyleView}>
+            <TextInput
+              style={styles.input}
+              value={userHeight}
+              returnKeyType="next"
+              onChangeText={(text) => setUserHeight(text)}
+              onEndEditing={() => onChangeHeight()}
+              placeholder={"키를 입력해주세요."}
+            />
+            <View style={styles.inputStyleView}>
+              {!heightCheck ? (
+                <Text style={{ color: "red" }}>{heightError}</Text>
+              ) : (
+                <Text style={{ color: "green", marginBottom: 5 }}>
+                  올바르게 입력했습니다.
+                </Text>
+              )}
+            </View>
+          </View>
+
+          {/* 몸무게 입력 */}
+          <View style={styles.inputTitle}>
+            <Text style={styles.inputTitleText}>몸무게(kg)</Text>
+          </View>
+          <View style={styles.inputStyleView}>
+            <TextInput
+              style={styles.input}
+              value={userWeight}
+              returnKeyType="done"
+              onChangeText={(text) => setUserWeight(text)}
+              onEndEditing={() => onChangeWeight()}
+              placeholder={"몸무게를 입력해주세요."}
+            />
+            <View style={styles.inputStyleView}>
+              {!weightCheck ? (
+                <Text style={{ color: "red" }}>{weightError}</Text>
+              ) : (
+                <Text></Text>
+              )}
+            </View>
+          </View>
 
           <View style={styles.BtnBox}>
             {/* 가입버튼 */}
@@ -474,7 +563,7 @@ const Register = ({ route, navigation }) => {
 const styles = StyleSheet.create({
   registerContainer: {
     flex: 1,
-    alignItems: "center",
+    // alignItems: "center",
     justifyContent: "center",
     marginTop: 20,
   },
@@ -499,6 +588,28 @@ const styles = StyleSheet.create({
   idCheckBtn: {},
   BtnBox: {
     flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    marginBottom: 50,
+  },
+  inputTitle: {
+    alignItems: "left",
+    marginLeft: 40,
+  },
+  inputTitleText: {
+    color: "#808080",
+  },
+  registerHeader: {
+    alignItems: "center",
+  },
+  inputStyleViewRow: {
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  inputStyleView: {
+    justifyContent: "center",
+    alignItems: "center",
   },
 });
 
