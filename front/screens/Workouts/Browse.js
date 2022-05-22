@@ -3,7 +3,6 @@ import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { FlatGrid } from "react-native-super-grid";
 
 const Browse = ({ navigation }) => {
-  
   const [Group, setGroup] = useState([
     { name: "근력", code: "Strength", explane: "숨은 근육 강화 & 탄력 높이기" },
     { name: "지구력", code: "Endurance", explane: "심폐 기능 & 체력 단련" },
@@ -12,9 +11,10 @@ const Browse = ({ navigation }) => {
 
   return (
     <View style={styles.Container}>
-      <TouchableOpacity 
+      <TouchableOpacity
         style={styles.inputContainer}
-        onPress={() => navigation.navigate("WorkoutSearch")}>
+        onPress={() => navigation.navigate("WorkoutSearch")}
+      >
         <Text>검색</Text>
       </TouchableOpacity>
       <FlatGrid

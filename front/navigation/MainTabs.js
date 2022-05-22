@@ -26,7 +26,7 @@ const MainTabs = () => {
         tabBarStyle: {
           backgroundColor: "#191919",
         },
-        tabBarActiveTintColor: "#575fcf",
+        tabBarActiveTintColor: "#Bff000",
         tabBarInactiveTintColor: "#808e9b",
         headerTitleStyle: {
           color: "#808e9b",

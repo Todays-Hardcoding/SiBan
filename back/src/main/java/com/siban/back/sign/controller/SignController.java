@@ -122,7 +122,16 @@ public class SignController {
 		return result;
 	}
 
-	
+	@PostMapping("/searchById.act")
+	public User searchById(@RequestBody Map<String, String> param) {
+		
+		User result = signService.findByUserId(param.get("loginInfo"));
+		
+		System.out.println(result);
+		
+		return result;
+	}
+
 
 
 }
