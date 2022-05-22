@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-const _url = "http://192.168.35.107:8282";
+const _url = "http://192.168.45.96:8282";
 
 const LOGIN_STORAGE_KEY = "@loginInfo";
 

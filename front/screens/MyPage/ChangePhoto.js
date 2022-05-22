@@ -47,8 +47,6 @@ const ChangePhoto = ({ navigation }) => {
       setuserProfile(result.uri);
       profileTest(result.uri);
       await AsyncStorage.setItem("photoUri", result.uri);
-      console.log("userProfile" + userProfile);
-      console.log("result.uri" + result.uri);
       navigation.navigate("MYPAGE");
     }
   };
@@ -66,7 +64,7 @@ const ChangePhoto = ({ navigation }) => {
 
     if (!result.cancelled) {
       setPickedImagePath(result.uri);
-      console.log(result.uri);
+      // console.log(result.uri);
     }
   };
 
@@ -83,15 +81,8 @@ const ChangePhoto = ({ navigation }) => {
       }),
     })
       .then((response) => response.json())
-
       .catch((error) => console.log(error));
   };
-
-  //
-  // navigation.navigate("DetailPage", {
-  //   result: item,
-  // }
-
   return (
     <View style={styles.screen}>
       <View style={styles.imageContainer}>

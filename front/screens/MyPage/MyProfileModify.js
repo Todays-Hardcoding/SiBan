@@ -14,7 +14,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 
-const url = "http://192.168.35.107:8282";
+const url = "http://192.168.45.96:8282";
 const LOGIN_STORAGE_KEY = "@loginInfo";
 
 const MyProfileModify = ({ navigation, route }) => {
@@ -27,6 +27,7 @@ const MyProfileModify = ({ navigation, route }) => {
 
   const [userName, setuserName] = useState("");
   const [userEmail, setuserEmail] = useState("");
+  const [userAddr, setuserAddr] = useState("");
   const [userHeight, setuserHeight] = useState("");
   const [userWeight, setuserWeight] = useState("");
   const [userTel, setuserTel] = useState();
@@ -53,11 +54,11 @@ const MyProfileModify = ({ navigation, route }) => {
         console.log(data);
         setuserName(data.userName);
         setuserEmail(data.userEmail);
+        setuserAddr(data.userAddr);
         setuserTel(data.userTel);
         setuserHeight(data.userHeight);
         setuserWeight(data.userWeight);
       })
-      // .then((data) => console.log(JSON.stringify(data)))
       .catch((error) => console.log(error));
   };
   useEffect(() => {
@@ -81,13 +82,14 @@ const MyProfileModify = ({ navigation, route }) => {
         userId: route.params.userId,
         userEmail,
         userName,
+        userAddr,
         userTel,
         userHeight,
         userWeight,
       }),
     })
       .then((response) => response.json())
-      .then((data) => console.log(data), navigation.pop())
+      .then((data) => console.log(data), navigation.pop());
     // .catch((error) => console.log(error));
   };
 
@@ -97,7 +99,6 @@ const MyProfileModify = ({ navigation, route }) => {
         <Text style={styles.text}>이메일</Text>
         <TextInput
           style={styles.input}
-          keyboardType="numeric"
           onChangeText={(userEmail) => setuserEmail(userEmail)}
           value={userEmail}
         />
@@ -107,9 +108,17 @@ const MyProfileModify = ({ navigation, route }) => {
         <Text style={styles.text}>이름</Text>
         <TextInput
           style={styles.input}
-          keyboardType="numeric"
           onChangeText={(userName) => setuserName(userName)}
           value={userName}
+        />
+      </View>
+
+      <View style={styles.eachBox}>
+        <Text style={styles.text}>주소</Text>
+        <TextInput
+          style={styles.input}
+          onChangeText={(userAddr) => setusetAddr(userAddr)}
+          value={userAddr}
         />
       </View>
 
@@ -164,9 +173,12 @@ function onPressBtn() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    marginTop: 130,
+    alignItems: "center",
   },
   eachBox: {
     flex: 1,
+    width: "80%",
   },
   profile: {
     flex: 8,
@@ -182,17 +194,20 @@ const styles = StyleSheet.create({
     height: 40,
     marginLeft: 12,
     marginRight: 12,
-    borderWidth: 1,
+    borderWidth: 2,
     padding: 10,
+    borderRadius: 10,
   },
   text: {
     height: 40,
     marginLeft: 12,
-    paddingLeft: 10,
-    paddingTop: 10,
+    paddingTop: 13,
+    marginBottom: 10,
+    fontSize: 20,
   },
   buttonCase: {
     flex: 1,
+    marginTop: 120,
     alignItems: "flex-end",
   },
   buttonPart: {
