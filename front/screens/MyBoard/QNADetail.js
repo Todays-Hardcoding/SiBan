@@ -26,6 +26,7 @@ const QNADetail = ({route}) => {
   const [postInfo, setPostInfo] = useState([]);
 
   const [reply, setReply] = useState();
+  const [recievecReply, setRecievecReply] = useState([]);
 
   const loadLoginInfo = async () => {
     const s = await AsyncStorage.getItem(LOGIN_STORAGE_KEY);
@@ -33,7 +34,34 @@ const QNADetail = ({route}) => {
   };
 
   useEffect(() => {
-    loadLoginInfo()
+    loadLoginInfo();
+    selectDetail();
+    }, []);
+
+    const submit = () => {
+      fetch(_url + "/insertReply.act", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          result,
+          reply,
+          loginInfo
+        }),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          if (data != null) {
+            setRecievecReply(data);
+            selectDetail();
+          }
+        });
+    };
+    
+    const selectDetail = () => {
+    // 질문 상세보기 호출
     fetch(_url + "/selectDetail.act", {
       method: "POST",
       headers: {
@@ -49,29 +77,7 @@ const QNADetail = ({route}) => {
         console.log(data)
         setPostInfo(data);
       });
-    }, []);
-
-    const submit = () => {
-      fetch(_url + "/insertInquiry.act", {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          result,
-          reply
-        }),
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          if (data != null) {
-            console.log(data)
-          }
-        });
-    };
-    
-
+    }
   return (
     <SafeAreaView style={styles.container} >
       <ImageBackground
@@ -108,17 +114,17 @@ const QNADetail = ({route}) => {
         </View>
         <View style={styles.postAnswer}>
           {/* 1:1 Q&A 답변 */}
-          <Text>QNA 답변란</Text>
+          <Text>답변 : {postInfo.replyContent}</Text>
         </View>
         <View style={styles.commentContainer}>
-          <TextInput style={styles.commentInput} placeholder="답변"></TextInput>
-          <TouchableOpacity 
-            style={styles.commentButton}
-            onPress={submit}
+          <TextInput 
+            style={styles.commentInput} 
+            placeholder="답변"
             multiline={true}
             value={reply}
             onChangeText={(text) => setReply(text)}
-          >
+          />
+          <TouchableOpacity  style={styles.commentButton} onPress={submit}>
             <Text style={styles.text}>제출</Text>
           </TouchableOpacity>
         </View>
