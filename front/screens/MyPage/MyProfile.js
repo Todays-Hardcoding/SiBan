@@ -24,6 +24,7 @@ const MyProfile = ({ navigation }) => {
   useEffect(() => {
     loadLoginInfo();
   }, []);
+
   const loadLoginInfo = async () => {
     const s = await AsyncStorage.getItem(LOGIN_STORAGE_KEY);
     s !== null ? setLoginInfo(JSON.parse(s)) : null;
