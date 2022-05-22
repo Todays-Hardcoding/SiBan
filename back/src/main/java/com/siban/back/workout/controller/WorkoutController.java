@@ -37,5 +37,14 @@ public class WorkoutController {
 		result = workoutService.findByWorkoutGoal(params.get("workoutGoal"));
 		return result;
 	}
+	
+	@PostMapping("/addPlan.act")
+	public void insertRoutine(@RequestBody Map<String, Workout[]> params) {
+		if(params.get("plans") != null) {
+			System.out.println(params.get("plans"));
+		}
+		System.out.println("=================");
+		System.out.println(params.get("plans"));
+	}
 
 }

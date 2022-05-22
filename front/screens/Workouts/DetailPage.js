@@ -30,23 +30,20 @@ const DetailPage = ({ route, navigation }) => {
 
   const loadPlan = () => {
     AsyncStorage.getItem("Plans").then((value) => {
-      setPlans(JSON.parse(value));
-      const mark = JSON.parse(value);
-      console.log(mark[result.workoutCode].workoutCode);
-      if (mark[result.workoutCode].workoutCode === result.workoutCode) {
-        setPlanStatus(true);
-      } else {
-        setPlanStatus(false);
+      if (value !== null) {
+        setPlans(JSON.parse(value));
+        const mark = JSON.parse(value);
+        if (mark[result.workoutCode] !== undefined) {
+          console.log("=============로드============");
+          console.log(mark[result.workoutCode]);
+          setPlanStatus(true);
+        } else {
+          console.log("=============로드============");
+          setPlanStatus(false);
+        }
       }
     });
   };
-
-  // const checkMark = () => {
-  //   Object.keys(plans).map((key) => {
-  //     if(key === result.workoutName)
-  //       setPlanStatus(true)
-  //   })
-  // }
 
   const savePlan = (save) => {
     console.log("=============저장============");
@@ -72,9 +69,6 @@ const DetailPage = ({ route, navigation }) => {
 
   return (
     <View style={styles.Container}>
-      {/* <View>
-        <Text>{plans !== null ? plans[result.workoutName]: "몰루"}</Text>
-      </View> */}
       <ImageBackground
         source={require("../../assets/images/workout/workout1.jpg")}
         resizeMode="cover"
