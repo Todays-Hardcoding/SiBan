@@ -1,13 +1,13 @@
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useRoute } from "@react-navigation/native";
 import React, { useEffect, useState } from "react";
 import { Text, StyleSheet, TouchableOpacity, View } from "react-native";
 import { FlatGrid } from "react-native-super-grid";
 
-const _url = "http://112.172.225.17:8282";
+const _url = "http://192.168.45.96:8282";
 
 const Level1 = ({ navigation }) => {
   const [exercises, setExercises] = useState([]);
-
   useEffect(() => {
     fetch(_url + "/Course.act", {
       method: "POST",
@@ -23,14 +23,14 @@ const Level1 = ({ navigation }) => {
       .then((data) => {
         setExercises(data);
       })
-      .catch((e) => console.log(e))
+      .catch((e) => console.log(e));
   }, []);
 
   return (
     <View style={styles.Container}>
       <Text style={styles.headerText}>{exercises.length}개의 운동</Text>
       <FlatGrid
-        itemDimension={200}
+        itemDimension={230}
         data={exercises}
         spacing={20}
         renderItem={({ item }) => (

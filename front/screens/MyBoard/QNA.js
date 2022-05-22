@@ -8,8 +8,11 @@ import {
 } from "react-native";
 import { SafeAreaView, TextInput, ScrollView } from "react-native";
 import DropDownPicker from "react-native-dropdown-picker";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { Col } from "react-native-table-component-2";
 
-const _url = "http://192.168.45.96:8282";
+const _url = "http://192.168.242.2:8282";
+const LOGIN_STORAGE_KEY = "@loginInfo";
 
 const windowWidth = Dimensions.get("window").width;
 
@@ -20,6 +23,8 @@ const QNA = ({ navigation }) => {
   const [title, setTitle] = useState(null);
   const [content, setContent] = useState(null);
 
+  const [loginInfo, setLoginInfo] = useState("");
+
   const [items, setItems] = useState([
     { label: "이용 문의", value: "이용 문의" },
     { label: "이벤트 문의", value: "이벤트 문의" },
@@ -27,8 +32,18 @@ const QNA = ({ navigation }) => {
     { label: "기타 문의", value: "기타 문의" },
   ]);
 
+  useEffect(() => {
+    // 로그인 정보 
+    loadLoginInfo();
+  });
+
   const cancel = () => {
     navigation.pop();
+  };
+
+  const loadLoginInfo = async () => {
+    const s = await AsyncStorage.getItem(LOGIN_STORAGE_KEY);
+    s !== null ? setLoginInfo(JSON.parse(s)) : null;
   };
 
   const postBoard = () => {
@@ -42,6 +57,7 @@ const QNA = ({ navigation }) => {
         categoriValue,
         title,
         content,
+        loginInfo
       }),
     })
       .then((response) => response.json())
@@ -130,7 +146,7 @@ const styles = StyleSheet.create({
   submit: {
     width: 120,
     height: 40,
-    backgroundColor: "#EEB0B0",
+    backgroundColor: "#7f8c8d",
     alignItems: "center",
     justifyContent: "center",
     margin: 15,
@@ -139,7 +155,7 @@ const styles = StyleSheet.create({
   cancel: {
     width: 120,
     height: 40,
-    backgroundColor: "#AACFCF",
+    backgroundColor: "#34495e",
     alignItems: "center",
     justifyContent: "center",
     margin: 15,
@@ -147,6 +163,7 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     fontSize: 17,
+    color:"white"
   },
   buttonContainer: {
     flexDirection: "row",

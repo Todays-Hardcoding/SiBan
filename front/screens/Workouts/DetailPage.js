@@ -11,55 +11,60 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const DetailPage = ({ route, navigation }) => {
   const { result } = route.params;
-  const [planStatus, setPlanStatus] = useState(false);
-  const [plans, setPlans] = useState({});
+  const [planStatus, setPlanStatus] = useState();
+  const [plans, setPlans] = useState();
 
   useEffect(() => {
     loadPlan();
-    // console.log(plans);
-    if (plans[result.workoutName] !== null) {
-      setPlanStatus(true);
-    } else {
-      setPlanStatus(false);
-    }
   }, []);
 
   const checkPlan = () => {
-    setPlanStatus(!planStatus);
     if (planStatus === true) {
-      addPlan();
-    } else {
       deletePlan();
+      setPlanStatus(false);
+    } else {
+      addPlan();
+      setPlanStatus(true);
     }
   };
 
-  const loadPlan = async () => {
-    const data = await AsyncStorage.getItem("Plans").then((value) => {
-      if (value != null) {
-        let user = JSON.parse(value);
-        setPlans(user.plans);
+  const loadPlan = () => {
+    AsyncStorage.getItem("Plans").then((value) => {
+      if (value !== null) {
+        setPlans(JSON.parse(value));
+        const mark = JSON.parse(value);
+        if (mark[result.workoutCode] !== undefined) {
+          console.log("=============로드============");
+          console.log(mark[result.workoutCode]);
+          setPlanStatus(true);
+        } else {
+          console.log("=============로드============");
+          setPlanStatus(false);
+        }
       }
     });
   };
 
-  const savePlan = async () => {
-    await AsyncStorage.setItem("Plans", JSON.stringify(plans));
+  const savePlan = (save) => {
+    console.log("=============저장============");
+    console.log(save);
+    AsyncStorage.setItem("Plans", JSON.stringify(save));
   };
 
-  const addPlan = async () => {
+  const addPlan = () => {
     const newPlans = {
       ...plans,
-      [result.workoutName]: result,
+      [result.workoutCode]: result,
     };
     setPlans(newPlans);
     savePlan(newPlans);
   };
 
-  const deletePlan = async () => {
+  const deletePlan = () => {
     const newPlans = { ...plans };
-    delete newPlans[result.workoutName];
+    delete newPlans[result.workoutCode];
     setPlans(newPlans);
-    await savePlan(newPlans);
+    savePlan(newPlans);
   };
 
   return (
@@ -73,12 +78,12 @@ const DetailPage = ({ route, navigation }) => {
           <TouchableOpacity onPress={() => navigation.pop()}>
             <MaterialIcons name="arrow-back-ios" size={30} color="black" />
           </TouchableOpacity>
-          <TouchableOpacity onPress={checkPlan}>
+          <TouchableOpacity onPress={() => checkPlan()}>
             <FontAwesome
               style={styles.headerBtn}
               name="bookmark"
               size={30}
-              color={planStatus ? "yellow" : "black"}
+              color={planStatus ? "#Bff000" : "black"}
             />
           </TouchableOpacity>
         </View>
