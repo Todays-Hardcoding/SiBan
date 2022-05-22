@@ -5,6 +5,8 @@ import { Fontisto } from "@expo/vector-icons";
 import { FlatGrid } from "react-native-super-grid";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
+const _url = "http://112.172.225.17:8282";
+
 const Plans = ({ navigation }) => {
   const [plans, setPlans] = useState([]);
 
@@ -16,6 +18,22 @@ const Plans = ({ navigation }) => {
 
   const addPlan = () => {
 
+    fetch(_url + "/addPlan.act", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        plans : plans,
+      }),
+    })
+    .then((response) => response.json())
+    .then((data) => console.log("성공"))
+
+    AsyncStorage.removeItem("Plans");
+    console.log("=============삭제============");
+    navigation.navigate("ForYou")
   }
 
   const loadPlan = () => {

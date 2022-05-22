@@ -15,67 +15,60 @@ const DetailPage = ({ route, navigation }) => {
   const [plans, setPlans] = useState({});
 
   useEffect(() => {
-    loadPlan()
+    loadPlan();
   }, []);
 
   const checkPlan = () => {
-
-    if(planStatus === true){
-      deletePlan()
-      setPlanStatus(false)
-    }else {
-      addPlan()
-      setPlanStatus(true)
+    if (planStatus === true) {
+      deletePlan();
+      setPlanStatus(false);
+    } else {
+      addPlan();
+      setPlanStatus(true);
     }
-  }
+  };
 
   const loadPlan = () => {
-    AsyncStorage.getItem("Plans").then(value => {
-      setPlans(JSON.parse(value))
-      const mark = JSON.parse(value);
-      console.log(mark[result.workoutCode].workoutCode)
-      if(mark[result.workoutCode].workoutCode === result.workoutCode) {
-        setPlanStatus(true)
-      } else {
-        setPlanStatus(false)
+    AsyncStorage.getItem("Plans").then((value) => {
+      if (value !== null) {
+        setPlans(JSON.parse(value));
+        const mark = JSON.parse(value);
+        if (mark[result.workoutCode] !== undefined) {
+          console.log("=============로드============");
+          console.log(mark[result.workoutCode]);
+          setPlanStatus(true);
+        } else {
+          console.log("=============로드============");
+          setPlanStatus(false);
+        }
       }
-    })
-  }
-
-  // const checkMark = () => {
-  //   Object.keys(plans).map((key) => {
-  //     if(key === result.workoutName)
-  //       setPlanStatus(true)
-  //   })
-  // }
+    });
+  };
 
   const savePlan = (save) => {
-    console.log("=============저장============")
-    console.log(save)
-    AsyncStorage.setItem("Plans", JSON.stringify(save))
-  }
+    console.log("=============저장============");
+    console.log(save);
+    AsyncStorage.setItem("Plans", JSON.stringify(save));
+  };
 
   const addPlan = () => {
     const newPlans = {
       ...plans,
-      [result.workoutCode] : result,
-    }
-    setPlans(newPlans)
-    savePlan(newPlans)
-  }
+      [result.workoutCode]: result,
+    };
+    setPlans(newPlans);
+    savePlan(newPlans);
+  };
 
   const deletePlan = () => {
-    const newPlans = {...plans};
-    delete newPlans[result.workoutCode]
-    setPlans(newPlans)
-    savePlan(newPlans)
-  }
+    const newPlans = { ...plans };
+    delete newPlans[result.workoutCode];
+    setPlans(newPlans);
+    savePlan(newPlans);
+  };
 
   return (
     <View style={styles.Container}>
-      {/* <View>
-        <Text>{plans !== null ? plans[result.workoutName]: "몰루"}</Text>
-      </View> */}
       <ImageBackground
         source={require("../../assets/images/workout/workout1.jpg")}
         resizeMode="cover"
