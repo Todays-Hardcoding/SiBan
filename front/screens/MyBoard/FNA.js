@@ -29,30 +29,30 @@ const FNA = () => {
             placeholder="검색어를 입력해주세요"
           ></TextInput>
           <TouchableOpacity style={styles.searchButton}>
-            <Text>검색</Text>
+            <Text style={styles.text}>검색</Text>
           </TouchableOpacity>
         </View>
         <View>
           <View style={styles.buttonContainer}>
             <TouchableOpacity style={styles.button}>
-              <Text>로그인</Text>
+              <Text style={styles.text}>로그인</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.button}>
-              <Text>회원정보</Text>
+              <Text style={styles.text}>회원정보</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.button}>
-              <Text>추천코스</Text>
+              <Text style={styles.text}>추천코스</Text>
             </TouchableOpacity>
           </View>
           <View style={styles.buttonContainer}>
             <TouchableOpacity style={styles.button}>
-              <Text>내플랜</Text>
+              <Text style={styles.text}>내플랜</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.button}>
-              <Text>식단관리</Text>
+              <Text style={styles.text}>식단관리</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.button}>
-              <Text>기타</Text>
+              <Text style={styles.text}>기타</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -61,15 +61,15 @@ const FNA = () => {
         <Collapse>
           <CollapseHeader>
             <View style={styles.accodionHeader}>
-              <Text style={styles.headerText} multiline={true}>
+              <Text style={styles.collapseText} multiline={true}>
                 닉네임을 변경하고 싶어요.
               </Text>
             </View>
           </CollapseHeader>
           <CollapseBody>
             <View style={styles.accodionBody}>
-              <Text style={styles.text} multiline={true}>
-                나중에 생각해보기 ~!
+              <Text style={styles.collapseText} multiline={true}>
+                마이페이지에서 회원관리 페이지로 이동한 뒤 정보 수정 버튼을 눌러 닉네임을 변경하세요.
               </Text>
             </View>
           </CollapseBody>
@@ -78,14 +78,14 @@ const FNA = () => {
         <Collapse>
           <CollapseHeader>
             <View style={styles.accodionHeader}>
-              <Text style={styles.text} multiline={true}>
+              <Text style={styles.collapseText} multiline={true}>
                 어떤 운동을 해야할지 모르겠어요.
               </Text>
             </View>
           </CollapseHeader>
           <CollapseBody>
             <View style={styles.accodionBody}>
-              <Text style={styles.text} multiline={true}>
+              <Text style={styles.collapseText} multiline={true}>
                 사용자의 퍼포먼스에 따라 초급 - 중급 - 고급으로 나뉜 추천 코스를 이용해보세요.
               </Text>
             </View>
@@ -95,14 +95,14 @@ const FNA = () => {
         <Collapse>
           <CollapseHeader>
             <View style={styles.accodionHeader}>
-              <Text style={styles.text} multiline={true}>
+              <Text style={styles.collapseText} multiline={true}>
                 식단을 기록하고 싶어요.
               </Text>
             </View>
           </CollapseHeader>
           <CollapseBody>
             <View style={styles.accodionBody}>
-              <Text style={styles.text} multiline={true}>
+              <Text style={styles.collapseText} multiline={true}>
                 마이페이지를 통해 식단관리 페이지로 이동한 다음 우측 하단 버튼을 눌러서 오늘의 식단을 추가해보세요.
               </Text>
             </View>
@@ -112,14 +112,14 @@ const FNA = () => {
         <Collapse>
           <CollapseHeader>
             <View style={styles.accodionHeader}>
-              <Text style={styles.text} multiline={true}>
+              <Text style={styles.collapseText} multiline={true}>
                 일정을 추가하고 싶어요.
               </Text>
             </View>
           </CollapseHeader>
           <CollapseBody>
             <View style={styles.accodionBody}>
-              <Text style={styles.text} multiline={true}>
+              <Text style={styles.collapseText} multiline={true}>
                 마이페이지를 통해 일정관리 페이지로 이동한 다음 일정을 입력하고 ADD 버튼을 눌러 일정을 추가해보세요. 완료된 일정을 체크하고 삭제를 통해 관리해보세요.
               </Text>
             </View>
@@ -129,15 +129,15 @@ const FNA = () => {
         <Collapse>
           <CollapseHeader>
             <View style={styles.accodionHeader}>
-              <Text style={styles.text} multiline={true}>
+              <Text style={styles.collapseText} multiline={true}>
                 탈퇴는 어떻게 하나요?
               </Text>
             </View>
           </CollapseHeader>
           <CollapseBody>
             <View style={styles.accodionBody}>
-              <Text style={styles.text} multiline={true}>
-                마이페이지에서 회원정보 수정을 누른 뒤에 화면 하단에 회원탈퇴
+              <Text style={styles.collapseText} multiline={true}>
+                마이페이지에서 회원관리 페이지로 이동한 뒤 화면 하단에 회원탈퇴
                 버튼을 누르세요.
               </Text>
             </View>
@@ -175,13 +175,17 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   text: {
-    fontSize: 15,
+    color:"white",
+    fontWeight: "bold"
+  },
+  collapseText: {
+    fontSize: 15
   },
   buttonContainer: {
     flexDirection: "row",
   },
   button: {
-    backgroundColor: "#B1BCE6",
+    backgroundColor: "#808e9b",
     alignItems: "center",
     justifyContent: "center",
     margin: 3,
@@ -212,7 +216,7 @@ const styles = StyleSheet.create({
     marginLeft: 20,
   },
   searchButton: {
-    backgroundColor: "#F2C9E1",
+    backgroundColor: "#34495e",
     borderRadius: 8,
     height: 40,
     alignItems: "center",
