@@ -9,11 +9,7 @@ import {
 } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-<<<<<<< HEAD
-const _url = "http://192.168.242.2:8282";
-=======
-const _url = "http://192.168.45.96:8282";
->>>>>>> 803063d7cd09a0db933d7759280670ae22e6e291
+const _url = "http://192.168.0.6:8282";
 
 const LOGIN_STORAGE_KEY = "@loginInfo";
 
@@ -125,7 +121,11 @@ const Login = ({ navigation }) => {
         onChangeText={(text) => setId(text)}
       />
 
-      {!loginIdCheck && <Text style={{ color: "red" }}>{idError}</Text>}
+      {!loginIdCheck ? (
+        <Text style={{ color: "red" }}>{idError}</Text>
+      ) : (
+        <Text></Text>
+      )}
 
       <TextInput
         style={styles.input}
@@ -135,8 +135,10 @@ const Login = ({ navigation }) => {
         secureTextEntry={true}
       />
 
-      {!loginPwCheck && (
+      {!loginPwCheck ? (
         <Text style={{ paddingTop: 0, color: "red" }}>{pwError}</Text>
+      ) : (
+        <Text></Text>
       )}
 
       <TouchableOpacity style={{ flexDirection: "row" }}>
