@@ -12,7 +12,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 const DetailPage = ({ route, navigation }) => {
   const { result } = route.params;
   const [planStatus, setPlanStatus] = useState();
-  const [plans, setPlans] = useState({});
+  const [plans, setPlans] = useState();
 
   useEffect(() => {
     loadPlan();
@@ -83,7 +83,7 @@ const DetailPage = ({ route, navigation }) => {
               style={styles.headerBtn}
               name="bookmark"
               size={30}
-              color={planStatus ? "yellow" : "black"}
+              color={planStatus ? "#Bff000" : "black"}
             />
           </TouchableOpacity>
         </View>

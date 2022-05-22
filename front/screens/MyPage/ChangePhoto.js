@@ -13,7 +13,7 @@ import * as ImagePicker from "expo-image-picker";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Dimensions } from "react-native";
 
-const url = "http://192.168.45.96:8282";
+const url = "http://192.168.35.107:8282";
 
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
@@ -47,8 +47,6 @@ const ChangePhoto = ({ navigation }) => {
       setuserProfile(result.uri);
       profileTest(result.uri);
       await AsyncStorage.setItem("photoUri", result.uri);
-      console.log("userProfile" + userProfile);
-      console.log("result.uri" + result.uri);
       navigation.navigate("MYPAGE");
     }
   };
@@ -66,7 +64,7 @@ const ChangePhoto = ({ navigation }) => {
 
     if (!result.cancelled) {
       setPickedImagePath(result.uri);
-      console.log(result.uri);
+      // console.log(result.uri);
     }
   };
 
@@ -83,15 +81,8 @@ const ChangePhoto = ({ navigation }) => {
       }),
     })
       .then((response) => response.json())
-
       .catch((error) => console.log(error));
   };
-
-  //
-  // navigation.navigate("DetailPage", {
-  //   result: item,
-  // }
-
   return (
     <View style={styles.screen}>
       <View style={styles.imageContainer}>

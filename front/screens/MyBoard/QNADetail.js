@@ -1,3 +1,4 @@
+import { useRoute } from "@react-navigation/native";
 import React, { useEffect, useState, Component } from "react";
 
 import {
@@ -11,50 +12,119 @@ import {
   TextInput,
   ImageBackground,
 } from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+const LOGIN_STORAGE_KEY = "@loginInfo";
 
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 
-const QNADetail = () => {
+const _url = "http://192.168.242.2:8282";
+
+const QNADetail = ({route}) => {
+  const {result} = route.params;
+  const [loginInfo, setLoginInfo] = useState("");
+  const [postInfo, setPostInfo] = useState([]);
+
+  const [reply, setReply] = useState();
+  const [recievecReply, setRecievecReply] = useState([]);
+
+  const loadLoginInfo = async () => {
+    const s = await AsyncStorage.getItem(LOGIN_STORAGE_KEY);
+    s !== null ? setLoginInfo(JSON.parse(s)) : null;
+  };
+
+  useEffect(() => {
+    loadLoginInfo();
+    selectDetail();
+    }, []);
+
+    const submit = () => {
+      fetch(_url + "/insertReply.act", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          result,
+          reply,
+          loginInfo
+        }),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          if (data != null) {
+            setRecievecReply(data);
+            selectDetail();
+          }
+        });
+    };
+    
+    const selectDetail = () => {
+    // 질문 상세보기 호출
+    fetch(_url + "/selectDetail.act", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        result
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data)
+        setPostInfo(data);
+      });
+    }
   return (
     <SafeAreaView style={styles.container} >
       <ImageBackground
-        source={require("../../assets/images/sibanLogo.png")}
+        source={require("../../assets/sibanlogo6.png")}
         style={styles.image}
       >
-       
       </ImageBackground>
+
       <ScrollView showsVerticalScrollIndicator={false}>
+        
         <View style={styles.postContainer}>
-        <View style={styles.postHeader}>
-          <View>
-            <Text>조회수</Text>
+          <View style={styles.postHeader}>
+            <View>
+              <Text>조회수 {postInfo.postViews}</Text>
+            </View>
+            <View>
+              <Text>{postInfo.postRegDate}</Text>
+            </View>
           </View>
-          <View>
-            <Text>22-02-22</Text>
+          <View style={styles.postTitle}>
+            <Text>제목 {postInfo.postTitle}</Text>
           </View>
-        </View>
-        <View style={styles.postTitle}>
-          <Text>제목</Text>
-        </View>
-        <View style={styles.postCategory}>
-          <Text>이용 문의</Text>
-        </View>
+          <View style={[styles.postCategory, {flexDirection: "row"}, {justifyContent:"space-between"}]}>
+            <Text>{postInfo.postCategory}</Text>
+            <Text>작성자 : {postInfo.user}</Text>
+          </View>
         </View>
         {/* horizontal line*/}
         <View style={styles.postContainer}>
         <View style={styles.line}></View>
           <View style={styles.postBody}>
-            <Text>이용문의 내용 TEST</Text>
+            <Text>{postInfo.postContent}</Text>
           </View>
         </View>
         <View style={styles.postAnswer}>
           {/* 1:1 Q&A 답변 */}
-          <Text>QNA 답변란</Text>
+          <Text>답변 : {postInfo.replyContent}</Text>
         </View>
         <View style={styles.commentContainer}>
-          <TextInput style={styles.commentInput} placeholder="답변"></TextInput>
-          <TouchableOpacity style={styles.commentButton}>
+          <TextInput 
+            style={styles.commentInput} 
+            placeholder="답변"
+            multiline={true}
+            value={reply}
+            onChangeText={(text) => setReply(text)}
+          />
+          <TouchableOpacity  style={styles.commentButton} onPress={submit}>
             <Text style={styles.text}>제출</Text>
           </TouchableOpacity>
         </View>
@@ -100,7 +170,6 @@ const styles = StyleSheet.create({
     flex: 0.1,
     flexDirection: "row",
     alignItems: "center",
-    //backgroundColor: "#B1BCE6",
     borderWidth: 1,
     borderColor:"#DDDDDD",
     marginTop: 10,
@@ -114,7 +183,6 @@ const styles = StyleSheet.create({
     flex: 0.1,
     flexDirection: "row",
     alignItems: "center",
-    //backgroundColor: "#B1BCE6",
     borderWidth: 1,
     borderColor:"#DDDDDD",
     marginTop: 10,
@@ -169,10 +237,11 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 5,
     marginTop: 10,
-    backgroundColor: "#F2C9E1",
+    backgroundColor: "#34495e",
   },
   text: {
     fontWeight: "bold",
+    color: "white"
   },
 });
 
