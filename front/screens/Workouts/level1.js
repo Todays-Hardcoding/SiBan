@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import { Text, StyleSheet, TouchableOpacity, View } from "react-native";
 import { FlatGrid } from "react-native-super-grid";
 
-const _url = "http://192.168.45.96:8282";
+const _url = "http://192.168.0.6:8282";
 
 const Level1 = ({ navigation }) => {
   const [exercises, setExercises] = useState([]);

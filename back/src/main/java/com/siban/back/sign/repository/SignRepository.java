@@ -9,7 +9,6 @@ import com.siban.back.sign.domain.User;
 
 @Repository
 public interface SignRepository extends JpaRepository<User, Long>{
-	
 
 	public User findByuserId(String userId);
 	public User findByuserEmail(String userEmail);

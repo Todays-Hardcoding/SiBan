@@ -52,7 +52,7 @@ const Btn = styled.TouchableOpacity`
   width: 100%;
   margin-top: 5px;
   margin-bottom: 20px;
-  background-color: #0c0c0c;
+  background-color: #808080;
   padding: 10px 20px
   align-items: center;
   border-radius: 20px;
@@ -66,12 +66,12 @@ const BtnText = styled.Text`
 const GradeView = styled.View`
   flex-direction: row;
   justify-content: space-between;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 `;
 const Grade = styled.TouchableOpacity`
   background-color: white;
   elevation: 5;
-  padding: 10px 23px;
+  padding: 10px 15px;
   border-radius: 15px;
   overflow: hidden;
   border-width: ${(props) => (props.selected ? "2px" : "0px")};
@@ -83,12 +83,12 @@ const GradeText = styled.Text`
 const TimeView = styled.View`
   flex-direction: row;
   justify-content: space-between;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 `;
 const Time = styled.TouchableOpacity`
   background-color: white;
   elevation: 5;
-  padding: 10px 25px;
+  padding: 10px 15px;
   border-radius: 15px;
   overflow: hidden;
   border-width: ${(props) => (props.selected ? "2px" : "0px")};
@@ -219,41 +219,6 @@ const MealPlanWrite = ({ navigation: { goBack } }) => {
     <View>
       <MainText>나의 식단 기록일기</MainText>
       <Title>오늘 어떤 음식을 드셨나요?</Title>
-      <MyMealScrollView>
-        {Object.keys(mealPlan).map((key) =>
-          mealPlan[key].selectedGrade === "😆 diet" ? (
-            <MyMealDietView key={key}>
-              <MyMealWhenGradeTime>
-                <MyMealText>날짜: {mealPlan[key].when}</MyMealText>
-                <MyMealText>{mealPlan[key].selectedGrade}</MyMealText>
-                <MyMealText>{mealPlan[key].selectedTime}</MyMealText>
-              </MyMealWhenGradeTime>
-              <MyMealWhenGradeTime>
-                <MyMealFood>{mealPlan[key].foods}</MyMealFood>
-                <MyMealDeleteTouchableOpacity onPress={() => deleteTodo(key)}>
-                  <MyMealDelete>❌</MyMealDelete>
-                </MyMealDeleteTouchableOpacity>
-              </MyMealWhenGradeTime>
-              <MyMealComment>{mealPlan[key].comment}</MyMealComment>
-            </MyMealDietView>
-          ) : (
-            <MyMealCheatView key={key}>
-              <MyMealWhenGradeTime>
-                <MyMealText>날짜: {mealPlan[key].when}</MyMealText>
-                <MyMealText>{mealPlan[key].selectedGrade}</MyMealText>
-                <MyMealText>{mealPlan[key].selectedTime}</MyMealText>
-              </MyMealWhenGradeTime>
-              <MyMealWhenGradeTime>
-                <MyMealFood>{mealPlan[key].foods}</MyMealFood>
-                <MyMealDeleteTouchableOpacity onPress={() => deleteTodo(key)}>
-                  <MyMealDelete>❌</MyMealDelete>
-                </MyMealDeleteTouchableOpacity>
-              </MyMealWhenGradeTime>
-              <MyMealComment>{mealPlan[key].comment}</MyMealComment>
-            </MyMealCheatView>
-          )
-        )}
-      </MyMealScrollView>
       <GradeView>
         {grades.map((grade, index) => (
           <Grade
@@ -305,6 +270,41 @@ const MealPlanWrite = ({ navigation: { goBack } }) => {
       <Btn onPress={addMealPlan}>
         <BtnText>Save</BtnText>
       </Btn>
+      <MyMealScrollView>
+        {Object.keys(mealPlan).map((key) =>
+          mealPlan[key].selectedGrade === "😆 diet" ? (
+            <MyMealDietView key={key}>
+              <MyMealWhenGradeTime>
+                <MyMealText>날짜: {mealPlan[key].when}</MyMealText>
+                <MyMealText>{mealPlan[key].selectedGrade}</MyMealText>
+                <MyMealText>{mealPlan[key].selectedTime}</MyMealText>
+              </MyMealWhenGradeTime>
+              <MyMealWhenGradeTime>
+                <MyMealFood>{mealPlan[key].foods}</MyMealFood>
+                <MyMealDeleteTouchableOpacity onPress={() => deleteTodo(key)}>
+                  <MyMealDelete>❌</MyMealDelete>
+                </MyMealDeleteTouchableOpacity>
+              </MyMealWhenGradeTime>
+              <MyMealComment>{mealPlan[key].comment}</MyMealComment>
+            </MyMealDietView>
+          ) : (
+            <MyMealCheatView key={key}>
+              <MyMealWhenGradeTime>
+                <MyMealText>날짜: {mealPlan[key].when}</MyMealText>
+                <MyMealText>{mealPlan[key].selectedGrade}</MyMealText>
+                <MyMealText>{mealPlan[key].selectedTime}</MyMealText>
+              </MyMealWhenGradeTime>
+              <MyMealWhenGradeTime>
+                <MyMealFood>{mealPlan[key].foods}</MyMealFood>
+                <MyMealDeleteTouchableOpacity onPress={() => deleteTodo(key)}>
+                  <MyMealDelete>❌</MyMealDelete>
+                </MyMealDeleteTouchableOpacity>
+              </MyMealWhenGradeTime>
+              <MyMealComment>{mealPlan[key].comment}</MyMealComment>
+            </MyMealCheatView>
+          )
+        )}
+      </MyMealScrollView>
     </View>
   );
 };
