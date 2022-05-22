@@ -1,6 +1,13 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
-import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  TouchableOpacity,
+  ImageBackground,
+} from "react-native";
 import { FlatGrid } from "react-native-super-grid";
 
 const ForYou = ({ navigation }) => {
@@ -9,16 +16,19 @@ const ForYou = ({ navigation }) => {
       screen: "Level1",
       course: "초급",
       explane: "초보자들에게 추천하는 코스입니다.",
+      src: require("../../assets/images/level1.png"),
     },
     {
       screen: "Level2",
       course: "중급",
       explane: "경력 1년차 이상 코스입니다.",
+      src: require("../../assets/images/level2.png"),
     },
     {
       screen: "Level3",
       course: "고급",
       explane: "더 높은 퍼포먼스를 추구한다면",
+      src: require("../../assets/images/level3.png"),
     },
   ]);
 
@@ -39,6 +49,7 @@ const ForYou = ({ navigation }) => {
             }
           >
             <Text style={styles.itemName}>{item.course}</Text>
+            <Image style={styles.image} source={item.src}></Image>
             <Text style={styles.itemExplane}>{item.explane}</Text>
           </TouchableOpacity>
         )}
@@ -52,8 +63,14 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingTop: 40,
   },
-  itemContainer: {
+  image: {
+    resizeMode: "contain",
+    width: 100,
+    height: 100,
     justifyContent: "flex-end",
+  },
+  itemContainer: {
+    flex: 1,
     borderRadius: 5,
     padding: 10,
     height: 150,
