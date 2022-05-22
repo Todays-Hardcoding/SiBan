@@ -12,11 +12,12 @@ const Plans = ({ navigation }) => {
     rerendering();
   }, [navigation]);
 
-  const rerendering = () => navigation.addListener("focus", () => loadPlan());
+  const rerendering = () => navigation.addListener("state", () => loadPlan());
 
   const addPlan = () => {
-
-  }
+    AsyncStorage.removeItem("Plans");
+    navigation.navigate("Routine");
+  };
 
   const loadPlan = () => {
     AsyncStorage.getItem("Plans").then((value) => {
