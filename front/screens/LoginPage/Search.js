@@ -10,7 +10,11 @@ import {
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
+<<<<<<< HEAD
 const _url = "http://192.168.242.2:8282";
+=======
+const _url = "http://192.168.45.96:8282";
+>>>>>>> 803063d7cd09a0db933d7759280670ae22e6e291
 
 const Search = () => {
   const [searchEmail, setSearchEmail] = useState("");
