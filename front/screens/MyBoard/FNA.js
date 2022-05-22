@@ -69,7 +69,7 @@ const FNA = () => {
           <CollapseBody>
             <View style={styles.accodionBody}>
               <Text style={styles.collapseText} multiline={true}>
-                나중에 생각해보기 ~!
+                마이페이지에서 회원관리 페이지로 이동한 뒤 정보 수정 버튼을 눌러 닉네임을 변경하세요.
               </Text>
             </View>
           </CollapseBody>
@@ -137,7 +137,7 @@ const FNA = () => {
           <CollapseBody>
             <View style={styles.accodionBody}>
               <Text style={styles.collapseText} multiline={true}>
-                마이페이지에서 회원정보 수정을 누른 뒤에 화면 하단에 회원탈퇴
+                마이페이지에서 회원관리 페이지로 이동한 뒤 화면 하단에 회원탈퇴
                 버튼을 누르세요.
               </Text>
             </View>
