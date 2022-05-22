@@ -3,7 +3,7 @@ import { StyleSheet, View, Text } from "react-native";
 import { TextInput, TouchableOpacity } from "react-native-gesture-handler";
 import { FlatGrid } from "react-native-super-grid";
 
-const _url = "http://192.168.45.96:8282";
+const _url = "http://192.168.0.6:8282";
 
 const WorkoutSearch = ({ navigation }) => {
   const [exercises, setExercises] = useState([]);
