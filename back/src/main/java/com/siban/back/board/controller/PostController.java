@@ -21,7 +21,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.siban.back.board.domain.Post;
+import com.siban.back.board.domain.Reply;
 import com.siban.back.board.service.PostService;
+import com.siban.back.board.service.ReplyService;
 import com.siban.back.sign.service.SignService;
 import com.siban.back.workout.domain.Workout;
 
@@ -33,6 +35,9 @@ public class PostController {
 	
 	@Autowired
 	SignService signService;
+	
+	@Autowired
+	ReplyService replyService;
 	
 	@PostMapping("/insertInquiry.act")
 	public Post insertInquiry(@RequestBody Map<String, Object> param) {
@@ -64,17 +69,22 @@ public class PostController {
 		}
 		
 		return result;
-		
 	}
 	
 	@PostMapping("/selectDetail.act")
 	public Map<String, String> selectDetail(@RequestBody Map<String, Long> param) {
 		Map<String, String> result = new HashMap<>();
 	
-		Post post = new Post();
+		Post post;
+		String replyContent;
+		
 		postService.updateViews(param.get("result"));
 		post = postService.selectDetail(param.get("result"));
 
+		replyContent = replyService.findByPost(post).getReplyContent();
+		System.out.println(replyContent);
+		
+		
 		result.put("postCode", ""+post.getPostCode());
 		result.put("postCategory", ""+post.getPostCategory());
 		result.put("postTitle", ""+post.getPostTitle());
@@ -82,6 +92,7 @@ public class PostController {
 		result.put("postRegDate", ""+post.getPostRegDate());
 		result.put("postViews", ""+post.getPostViews());
 		result.put("user", post.getUser().getUserId());
+		result.put("replyContent", replyContent);
 				
 		return result;
 	}

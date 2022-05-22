@@ -3,20 +3,26 @@ package com.siban.back.board.domain;
 import java.time.LocalDateTime;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.siban.back.sign.domain.User;
 
 import lombok.Builder;
@@ -30,6 +36,11 @@ import lombok.Setter;
 @Setter
 @Entity
 public class Post {
+	
+//	@OneToMany(mappedBy = "post", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
+//    @JsonIgnoreProperties({"post"})
+//	private List<Reply> Reply;
+	
 	@NotNull
 	@ManyToOne
 	@JsonBackReference
