@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Text, StyleSheet, TouchableOpacity, View } from "react-native";
 import { FlatGrid } from "react-native-super-grid";
 
-const _url = "http://112.172.225.17:8282";
+const _url = "http://192.168.45.96:8282";
 
 const Level3 = ({ navigation }) => {
   const [exercises, setExercises] = useState([]);
@@ -22,14 +22,15 @@ const Level3 = ({ navigation }) => {
       .then((response) => response.json())
       .then((data) => {
         setExercises(data);
-      });
+      })
+      .catch((e) => console.log(e));
   }, []);
 
   return (
     <View style={styles.Container}>
       <Text style={styles.headerText}>{exercises.length}개의 운동</Text>
       <FlatGrid
-        itemDimension={200}
+        itemDimension={230}
         data={exercises}
         spacing={20}
         renderItem={({ item }) => (

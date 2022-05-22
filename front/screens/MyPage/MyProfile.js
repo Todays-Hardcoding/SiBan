@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import {
   StyleSheet,
   SafeAreaView,
@@ -12,23 +12,42 @@ import { COLORS, SIZES, images } from "../../constants";
 import { Table, Row, Rows } from "react-native-table-component-2";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-const url = "http://192.168.0.6:8282";
+const url = "http://192.168.45.96:8282";
 const LOGIN_STORAGE_KEY = "@loginInfo";
 
 const MyProfile = ({ navigation }) => {
   const [userHeight, setuserHeight] = useState("");
   const [userWeight, setuserWeight] = useState("");
   const [routineCount, setRoutineCount] = useState(0);
-  const [loginInfo, setLoginInfo] = useState("");
 
-  useEffect(() => {
-    loadLoginInfo();
-  }, []);
+  const [userId, setuserId] = useState("");
 
-  const loadLoginInfo = async () => {
+  const loaduserId = async () => {
     const s = await AsyncStorage.getItem(LOGIN_STORAGE_KEY);
-    s !== null ? setLoginInfo(JSON.parse(s)) : null;
+    s !== null ? setuserId(JSON.parse(s)) : null;
   };
+
+  const [checkUri, setcheckUri] = useState("");
+
+  const getData = () => {
+    AsyncStorage.getItem("photoUri").then((value) => {
+      if (value != null) {
+        setcheckUri(value);
+      }
+    });
+  };
+  // 화면 리렌더링
+  useEffect(() => {
+    navListener();
+    // 로그인 정보
+    loaduserId();
+  }, [navigation]);
+
+  //이것은 혁명이다!
+  const navListener = () =>
+    navigation.addListener("focus", () => {
+      getData();
+    });
 
   const specialPromoData = [
     {
@@ -72,13 +91,16 @@ const MyProfile = ({ navigation }) => {
         }}
       >
         <View style={{ flex: 1, alignItems: "center", left: 30 }}>
-          <Text style={{ fontSize: 25, fontWeight: "bold", color: "white" }}>
+          <Text style={{ fontSize: 25, fontWeight: "bold", color: "#3f3f3f" }}>
             마이페이지
           </Text>
-          <Text style={{ color: "white" }}>{loginInfo}</Text>
+          <Text style={{ color: "black" }}>{userId}님 환영합니다</Text>
         </View>
-        <View style={styles.userSupervise}>
-          <TouchableOpacity onPress={() => setShouldShow(!shouldShow)}>
+        <View style={styles.upperButton}>
+          <TouchableOpacity
+            style={styles.userSupervise}
+            onPress={() => setShouldShow(!shouldShow)}
+          >
             <Text>회원 관리</Text>
           </TouchableOpacity>
         </View>
@@ -90,21 +112,21 @@ const MyProfile = ({ navigation }) => {
     return (
       <View
         style={{
-          height: 180,
+          height: 330,
           borderRadius: 20,
         }}
       >
         <TouchableOpacity
           onPress={() => {
-            navigation.navigate("OthersNav", { screen: "MYPROFILE" });
+            navigation.navigate("OthersNav", { screen: "ChangePhoto" });
           }}
         >
           <View style={{ alignItems: "center" }}>
             <Image
-              source={require("../../assets/images/profileImage2.png")}
-              resizeMode="contain"
+              source={{ uri: checkUri }}
+              resizeMode="cover"
               style={{
-                width: "70%",
+                width: "80%",
                 height: "100%",
                 borderRadius: 20,
               }}
@@ -128,31 +150,23 @@ const MyProfile = ({ navigation }) => {
       <View
         style={{
           flexDirection: "row",
-          marginBottom: SIZES.padding,
+          marginBottom: -40,
         }}
       >
-        <SafeAreaView
-          style={{
-            flex: 1,
-            backgroundColor: "#191919",
-            margin: 20,
-          }}
-        >
-          <View>
-            {shouldShow ? (
-              <FlatList
-                renderItem={renderItem}
-                contentContainerStyle={{ paddingHorizontal: SIZES.padding * 3 }}
-                numColumns={2}
-                columnWrapperStyle={{ justifyContent: "space-between" }}
-                data={specialPromos}
-                keyExtractor={(item) => `${item.id}`}
-                showsVerticalScrollIndicator={false}
-              ></FlatList>
-            ) : (
-              MyProfileModify()
-            )}
-          </View>
+        <SafeAreaView style={styles.buttonArea}>
+          {shouldShow ? (
+            <FlatList
+              renderItem={renderItem}
+              contentContainerStyle={{ paddingHorizontal: SIZES.padding * 3 }}
+              numColumns={2}
+              columnWrapperStyle={{ justifyContent: "space-between" }}
+              data={specialPromos}
+              keyExtractor={(item) => `${item.id}`}
+              showsVerticalScrollIndicator={false}
+            ></FlatList>
+          ) : (
+            MyProfileModify()
+          )}
         </SafeAreaView>
       </View>
     );
@@ -172,7 +186,7 @@ const MyProfile = ({ navigation }) => {
       >
         <View
           style={{
-            height: 80,
+            height: 60,
             borderTopLeftRadius: 20,
             borderTopRightRadius: 20,
           }}
@@ -208,10 +222,10 @@ const MyProfile = ({ navigation }) => {
     const MyProfileModify = () => {
       const [userName, setuserName] = useState("");
       const [userEmail, setuserEmail] = useState("");
+      const [userAddr, setuserAddr] = useState("");
       const [userHeight, setuserHeight] = useState("");
       const [userWeight, setuserWeight] = useState("");
       const [userTel, setuserTel] = useState();
-      const userId = "TATA";
 
       const onScreenLoad = () => {
         fetch(url + "/showUserInfo.act", {
@@ -229,6 +243,7 @@ const MyProfile = ({ navigation }) => {
             console.log(data);
             setuserName(data.userName);
             setuserEmail(data.userEmail);
+            setuserAddr(data.userAddr);
             setuserTel(data.userTel);
             setuserHeight(data.userHeight);
             setuserWeight(data.userWeight);
@@ -238,15 +253,27 @@ const MyProfile = ({ navigation }) => {
         onScreenLoad();
       }, []);
 
-      var state = {
-        tableHead: ["회원이름"],
-        tableData: [
-          ["이름", userName],
-          ["전화번호", userTel],
-          ["이메일", userEmail],
-          ["키", userHeight],
-          ["몸무게", userWeight],
-        ],
+      // var state = {
+      //   tableHead: ["회원이름"],
+      //   tableData: [
+      //     ["이름", userName],
+      //     ["전화번호", userTel],
+      //     ["이메일", userEmail],
+      //     ["키", userHeight],
+      //     ["몸무게", userWeight],
+      //   ],
+      // };
+
+      const removeValue = async () => {
+        try {
+          await AsyncStorage.removeItem(LOGIN_STORAGE_KEY);
+          onScreenLoad();
+          console.log();
+          console.log(userId);
+          return true;
+        } catch (e) {
+          console.log(e);
+        }
       };
 
       return (
@@ -254,22 +281,52 @@ const MyProfile = ({ navigation }) => {
           <View style={styles.modifyButton}>
             <TouchableOpacity
               onPress={() => {
-                navigation.navigate("OthersNav", { screen: "MyProfileModify" });
+                loaduserId();
+                navigation.navigate("OthersNav", {
+                  screen: "MyProfileModify",
+                  params: { userId: userId },
+                });
+                setShouldShow(!shouldShow);
               }}
               style={styles.userProfileText}
             >
               <Text>정보수정</Text>
             </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.userProfileText}
+              onPress={() => {
+                removeValue();
+                navigation.navigate("MYPAGE");
+              }}
+            >
+              <Text>로그아웃</Text>
+            </TouchableOpacity>
           </View>
           <View style={styles.profile}>
-            <Table borderStyle={{ borderWidth: 2, borderColor: "black" }}>
-              <Row
-                data={state.tableHead}
-                style={styles.head}
-                textStyle={styles.text}
-              />
-              <Rows data={state.tableData} textStyle={styles.text} />
-            </Table>
+            <View style={styles.userProfileBox}>
+              <Text style={styles.profileText}>이름</Text>
+              <Text style={styles.profileText}>{userName}</Text>
+            </View>
+            <View style={styles.userProfileBox}>
+              <Text style={styles.profileText}>전화번호</Text>
+              <Text style={styles.profileText}>{userTel}</Text>
+            </View>
+            <View style={styles.userProfileBox}>
+              <Text style={styles.profileText}>이메일</Text>
+              <Text style={styles.profileText}>{userEmail}</Text>
+            </View>
+            <View style={styles.userProfileBox}>
+              <Text style={styles.profileText}>주소</Text>
+              <Text style={styles.profileText}>{userAddr}</Text>
+            </View>
+            <View style={styles.userProfileBox}>
+              <Text style={styles.profileText}>키</Text>
+              <Text style={styles.profileText}>{userHeight}</Text>
+            </View>
+            <View style={styles.userProfileBox}>
+              <Text style={styles.profileText}>몸무게</Text>
+              <Text style={styles.profileText}>{userWeight}</Text>
+            </View>
           </View>
         </View>
       );
@@ -284,7 +341,7 @@ const MyProfile = ({ navigation }) => {
   }
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: "#191919" }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: "#e9e9e9" }}>
       {renderPromos()}
     </SafeAreaView>
   );
@@ -296,9 +353,8 @@ const styles = StyleSheet.create({
   },
   profile: {
     flex: 8,
-    padding: 16,
-    backgroundColor: "#fff",
-    borderRadius: 10,
+    borderRadius: 2,
+    marginBottom: -40,
   },
   head: {
     height: 40,
@@ -314,24 +370,52 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     flexDirection: "row",
   },
+  userProfileBox: {
+    flex: 1,
+    flexDirection: "row",
+    padding: 10,
+    marginBottom: 10,
+    justifyContent: "space-between",
+    borderColor: "#2c2c2c",
+    borderStyle: "solid",
+    borderWidth: 3,
+    borderRadius: 15,
+  },
+  profileText: {
+    fontSize: 20,
+    alignItems: "flex-end",
+  },
+  //정보 수정 버튼
   userProfileText: {
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#ececec",
+    backgroundColor: "#949494",
     height: 30,
     width: "30%",
     marginBottom: 10,
     borderRadius: 20,
+    marginHorizontal: 10,
   },
   modifyButton: {
-    alignItems: "flex-end",
+    justifyContent: "center",
+    flexDirection: "row",
+  },
+  upperButton: {
+    flexDirection: "row",
+    marginRight: 10,
   },
   userSupervise: {
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#ececec",
+    backgroundColor: "#949494",
     borderRadius: 20,
     width: 70,
+    height: 35,
+  },
+  buttonArea: {
+    flex: 1,
+    backgroundColor: "#e9e9e9",
+    margin: 20,
   },
 });
 

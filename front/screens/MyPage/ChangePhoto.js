@@ -10,42 +10,29 @@ import {
   ImageBackground,
 } from "react-native";
 import * as ImagePicker from "expo-image-picker";
-
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Dimensions } from "react-native";
 
-const url = "http://192.168.0.6:8282";
+const url = "http://192.168.35.107:8282";
 
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
-console.log(windowWidth);
 
-const STORAGE_KEY = "@changePhoto";
-
-function onPressBtn() {
-  alert("버튼이당");
-}
-
-const basePhoto =
-  "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-1.2.1&raw_url=true&q=80&fm=jpg&crop=entropy&cs=tinysrgb&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687";
-
-const ChangePhoto = ({ navigation, onPress }) => {
-  // The path of the picked image
-  const [userProfile, setuserProfile] = useState(basePhoto);
+// 이미지 선택
+const ChangePhoto = ({ navigation }) => {
+  const [userProfile, setuserProfile] = useState();
   const userId = "TATA";
 
-  const [changePhoto, setchangePhoto] = useState({});
+  const getData = () => {
+    AsyncStorage.getItem("photoUri").then((value) => {
+      if (value != null) {
+        setuserProfile(value);
+      }
+    });
+  };
+  getData();
 
-  // const savePhoto = async (toSave) => {
-  //   await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(toSave));
-  // };
-  // const loadPhoto = async () => {
-  //   const s = await AsyncStorage.getItem(STORAGE_KEY);
-  //   s !== null ? changePhoto(JSON.parse(s)) : null;
-  // };
-
-  // This function is triggered when the "Select an image" button pressed
   const showImagePicker = async () => {
-    // Ask the user for the permission to access the media library
     const permissionResult =
       await ImagePicker.requestMediaLibraryPermissionsAsync();
 
@@ -54,17 +41,18 @@ const ChangePhoto = ({ navigation, onPress }) => {
       return;
     }
 
-    const result = await ImagePicker.launchImageLibraryAsync();
+    var result = await ImagePicker.launchImageLibraryAsync();
 
     if (!result.cancelled) {
       setuserProfile(result.uri);
       profileTest(result.uri);
-      console.log(result.uri);
+      await AsyncStorage.setItem("photoUri", result.uri);
+      navigation.navigate("MYPAGE");
     }
   };
 
+  // 카메라 촬영
   const openCamera = async () => {
-    // Ask the user for the permission to access the camera
     const permissionResult = await ImagePicker.requestCameraPermissionsAsync();
 
     if (permissionResult.granted === false) {
@@ -74,14 +62,13 @@ const ChangePhoto = ({ navigation, onPress }) => {
 
     const result = await ImagePicker.launchCameraAsync();
 
-    // Explore the result
-    console.log(result);
-
     if (!result.cancelled) {
       setPickedImagePath(result.uri);
+      // console.log(result.uri);
     }
   };
-  const profileTest = (navigation) => {
+
+  const profileTest = async () => {
     fetch(url + "/updateUserImage.act", {
       method: "POST",
       headers: {
@@ -94,10 +81,8 @@ const ChangePhoto = ({ navigation, onPress }) => {
       }),
     })
       .then((response) => response.json())
-      .then((data) => console.log(data))
       .catch((error) => console.log(error));
   };
-
   return (
     <View style={styles.screen}>
       <View style={styles.imageContainer}>

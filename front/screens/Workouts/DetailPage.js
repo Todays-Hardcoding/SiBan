@@ -7,12 +7,74 @@ import {
   TouchableOpacity,
   ImageBackground,
 } from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const DetailPage = ({ route, navigation }) => {
   const { result } = route.params;
+  const [planStatus, setPlanStatus] = useState();
+  const [plans, setPlans] = useState();
+
+  useEffect(() => {
+    loadPlan();
+  }, []);
+
+  const checkPlan = () => {
+    if (planStatus === true) {
+      deletePlan();
+      setPlanStatus(false);
+    } else {
+      addPlan();
+      setPlanStatus(true);
+    }
+  };
+
+  const loadPlan = () => {
+    AsyncStorage.getItem("Plans").then((value) => {
+      setPlans(JSON.parse(value));
+      const mark = JSON.parse(value);
+      console.log(mark[result.workoutCode].workoutCode);
+      if (mark[result.workoutCode].workoutCode === result.workoutCode) {
+        setPlanStatus(true);
+      } else {
+        setPlanStatus(false);
+      }
+    });
+  };
+
+  // const checkMark = () => {
+  //   Object.keys(plans).map((key) => {
+  //     if(key === result.workoutName)
+  //       setPlanStatus(true)
+  //   })
+  // }
+
+  const savePlan = (save) => {
+    console.log("=============저장============");
+    console.log(save);
+    AsyncStorage.setItem("Plans", JSON.stringify(save));
+  };
+
+  const addPlan = () => {
+    const newPlans = {
+      ...plans,
+      [result.workoutCode]: result,
+    };
+    setPlans(newPlans);
+    savePlan(newPlans);
+  };
+
+  const deletePlan = () => {
+    const newPlans = { ...plans };
+    delete newPlans[result.workoutCode];
+    setPlans(newPlans);
+    savePlan(newPlans);
+  };
 
   return (
     <View style={styles.Container}>
+      {/* <View>
+        <Text>{plans !== null ? plans[result.workoutName]: "몰루"}</Text>
+      </View> */}
       <ImageBackground
         source={require("../../assets/images/workout/workout1.jpg")}
         resizeMode="cover"
@@ -22,12 +84,12 @@ const DetailPage = ({ route, navigation }) => {
           <TouchableOpacity onPress={() => navigation.pop()}>
             <MaterialIcons name="arrow-back-ios" size={30} color="black" />
           </TouchableOpacity>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => checkPlan()}>
             <FontAwesome
               style={styles.headerBtn}
               name="bookmark"
-              size={24}
-              color="black"
+              size={30}
+              color={planStatus ? "#Bff000" : "black"}
             />
           </TouchableOpacity>
         </View>
@@ -74,7 +136,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   workoutNameText: {
-    fontSize: "50",
+    fontSize: 50,
     fontWeight: "500",
     color: "white",
     lineHeight: 550,

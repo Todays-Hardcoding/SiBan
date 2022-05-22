@@ -20,14 +20,14 @@ const MainTabs = () => {
     <MainTab.Navigator
       sceneContainerStyle={{ backgroundColor: "white" }}
       screenOptions={{
-        tabBarStyle: {
-          backgroundColor: "#1e272e",
-        },
-        tabBarActiveTintColor: "#575fcf",
-        tabBarInactiveTintColor: "#808e9b",
         headerStyle: {
-          backgroundColor: "#1e272e",
+          backgroundColor: "#191919",
         },
+        tabBarStyle: {
+          backgroundColor: "#191919",
+        },
+        tabBarActiveTintColor: "#Bff000",
+        tabBarInactiveTintColor: "#808e9b",
         headerTitleStyle: {
           color: "#808e9b",
         },
