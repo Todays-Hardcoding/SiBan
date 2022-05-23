@@ -18,10 +18,10 @@ const LOGIN_STORAGE_KEY = "@loginInfo";
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 
-const _url = "http://192.168.242.2:8282";
+const _url = "http://192.168.35.107:8282";
 
-const QNADetail = ({route}) => {
-  const {result} = route.params;
+const QNADetail = ({ route }) => {
+  const { result } = route.params;
   const [loginInfo, setLoginInfo] = useState("");
   const [postInfo, setPostInfo] = useState([]);
 
@@ -36,31 +36,31 @@ const QNADetail = ({route}) => {
   useEffect(() => {
     loadLoginInfo();
     selectDetail();
-    }, []);
+  }, []);
 
-    const submit = () => {
-      fetch(_url + "/insertReply.act", {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          result,
-          reply,
-          loginInfo
-        }),
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          if (data != null) {
-            setRecievecReply(data);
-            selectDetail();
-          }
-        });
-    };
-    
-    const selectDetail = () => {
+  const submit = () => {
+    fetch(_url + "/insertReply.act", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        result,
+        reply,
+        loginInfo
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data != null) {
+          setRecievecReply(data);
+          selectDetail();
+        }
+      });
+  };
+
+  const selectDetail = () => {
     // 질문 상세보기 호출
     fetch(_url + "/selectDetail.act", {
       method: "POST",
@@ -77,7 +77,7 @@ const QNADetail = ({route}) => {
         console.log(data)
         setPostInfo(data);
       });
-    }
+  }
   return (
     <SafeAreaView style={styles.container} >
       <ImageBackground
@@ -87,7 +87,7 @@ const QNADetail = ({route}) => {
       </ImageBackground>
 
       <ScrollView showsVerticalScrollIndicator={false}>
-        
+
         <View style={styles.postContainer}>
           <View style={styles.postHeader}>
             <View>
@@ -100,14 +100,14 @@ const QNADetail = ({route}) => {
           <View style={styles.postTitle}>
             <Text>제목 {postInfo.postTitle}</Text>
           </View>
-          <View style={[styles.postCategory, {flexDirection: "row"}, {justifyContent:"space-between"}]}>
+          <View style={[styles.postCategory, { flexDirection: "row" }, { justifyContent: "space-between" }]}>
             <Text>{postInfo.postCategory}</Text>
             <Text>작성자 : {postInfo.user}</Text>
           </View>
         </View>
         {/* horizontal line*/}
         <View style={styles.postContainer}>
-        <View style={styles.line}></View>
+          <View style={styles.line}></View>
           <View style={styles.postBody}>
             <Text>{postInfo.postContent}</Text>
           </View>
@@ -117,14 +117,14 @@ const QNADetail = ({route}) => {
           <Text>답변 : {postInfo.replyContent}</Text>
         </View>
         <View style={styles.commentContainer}>
-          <TextInput 
-            style={styles.commentInput} 
+          <TextInput
+            style={styles.commentInput}
             placeholder="답변"
             multiline={true}
             value={reply}
             onChangeText={(text) => setReply(text)}
           />
-          <TouchableOpacity  style={styles.commentButton} onPress={submit}>
+          <TouchableOpacity style={styles.commentButton} onPress={submit}>
             <Text style={styles.text}>제출</Text>
           </TouchableOpacity>
         </View>
@@ -147,7 +147,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     opacity: 0.9,
     resizeMode: 'contain',
-    
+
   },
   postContainer: {
     flex: 1,
@@ -162,20 +162,20 @@ const styles = StyleSheet.create({
     marginTop: 10,
     height: 50,
     justifyContent: "space-between",
-    width: windowWidth *0.9,
+    width: windowWidth * 0.9,
     padding: 10,
     borderRadius: 8,
   },
-  postTitle : {
+  postTitle: {
     flex: 0.1,
     flexDirection: "row",
     alignItems: "center",
     borderWidth: 1,
-    borderColor:"#DDDDDD",
+    borderColor: "#DDDDDD",
     marginTop: 10,
     height: 50,
     justifyContent: "space-between",
-    width: windowWidth *0.9,
+    width: windowWidth * 0.9,
     padding: 10,
     borderRadius: 8,
   },
@@ -184,17 +184,17 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     borderWidth: 1,
-    borderColor:"#DDDDDD",
+    borderColor: "#DDDDDD",
     marginTop: 10,
     height: 50,
     justifyContent: "flex-start",
-    width: windowWidth *0.9,
+    width: windowWidth * 0.9,
     padding: 10,
     borderRadius: 8,
   },
   line: {
     borderWidth: 0.5,
-    width: windowWidth *0.9,
+    width: windowWidth * 0.9,
     borderColor: "gray",
     marginTop: 10,
   },
@@ -203,7 +203,7 @@ const styles = StyleSheet.create({
     height: windowHeight * 0.3,
     //backgroundColor: "#DDDDDD",
     borderWidth: 1,
-    borderColor:"#DDDDDD",
+    borderColor: "#DDDDDD",
     borderRadius: 8,
     marginTop: 10,
     padding: 15,

@@ -14,7 +14,7 @@ import {
 import { useIsFocused } from "@react-navigation/native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-const _url = "http://192.168.242.2:8282";
+const _url = "http://192.168.35.107:8282";
 const LOGIN_STORAGE_KEY = "@loginInfo";
 
 const windowWidth = Dimensions.get("window").width;
@@ -59,7 +59,7 @@ const QNAList = ({ navigation }) => {
             <TouchableOpacity
               key={index}
               onPress={() => {
-                navigation.navigate("QNADetail" , {result: item.postCode})
+                navigation.navigate("QNADetail", { result: item.postCode })
               }}
               style={[
                 styles.item,
@@ -148,7 +148,7 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     fontWeight: "bold",
-    color:"white"
+    color: "white"
   },
   searchButton: {
     backgroundColor: "#7f8c8d",
