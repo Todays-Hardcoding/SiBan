@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useTransition } from "react";
 import { FontAwesome, Ionicons, MaterialIcons } from "@expo/vector-icons";
 import {
   StyleSheet,
@@ -11,64 +11,89 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const DetailPage = ({ route, navigation }) => {
   const { result } = route.params;
-  const [planStatus, setPlanStatus] = useState(false);
-  const [plans, setPlans] = useState({});
-  
-  useEffect(() => {
-    rerendering()
-  }, [navigation]);
+  const [planStatus, setPlanStatus] = useState();
+  const [plans, setPlans] = useState();
+  const [index2, setindex] = useState(0);
+  const [difficulty, setdifficulty] = useState([
+    {
+      src: require("../../assets/images/workout/workout1.jpg"),
+    },
+    {
+      src: require("../../assets/images/workout/workout2.jpg"),
+    },
+    {
+      src: require("../../assets/images/workout/workout3.jpg"),
+    },
+  ]);
 
-  const rerendering = navigation.addListener('focus', () => loadPlan());
+  useEffect(() => {
+    loadPlan();
+    workoutHard();
+  }, []);
 
   const checkPlan = () => {
-    setPlanStatus(!planStatus)
-
-    if(planStatus === true){
-      addPlan()
-      alert(plans)
-    }else {
-      deletePlan()
-      alert(plans)
+    if (planStatus === true) {
+      deletePlan();
+      setPlanStatus(false);
+    } else {
+      addPlan();
+      setPlanStatus(true);
     }
-  }
+  };
 
-  const loadPlan = async () => {
-    await AsyncStorage.getItem("Plans").then((value) => {
-      if(value != null) {
-        setPlans(JSON.parse(value))
+  const workoutHard = () => {
+    if (result.workoutCourse === "고급") {
+      setindex(2);
+    } else if (result.workoutCourse === "중급") {
+      setindex(1);
+    } else if (result.workoutCourse === "초급") {
+      setindex(0);
+    }
+  };
+
+  const loadPlan = () => {
+    AsyncStorage.getItem("Plans").then((value) => {
+      if (value !== null) {
+        setPlans(JSON.parse(value));
+        const mark = JSON.parse(value);
+        if (mark[result.workoutCode] !== undefined) {
+          console.log("=============로드============");
+          console.log(mark[result.workoutCode]);
+          setPlanStatus(true);
+        } else {
+          console.log("=============로드============");
+          setPlanStatus(false);
+        }
       }
     });
-    alert(plans[result.workoutName])
-    if(plans[result.workoutName] !== null) {
-      setPlanStatus(true)
-    }
-  }
+  };
 
-  const savePlan = async (save) => {
-    await AsyncStorage.setItem("Plans", JSON.stringify(save))
-  }
+  const savePlan = (save) => {
+    console.log("=============저장============");
+    console.log(save);
+    AsyncStorage.setItem("Plans", JSON.stringify(save));
+  };
 
-  const addPlan = async () => {
+  const addPlan = () => {
     const newPlans = {
       ...plans,
-      [result.workoutName] : result,
-    }
-    alert(newPlans)
-    setPlans(newPlans)
-    await savePlan(newPlans)
-  }
+      [result.workoutCode]: result,
+    };
+    setPlans(newPlans);
+    savePlan(newPlans);
+  };
 
-  const deletePlan = async () => {
-    const newPlans = {...plans};
-    delete newPlans[result.workoutName]
-    setPlans(newPlans)
-    await savePlan(newPlans)
-  }
+  const deletePlan = () => {
+    const newPlans = { ...plans };
+    delete newPlans[result.workoutCode];
+    setPlans(newPlans);
+    savePlan(newPlans);
+  };
 
   return (
     <View style={styles.Container}>
       <ImageBackground
-        source={require("../../assets/images/workout/workout1.jpg")}
+        source={difficulty[index2].src}
         resizeMode="cover"
         style={styles.image}
       >
@@ -81,7 +106,7 @@ const DetailPage = ({ route, navigation }) => {
               style={styles.headerBtn}
               name="bookmark"
               size={30}
-              color= {planStatus ? "yellow" : "black"}
+              color={planStatus ? "#Bff000" : "black"}
             />
           </TouchableOpacity>
         </View>

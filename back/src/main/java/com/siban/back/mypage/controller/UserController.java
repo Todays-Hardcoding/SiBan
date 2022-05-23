@@ -62,8 +62,8 @@ public class UserController {
 		
 		user.setUserHeight(testId.getUserHeight());
 		user.setUserWeight(testId.getUserWeight());
+		
 		return user;
-	
 	}
 	
 	@PostMapping("/updateUserImage.act")

@@ -8,9 +8,9 @@ const ChangeAddress = ({ navigation }) => {
   const [addr, setAddr] = useState('');
   const [extraAddr, setExtraAddr] = useState('');
 
-  return (
+  const addressView =
     <View style={{ flex: 1, margin: 100, alignItems: 'center', justifyContent: 'center' }}>
-  
+
       <Postcode
         style={{ width: 400, height: 200 }}
         jsOptions={{ animated: true }}
@@ -44,16 +44,17 @@ const ChangeAddress = ({ navigation }) => {
          
         }}
       />
-       
       <Text>우편번호:{postcode}</Text>
       <Text>
-        도로명/지번 :{addr} ({extraAddr}) 
+        도로명/지번 :{addr} ({extraAddr})
       </Text>
       <Button title="확인" onPress={() =>
-            navigation.navigate("Register", {
-              userAddr : addr,
-            })}></Button>
+        navigation.navigate("Register", {
+          userAddr: addr,
+        })}></Button>
     </View>
-  );
+
+  // alert(addr);
+  return addressView;
 };
 export default ChangeAddress;
