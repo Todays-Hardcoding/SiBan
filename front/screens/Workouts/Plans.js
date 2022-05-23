@@ -5,8 +5,6 @@ import { Fontisto } from "@expo/vector-icons";
 import { FlatGrid } from "react-native-super-grid";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-const _url = "http://112.172.225.17:8282";
-
 const Plans = ({ navigation }) => {
   const [plans, setPlans] = useState([]);
 
