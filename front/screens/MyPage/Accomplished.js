@@ -167,7 +167,7 @@ function Accomplished({ route, navigation }) {
     },
   ];
 
-  for (let i = 0; i < routineCount; i++) {
+  for (let i = 0; i <= routineCount; i++) {
     array[i].gray = array[i].code;
   }
 

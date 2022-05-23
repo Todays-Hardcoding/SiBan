@@ -20,11 +20,24 @@ const MyProfile = ({ navigation }) => {
   const [userWeight, setuserWeight] = useState("");
   const [routineCount, setRoutineCount] = useState(0);
 
-  const [userId, setuserId] = useState("");
+  const [userId, setUserId] = useState("");
+
+  // 화면 리렌더링
+  useEffect(() => {
+    navListener();
+    // 로그인 정보
+    loaduserId();
+  }, [navigation]);
 
   const loaduserId = async () => {
     const s = await AsyncStorage.getItem(LOGIN_STORAGE_KEY);
-    s !== null ? setuserId(JSON.parse(s)) : null;
+    s !== null ? setUserId(JSON.parse(s)) : null;
+    console.log(s);
+  };
+
+  const deleteLoginInfo = async () => {
+    await AsyncStorage.removeItem(LOGIN_STORAGE_KEY);
+    console.log(AsyncStorage.getItem(LOGIN_STORAGE_KEY));
   };
 
   const [checkUri, setcheckUri] = useState("");
@@ -36,12 +49,6 @@ const MyProfile = ({ navigation }) => {
       }
     });
   };
-  // 화면 리렌더링
-  useEffect(() => {
-    navListener();
-    // 로그인 정보
-    loaduserId();
-  }, [navigation]);
 
   //이것은 혁명이다!
   const navListener = () =>
@@ -102,6 +109,17 @@ const MyProfile = ({ navigation }) => {
             onPress={() => setShouldShow(!shouldShow)}
           >
             <Text>회원 관리</Text>
+          </TouchableOpacity>
+        </View>
+        <View style={styles.upperButton}>
+          <TouchableOpacity
+            style={styles.userSupervise}
+            onPress={() => {
+              deleteLoginInfo(userId);
+              navigation.navigate("LoginPage");
+            }}
+          >
+            <Text>로그아웃</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -292,7 +310,7 @@ const MyProfile = ({ navigation }) => {
             >
               <Text>정보수정</Text>
             </TouchableOpacity>
-            <TouchableOpacity
+            {/* <TouchableOpacity
               style={styles.userProfileText}
               onPress={() => {
                 removeValue();
@@ -300,7 +318,7 @@ const MyProfile = ({ navigation }) => {
               }}
             >
               <Text>로그아웃</Text>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
           </View>
           <View style={styles.profile}>
             <View style={styles.userProfileBox}>

@@ -9,8 +9,6 @@ import {
 } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-const STORAGE_KEY = "@plans";
-
 const DetailPage = ({ route, navigation }) => {
   const { result } = route.params;
   const [planStatus, setPlanStatus] = useState();
@@ -82,7 +80,7 @@ const DetailPage = ({ route, navigation }) => {
       [result.workoutCode]: result,
     };
     setPlans(newPlans);
-    await savePlan(newPlans);
+    savePlan(newPlans);
   };
 
   const deletePlan = () => {
