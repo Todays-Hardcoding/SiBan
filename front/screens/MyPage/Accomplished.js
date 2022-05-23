@@ -1,3 +1,4 @@
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import React, { useState, useEffect } from "react";
 import {
   StyleSheet,
@@ -165,21 +166,15 @@ function Accomplished({ route, navigation }) {
       gray: "gray",
     },
   ];
-  // trophyList.map((item, index)
-
-  // const imageList = require(`../../assets/trophy/trophy${data}.png`);
 
   for (let i = 0; i < routineCount; i++) {
     array[i].gray = array[i].code;
   }
 
-  console.log("마지막 색" + array[0].gray);
+  // console.log("마지막 색" + array[0].gray);
   const grid = (
     <SectionGrid
       itemDimension={140}
-      // staticDimension={300}
-      // fixed
-      // spacing={20}
       sections={[
         {
           title: "1단계",

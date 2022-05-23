@@ -8,21 +8,39 @@ const View = styled.View`
   flex: 1;
   padding: 0 30px;
 `;
+const Container = styled.View``;
+const HeaderView = styled.View`
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+`;
 const MainText = styled.Text`
   color: white;
-  font-size: 38px;
+  font-size: 35px;
   font-weight: 900;
-  margin-top: 20px;
 `;
 const Title = styled.Text`
   background-color: #191919;
   color: white;
-  margin-top: 10px;
   margin-right: 40px;
   margin-bottom: 10px
   text-align: right;
   font-size: 20px;
   font-weight: 500;
+`;
+const ReadBtnTouchable = styled.TouchableOpacity`
+  width: 50px
+  height: 50px
+  margin-top: 15px;
+  margin-bottom: 10px;
+  background-color: #808080;
+  align-items: center;
+  border-radius: 20px;
+  padding: 10px
+`;
+const ReadModeText = styled.Text`
+  color: white;
+  font-weight: 700;
 `;
 const MealTimeInput = styled.TextInput`
   background-color: white;
@@ -52,7 +70,7 @@ const Btn = styled.TouchableOpacity`
   width: 100%;
   margin-top: 5px;
   margin-bottom: 20px;
-  background-color: #0c0c0c;
+  background-color: #808080;
   padding: 10px 20px
   align-items: center;
   border-radius: 20px;
@@ -66,12 +84,12 @@ const BtnText = styled.Text`
 const GradeView = styled.View`
   flex-direction: row;
   justify-content: space-between;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 `;
 const Grade = styled.TouchableOpacity`
   background-color: white;
   elevation: 5;
-  padding: 10px 23px;
+  padding: 10px 15px;
   border-radius: 15px;
   overflow: hidden;
   border-width: ${(props) => (props.selected ? "2px" : "0px")};
@@ -83,12 +101,12 @@ const GradeText = styled.Text`
 const TimeView = styled.View`
   flex-direction: row;
   justify-content: space-between;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 `;
 const Time = styled.TouchableOpacity`
   background-color: white;
   elevation: 5;
-  padding: 10px 25px;
+  padding: 10px 15px;
   border-radius: 15px;
   overflow: hidden;
   border-width: ${(props) => (props.selected ? "2px" : "0px")};
@@ -150,6 +168,7 @@ const MealPlanWrite = ({ navigation: { goBack } }) => {
   const [foods, setFoods] = useState("");
   const [comment, setComment] = useState("");
   const [when, setWhen] = useState("");
+  const [readMode, setReadMode] = useState(true);
   const [mealPlan, setMealPlan] = useState({});
 
   useEffect(() => {
@@ -217,8 +236,69 @@ const MealPlanWrite = ({ navigation: { goBack } }) => {
 
   return (
     <View>
-      <MainText>나의 식단 기록일기</MainText>
+      <HeaderView>
+        <MainText>나의 식단 기록일기.</MainText>
+        <ReadBtnTouchable onPress={() => setReadMode(!readMode)}>
+          <ReadModeText>읽기모드</ReadModeText>
+        </ReadBtnTouchable>
+      </HeaderView>
       <Title>오늘 어떤 음식을 드셨나요?</Title>
+
+      {readMode === true ? (
+        <Container>
+          <GradeView>
+            {grades.map((grade, index) => (
+              <Grade
+                selected={grade === selectedGrade}
+                onPress={() => onGradePress(grade)}
+                key={index}
+              >
+                <GradeText>{grade}</GradeText>
+              </Grade>
+            ))}
+
+            <MealTimeInput
+              returnKeyLabel="done"
+              // 전송버튼을 누를때
+              onSubmitEditing={addMealPlan}
+              onChangeText={onChangeWhen}
+              value={when}
+              placeholder="날짜"
+            ></MealTimeInput>
+          </GradeView>
+          <TimeView>
+            {times.map((time, index) => (
+              <Time
+                selected={time === selectedTime}
+                onPress={() => onTimePress(time)}
+                key={index}
+              >
+                <TimeText>{time}</TimeText>
+              </Time>
+            ))}
+          </TimeView>
+          <MealInput
+            returnKeyLabel="done"
+            // 전송버튼을 누를때
+            onSubmitEditing={addMealPlan}
+            onChangeText={onChangeFood}
+            value={foods}
+            placeholder="메뉴를 적으세요."
+          ></MealInput>
+          <CommentInput
+            returnKeyLabel="done"
+            // 전송버튼을 누를때
+            onSubmitEditing={addMealPlan}
+            onChangeText={onChangeComment}
+            value={comment}
+            placeholder="한 줄 평가."
+          ></CommentInput>
+          <Btn onPress={addMealPlan}>
+            <BtnText>Save</BtnText>
+          </Btn>
+        </Container>
+      ) : null}
+
       <MyMealScrollView>
         {Object.keys(mealPlan).map((key) =>
           mealPlan[key].selectedGrade === "😆 diet" ? (
@@ -254,57 +334,6 @@ const MealPlanWrite = ({ navigation: { goBack } }) => {
           )
         )}
       </MyMealScrollView>
-      <GradeView>
-        {grades.map((grade, index) => (
-          <Grade
-            selected={grade === selectedGrade}
-            onPress={() => onGradePress(grade)}
-            key={index}
-          >
-            <GradeText>{grade}</GradeText>
-          </Grade>
-        ))}
-        <MealTimeInput
-          returnKeyLabel="done"
-          // 전송버튼을 누를때
-          onSubmitEditing={addMealPlan}
-          onChangeText={onChangeWhen}
-          value={when}
-          placeholder="날짜"
-        ></MealTimeInput>
-      </GradeView>
-      <TimeView>
-        {times.map((time, index) => (
-          <Time
-            selected={time === selectedTime}
-            onPress={() => onTimePress(time)}
-            key={index}
-          >
-            <TimeText>{time}</TimeText>
-          </Time>
-        ))}
-      </TimeView>
-
-      <MealInput
-        returnKeyLabel="done"
-        // 전송버튼을 누를때
-        onSubmitEditing={addMealPlan}
-        onChangeText={onChangeFood}
-        value={foods}
-        placeholder="메뉴를 적으세요."
-      ></MealInput>
-      <CommentInput
-        returnKeyLabel="done"
-        // 전송버튼을 누를때
-        onSubmitEditing={addMealPlan}
-        onChangeText={onChangeComment}
-        value={comment}
-        placeholder="한 줄 평가."
-      ></CommentInput>
-
-      <Btn onPress={addMealPlan}>
-        <BtnText>Save</BtnText>
-      </Btn>
     </View>
   );
 };
