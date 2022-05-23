@@ -14,7 +14,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 
-const url = "http://192.168.0.6:8282";
+const url = "http://192.168.35.107:8282";
 const LOGIN_STORAGE_KEY = "@loginInfo";
 
 const MyProfileModify = ({ navigation, route }) => {
