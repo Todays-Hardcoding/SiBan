@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import {
+  StyleSheet,
   SafeAreaView,
   View,
   Text,
@@ -7,108 +8,118 @@ import {
   FlatList,
   TouchableOpacity,
 } from "react-native";
-import { COLORS, SIZES, icons, images } from "../../constants";
+import { COLORS, SIZES, images } from "../../constants";
+import { Table, Row, Rows } from "react-native-table-component-2";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
-const MyProfile = () => {
-  // 아이콘
-  // const featuresData = [
-  //   {
-  //     id: 1,
-  //     icon: icons.reload,
-  //     color: COLORS.purple,
-  //     backgroundColor: COLORS.lightpurple,
-  //     description: "내 루틴",
-  //   },
-  //   {
-  //     id: 2,
-  //     icon: icons.send,
-  //     color: COLORS.yellow,
-  //     backgroundColor: COLORS.lightyellow,
-  //     description: "일정관리",
-  //   },
-  //   {
-  //     id: 7,
-  //     icon: icons.phone,
-  //     color: COLORS.red,
-  //     backgroundColor: COLORS.lightRed,
-  //     description: "활동/기록",
-  //   },
-  //   {
-  //     id: 8,
-  //     icon: icons.more,
-  //     color: COLORS.purple,
-  //     backgroundColor: COLORS.lightpurple,
-  //     description: "식단관리",
-  //   },
-  // ];
+const url = "http://192.168.35.107:8282";
+const LOGIN_STORAGE_KEY = "@loginInfo";
+
+const MyProfile = ({ navigation }) => {
+  const [userHeight, setuserHeight] = useState("");
+  const [userWeight, setuserWeight] = useState("");
+  const [routineCount, setRoutineCount] = useState(0);
+
+  const [userId, setUserId] = useState("");
+
+  // 화면 리렌더링
+  useEffect(() => {
+    navListener();
+    // 로그인 정보
+    loaduserId();
+  }, [navigation]);
+
+  const loaduserId = async () => {
+    const s = await AsyncStorage.getItem(LOGIN_STORAGE_KEY);
+    s !== null ? setUserId(JSON.parse(s)) : null;
+    console.log(s);
+  };
+
+  const deleteLoginInfo = async () => {
+    await AsyncStorage.removeItem(LOGIN_STORAGE_KEY);
+    console.log(AsyncStorage.getItem(LOGIN_STORAGE_KEY));
+  };
+
+  const [checkUri, setcheckUri] = useState("");
+
+  const getData = () => {
+    AsyncStorage.getItem("photoUri").then((value) => {
+      if (value != null) {
+        setcheckUri(value);
+      }
+    });
+  };
+
+  //이것은 혁명이다!
+  const navListener = () =>
+    navigation.addListener("focus", () => {
+      getData();
+    });
 
   const specialPromoData = [
     {
       id: 1,
-      img: images.promoBanner,
-      title: "Bonus Cashback1",
-      description: "Don't miss it. Grab it now!",
+      img: images.myroutine,
+      title: "내 루틴",
+      description: "설정한 내 루틴을 확인해 보세요!",
+      code: "Workout",
     },
     {
       id: 2,
-      img: images.promoBanner,
-      title: "Bonus Cashback2",
-      description: "Don't miss it. Grab it now!",
+      img: images.calendar,
+      title: "일정 관리",
+      description: "이번달 일정을 확인해 보세요!",
+      code: "OthersNav",
     },
     {
       id: 3,
-      img: images.promoBanner,
-      title: "Bonus Cashback3",
-      description: "Don't miss it. Grab it now!",
+      img: images.record,
+      title: "기록",
+      description: "달성 트로피를 확인해 보세요!",
+      code: "ActivityNav",
     },
     {
       id: 4,
-      img: images.promoBanner,
-      title: "Bonus Cashback4",
-      description: "Don't miss it. Grab it now!",
+      img: images.diet,
+      title: "식단관리",
+      description: "나에게 맞는 식단을 찾아보세요!",
+      code: "MealPlanNav",
     },
   ];
 
-  // const [features, setFeatures] = React.useState(featuresData);
   const [specialPromos, setSpecialPromos] = React.useState(specialPromoData);
-
+  const [shouldShow, setShouldShow] = useState(true);
   function renderHeader() {
     return (
-      <View style={{ flexDirection: "row", marginVertical: SIZES.padding * 2 }}>
-        <View style={{ flex: 1 }}>
-          <Text>프로필</Text>
-          <Text style={{ color: COLORS.gray }}>마이페이지</Text>
+      <View
+        style={{
+          flexDirection: "row",
+          marginVertical: SIZES.padding * 2,
+        }}
+      >
+        <View style={{ flex: 1, alignItems: "center", left: 30 }}>
+          <Text style={{ fontSize: 25, fontWeight: "bold", color: "#3f3f3f" }}>
+            마이페이지
+          </Text>
+          <Text style={{ color: "black" }}>{userId}님 환영합니다</Text>
         </View>
-
-        <View style={{ alignItems: "center", justifyContent: "center" }}>
+        <View style={styles.upperButton}>
           <TouchableOpacity
-            style={{
-              height: 40,
-              width: 40,
-              justifyContent: "center",
-              alignItems: "center",
-              backgroundColor: COLORS.lightGray,
+            style={styles.userSupervise}
+            onPress={() => setShouldShow(!shouldShow)}
+          >
+            <Text>회원 관리</Text>
+          </TouchableOpacity>
+        </View>
+        <View style={styles.upperButton}>
+          <TouchableOpacity
+            style={styles.userSupervise}
+            onPress={() => {
+              deleteLoginInfo(userId);
+              navigation.navigate("LoginPage");
             }}
           >
-            <Image
-              source={icons.bell}
-              style={{
-                width: 20,
-                height: 20,
-                tintColor: COLORS.secondary,
-              }}
-            />
-            <View
-              style={{
-                position: "absolute",
-                top: -5,
-                right: -5,
-                height: 10,
-                width: 10,
-                backgroundColor: COLORS.red,
-                borderRadius: 5,
-              }}
-            ></View>
+            <Text>로그아웃</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -119,71 +130,28 @@ const MyProfile = () => {
     return (
       <View
         style={{
-          height: 180,
+          height: 330,
           borderRadius: 20,
         }}
       >
-        <Image
-          source={images.banner}
-          resizeMode="cover"
-          style={{
-            width: "100%",
-            height: "100%",
-            borderRadius: 20,
-          }}
-        />
-      </View>
-    );
-  }
-
-  function renderFeatures() {
-    const renderItem = ({ item }) => (
-      <TouchableOpacity
-        style={{
-          marginBottom: SIZES.padding * 2,
-          width: 60,
-          alignItems: "center",
-        }}
-        onPress={() => console.log(item.description)}
-      >
-        <View
-          style={{
-            height: 50,
-            width: 50,
-            marginBottom: 5,
-            borderRadius: 20,
-            backgroundColor: item.backgroundColor,
-            alignItems: "center",
-            justifyContent: "center",
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate("OthersNav", { screen: "ChangePhoto" });
           }}
         >
-          <Image
-            source={item.icon}
-            resizeMode="contain"
-            style={{
-              height: 20,
-              width: 20,
-              tintColor: item.color,
-            }}
-          />
-        </View>
-        <Text style={{ textAlign: "center", flexWrap: "wrap" }}>
-          {item.description}
-        </Text>
-      </TouchableOpacity>
-    );
-
-    return (
-      <FlatList
-        // 아이콘
-        //ListHeaderComponent={Header}
-        // data={features}
-        numColumns={4}
-        columnWrapperStyle={{ justifyContent: "space-between" }}
-        keyExtractor={(item) => `${item.id}`}
-        renderItem={renderItem}
-        style={{ marginTop: SIZES.padding * 2 }}
-      />
+          <View style={{ alignItems: "center" }}>
+            <Image
+              source={{ uri: checkUri }}
+              resizeMode="cover"
+              style={{
+                width: "80%",
+                height: "100%",
+                borderRadius: 20,
+              }}
+            />
+          </View>
+        </TouchableOpacity>
+      </View>
     );
   }
 
@@ -192,7 +160,6 @@ const MyProfile = () => {
       <View>
         {renderHeader()}
         {renderBanner()}
-        {renderFeatures()}
         {renderPromoHeader()}
       </View>
     );
@@ -201,36 +168,49 @@ const MyProfile = () => {
       <View
         style={{
           flexDirection: "row",
-          marginBottom: SIZES.padding,
+          marginBottom: -40,
         }}
       >
-        <View style={{ flex: 1 }}>
-          <Text>Special Promos</Text>
-        </View>
-        <TouchableOpacity onPress={() => console.log("View All")}>
-          <Text style={{ color: COLORS.gray }}>View All</Text>
-        </TouchableOpacity>
+        <SafeAreaView style={styles.buttonArea}>
+          {shouldShow ? (
+            <FlatList
+              renderItem={renderItem}
+              contentContainerStyle={{ paddingHorizontal: SIZES.padding * 3 }}
+              numColumns={2}
+              columnWrapperStyle={{ justifyContent: "space-between" }}
+              data={specialPromos}
+              keyExtractor={(item) => `${item.id}`}
+              showsVerticalScrollIndicator={false}
+            ></FlatList>
+          ) : (
+            MyProfileModify()
+          )}
+        </SafeAreaView>
       </View>
     );
 
     const renderItem = ({ item }) => (
+      // 버튼 관련
       <TouchableOpacity
         style={{
           marginVertical: SIZES.base,
           width: SIZES.width / 2.5,
         }}
-        onPress={() => console.log(item.title)}
+        onPress={() => {
+          navigation.navigate(item.code, {
+            params: { routineCount: routineCount },
+          });
+        }}
       >
         <View
           style={{
-            height: 80,
+            height: 60,
             borderTopLeftRadius: 20,
             borderTopRightRadius: 20,
-            backgroundColor: COLORS.primary,
           }}
         >
           <Image
-            source={images.promoBanner}
+            source={item.img}
             resizeMode="cover"
             style={{
               width: "100%",
@@ -245,36 +225,216 @@ const MyProfile = () => {
           style={{
             padding: SIZES.padding,
             backgroundColor: COLORS.lightGray,
+            justifyContent: "center",
+            alignItems: "center",
             borderBottomLeftRadius: 20,
             borderBottomRightRadius: 20,
           }}
         >
-          <Text>{item.title}</Text>
+          {/* <Text>{item.title}</Text> */}
           <Text>{item.description}</Text>
         </View>
       </TouchableOpacity>
     );
 
+    const MyProfileModify = () => {
+      const [userName, setuserName] = useState("");
+      const [userEmail, setuserEmail] = useState("");
+      const [userAddr, setuserAddr] = useState("");
+      const [userHeight, setuserHeight] = useState("");
+      const [userWeight, setuserWeight] = useState("");
+      const [userTel, setuserTel] = useState();
+
+      const onScreenLoad = () => {
+        fetch(url + "/showUserInfo.act", {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            userId,
+          }),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log(data);
+            setuserName(data.userName);
+            setuserEmail(data.userEmail);
+            setuserAddr(data.userAddr);
+            setuserTel(data.userTel);
+            setuserHeight(data.userHeight);
+            setuserWeight(data.userWeight);
+          });
+      };
+      useEffect(() => {
+        onScreenLoad();
+      }, []);
+
+      // var state = {
+      //   tableHead: ["회원이름"],
+      //   tableData: [
+      //     ["이름", userName],
+      //     ["전화번호", userTel],
+      //     ["이메일", userEmail],
+      //     ["키", userHeight],
+      //     ["몸무게", userWeight],
+      //   ],
+      // };
+
+      const removeValue = async () => {
+        try {
+          await AsyncStorage.removeItem(LOGIN_STORAGE_KEY);
+          onScreenLoad();
+          console.log();
+          console.log(userId);
+          return true;
+        } catch (e) {
+          console.log(e);
+        }
+      };
+
+      return (
+        <View>
+          <View style={styles.modifyButton}>
+            <TouchableOpacity
+              onPress={() => {
+                loaduserId();
+                navigation.navigate("OthersNav", {
+                  screen: "MyProfileModify",
+                  params: { userId: userId },
+                });
+                setShouldShow(!shouldShow);
+              }}
+              style={styles.userProfileText}
+            >
+              <Text>정보수정</Text>
+            </TouchableOpacity>
+            {/* <TouchableOpacity
+              style={styles.userProfileText}
+              onPress={() => {
+                removeValue();
+                navigation.navigate("MYPAGE");
+              }}
+            >
+              <Text>로그아웃</Text>
+            </TouchableOpacity> */}
+          </View>
+          <View style={styles.profile}>
+            <View style={styles.userProfileBox}>
+              <Text style={styles.profileText}>이름</Text>
+              <Text style={styles.profileText}>{userName}</Text>
+            </View>
+            <View style={styles.userProfileBox}>
+              <Text style={styles.profileText}>전화번호</Text>
+              <Text style={styles.profileText}>{userTel}</Text>
+            </View>
+            <View style={styles.userProfileBox}>
+              <Text style={styles.profileText}>이메일</Text>
+              <Text style={styles.profileText}>{userEmail}</Text>
+            </View>
+            <View style={styles.userProfileBox}>
+              <Text style={styles.profileText}>주소</Text>
+              <Text style={styles.profileText}>{userAddr}</Text>
+            </View>
+            <View style={styles.userProfileBox}>
+              <Text style={styles.profileText}>키</Text>
+              <Text style={styles.profileText}>{userHeight}</Text>
+            </View>
+            <View style={styles.userProfileBox}>
+              <Text style={styles.profileText}>몸무게</Text>
+              <Text style={styles.profileText}>{userWeight}</Text>
+            </View>
+          </View>
+        </View>
+      );
+    };
+    //
     return (
       <FlatList
         ListHeaderComponent={HeaderComponent}
-        contentContainerStyle={{ paddingHorizontal: SIZES.padding * 3 }}
-        numColumns={2}
-        columnWrapperStyle={{ justifyContent: "space-between" }}
-        data={specialPromos}
-        keyExtractor={(item) => `${item.id}`}
-        renderItem={renderItem}
-        showsVerticalScrollIndicator={false}
         ListFooterComponent={<View style={{ marginBottom: 80 }}></View>}
       />
     );
   }
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.white }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: "#e9e9e9" }}>
       {renderPromos()}
     </SafeAreaView>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  profile: {
+    flex: 8,
+    borderRadius: 2,
+    marginBottom: -40,
+  },
+  head: {
+    height: 40,
+    backgroundColor: "#ececec",
+  },
+  text: {
+    margin: 6,
+    textAlign: "center",
+  },
+  userProfile: {
+    flex: 0.1,
+    alignItems: "center",
+    justifyContent: "center",
+    flexDirection: "row",
+  },
+  userProfileBox: {
+    flex: 1,
+    flexDirection: "row",
+    padding: 10,
+    marginBottom: 10,
+    justifyContent: "space-between",
+    borderColor: "#2c2c2c",
+    borderStyle: "solid",
+    borderWidth: 3,
+    borderRadius: 15,
+  },
+  profileText: {
+    fontSize: 20,
+    alignItems: "flex-end",
+  },
+  //정보 수정 버튼
+  userProfileText: {
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "#949494",
+    height: 30,
+    width: "30%",
+    marginBottom: 10,
+    borderRadius: 20,
+    marginHorizontal: 10,
+  },
+  modifyButton: {
+    justifyContent: "center",
+    flexDirection: "row",
+  },
+  upperButton: {
+    flexDirection: "row",
+    marginRight: 10,
+  },
+  userSupervise: {
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "#949494",
+    borderRadius: 20,
+    width: 70,
+    height: 35,
+  },
+  buttonArea: {
+    flex: 1,
+    backgroundColor: "#e9e9e9",
+    margin: 20,
+  },
+});
 
 export default MyProfile;

@@ -5,8 +5,6 @@ const close = require("../assets/icons/close.png");
 const disable_eye = require("../assets/icons/disable_eye.png");
 const down = require("../assets/icons/down.png");
 const eye = require("../assets/icons/eye.png");
-const game = require("../assets/icons/games.png");
-const barcode = require("../assets/icons/barcode.png");
 const info = require("../assets/icons/info.png");
 const internet = require("../assets/icons/internet.png");
 const more = require("../assets/icons/more.png");
@@ -25,8 +23,6 @@ export default {
   disable_eye,
   down,
   eye,
-  game,
-  barcode,
   info,
   internet,
   more,

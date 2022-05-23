@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
 
@@ -6,7 +6,6 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { Ionicons, FontAwesome5, Entypo } from "@expo/vector-icons";
 
 // 페이지 관련 import
-import Home from "../screens/Home";
 import MyPageNav from "../navigation/MyPageNav";
 import WorkoutsNav from "./WorkoutsNav";
 import MyBoardNav from "./MyBoardNav";
@@ -15,18 +14,20 @@ const MainTab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
 const MainTabs = () => {
+  const [isLogin, setIsLogin] = useState(false);
+
   return (
     <MainTab.Navigator
       sceneContainerStyle={{ backgroundColor: "white" }}
       screenOptions={{
-        tabBarStyle: {
-          backgroundColor: "#1e272e",
-        },
-        tabBarActiveTintColor: "#575fcf",
-        tabBarInactiveTintColor: "#808e9b",
         headerStyle: {
-          backgroundColor: "#1e272e",
+          backgroundColor: "#191919",
         },
+        tabBarStyle: {
+          backgroundColor: "#191919",
+        },
+        tabBarActiveTintColor: "#Bff000",
+        tabBarInactiveTintColor: "#808e9b",
         headerTitleStyle: {
           color: "#808e9b",
         },
@@ -38,7 +39,7 @@ const MainTabs = () => {
       }}
     >
       {/* 1번 탭 */}
-      <MainTab.Screen
+      {/* <MainTab.Screen
         name="Home"
         component={Home}
         options={{
@@ -52,11 +53,11 @@ const MainTabs = () => {
             );
           },
         }}
-      ></MainTab.Screen>
+      ></MainTab.Screen> */}
 
       {/* 2번 탭 */}
       <MainTab.Screen
-        name="Mypage"
+        name="마이페이지"
         component={MyPageNav}
         options={{
           tabBarIcon: ({ focused, color, size }) => {
@@ -91,7 +92,7 @@ const MainTabs = () => {
 
       {/* 4번 탭 */}
       <MainTab.Screen
-        name="Board"
+        name="고객센터"
         component={MyBoardNav}
         options={{
           tabBarIcon: ({ focused, color, size }) => {

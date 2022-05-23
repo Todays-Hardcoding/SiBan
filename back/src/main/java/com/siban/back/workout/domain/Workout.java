@@ -1,20 +1,24 @@
 package com.siban.back.workout.domain;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.PrePersist;
-import javax.persistence.PreUpdate;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
 import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
+@Getter
+@ToString
 @NoArgsConstructor
 @Entity
 @Table
@@ -32,37 +36,44 @@ public class Workout {
 	
 	@NotNull
 	@Column
-	private String workoutCategory;
-	
-	@Column
-	private String workoutPhoto;
-	
-	@Column
-	private String workoutVideo;
+	private String workoutCourse;
 	
 	@NotNull
 	@Column
-	private LocalDateTime workoutRegdate;
+	private String workoutGoal;
 	
-	@PrePersist
-	public void createdAt() {
-		this.workoutRegdate = LocalDateTime.now();
-	}
+	@NotNull
+	@Column
+	private String workoutTarget;
 	
-	@PreUpdate
-	public void updatedAt() {
-		this.workoutRegdate = LocalDateTime.now();
-	}
+	@NotNull
+	@Column
+	private String workoutDescription;
+	
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column
+	private Date workoutRegdate;
+	
+	/*
+	 * @PrePersist public void createdAt() { this.workoutRegdate =
+	 * LocalDateTime.now(); }
+	 * 
+	 * @PreUpdate public void updatedAt() { this.workoutRegdate =
+	 * LocalDateTime.now(); }
+	 */
 
 	@Builder
-	public Workout(@NotNull long workoutCode, @NotNull String workoutName, @NotNull String workoutCategory,
-			String workoutPhoto, String workoutVideo, @NotNull LocalDateTime workoutRegdate) {
+	public Workout(@NotNull long workoutCode, @NotNull String workoutName, @NotNull String workoutCourse,
+			@NotNull String workoutGoal, @NotNull String workoutTarget, @NotNull String workoutDescription,
+			@NotNull Date workoutRegdate) {
 		super();
 		this.workoutCode = workoutCode;
 		this.workoutName = workoutName;
-		this.workoutCategory = workoutCategory;
-		this.workoutPhoto = workoutPhoto;
-		this.workoutVideo = workoutVideo;
+		this.workoutCourse = workoutCourse;
+		this.workoutGoal = workoutGoal;
+		this.workoutTarget = workoutTarget;
+		this.workoutDescription = workoutDescription;
 		this.workoutRegdate = workoutRegdate;
-	}	
+	}
+	
 }
