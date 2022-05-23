@@ -20,7 +20,7 @@ const Search = () => {
 
   // 아이디 유무 관한 함수
   const postSearchEmail = () => {
-    fetch(_url + "searchEmail.act", {
+    fetch(_url + "/searchEmail.act", {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -42,7 +42,7 @@ const Search = () => {
   };
   // 비번찾기
   const postSearchPw = () => {
-    fetch(_url + "SearchPw.act", {
+    fetch(_url + "/SearchPw.act", {
       method: "POST",
       headers: {
         Accept: "application/json",
