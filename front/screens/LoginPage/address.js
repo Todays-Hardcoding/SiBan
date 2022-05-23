@@ -21,6 +21,7 @@ const ChangeAddress = ({ navigation }) => {
           if (data.userSelectedType === 'R') {
             // 사용자가 도로명 주소를 선택했을 경우
             setAddr(data.roadAddress);
+            
 
             // 법정동명이 있을 경우 추가한다. (법정리는 제외)
             // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
@@ -40,12 +41,14 @@ const ChangeAddress = ({ navigation }) => {
             // 사용자가 지번 주소를 선택했을 경우(J)
             setExtraAddr(data.jibunAddress);
           }
+         
         }}
       />
-      {/*<Text>우편번호:{postcode}</Text>
+       
+      <Text>우편번호:{postcode}</Text>
       <Text>
         도로명/지번 :{addr} ({extraAddr}) 
-      </Text>*/}
+      </Text>
       <Button title="확인" onPress={() =>
             navigation.navigate("Register", {
               userAddr : addr,
