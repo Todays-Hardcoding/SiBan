@@ -92,11 +92,8 @@ public class SignController {
 		System.out.println(user);
 		if (user != null) {
 			temp = user.getUserId();
-		}
-		
-		
+		}		
 		result.put("searchId", temp);
-//		System.out.println(temp);
 		System.out.println(result);
 		return result;
 	}
