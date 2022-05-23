@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.siban.back.board.domain.Post;
+import com.siban.back.board.domain.Reply;
 import com.siban.back.board.service.PostService;
 import com.siban.back.board.service.ReplyService;
 import com.siban.back.sign.service.SignService;
