@@ -11,7 +11,7 @@ import DropDownPicker from "react-native-dropdown-picker";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Col } from "react-native-table-component-2";
 
-const _url = "http://192.168.242.2:8282";
+const _url = "http://192.168.0.6:8282";
 const LOGIN_STORAGE_KEY = "@loginInfo";
 
 const windowWidth = Dimensions.get("window").width;
@@ -33,7 +33,7 @@ const QNA = ({ navigation }) => {
   ]);
 
   useEffect(() => {
-    // 로그인 정보 
+    // 로그인 정보
     loadLoginInfo();
   });
 
@@ -57,7 +57,7 @@ const QNA = ({ navigation }) => {
         categoriValue,
         title,
         content,
-        loginInfo
+        loginInfo,
       }),
     })
       .then((response) => response.json())
@@ -163,7 +163,7 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     fontSize: 17,
-    color:"white"
+    color: "white",
   },
   buttonContainer: {
     flexDirection: "row",
