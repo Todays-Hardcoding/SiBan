@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.siban.back.board.domain.Post;
+import com.siban.back.board.domain.Reply;
 import com.siban.back.board.service.PostService;
 import com.siban.back.board.service.ReplyService;
 import com.siban.back.sign.service.SignService;
@@ -29,12 +30,14 @@ public class PostController {
 	
 	@PostMapping("/insertInquiry.act")
 	public Post insertInquiry(@RequestBody Map<String, Object> param) {
-		Post post = new Post();
+		Post post = new Post(); 
+		Post result;
 
 		String categori = (String) param.get("categoriValue");
 		String title = (String) param.get("title");
 		String content = (String) param.get("content");
 		String loginInfo = (String) param.get("loginInfo");
+
 
 		System.out.println(loginInfo);
 		
@@ -43,7 +46,12 @@ public class PostController {
 		post.setPostContent(content);
 		post.setUser(signService.findByUserId(loginInfo));
 		
-		return postService.insertInquiry(post);
+		result = postService.insertInquiry(post);
+		
+		Reply reply = Reply.builder().user(post.getUser()).post(post).replyContent("").build();
+		replyService.initReply(reply);
+		
+		return result;
 	}
 	
 	@PostMapping("/selectInquiry.act")

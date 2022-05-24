@@ -15,6 +15,10 @@ public class ReplyService {
 	@Autowired
 	ReplyRepository replyRepository;
 	
+	public Reply initReply(Reply reply) {		
+		return replyRepository.save(reply);
+	}
+	
 	public Reply insertReply(Reply reply, Post post, User user) {
 		Reply result;
 		Reply temp = replyRepository.findByPost(post);

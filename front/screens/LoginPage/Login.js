@@ -81,7 +81,7 @@ const Login = ({ navigation }) => {
         //console.log(data.result)
         if (data.result == true) {
           setSaveId(userId);
-          alert("로그인 성공");
+          alert(userId + " 환영합니다.");
           console.log(setSaveId);
           // 아이디정보 저장해야댐
           saveLoginInfo(userId);
