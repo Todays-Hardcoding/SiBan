@@ -12,6 +12,10 @@ const Plans = ({ navigation }) => {
     rerendering();
   }, [navigation]);
 
+  useEffect(() => {
+    addMyPlan();
+  },[plans])
+
   const rerendering = () => navigation.addListener("state", () => loadPlan());
 
   const loadPlan = () => {
