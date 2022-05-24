@@ -109,7 +109,6 @@ const QNADetail = ({ route }) => {
             <Text>작성자 : {postInfo.user}</Text>
           </View>
         </View>
-        {/* horizontal line*/}
         <View style={styles.postContainer}>
           <View style={styles.line}></View>
           <View style={styles.postBody}>
