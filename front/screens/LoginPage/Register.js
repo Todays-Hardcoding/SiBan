@@ -3,7 +3,7 @@ import { Button, StyleSheet, Text, TextInput, View } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
-const _url = "http://192.168.0.6:8282";
+const _url = "http://112.172.225.17:8282";
 
 const Register = ({ route, navigation }) => {
   //아이디,비번,이메일,전화번호

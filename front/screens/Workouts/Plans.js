@@ -5,8 +5,6 @@ import { Fontisto } from "@expo/vector-icons";
 import { FlatGrid } from "react-native-super-grid";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-const _url = "http://192.168.0.6:8282";
-
 const Plans = ({ navigation }) => {
   const [plans, setPlans] = useState([]);
 
@@ -14,26 +12,11 @@ const Plans = ({ navigation }) => {
     rerendering();
   }, [navigation]);
 
+  useEffect(() => {
+    addMyPlan();
+  },[plans])
+
   const rerendering = () => navigation.addListener("state", () => loadPlan());
-
-  const addPlan = () => {
-    fetch(_url + "/addPlan.act", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        plans: plans,
-      }),
-    })
-      .then((response) => response.json())
-      .then((data) => console.log("성공"));
-
-    AsyncStorage.removeItem("Plans");
-    console.log("=============삭제============");
-    navigation.navigate("ForYou");
-  };
 
   const loadPlan = () => {
     AsyncStorage.getItem("Plans").then((value) => {
@@ -47,6 +30,19 @@ const Plans = ({ navigation }) => {
       }
     });
   };
+
+  const saveMyPlan = (save) => {
+    console.log("=============저장============");
+    console.log(save);
+    AsyncStorage.setItem("myPlans", JSON.stringify(save));
+  };
+
+  const addMyPlan = () => {
+    saveMyPlan(plans);
+    AsyncStorage.removeItem("Plans");
+    console.log("=============삭제============");
+    navigation.navigate("ForYou")
+  }
 
   return (
     <View style={styles.Container}>
@@ -78,7 +74,7 @@ const Plans = ({ navigation }) => {
       <TouchableOpacity
         style={styles.plus}
         // onPress={() => navigation.navigate("Browse")}
-        onPress={() => addPlan()}
+        onPress={() => addMyPlan()}
       >
         <Text>
           <Fontisto name="plus-a" size={30} color="grey" />
