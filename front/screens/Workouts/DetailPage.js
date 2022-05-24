@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useTransition } from "react";
 import { FontAwesome, Ionicons, MaterialIcons } from "@expo/vector-icons";
 import {
   StyleSheet,
@@ -13,9 +13,22 @@ const DetailPage = ({ route, navigation }) => {
   const { result } = route.params;
   const [planStatus, setPlanStatus] = useState();
   const [plans, setPlans] = useState();
+  const [index2, setindex] = useState(0);
+  const [difficulty, setdifficulty] = useState([
+    {
+      src: require("../../assets/images/workout/workout1.jpg"),
+    },
+    {
+      src: require("../../assets/images/workout/workout2.jpg"),
+    },
+    {
+      src: require("../../assets/images/workout/workout3.jpg"),
+    },
+  ]);
 
   useEffect(() => {
     loadPlan();
+    workoutHard();
   }, []);
 
   const checkPlan = () => {
@@ -25,6 +38,16 @@ const DetailPage = ({ route, navigation }) => {
     } else {
       addPlan();
       setPlanStatus(true);
+    }
+  };
+
+  const workoutHard = () => {
+    if (result.workoutCourse === "고급") {
+      setindex(2);
+    } else if (result.workoutCourse === "중급") {
+      setindex(1);
+    } else if (result.workoutCourse === "초급") {
+      setindex(0);
     }
   };
 
@@ -70,7 +93,7 @@ const DetailPage = ({ route, navigation }) => {
   return (
     <View style={styles.Container}>
       <ImageBackground
-        source={require("../../assets/images/workout/workout1.jpg")}
+        source={difficulty[index2].src}
         resizeMode="cover"
         style={styles.image}
       >

@@ -12,7 +12,7 @@ import { COLORS, SIZES, images } from "../../constants";
 import { Table, Row, Rows } from "react-native-table-component-2";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-const url = "http://192.168.0.6:8282";
+const url = "http://192.168.35.107:8282";
 const LOGIN_STORAGE_KEY = "@loginInfo";
 
 const MyProfile = ({ navigation }) => {
@@ -55,7 +55,7 @@ const MyProfile = ({ navigation }) => {
       img: images.myroutine,
       title: "내 루틴",
       description: "설정한 내 루틴을 확인해 보세요!",
-      code: "Plans",
+      code: "Workout",
     },
     {
       id: 2,
