@@ -44,9 +44,9 @@
    
  ## 1. Siban 프로젝트
 
-<img src="https://user-images.githubusercontent.com/88614978/170042766-1dbfe8c0-48e3-4e67-9b8b-b0b980266db5.png" width="300" />
-<img src="https://user-images.githubusercontent.com/88614978/174602977-9cffc010-c87a-45e4-8f65-d41b6a207f4b.png" width="300" />
-<img src="https://user-images.githubusercontent.com/88614978/174601791-0f657c32-b9d1-4a45-b5e7-f4fbc2afef6a.png" width="300" />
+<img src="https://user-images.githubusercontent.com/88614978/170042766-1dbfe8c0-48e3-4e67-9b8b-b0b980266db5.png" width="250" />
+<img src="https://user-images.githubusercontent.com/88614978/174602977-9cffc010-c87a-45e4-8f65-d41b6a207f4b.png" width="250" />
+<img src="https://user-images.githubusercontent.com/88614978/174601791-0f657c32-b9d1-4a45-b5e7-f4fbc2afef6a.png" width="250" />
 
 <br>
 
